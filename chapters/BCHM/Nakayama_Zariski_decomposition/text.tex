@@ -1,0 +1,77 @@
+\section{Nakayama Zariski Decomposition}
+
+  We work over an algebraically closed field $\kkk$ of characteristic zero. 
+  We use $\bbK$ to denote the coefficient of divisors, which can be either $\bbQ$ or $\bbR$.
+
+
+\subsection{Classical Zariski Decomposition}
+
+  In this subsection, let $X$ be a smooth projective surface over $\kkk$.
+
+  The following result is due to Zariski in the effective case and to Fujita in the general case.
+
+  \begin{theorem}
+    Let $X$ be a smooth projective surface and $D$ be a pseudo-effective $\bbK$-divisor on $X$. 
+    Then there exists a unique decomposition
+    \[ D = P + N \]
+    with $P$ being nef $\bbK$-divisor and $N = \sum_i a_i E_i$ being effective $\bbK$-divisor 
+    such that 
+    \[ P \cdot E_i = 0, \quad \text{and} \quad (E_i \cdot E_j)_{i,j} \text{ is negative definite}. \]
+    We call this decomposition the \emph{Zariski decomposition} of $D$.
+  \end{theorem}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{example}
+    Let $X = \Bl_p \bbP^2$ be the blow-up of $\bbP^2$ at a point $p$, and let $E$ be the exceptional divisor.
+      \Yang{}
+  \end{example}
+
+  \begin{example}
+    Let $X = \bbP_C(\calO \oplus \calL)$ be 
+    \Yang{}
+  \end{example}
+
+  \begin{proposition}
+    Let $D$ be a pseudo-effective $\bbK$-divisor on a smooth projective surface $X$ with Zariski decomposition $D = P + N$. Then we have
+    \[ H^0(X, \lfloor mD \rfloor) = H^0(X, \lfloor mP \rfloor) \]
+    for any integer $m \geq 0$. In particular, we have $\kappa(X, D) = \kappa(X, P)$.
+   \Yang{}
+  \end{proposition}
+
+  \begin{corollary}
+    Let $D$ be a pseudo-effective $\bbK$-divisor with Zariski decomposition $D = P + N$.
+    Then $\vol(D) = P^2$.
+   \Yang{}
+  \end{corollary}
+
+
+  \begin{proposition}
+    In general, there does not exist a Zariski decomposition for pseudo-effective divisors on higher dimensional varieties.
+   \Yang{}
+  \end{proposition}
+
+  \begin{example}
+    \Yang{}
+  \end{example}
+
+
+\subsection{Nakayama Zariski Decomposition}
+
+  Let $X$ be a normal projective variety and $D$ be a pseudo-effective $\bbR$-divisor on $X$. For any prime divisor $E$ on $X$, we define
+  \[ \sigma_E(D) := \inf \{ \Mult_E D' \mid D' \sim_\bbR D, D' \geq 0 \}. \]
+  Then we define
+  \[ N_\sigma(D) := \sum_E \sigma_E(D) E, \quad P_\sigma(D) := D - N_\sigma(D). \]
+
+
+  \begin{theorem}
+    There is a unique decomposition
+    \[ D = P_\sigma(D) + N_\sigma(D) \]
+    such that $P_\sigma(D)$ is pseudo-effective and $\sigma_E(P_\sigma(D)) = 0$ for any prime divisor $E$ on $X$. 
+    We call this decomposition the \emph{Nakayama Zariski decomposition} of $D$.
+
+    \Yang{}
+  \end{theorem}
+
+
