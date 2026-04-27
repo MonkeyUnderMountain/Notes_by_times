@@ -1,0 +1,56 @@
+\section{April 27}
+
+\subsection{Functorial properties of group cohomology}
+
+  Let $M$ be a $G$-module, $M'$ be a $G'$-module with $\alpha: G' \to G$ and $\beta: M \to M'$ homomorphisms such that $\beta(\alpha(g')m) = g'\beta(m)$ for all $g' \in G'$ and $m \in M$. 
+  In a diagram, we have
+  \[
+    \begin{tikzcd}
+      M \arrow[r, "\alpha(g')"] \arrow[d, "\beta"] & M \arrow[d, "\beta"] \\
+      M' \arrow[r, "g'"] & M'
+    \end{tikzcd}
+  \]
+  Then $(\alpha, \beta)$ defines a morphism of complexes $C^r(G, M) \to C^r(G', M')$ by sending $f: G^r \to M$ to $\beta \circ f \circ \alpha^{\times r}: (G')^r \to M'$.
+  This morphism of complexes induces a homomorphism $H^r(G, M) \to H^r(G', M')$ for each $r \geq 0$.
+  Hence the functor $H^r(-, -)$ is contravariant in the first variable and covariant in the second variable.
+
+  \begin{example}
+    Let $H < G$. 
+    For any $H$-module $M$, the map $Ind_H^G M \to M$ defined by $\varphi \mapsto \varphi(1_G)$ is a homomorphism of $H$-modules compatible with the inclusion $H \to G$.
+    Hence we get a homomorphism $H^r(G, Ind_H^G M) \to H^r(H, M)$ for each $r \geq 0$.
+    This homomorphism is an isomorphism, which is known as the \textbf{Shapiro's lemma}.
+  \end{example}
+
+  \begin{example}
+    Let $H < G$ and $M$ be a $G$-module.
+    The map $M \to Res_H^G M$ defined by $m \mapsto m$ is a homomorphism of $H$-modules compatible with the inclusion $H \to G$.
+    Hence we get a homomorphism $H^r(G, M) \to H^r(H, Res_H^G M)$ for each $r \geq 0$.
+  \end{example}
+
+  \begin{example}
+    Let $H \triangleleft G$ and $\alpha: G \to G/H$ be the quotient map.
+    For any $G$-module $M$, the map $M^H \to M$ is a homomorphism of $G/H$-modules compatible with the quotient map $\alpha$.
+    Hence we get a homomorphism $H^r(G/H, M^H) \to H^r(G, M)$ for each $r \geq 0$.
+  \end{example}
+
+  \begin{example}
+    For all $g_0 \in G$, the homomorphism $\alpha: G \to G$ defined by $g \mapsto g_0 g g_0^{-1}$ and the homomorphism $\beta: M \to M$ defined by $m \mapsto g_0^{-1} m$ are compatible.
+    The induced homomorphism $H^r(G, M) \to H^r(G, M)$ is the identity map for each $r \geq 0$.
+  \end{example}
+
+  \begin{remark}
+    If $H \triangleleft G$ and $M$ is a $G$-module, the recipe above induces an action of $G$ on $H^r(H, M)$ for each $r \geq 0$.
+    This action factors through $G/H$. 
+  \end{remark}
+
+  \begin{example}
+    Let $H < G$ of finite index and $S$ be a set of representatives of $G/H$.
+    Let $M$ be a $G$-module.
+    For all $m \in M^H$, define 
+    \[  \Nm_{G/H}(m) := \sum_{s \in S} s m.  \]
+    Then $\Nm_{G/H}(m)$ is independent of the choice of $S$ and $\Nm_{G/H}(m) \in M^G$ and fixed by $G$.
+    Hence we get a homomorphism $M^H \to M^G$ compatible with the inclusion $H \to G$.
+    This homomorphism induces a homomorphism $H^r(H, M) \to H^r(G, M)$ for each $r \geq 0$ and for all $G$-modules $M$.
+    This homomorphism is known as the \textbf{corestriction map}.
+    
+  \end{example}
