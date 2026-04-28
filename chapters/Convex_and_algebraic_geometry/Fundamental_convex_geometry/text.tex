@@ -1,0 +1,177 @@
+\section{Fundamental convex geometry}
+
+  Let $V$ be a real vector space.
+
+\subsection{Convex sets}
+
+  \begin{definition}
+    A set $K \subseteq V$ is called \emph{convex} if for any $x, y \in K$ and any $t \in [0, 1]$, we have
+    \[t x + (1 - t) y \in K.\]
+  \end{definition}
+
+  \begin{example}
+    \Yang{}
+  \end{example}
+
+  \begin{proposition}
+    The intersection of any collection of convex sets is convex.
+  \end{proposition}
+
+  \begin{definition}
+    Let $S$ be a subset of $V$.
+    The \emph{convex hull} of $S$, denoted by $conv(S)$, is the smallest convex set containing $S$.
+  \end{definition}
+
+  \begin{theorem}
+    Suppose the $V$ is a banach space and $K_1, K_2$ are two non-empty convex sets in $V$ with $K_1 \cap K_2 = \emptyset$.
+    Then there exists a non-zero linear functional $f: V \to \bbR$ and a real number $\alpha$ such that
+    \[f(x) \leq \alpha \leq f(y), \quad \forall x \in K_1, y \in K_2.\]
+  \end{theorem}
+
+  \begin{definition}
+    Let $K$ be a convex set.
+    A \emph{face} of $K$ is a convex subset $F \subseteq K$ such that for any $x, y \in K$ and any $t \in (0, 1)$, if $t x + (1 - t) y \in F$, then we have $x, y \in F$.
+  \end{definition}
+
+  \begin{definition}
+    Let $K$ be a convex set and $F$ be a face of $K$.
+    We say $F$ is \emph{exposed} if there exists a linear functional $f: V \to \bbR$ such that $F = \{x \in K : f(x) = \max_{y \in K} f(y)\}$.
+
+  \end{definition}
+
+  \begin{theorem}
+    The set of exposed faces of a convex set $K$ is dense in the set of all faces of $K$.
+    \Yang{}
+  \end{theorem}
+
+\subsection{Convex cones}
+
+  \begin{definition}
+    A set $C \subseteq V$ is called a \emph{convex cone} if for any $x, y \in C$ and any $\lambda, \mu \geq 0$, we have
+    \[\lambda x + \mu y \in C.\]
+    \Yang{}
+  \end{definition}
+
+  \begin{definition}
+    Let $\calC \subset V$ be a convex cone.
+    We say $\calC$ is 
+     \Yang{}
+  \end{definition}
+
+
+\subsection{Convex bodies}
+
+  In this subsection, we assume $V$ is an euclidean space of finite dimension $d$.
+
+  \begin{definition}
+    A convex set $K$ is called a \emph{convex body} if it is compact and has non-empty interior.
+  \end{definition}
+
+  \begin{example}[Minkowski functional]
+    Let $K$ be a convex body in $V$ containing the origin in its interior.
+    The \emph{Minkowski functional} of $K$ is defined as
+    \[p_K(x) = \inf\{\lambda > 0 : x \in \lambda K\}.\]
+    
+  \end{example}
+
+  \begin{definition}[Minkowski sum]
+    Let $A_1, \cdots, A_n$ be sets in $V$ and $a_1, \cdots, a_n$ be non-negative real numbers.
+    We define
+    \[a_1 A_1 + \cdots + a_n A_n \coloneq \{a_1 x_1 + \cdots + a_n x_n : x_i \in A_i, i = 1, \cdots, n\}.\]
+    This is called the \emph{Minkowski sum}.
+  \Yang{}
+  \end{definition}
+
+  \begin{proposition}
+    If $A_1, \cdots, A_n$ are convex sets (resp. convex bodies), then $a_1 A_1 + \cdots + a_n A_n$ is also a convex set (resp. convex body).
+  \end{proposition}
+
+  \begin{definition}[Haussdorff distance]
+    Let $A, B$ be two non-empty compact subsets of $V$.
+    The \emph{Hausdorff distance} between $A$ and $B$ is defined as
+    \[d_H(A, B) = \max\{\sup_{x \in A} \inf_{y \in B} \|x - y\|, \sup_{y \in B} \inf_{x \in A} \|x - y\|\}.\]
+   \Yang{}
+    
+  \end{definition}
+
+  \begin{proposition}
+    The Hausdorff distance $d_H$ is a metric on the set of non-empty compact subsets of $V$.
+
+    Moreover, if $A_n \to A$ and $B_n \to B$ in the Hausdorff distance, then we have $a_1 A_n + \cdots + a_n A_n \to a_1 A + \cdots + a_n A$ in the Hausdorff distance.
+   \Yang{}
+  \end{proposition}
+
+  \begin{proposition}
+    The set of polytopes is dense in the set of convex bodies with respect to the Hausdorff distance.
+   \Yang{}
+  \end{proposition}
+
+  We have the standard Lebesgue measure on $V$.
+  Hence the volume of a convex body $K$ is well-defined, denoted by $\vol(K)$.
+
+  \begin{theorem}
+    The function $\vol(x_1 A_1 + \cdots + x_n A_n)$ is a homogeneous polynomial of degree $d$ in $x_1, \cdots, x_n$.
+  \end{theorem}
+
+  \begin{definition}
+    The coefficients of the homogeneous polynomial $\vol(x_1 A_1 + \cdots + x_n A_n)$ are called the \emph{mixed volumes} of $A_1, \cdots, A_n$, denoted by $V(A_1, \cdots, A_n)$.
+  \end{definition}
+
+  \begin{proposition}
+    The mixed volume $V(A_1, \cdots, A_n)$ is symmetric and multilinear in $A_1, \cdots, A_n$.
+
+    And it is determined by the following polarization formula:
+    \[V(A_1, \cdots, A_n) = \frac{1}{n!} \sum_{I \subseteq [n]} (-1)^{n - |I|} \vol\left(\sum_{i \in I} A_i\right).\]
+   \Yang{}
+   
+  \end{proposition}
+
+  \begin{example}[Ellipsoid]
+    Let $A$ be a positive definite quadratic form on $V$.
+    Then we can define an ellipsoid $E_A = \{x \in V : A(x) \leq 1\}$.
+   \Yang{}
+    
+  \end{example}
+
+
+\subsection{Positivity of mixed volumes}
+
+  Let $V$ be an euclidean space of finite dimension $d$.
+  On the set $CvBd$ of convex bodies in $V$, we have the Minkowski sum and the scalar multiplication by positive real numbers.
+  One can formally define 
+  \[ \Span(CvBd) = \{A - B | A, B \in CvBd\}. \]
+  Let $\frakA$ be a finite dimensional subspace of $\Span(CvBd)$ such that $CvBd(\frakA) := \frakA \cap CvBd$ is a full convex cone in $\frakA$.  
+  % and $\frakA = A_1, \cdots, A_n$ be convex bodies in $V$.
+  Define $\upN(\frakA)$ to be the real vector space $\frakA$.
+  Then we can extend the definition of mixed volumes to $\upN(\frakA)$ by multilinearity.
+  Such datum $(N,N \injmap \Span(CvBd))$ is denoted by $\frakA$.
+
+  \begin{example}[Symmetric matrices]
+    Let $V$ be the space of symmetric matrices of size $d$.
+    Then the set of positive definite matrices is a convex cone in $V$.
+   \Yang{}
+    
+  \end{example}
+
+
+  \begin{theorem}[Alexandrov-Fenchel inequality]
+    Let $A, B, A_3, \cdots, A_n$ be convex bodies in $V$.
+    Then we have
+    \[V(A, A, A_3, \cdots, A_n) V(B, B, A_3, \cdots, A_n) \leq V(A, B, A_3, \cdots, A_n)^2.\]
+    \Yang{} 
+  \end{theorem}
+
+  \begin{theorem}[Brunn-Minkowski inequality]
+    Let $A, B$ be two non-empty compact subsets of $V$.
+    Then we have
+    \[\vol(A + B)^{\frac{1}{d}} \geq \vol(A)^{\frac{1}{d}} + \vol(B)^{\frac{1}{d}}.\]
+    \Yang{}
+  \end{theorem}
+
+  \begin{theorem}[Minkowski inequality]
+    Let $A, B$ be two convex bodies in $V$.
+    Then we have
+    \[V(A, A, \cdots, A)^{\frac{1}{d}} \geq V(A, A, \cdots, A, B)^{\frac{1}{d}}.\]
+      \Yang{}
+  \end{theorem}
+
