@@ -45,7 +45,7 @@
   \end{mainthm}
 
 
-\subsection{Inequalities}
+\subsection{draft}
 
 
   The main goal is to find some lower bound $\beta_m \leq \lambda_i$ of $\lambda_i$ such that $\beta_m \to \lambda_i$ as $m \to \infty$ and $\beta_m$ depends only on the intersection numbers of $L_{2m}, L_m, L$.
@@ -77,10 +77,51 @@
     \[ C^{-1} \deg_d(f^{\sum m_i}) \prod_i \frac{\deg_{r_i}(f^{m_i})}{\deg_{r_{i-1}}(f^{m_i})} \leq (L_{M_1}^{r_1} \cdot L_{M_2}^{r_2 - r_1} \cdots L_{M_d}^{r_d - r_{d-1}}) \leq C \prod_i \deg_{r_i}(f^{m_i}). \]
   \end{proposition}
 
+    
+  For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write 
+  \[ a_m \lesssim \precsim \asymp_e \preccurlyeq_e \prec_e  b_m \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1, \]
+  and\Yang{}
+  \[ a_m \precnsim b_m \quad \text{if} \quad \liminf_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} < 1. \]
+  $a_m \approx b_m$ if there exists some constant $C > 0$ such that $C^{-1} a_m \leq b_m \leq C a_m$ for every $m$.\Yang{}
+
+
+
+
+
+
+
+\subsection{Estimation}
+
+  The main goal is to find some lower bound $\beta_m \leq \lambda_i$ of $\lambda_i$ such that $\beta_m \to \lambda_i$ as $m \to \infty$ and $\beta_m$ depends only on some certain intersection numbers of line bundles of form $(f^m)^* L$.
+  % the intersection numbers of $L_{2m}, L_m, L$.
+
   Set 
   \[ L_m := (f^m)^* L, \quad M_m(t) := L_{2m} + t^m L. \]
   We will try to estimate the ratio
-  \[ \gamma_{L,t}(m) = \frac{M_m(t)^{d}}{M_m(t)^{d-1} \cdot L_m}. \]
+  \[ \Gamma_t(m) := \Gamma_{X,L;t}(m) := \frac{M_m(t)^{d}}{M_m(t)^{d-1} \cdot L_m} = \frac{(L_{2m} + t^m L)^{d}}{(L_{2m} + t^m L)^{d-1} \cdot L_m}. \]
+
+  For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
+  \[ a_m \preccurlyeq_e b_m \text{ (resp. }a_m \prec_e b_m)  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. } < 1), \]
+  and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.\Yang{}
+  % \Yang{}
+  % \[ a_m \precnsim b_m \quad \text{if} \quad \liminf_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} < 1. \]
+  % $a_m \approx b_m$ if there exists some constant $C > 0$ such that $C^{-1} a_m \leq b_m \leq C a_m$ for every $m$.\Yang{}
+
+  Note that 
+  \[ \Gamma_t(m) \succcurlyeq_e  a_m \implies M_m(t) - a_m L_m \text{ is big for sufficiently large } m. \]
+  
+
+  \begin{proposition}
+    \Yang{}
+    Let $r_1 + \cdots + r_s = d$ be a partition of $d$ into positive integers, and $R_i := r_1 + \cdots + r_i$ with $R_0 := 0$.
+    Then there exists some constant $C > 0$ depending only on $(X,f,L)$ and $r_i$'s such that for every $\vec{m} = (m_1, \ldots, m_s) \in \bbZ_{\geq 0}^s$, we have
+    \[ E(\vec{m}) \cdot C^{-1}\prod_i \deg_{R_i}(f^{\Delta m_i}) \leq (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_d}^{r_d}) \leq C \prod_i \deg_{R_i}(f^{\Delta m_i}), \]
+    where $\Delta m_i := m_i - m_{i-1}$ with $m_0 := 0$ and
+    \Yang{}
+    \[ E(\vec{m}) := \prod_{i=1}^s \prod_{j=1}^{r_i} \frac{\deg_{R_i - j}(f^{\Delta m_i})}{\deg_{R_i - j + 1}(f^{\Delta m_i})} \]
+    is some error term.
+  \end{proposition}
+
 
 
 
