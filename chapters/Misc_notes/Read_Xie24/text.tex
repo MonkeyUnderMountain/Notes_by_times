@@ -28,11 +28,11 @@
 
   Fix a projective variety $X$ of dimension $d$ and a dominant rational map $f: X \dashrightarrow X$. 
 
-  \begin{mainthm}\label{thm:recursive_inequality}
-    For $i = 0, 1, \ldots, d$ and $\varepsilon \in (0, 1)$, there exists $m_\varepsilon > 0$ such that for all $m \geq m_\varepsilon$,
-    \[  L_{2m} - \varepsilon^m \mu_i^m L_m + \mu_i^m \mu_{i+1}^m L \]
-    is big.
-  \end{mainthm}
+  % \begin{mainthm}\label{thm:recursive_inequality}
+  %   For $i = 0, 1, \ldots, d$ and $\varepsilon \in (0, 1)$, there exists $m_\varepsilon > 0$ such that for all $m \geq m_\varepsilon$,
+  %   \[  L_{2m} - \varepsilon^m \mu_i^m L_m + \mu_i^m \mu_{i+1}^m L \]
+  %   is big.
+  % \end{mainthm}
 
   \begin{mainthm}\label{mainthm:semi-continuity}
     Let $S$ be an integral noetherian scheme, and $\pi: \calX \to S$ be a flat projective morphism. 
@@ -55,7 +55,7 @@
   We have the following conditions:
   \begin{enumerate}
     \item condition $I_i$:
-      \[ \frac{\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j+1} \cdot \bigl(f^*L\bigr)^{i-j-1}}{\alpha_{j+1}\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j} \cdot \bigl(f^*L\bigr)^{i-j}} > (d-i-j+1) \varepsilon; \]
+      \[ \frac{\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j+1} \cdot \bigl(f^*L\bigr)^{i-j-1}}{\alpha_{j+1}\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j} \cdot \bigl(f^*L\bigr)^{i-j}} > (d-i-j+1) \varepsilon, \quad \forall j = 0,\cdots, i-1;\]
       or the following is enough:
       \[ L_2 + \alpha_{j+1}\alpha_{i}\delta L >_{\text{big}} \varepsilon \alpha_{j+1} L_1. \]
     \item condition $J_i$:
@@ -92,23 +92,31 @@
 
 \subsection{Estimation}
 
-  The main goal is to find some lower bound $\beta_m \leq \lambda_i$ of $\lambda_i$ such that $\beta_m \to \lambda_i$ as $m \to \infty$ and $\beta_m$ depends only on some certain intersection numbers of line bundles of form $(f^m)^* L$.
-  % the intersection numbers of $L_{2m}, L_m, L$.
+  The main goal of this subsection is to give some lower bound $\beta \leq \lambda_i$ using only finitely many intersection numbers of line bundles of form $(f^m)^* L$.
+  If we only look at a submultiplicative sequence $a_n$, then it is impossible to find lower bounds of $\lim_{n \to \infty} a_n^{1/n}$ using only finitely many $a_n$'s.
+  For example, one can construct a sequence $a_n$ such that $a_n = 1$ for $n \leq n_0$ and $a_n = 2^{-n}$ for $n > n_0$.
+  But for $\deg_{i,L}(f^n)$, Xie uses finitely many intersection numbers to show some line bundle is big, and hence you can apply $(f^n)^*$ and get some inequalities for infinitely many items in the sequence $\deg_{i,L}(f^n)$, which is enough to give some lower bound of $\lambda_i$.
+  The logic chain is as follows:
+  \begin{align*}
+    &\text{only finitely many intersection numbers} \\
+    \implies &\text{some line bundle is big} \\
+    \implies &\text{inequalities for infinitely many } \deg_{i,L}(f^n) \\
+    \implies &\text{lower bound for } \lambda_i.
+  \end{align*}
+
+  \begin{notation}
+    For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
+    \[ a_m \preccurlyeq_e b_m \text{ (resp. $a_m \prec_e b_m$)}  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. } < 1), \]
+    and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.
+    % \Yang{}
+  \end{notation}
 
   Set 
   \[ L_m := (f^m)^* L, \quad M_m(t) := L_{2m} + t^m L. \]
   We will try to estimate the ratio
-  \[ \Gamma_t(m) := \Gamma_{X,L;t}(m) := \frac{M_m(t)^{d}}{M_m(t)^{d-1} \cdot L_m} = \frac{(L_{2m} + t^m L)^{d}}{(L_{2m} + t^m L)^{d-1} \cdot L_m}. \]
-
-  For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
-  \[ a_m \preccurlyeq_e b_m \text{ (resp. }a_m \prec_e b_m)  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. } < 1), \]
-  and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.\Yang{}
-  % \Yang{}
-  % \[ a_m \precnsim b_m \quad \text{if} \quad \liminf_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} < 1. \]
-  % $a_m \approx b_m$ if there exists some constant $C > 0$ such that $C^{-1} a_m \leq b_m \leq C a_m$ for every $m$.\Yang{}
-
+  \[ \Gamma_t(m) := \Gamma_{X;t}(m) := \frac{M_m(t)^{d}}{M_m(t)^{d-1} \cdot L_m} = \frac{(L_{2m} + t^m L)^{d}}{(L_{2m} + t^m L)^{d-1} \cdot L_m}. \]
   Note that 
-  \[ \Gamma_t(m) \succcurlyeq_e  a_m \implies M_m(t) - a_m L_m \text{ is big for sufficiently large } m. \]
+  \[ \Gamma_t(m) \succ_e  a_m \implies M_m(t) - a_m L_m \text{ is big for sufficiently large } m. \]
   
 
   \begin{proposition}
@@ -122,15 +130,49 @@
     is some error term.
   \end{proposition}
 
+  \begin{definition}
+    We define the following conditions for $i = 0, 1, \ldots, d-1$:
+    \begin{itemize}
+      \item condition $I_i$: for every $j = 0, 1, \ldots, i-1$, we have
+        \[ \Gamma_{Z_j;\alpha_i \alpha_{j+1}}(m) \succ_e \varepsilon^m \alpha_{j+1}^m; \]
+        % \[ \frac{\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j+1} \cdot \bigl(f^*L\bigr)^{i-j-1}}{\alpha_{j+1}\bigl((f^*)^2L+\alpha_{j+1}\alpha_{i}\delta L\bigr)^{d-i+j} \cdot \bigl(f^*L\bigr)^{i-j}} > (d-i-j+1) \varepsilon; \]
+      \item condition $J_i$: for every $j = 0, 1, \ldots, i-1$, we have
+      \item condition $K_i$: for every $j = 0, 1, \ldots, i-1$, we have
+    \end{itemize}
+  \end{definition}
+
+  All of the above conditions depend only on the intersection numbers of $L_{2m}, L_m, L$.
+
+  \begin{proposition}
+    If conditions $I_i$, $J_i$ and $K_i$ hold, then $\lambda_i \geq \beta_i$.
+    \Yang{}
+  \end{proposition}
+
+
+  \begin{proposition}
+    If $\mu_i > \mu_{i+1}$, then conditions $I_i$, $J_i$ and $K_i$ hold for some $\mu_i$.
+    \Yang{}
+  \end{proposition}
 
 
 
 
 
 
-% \subsection{Semi-continuity}
 
-%   Here we test \cref{mainthm:semi-continuity} by considering the family of 
+
+\subsection{Semi-continuity}
+
+  Here we test \cref{mainthm:semi-continuity} by considering the family of 
+
+  \begin{remark}
+    The limit of lower semi-continuous functions may not be lower semi-continuous.
+    For example, let $f_n: \Spec \bbZ \to \bbR$, $f_n(0) = 1$ and
+    \[ f_n(p) := \begin{cases}
+      0.5, & p \leq n; \\
+      1, & p > n.
+    \end{cases} \]
+  \end{remark}
 
 
 % \subsection{Density of periodic points}

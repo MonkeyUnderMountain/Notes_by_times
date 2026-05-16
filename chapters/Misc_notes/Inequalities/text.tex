@@ -1,39 +1,251 @@
 \section{Estimation and Inequalities}
 
-
-\subsection{Intersection on birational models}
-
-  All birational models of $X$ form a directed system, we denote by $\frakX$.
-  We define the inductive limit of the numerical groups $\upN^1(X')$ by 
-  \[ \upN^1(\frakX) \coloneqq \upN^1(\frakX,\pi^*) \coloneqq \varinjlim_{\pi:X'' \to X' \in \frakX} \left( \pi^* \upN^1(X') \to \upN^1(X'') \right). \]
-  One can view $\upN^1(\frakX)$ as the group of numerical classes of $\bfb$-Cartier divisors with $\bbR$-coefficients on $X$.
-  For every $D \in \upN^1(\frakX)$, there exists a birational model $X' \in \frakX$ and $D' \in \upN^1(X')$ such that $D_{X''} = \pi^* D'$ for every $\pi: X'' \to X'$ in $\frakX$.
-  
-  \Yang{The intersection product on $\upN^1(X')$ induces an intersection product on $\upN^1(\frakX)$, which is well-defined by the projection formula.}
+  In this section, fix a field $\kk$, $X$ a projective variety of dimension $d$ over $\kk$, $L$ an ample line bundle on $X$ and $f : X \dashrightarrow X$ a dominant rational self-map.
+  Set $\lambda_i = \lambda_i(f)$ and $\mu_i = \mu_i(f)$ for every $i = 0, 1, \ldots, d$.
+  Set $\mu_{d+1} = 0$ for convenience.
 
 
+\subsection{Inequalities}
+
+  \begin{notation}
+    For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
+    \[ a_m \preccurlyeq_e b_m \text{ (resp. $a_m \prec_e b_m$)}  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. $<1$)}, \]
+    and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.
+    For example, we have $\deg_i(f^m) \asymp_e \lambda_i^m$ for every $i$.
+    % \Yang{}
+  \end{notation}
+
+  Set 
+  \[ L_m := (f^m)^* L, \quad M_m(t) := L_{2m} + t^m L. \]
+  Let $Z$ be a subvariety of $X$ (or more generally, a cycle in $\CH^\bullet(X)$),  set 
+  \[ \Sigma(t;Z)_m := \frac{1}{\dim Z} \frac{\left(M(t)_m|_Z\right)^{\dim Z}}{\left(M(t)_m|_Z\right)^{\dim Z - 1} \cdot L_m|_Z} = \frac{1}{\dim Z} \frac{M(t)_m^{\dim Z} \cdot [Z]}{M(t)_m^{\dim Z - 1} \cdot L_m \cdot [Z]}. \]
+  When $Z = X$, we simply write $\Sigma(t)_m$ for $\Sigma(t;X)_m$.
+  By \Yang{}, we have $\bigl(M(t)_m - a L_m\bigr)|_Z$ is big on $Z$ provided $\Sigma(t)_m > a$.
+
+  On the denominator of $\Sigma(t)_m$, there is some item of the form $L_{2m}^i \cdot L_m \cdot L^{d-1-i}$.
+  This reminds us to estimate the intersection numbers of the form 
+  \[ L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}, \]
+  where $m_1 \geq m_2 \geq \cdots \geq m_s$ and $r_1 + r_2 + \cdots + r_s = d$.
+  In \cite{Xie24recursive_inequalities}, such intersection numbers are called \emph{mixed degrees}.
+
+  \begin{proposition}\label{prop:estimation_of_mixed_degrees}
+    Let $r_1 + \cdots + r_s = d$ be a partition of $d$ into positive integers, and $R_i := r_1 + \cdots + r_i$.
+    Then for every $\bfm = (m_1, \ldots, m_s) \in \bbZ_{\geq 0}^s$ with $m_1 \geq m_2 \geq \cdots \geq m_s$, we have
+    \[ E(\bfm) \cdot \prod_i \deg_{R_i}(f^{\Delta m_i}) \leq (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \leq C_{\mix} \cdot \prod_i \deg_{R_i}(f^{\Delta m_i}), \]
+    where $\Delta m_i := m_i - m_{i+1}$ with $m_{s+1} := 0$ and
+    \begin{itemize}
+      \item $C_{\mix}$ is some constant depending only on $(X,L)$;
+      \item $E(\bfm)$ is some error term satisfying 
+      \[ E(\bfm) \asymp_e 1 \quad \text{ if } \bfm = (k_1m, \ldots, k_sm) \text{ for some } k_i \in \bbZ_{>0} \text{ and } m \to \infty. \]
+    \end{itemize}
+    In particular, if $\bfm = (k_1m, \ldots, k_sm)$ for some $k_1 \geq k_2 \geq \cdots \geq k_s \in \bbZ_{>0}$, then we have
+    \[ (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \asymp_e \prod_i \lambda_{R_i}^{\Delta m_i} \quad \text{ as } m \to \infty. \]
+  \end{proposition}
+  \begin{proof}
+    \hspace{1em}
+    \begin{step}\label{step1_in_proof_of_estimation_of_mixed_degrees}
+      $(L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \leq C_{\mix} \prod_i \deg_{R_i}(f^{\Delta m_i})$.
+    \end{step}
+    By Siu's inequality, we have
+    \begin{align*}
+      (L_{m_2}^{d}) (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) &\leq \binom{d}{r_1} (L_{m_1}^{r_1} \cdot L_{m_2}^{d-r_1}) (L_{m_2}^{R_2} \cdots L_{m_s}^{r_s}).
+    \end{align*}
+    By the projection formula, we have 
+    \begin{align*}
+      L_{m_2}^d &= \deg(f^{m_2}) L^d, \\
+      L_{m_1}^{r_1} \cdot L_{m_2}^{d-r_1} &= \deg(f^{m_1}) L^{r_1}_{m_1-m_2} \cdot L^{d-r_1} = \deg(f^{m_2}) \deg_{r_1}(f^{m_1 - m_2}) = \deg(f^{m_2}) \deg_{R_1}(f^{\Delta m_1}).
+    \end{align*}
+    Hence 
+    \[ (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \leq \frac{1}{L^d} \binom{d}{r_1} \deg_{R_1}(f^{\Delta m_1}) (L_{m_2}^{R_2} \cdots L_{m_s}^{r_s}). \]
+    Inducting on $s$, we can find a constant $C$ depending only on $(X,L)$ and $r_i$'s such that
+    \[ (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \leq C \prod_i \deg_{R_i}(f^{\Delta m_i}). \]
+    Since there are only finitely many partitions of $d$, we can find a uniform constant $C_{\mix}$ depending only on $(X,L)$.
 
 
-\subsection{Proof of inequalities}
+    \begin{step}
+      $ E(\bfm) \prod_i \deg_{R_i}(f^{\Delta m_i}) \leq (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s})$.
+    \end{step}
+    By Siu's inequality, we have
+    \[ (L_{m_{2}}^{r_{1}+r_2} \cdot \eta) (L_{m_1}^{r_1} L_{m_{3}}^{r_{2}} \cdot \eta) \leq \binom{R_2}{r_{1}} (L_{m_1}^{r_1} L_{m_{2}}^{r_{2}} \cdot \eta) (L_{m_{2}}^{r_{1}} L_{m_{3}}^{r_{2}} \cdot \eta), \quad \eta = L_{m_3}^{r_3} \cdots L_{m_s}^{r_s}. \]
+    That is,
+    \begin{align*}
+      (L_{m_1}^{r_1} \cdots L_{m_s}^{r_s}) & \geq \frac{1}{C_{R_2}^{r_1}} \frac{(L_{m_2}^{r_1+r_2} L_{m_3}^{r_3} \cdots L_{m_s}^{r_s}) (L_{m_1}^{r_1} L_{m_{3}}^{r_{2} + r_3} \cdots L_{m_s}^{r_s})}{(L_{m_2}^{r_1} L_{m_{3}}^{r_{2} + r_3} \cdots L_{m_s}^{r_s})}.
+    \end{align*} 
+    By \cref{step1_in_proof_of_estimation_of_mixed_degrees} and inducting on $s$, we may assume that 
+    \begin{align*}
+      (L_{m_2}^{r_1+r_2} L_{m_3}^{r_3} \cdots L_{m_s}^{r_s}) & \geq E_1(\bfm) \deg_{R_2}(f^{\Delta m_2}) \cdot \prod_{i=3}^{s} \deg_{R_i}(f^{\Delta m_i}), \\
+      (L_{m_1}^{r_1} L_{m_{3}}^{r_{2} + r_3} \cdots L_{m_s}^{r_s}) & \geq E_2(\bfm) \deg_{R_1}(f^{\Delta m_1 + \Delta m_2}) \cdot \prod_{i=3}^{s} \deg_{R_i}(f^{\Delta m_i}), \\
+      (L_{m_2}^{r_1} L_{m_{3}}^{r_{2} + r_3} \cdots L_{m_s}^{r_s}) & \leq C_3 \deg_{R_1}(f^{\Delta m_2}) \cdot \prod_{i=3}^{s} \deg_{R_i}(f^{\Delta m_i}).
+    \end{align*}
+    Combining the above inequalities, we get
+    \begin{align*}
+      (L_{m_1}^{r_1} \cdots L_{m_s}^{r_s}) 
+      & \geq 
+      \frac{E_1(\bfm) E_2(\bfm)}{C_3 C_{R_2}^{r_1}}
+      \cdot \frac{\deg_{R_{1}}(f^{\Delta m_{1} + \Delta m_{2}})}{\deg_{R_{1}}(f^{\Delta m_{1}}) \cdot \deg_{R_{1}}(f^{\Delta m_{2}})}
+      \cdot \prod_{i=1}^{s} \deg_{R_i}(f^{\Delta m_i}) 
+    \end{align*}
+    Set 
+    \[ E(\bfm) := \frac{E_1(\bfm) E_2(\bfm)}{C_3 C_{R_2}^{r_1}} \cdot \frac{\deg_{R_{1}}(f^{\Delta m_{1} + \Delta m_{2}})}{\deg_{R_{1}}(f^{\Delta m_{1}}) \cdot \deg_{R_{1}}(f^{\Delta m_{2}})}. \]
+    Easily to check that $E(\bfm)$ satisfies the desired property.
+  \end{proof}
 
+  \begin{lemma}\label{lemma:estimation_of_Sigma}
+    We have $\Sigma(\mu_i\mu_{i+1})_m \asymp_e \mu_i^m$ for every $i = 0, 1, \ldots, d$.
+  \end{lemma}
+  \begin{proof}
+    We have 
+    \begin{align*}
+      M(\mu_i \mu_{i+1})_m^d & = \sum_{j=0}^{d} \binom{d}{j} L_{2m}^{j} \cdot (\mu_i^m \mu_{i+1}^m L)^{d-j} \\
+      & \asymp_e \sum_{j=0}^{d} \mu_1^{2m} \cdots \mu_j^{2m} \cdot \mu_i^{m(d-j)} \mu_{i+1}^{m(d-j)} \\
+      & \asymp_e \mu_1^{2m} \cdots \mu_i^{2m} \cdot \mu_{i}^{m(d-i)} \mu_{i+1}^{m(d-i)}
+    \end{align*}
+    and 
+    \begin{align*}
+      M(\mu_i \mu_{i+1})_m^{d-1} \cdot L_m & = \sum_{j=0}^{d-1} \binom{d-1}{j} \left(L_{2m}^{j} \cdot L_m \cdot L^{d-1-j} \right) \cdot (\mu_i^m \mu_{i+1}^m)^{d-j-1}\\
+      & \asymp_e \sum_{j=0}^{d-1} \mu_1^{2m} \cdots \mu_j^{2m} \cdot \mu_{j+1}^m \cdot \mu_i^{m(d-1-j)} \mu_{i+1}^{m(d-j-1)} \\
+      & \asymp_e \mu_1^{2m} \cdots \mu_{i}^{2m} \cdot \mu_{i+1}^m \cdot \mu_i^{m(d-1-i)} \mu_{i+1}^{m(d-1-i)}.
+    \end{align*}
+    Hence
+    \begin{align*}
+      \Sigma(\mu_i\mu_{i+1})_m & = \frac{(L_{2m} + \mu_i^m \mu_{i+1}^m L)^{d}}{(L_{2m} + \mu_i^m \mu_{i+1}^m L)^{d-1} \cdot L_m} \\
+      & \asymp_e \frac{\mu_1^{2m} \cdots \mu_i^{2m} \cdot \mu_{i}^{m(d-i)} \mu_{i+1}^{m(d-i)}}{\mu_1^{2m} \cdots \mu_{i}^{2m} \cdot \mu_{i+1}^m \cdot \mu_i^{m(d-1-i)} \mu_{i+1}^{m(d-1-i)}} \\
+      & \asymp_e \mu_i^m.
+    \end{align*}
+    We are done.
+  \end{proof}
 
-
-
-
-\subsection{Estimates of intersection numbers}
-
-  \begin{theorem}
-    Given $\widetilde{\mu}_i, \delta, \varepsilon, m$.
-    Assume that \Yang{}
-    \begin{enumerate}
-      \item 
-      \item 
-      \item \Yang{}
-    \end{enumerate}
-    Then we have 
-    \[ \lambda_i \geq \epsilon^{2i} \widetilde{\lambda}_i. \]
+  \begin{theorem}\label{thm:big_inequality_by_mu_i}
+    For every $i = 0, 1, \ldots, d$ and $\varepsilon \in (0, 1)$, there exists $m_\varepsilon > 0$ such that for all $m \geq m_\varepsilon$,
+    \[  L_{2m} - \varepsilon^m \mu_i^m L_m + \mu_i^m \mu_{i+1}^m L \]
+    is big.
   \end{theorem}
+  \begin{proof}
+    For every $\varepsilon \in (0, 1)$, there exists $m_\varepsilon > 0$ such that for every $m \geq m_\varepsilon$, we have $\Sigma(\mu_i \mu_{i+1})_m > \varepsilon^m \mu_i^m$.
+    By Siu's criterion, this implies that $M(\mu_i \mu_{i+1})_m - \varepsilon^m \mu_i^m L_m$ is big.
+    % That is, $L_{2m} - \varepsilon^m \mu_i^m L_m + \mu_i^m \mu_{i+1}^m L$ is big for sufficiently large $m$.
+  \end{proof}
 
+
+
+\subsection{Estimation of dynamical degrees}
+
+  In this subsection, we will try to estimate $\lambda_i$ using only finitely many mixed degrees.
+  The key observation is the following elementary lemma about recursive inequalities.
+
+  \begin{lemma}\label{lemma:recursive_inequality_implies_exponential_growth}
+    Let $x_n$ be a sequence of positive numbers and $a>b>0$ be some numbers.
+    Suppose that 
+    \[ x_{n+2} + ab x_n \geq (a+b) x_{n+1}, \quad \forall n \geq 0 \]
+    and $x_1 > b x_0$.
+    Then we have $x_n \succcurlyeq_e a^n$.
+  \end{lemma}
+  \begin{proof}
+    The inequality can be reformulated as
+    \[ x_{n+2} - b x_{n+1} \geq a (x_{n+1} - b x_n). \]
+    Set $y_n := x_{n+1} - b x_n$.
+    Then we have $y_{n+1} \geq a y_n$ for every $n \geq 0$ and $y_0 = x_1 - b x_0 > 0$.
+    Hence, $y_n \geq a^n y_0 > 0$ for every $n \geq 0$.
+    This implies $x_{n+1} = y_n + b x_n \geq y_n \succcurlyeq_e a^n$.
+  \end{proof}
+
+  Given numbers $\alpha_1 \geq \ldots \geq \alpha_{d} \in \bbR_{>0}$, and $\delta, \varepsilon \in (0, 1)$.
+  Set $\beta_i = \alpha_1 \cdots \alpha_i$.
+  We use $\frakA = (\alpha_1, \ldots, \alpha_d; \delta, \varepsilon)$ to denote the above data.
+  Set 
+  \[ \Theta(\frakA; i)_m := C_{\mix} \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot \sum_{j=0}^{i-1} \frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}), \]
+  where $C_\mix$ is the constant in \cref{prop:estimation_of_mixed_degrees}.
+  We will see this number appears naturally in the estimation of $\lambda_i$ (\cref{eq:recursive_inequality_in_estimation_of_dynamical_degrees}\Yang{}).
+  When choosing $\frakA = (\mu_1, \ldots, \mu_d; \delta, \varepsilon)$, we have 
+  \[ \Theta(\frakA; i)_m \asymp_e \left( \frac{\delta}{\varepsilon^{i}} \lambda_i \right)^m. \]
+
+  \begin{definition}
+    We define the following conditions for $i = 1, \ldots, d$: 
+    % \Yang{}
+    \begin{itemize}
+      \item condition $I(\frakA,i,m)$: $\Sigma(\alpha_i \alpha_{j+1} \delta; L_m^{i-j-1})_{m} > \varepsilon^m \alpha_{j+1}^m$ for every $j = 0, 1, \ldots, i-1$;
+      \item condition $J(\frakA,i,m)$: $\beta_i^m \varepsilon^{mi} \geq \varepsilon^{-mi} \Theta(\frakA; i)_m + \beta_i^m \varepsilon^{2mi}$;
+      \item condition $K(\frakA,i,m)$: $\deg_i(f^{(N+1)m}) - \varepsilon^{-mi}\Theta(\frakA; i)_m \cdot \deg_i(f^{Nm}) > 0$ for some $N \geq 0$.
+    \end{itemize}
+  \end{definition}
+
+  Note that all of the above conditions depend only on the intersection numbers of $L_{2m}, L_m, L$.
+
+
+  \begin{lemma}
+    Given a data $\frakA = (\alpha_1, \ldots, \alpha_d; \delta, \varepsilon)$.
+    If conditions $I(\frakA,i,m)$, $J(\frakA,i,m)$ and $K(\frakA,i,m)$ hold, then $\lambda_i \geq \varepsilon^{2i} \beta_i$.
+    \Yang{}
+  \end{lemma}
+  \begin{proof}
+    \hspace{1em}
+
+    \begin{step}
+      Using condition $I(\frakA,i,m)$ to get the inequality \Yang{} for all $n \geq 0$.
+    \end{step}
+
+    Let $Z_j$ be a subvariety of $X$ cutting by $L_m^{i-j-1}$ for every $j = 0, 1, \ldots, i-1$.
+    The conditions $I(\frakA,i,m)$ implies that for every $j = 0, 1, \ldots, i-1$, the divisor
+    \[ L_{2m} + \alpha_i^m \alpha_{j+1}^m \delta^m L - \varepsilon^m \alpha_{j+1}^m L_m \]
+    is big when restricted to $Z_j$.
+
+    \Yang{}
+    Descend $f^{nm}$ to a finite morphism $X' \to X$ with $X',X \in \frakX$.
+    By a \Yang{version of bertini's theorem}, by replacing $Z_j$ with a general member, we may assume that $Z_j$ is irreducible and $Z_j' = f^{-nm}(Z_j)$ is irreducible.
+    Then 
+    \[ (f^{nm})^*(L_{2m} + \alpha_i^m \alpha_{j+1}^m \delta^m L - \varepsilon^m \alpha_{j+1}^m L_m)|_{Z_j'} \]
+    is big for every $j = 0, 1, \ldots, i-1$. \Yang{}
+    Note that $[Z_j'] = (f^{nm})^* [Z_j] = L_{nm}^{i-j-1}$.
+    Intersecting with $L_{(n+1)m}^{i-j-1} \cdot L^{d-i}$, we get
+    \[ L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i} + \alpha_{j+1}^{m} \alpha_i^m \delta^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i} \geq \varepsilon^m \alpha_{j+1}^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}. \]
+    \Yang{}
+
+    \begin{step}
+      Show the inequality \eqref{eq:recursive_inequality_in_estimation_of_dynamical_degrees} of $\deg_i f^{nm}$.
+    \end{step}
+
+    Hence we get 
+    % \[ \alpha_i^{nm} \alpha_{j+1}^{nm} L^{j}_{(2+n)m} \cdot L^{k}_{(1+n)m} \cdot L_{mn} \cdot L^{d-i} > \varepsilon^{nm} \alpha_{j+1}^{nm} L^{j+1}_{(2+n)m}L^{k}_{(n+1)m} L^{d-i} - L^{j}_{(2+n)m}L^{k+1}_{(n+1)m} L^{d-i}. \]
+    \[ \frac{\alpha_i^m \delta^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i}}{\beta_{j}^m \varepsilon^{(j+1)m}} \geq \frac{L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}}{\beta_j^m \varepsilon^{jm}} - \frac{L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i}}{\beta_{j+1}^m \varepsilon^{(j+1)m}}. \]
+    For the left hand side, by \Yang{} proposition, we have
+    \[ L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i} \leq C \cdot \deg_j(f^{m}) \cdot \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}). \]
+    Hence we can write the above inequality as
+    \[ \frac{L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}}{\beta_j^m \varepsilon^{jm}} - \frac{L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i}}{\beta_{j+1}^m \varepsilon^{(j+1)m}}
+    \leq
+    C \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot\frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}). \]
+    Summing over $j = 0, 1, \ldots, i-1$, we get
+    \begin{equation}\label{eq:recursive_inequality_in_estimation_of_dynamical_degrees}
+      L_{(n+1)m}^i \cdot L^{d-i} -  \frac{L_{(n+2)m}^{i} \cdot L^{d-i}}{\beta_i^m \varepsilon^{im}}  \leq C \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot \sum_{j=0}^{i-1} \frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}).
+    \end{equation}
+    Using $\Theta(\frakA; i)_m$ and $\deg_i(f^{nm})$, we can rewrite the above inequality as
+    \begin{equation}\label{eq:main_inequality_in_step2_in_estimation_of_dynamical_degrees}
+      \deg_i f^{(n+2)m} +  \Theta(\frakA; i)_m (\beta_i\varepsilon^i)^m \deg_i f^{nm} \geq (\beta_i\varepsilon^i)^m \deg_i f^{(n+1)m}.
+    \end{equation}
+    
+    \begin{step}
+      Finish the proof by \Yang{}.
+    \end{step}
+
+    \Yang{}
+
+  \end{proof}
+
+
+
+  \begin{lemma}
+    Suppose that $\mu_i > \mu_{i+1}$.
+    For all $\varepsilon_0 \in (0, 1)$, there exists $\varepsilon \in (\varepsilon_0, 1)$, $\delta \in (0, 1)$ and $m \geq 1$ such that condition $I(\frakA,i,m)$ holds for $\frakA = (\mu_1, \ldots, \mu_d; \delta, \varepsilon)$.
+    \Yang{}
+  \end{lemma}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+
+
+\subsection[Lower bounds for the first dynamical degree on surfaces]{Lower bounds for $\lambda_1$ on surfaces}
 
   \Yang{}
+
+
 

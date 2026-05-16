@@ -1,0 +1,481 @@
+\section{Preliminaries}
+
+
+\subsection{Varieties and rational maps}
+
+  Throughout this note, all schemes are of finite type and separated over a field or a noetherian integral scheme.
+  A variety is a geometrically integral scheme of finite type and separated over a field.
+  In other words, when base field is algebraically closed, a variety is an integral scheme of finite type and separated over the base field.
+  And in general case, $X$ is a variety if and only if its base change to the algebraic closure of the base field is a variety.
+  We usually use $\kk$ to denote an arbitrary field and $\kkk$ to denote an algebraically closed field.
+
+  When work over a non-algebraically closed field $\kk$, we often consider the set $X(\kkk)$ of $\kkk$-points of a variety $X$ over $\kk$ rather than the scheme-theoretic points of $X$.
+  Recall that for any field extension $\kk'/\kk$, the set of $\kk'$-points of $X$ is given by
+  \[ X(\kk') = \Mor_{\kk}(\Spec \kk', X) = \{ x: \Spec \kk' \to X \text{ over } \kk \}. \]
+  A point $x \in X(\kkk)$ is determined by the image of $x$ in $X$ and the induced embedding $\kappa(x) \hookrightarrow \kk'$ of the residue field $\kappa(x)$ of $x$ into $\kk'$.
+  For a scheme-theoretic closed point $\xi \in X$, we will say that $\xi \in X(\kk')$ if the residue field $\kappa(\xi)$ of $\xi$ is a subfield of $\kk'$, or equivalently, there exists $x \in X(\kk')$ such that the image of $x$ in $X$ is $\xi$.
+  Note that there may be at most $[\kappa(\xi):\kk]$ different points in $X(\kk')$ with the same image $\xi$ in $X$.
+  \begin{proposition}\label{prop:closed_points_on_varieties_over_non-algebraically_closed_fields}
+    Let $X,Y$ be varieties over $\kk$ and $f: X \to Y$ be a morphism.
+    Then 
+    \begin{enumerate}
+      \item $X(\kkk)$ is canonically identified with the set of closed points of $X_\kkk$;
+      \item $f: X(\kkk) \to Y(\kkk), x \mapsto f(x) = x \circ f$ coincides with the morphism $f_\kkk: X_\kkk \to Y_\kkk$ on the closed points under the above identification.
+    \end{enumerate}
+  \end{proposition}
+  \begin{remark}
+    If we consider the set of scheme-theoretic points of $X$ rather than $\kkk$-points, then the morphism $f: X \to Y$ may behave unlike our intuition.
+    For example, let $X$ be a variety over finite field $\bbF_q$ and consider the absolute Frobenius morphism $\Frob_q$.
+    Then $\Frob_q$ is the identity morphism on the set of scheme-theoretic points of $X$.
+    But on $X(\overline{\bbF_q})$, it has many interesting dynamical properties.
+  \end{remark}
+
+  Let $X,Y$ be a variety over $\kk$, and $f: X \dashrightarrow Y$ be a rational map.
+  Recall that a rational map $f: X \dashrightarrow Y$ is a morphism defined on a dense open subset of $X$.
+  The fundamental method to study a rational map is considering its graph.
+  Let $\Gamma_f \subset X \times Y$ be the closure of the image of the rational map $(\id_X, f): X \dashrightarrow X \times Y$.
+  Then $\Gamma_f$ is a variety birational to $X$ and admits two morphisms $\pi_1: \Gamma_f \to X$ and $\pi_2: \Gamma_f \to Y$ such that $f = \pi_2 \circ \pi_1^{-1}$.
+  Using the graph, we can define the pullback and pushforward of divisors by $f$ as follows:
+  \[ f^*D := \pi_{1*} \pi_2^* D, \quad f_*D := \pi_{2*} \pi_1^* D. \]
+  However, not like morphisms, the pullback and pushforward by rational maps are not functorial in general, which causes some technical difficulties in the study of rational maps.
+  We will fix this issue by considering $\bfb$-cycles on birational models in Section 2.2.
+
+  \begin{example}
+    Consider the rational map $f: \bbP^2 \dashrightarrow \bbP^2$ defined by $[x:y:z] \mapsto [1/x:1/y:1/z] = [yz:xz:xy]$.
+    Then graph of $f$ is given by 
+    \[ \Gamma_f = \{ ([x:y:z], [u:v:w]) \in \bbP^2 \times \bbP^2 : xu = yv = zw \}. \]
+    Consider the first projection $\pi_1: \Gamma_f \to \bbP^2$ and $\bbA^2 \cong U \subset \bbP^2$ given by $z \neq 0$.
+    Then 
+    \begin{align*}
+      \pi_1^{-1}(U) & = \{ ([x:y:1], [u:v:w]) \in \Gamma_f : xu = yv = w \} \\
+      & = \{ ([x:y:1], [u:v]) \in U \times \bbP^1 : xu = yv \},
+    \end{align*} 
+    which is the blowup of $U$ at the origin.
+    By similar argument, $\Gamma_f$ is the blowup of $\bbP^2$ at $[1:0:0]$, $[0:1:0]$ and $[0:0:1]$ and $\pi_1$ is the blowup morphism.
+
+    We denote by $L_x$, $L_y$ and $L_z$ the coordinate lines in $\bbP^2$ given by $x=0$, $y=0$ and $z=0$ respectively, 
+    and $E_x$, $E_y$ and $E_z$ the exceptional divisors in $\Gamma_f$ over $[1:0:0]$, $[0:1:0]$ and $[0:0:1]$ respectively.
+    On $\Gamma_f$, the strict transform of $L_x$'s and the exceptional divisors $E_x$'s form a hexagon of rational curves.
+    Taking $H = L_x$ on $\bbP^2$, then we have $p_2^* H = \tilde{L_x} + E_y + E_z$.
+    When we push forward by $\pi_1$, the strict transform $\tilde{L_x}$ is contracted to a point, while $E_y$ and $E_z$ are mapped isomorphically to $L_y$ and $L_z$ respectively.
+    Hence we have $f^* H = \pi_{1*} \pi_2^* H = L_y + L_z$.
+    Then we get $(f^*)^2 H \sim f^*2H \sim 4H$ while $(f^2)^*H = (\id)^* H = H$.
+    % \Yang{}
+    % On $\tilde{X} = \Gamma_f$, the induced rational map $\tilde{f}$ is a morphism given by $([x:y:z], [u:v:w]) \mapsto ([u:v:w], [x:y:z])$.
+    % The Neron-Severi group $\NS(\tilde{X})$ is given by
+    % \[ \bigoplus_{i=x,y,z} \bbZ \tilde{L_i} \oplus \bbZ E_i \big/ \langle \tilde{L_i} + E_j + E_k \sim \tilde{L_{i'}} + E_{j'} + E_{k'} | \{i,j,k\} = \{i',j',k'\} = \{x,y,z\} \rangle. \]
+    % Then we have $\tilde{f}^* \tilde{L_x} = \tilde{L_x}$, $\tilde{f}^* E_x = E_x$, $\tilde{f}^* E_y = \tilde{L_y}$ and $\tilde{f}^* E_z = \tilde{L_z}$.
+  \end{example}
+
+  We need to consider family of dominant rational maps.
+  \begin{definition}
+    Let $S$ be a noetherian integral scheme.
+    A \emph{family of dominant rational maps} over $S$ is the following data:
+    \begin{itemize}
+      \item a scheme $X$ of finite type and separated over $S$ such that every fiber $X_s$ with $s \in S$ is a variety over $\kappa(s)$;
+      \item an open dense subset $U \subseteq X$ and a morphism $f: U \to X$ over $S$ such that for every $s \in S$, the restriction of $f$ to the fiber $U_s$ gives a dominant rational map on $X_s$.
+    \end{itemize}
+    We denote by $f: X \dashrightarrow X$ the family of dominant rational maps over $S$.
+  \end{definition}
+
+  Given a family of dominant rational maps $f: X \dashrightarrow X$ over $S$, we can similarly define the graph $\Gamma_f \subset X \times_S X$ as the closure of the image of the morphism $(i_U, f): U \to X \times_S X$, where $i_U: U \to X$ is the inclusion morphism.
+  We have $\Gamma_f$ is a scheme of finite type and separated over $S$ which is birational to $X$ via the first projection $\pi_1: \Gamma_f \to X$.
+
+  \begin{proposition}
+    Let $f: X \dashrightarrow X$ be a family of dominant rational maps over $S$.
+    Then for every $s \in S$, $\Gamma_{f_s}$ is a closed subscheme of $(\Gamma_f)_s$.
+    %  \Yang{}
+  \end{proposition}
+  \begin{proof}
+    The commutative diagram 
+    \[
+      \begin{tikzcd}
+        U_s \ar[r] \ar[d] & \Gamma_{f_s} \ar[r, hook] \ar[d,gray] & X_s \times_{\kappa(s)} X_s \ar[d] \\
+        U \ar[r] & \Gamma_f \ar[r, hook] & X \times_S X
+      \end{tikzcd}
+    \]
+    induces the gray arrow $\Gamma_{f_s} \to \Gamma_f$, and base changing by $s \to S$ gives the morphism $\Gamma_{f_s} \to (\Gamma_f)_s$.
+    This morphism composing with the closed immersion $(\Gamma_f)_s \to X_s \times_{\kappa(s)} X_s$ yields the closed immersion $\Gamma_{f_s} \to X_s \times_{\kappa(s)} X_s$, so itself is a closed immersion.
+  \end{proof}
+
+  \begin{remark}
+    In general, we have no equality $(\Gamma_f)_s = \Gamma_{f_s}$.
+    For an example, see \Yang{}
+  \end{remark}
+
+  The following lemma is well-known.
+  We will use it for lifting isolated periodic points from special fibers to the generic fiber.
+  \begin{lemma}
+    Let $X$ be a noetherian scheme and $Y \subset X$ be a regular immersion.
+    For any subscheme $Z \subset X$ and $x \in Y \cap Z$ (if $Y \cap Z \neq \emptyset$), we have 
+    \[ \dim_x (Y \cap Z) \geq \dim_x Y + \dim_x Z - \dim_x X. \]
+  \end{lemma}
+  \begin{proof}
+    Suppose that $Y$ is locally defined by a regular sequence $f_1, \dots, f_r$ in the local ring $\calO_{X,x}$.
+    Then we have
+    \[ \dim_x (Y \cap Z) = \dim \calO_{Z,x} / (f_1, \dots, f_r) \geq \dim \calO_{Z,x} - r = \dim_x Z - (\dim_x X - \dim_x Y) \]
+    by Krull's principal ideal theorem.
+    % \Yang{}
+  \end{proof}
+  
+  We may need the following special case of the flattening theorem of Gruson-Raynaud.
+  \begin{theorem}[{Gruson-Raynaud, ref. \cite[Tag 0815]{Stacks}}]
+    Let $S$ be a noetherian integral scheme and $X,Y$ of finite type and separated scheme over $S$.
+    Let $f: X \to Y$ be a morphism over $S$ and $U \subseteq Y$ be an open subset such that $f^{-1}(U) \to U$ is flat.
+    Then there exists a blowup $\pi: Y' \to Y$ with center in $Y \setminus U$ such that the induced morphism $f': X' \to Y'$ is flat, where $X'$ is the Zariski closure of $f^{-1}(U) \times_U \pi^{-1}(U)$ in $X \times_Y Y'$.
+    %  \Yang{}
+  \end{theorem}
+
+
+\subsection{Intersection product on birational models}
+
+  Let $X$ be a variety over $\kk$.
+  All birational models of $X$ form a directed system, we denote by $\frakX$.
+  Let $\CH^i(X)$ be the Chow group of cocycles of codimension $i$ on $X$; see \cite[Chapter 17]{Fulton13Intersection}.
+  For our purpose, we only need the numerical equivalence classes of cocycles, namely $\upN^i(X)$; see \cite[Section 2]{Dang20degrees}.
+  Since the pullback by rational maps is not functorial, we need to consider the inductive limit of the Chow groups $\CH^i(X')$ and $\upN^i(X')$ for all birational models $X' \in \frakX$.
+  A dominant rational map $f: X \ratmap Y$ between varieties of the same dimension will induce a ``morphism'' $\frakX \to \frakY$ between the directed systems of birational models, which allows us to define a functorial pullback.
+  
+  \begin{definition}
+    We define 
+    \[ \CH^i(\frakX) := \varinjlim_{\pi:X'' \to X' \in \frakX} \left( \pi^* : \CH^i(X') \to \CH^i(X'') \right). \]
+    An element in $\CH^i(\frakX)$ is called a \emph{$\bfb$-cocycle} of degree $i$ on $X$.
+    It can be viewed as a pair $(X', \alpha' \in \CH^i(X'))$ modulo the equivalence relation generated by $(X_1, \alpha_1) \sim (X_2, \alpha_2)$ if there is a higher birational model $X'' \xrightarrow{\pi_i} X_i$ for $i=1,2$ such that $\pi_1^* \alpha_1 = \pi_2^* \alpha_2$.
+    The model $X'$ is called a \emph{defining model} of $\alpha$.
+    For $\alpha \in \CH^i(X)$, we still denote by $\alpha$ the $\bfb$-cocycle defined by $\alpha$.
+
+    We can define $\upN^i(\frakX)$ similarly by taking the inductive limit of $\upN^i(X')$.
+    %  \Yang{}
+  \end{definition}
+
+  The intersection product $\CH^i(X') \otimes \CH^j(X') \to \CH^{i+j}(X')$ induces an intersection product
+  \[ \CH^i(\frakX) \otimes \CH^j(\frakX) \to \CH^{i+j}(\frakX) \]
+  by taking the intersection product on a common defining model.
+  It is well-defined since the pullback is a ring homomorphism.
+  The intersection number 
+  \[ \CH^i(\frakX) \otimes \CH^{d-i}(\frakX) \to \bbZ \]
+  is also well-defined by the projection formula.
+
+  Similarly, the intersection product and intersection number on $\upN^i(\frakX)$ are also well-defined.
+
+  % On $\upN^i(X)$, there is a natural cone called the \emph{BPF} cone containing all intersections of nef divisors, denoted by $\Bpf^i(X)$; see \cite[Section 2]{Dang20degrees}.
+  % The property of being in $\Bpf^i(X)$ is preserved by pullback, so we can also define $\Bpf^i(\frakX)$ as the inductive limit of $\Bpf^i(X')$ for all birational models $X' \in \frakX$.
+  % One can view $\Bpf^i(\frakX)$ as a cone in $\upN^i(\frakX)$ whose elements are of form $(X', \alpha' \in \Bpf^i(X'))$ for some birational model $X' \in \frakX$.
+
+  Let us focus on the case of divisors, i.e. $i=1$.
+  In this case, note that the notion of nef, effective, big and pseudo-effective divisors are preserved by pullback, so we can also define these notions for $\bfb$-divisors on $\frakX$.
+  In particular, although we cannot define ampleness for $\bfb$-divisors, we can still define the nef and big $\bfb$-divisors, which are enough for our purpose.
+
+  Let $f: X \dashrightarrow Y$ be a dominant rational map between varieties of the same dimension.
+  Then for every $\alpha \in \upN^i(\frakY)$, $f$ induces a rational map $X \ratmap Y'$ with $Y'$ a defining model of $\alpha$.
+  Then $f$ induces a morphism $X' \to Y'$ for some birational model $X' \in \frakX$ by taking graph.
+  The pullback $f^* \alpha$ is a well-defined element in $\upN^i(X')$, and hence defines an element in $\upN^i(\frakX)$.
+  Easily check that the pullback $f^* \alpha$ is independent of the choice of the defining model $Y'$ of $\alpha$ and the choice of the birational model $X'$ of $X$.
+  In this way, if $f: X \dashrightarrow Y$ and $g: Y \dashrightarrow Z$ are two dominant rational maps between varieties of the same dimension, then we have $(g \circ f)^* = f^* \circ g^*$ as homomorphisms $\upN^i(\frakZ) \to \upN^i(\frakX)$.
+
+
+  
+
+
+  \Yang{}
+  % We define the inductive limit of the Picard groups $\Pic(X')$ by 
+  % \[ \Pic(\frakX) \coloneqq \varinjlim_{\pi:X'' \to X' \in \frakX} \left( \pi^* \Pic(X') \to \Pic(X'') \right). \]
+  % One can view $\Pic(\frakX)$ as the group of $\bfb$-Cartier divisors modulo linear equivalence on $X$.
+  % For every $D \in \Pic(\frakX)$, there exists a birational model $X' \in \frakX$ and $D' \in \Pic(X')$ such that $D_{X''} = \pi^* D'$ for every $\pi: X'' \to X'$ in $\frakX$.
+  % The model $X'$ is called a \emph{defining model} of $D$.
+
+  % The intersection product on $\Pic(X')$ induces an intersection product on $\Pic(\frakX)$, which is well-defined by the projection formula.
+
+  % Note that nefness or bigness of a divisor is preserved by pullback, so we can also define $L \in \Pic(\frakX)$ to be nef or big if $L_{X'}$ is nef or big for some (hence any) defining model $X' \in \frakX$.
+
+  %  \Yang{}
+
+  % \begin{remark}
+  %   One can view $\frakX$ as the Riemann-Zariski space associated to $X$.
+  %   But for our purpose, we only need to consider the inductive limit of the Picard groups, so we do not need to introduce the language of Riemann-Zariski space.
+  % \end{remark}
+  
+  % \Yang{The intersection product on $\Pic(X')$ induces an intersection product on $\Pic(\frakX)$, which is well-defined by the projection formula.}
+
+
+  % Let $L$ be a nef divisor on $X$.
+  % Then the pullback of $L$ to every birational model of $X$ is also nef, so we can view $L$ as an element in $\Pic(\frakX)$.
+
+  % \Yang{nef and big}
+
+
+  \Yang{Intersect with curves}
+
+  We also need to consider the intersection of $\bfb$-divisors with curves.
+  Define
+  \[ Z_1(\frakX) := \varprojlim_{\pi:X'' \to X' \in \frakX} \left( \pi_*: Z_1(X'') \to Z_1(X') \right), \]
+  where the transition maps are given by pushforward of curves.
+
+  For any curve $C$ on $X$, by Zorn's Lemma, there exists a $\bfb$-curve $\tilde{C}$ on $\frakX$ such that $\tilde{C}_X = C$.
+
+  \Yang{functoriality of pushforward and pullback by rational maps}
+
+  \begin{proposition}
+    The projection formula holds for $\bfb$-divisors and $\bfb$-curves, i.e. for every $D \in \Pic(\frakX)$ and every $C \in Z_1(\frakX)$, and $f: \frakX \to \frakY$ be a morphism of Riemann-Zariski spaces, we have
+    \[ D \cdot f_* C = f^* D \cdot C. \]
+     \Yang{}
+  \end{proposition}
+  
+  \begin{definition}
+    The group $\upN^k(\frakX)$ and $\Bpf^k(\frakX)$ are defined as the inductive limit of $\upN^k(X')$ and $\Bpf^k(X')$ respectively, where the transition maps are given by pullback of divisors.
+     \Yang{}
+  \end{definition}
+
+  \begin{theorem}[{Generalized Siu's inequality, ref. \cite{JiangLi2023Siu-inequality}}]
+    Let $X$ be a projective variety of dimension $d$ and $\alpha,\beta,\eta$ be intersections of nef divisors on $X$ and $H$ a nef divisor on $X$.
+    Then we have \Yang{}
+    \[ (\alpha \cdot \beta) \cdot H^{d} \leq \binom{d}{k} (\alpha \cdot H^{d-k}) (\beta \cdot H^{k}). \]
+  \end{theorem}
+
+  \begin{corollary}
+    Let $X$ be a projective variety of dimension $d$ and $\alpha,\beta,\eta$ be intersections of nef divisors on $X$ and $H$ a nef divisor on $X$.
+    Then we have \Yang{}
+    \[ (\alpha \cdot \beta \cdot \eta) \cdot (H^{k+l} \cdot \eta) \leq \binom{k+l}{k} (\alpha \cdot H^{l} \cdot \eta) (\beta \cdot H^{k} \cdot \eta). \]
+  \end{corollary}
+
+  \begin{theorem}[{Generalized Siu's inequality, ref. \cite{JiangLi2023Siu-inequality}}]
+    Let $X$ be a projective variety of dimension $d$ and $\alpha \in \Bpf^k(X)$, $\beta \in \Bpf^{d-k}(X)$ and $H$ be a nef divisor on $X$.
+    Then we have \Yang{}
+    \[ (\alpha \cdot \beta) \cdot H^d \leq \binom{d}{k} (\alpha \cdot H^{d-k}) (\beta \cdot H^k). \]
+  \end{theorem}
+
+  \begin{theorem}[{ref. \Yang{}}]
+    Let $\alpha \in \Bpf^k(\frakX)$ and $f: \frakX \to \frakY$ be a dominant rational map between spaces of the same dimension.
+    Then $f_* \alpha \in \Bpf^k(\frakY)$.
+  \end{theorem}
+
+
+
+
+
+\subsection{Dynamical degrees}
+
+  \begin{proposition}
+    Let $f: X \dashrightarrow X$ be a rational map on a projective variety $X$ of dimension $d$.
+    Then the limit 
+    \[ \lambda_k(f) := \lim_{n \to \infty} \left(\deg_{k,H}(f^n)\right)^{1/n} \]
+    exists and is independent of the choice of the ample divisor $H$.
+    \Yang{}
+  \end{proposition}
+
+  \begin{proposition}
+    The sequence of dynamical degrees $\lambda_k(f)$ is log-concave, i.e. 
+    \[ \lambda_k(f)^2 \geq \lambda_{k-1}(f) \lambda_{k+1}(f)\] 
+    for every $1 \leq k \leq d-1$.
+     \Yang{}
+    Or equivalently, the sequence of Lyapunov exponents $\mu_k(f)$ is non-increasing.
+     \Yang{}
+  \end{proposition}
+
+
+
+  
+\subsection{Semi-continuous functions on noetherian schemes}
+
+  Let $S$ be an integral noetherian scheme, and $\theta: S \to \bbR$ be a function.
+  We say that $f$ is \emph{lower semi-continuous} if for every $r \in \bbR$, the set $\{ s \in S : f(s) > r \}$ is open in $S$.
+
+  \begin{remark}
+    The limit of a sequence of lower semi-continuous functions may not be lower semi-continuous. 
+    \Yang{}
+  \end{remark}
+
+  \begin{lemma}
+    A function $\theta: S \to \bbR$ is lower semi-continuous if and only if the following condition holds: 
+    \begin{enumerate}
+      \item for every $\eta \in S$ and every specialization $\xi \in \overline{\{\eta\}}$, we have $\theta(\xi) \leq \theta(\eta)$;
+      \item for every $\eta \in S$ and $a < \theta(\eta)$, there is an open subset $U \subseteq \overline{\{\eta\}}$ such that $\theta(\xi) > a$ for every $\xi \in U$.
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+
+  \begin{lemma}
+    Let $\theta: S \to \bbR$ be a lower semi-continuous function.
+    Then 
+    \begin{enumerate}
+      \item $\theta$ is continuous with respect to the constructible topology on $S$;
+      \item if $\theta$ is discrete, then its image is finite.
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+
+
+
+\subsection{The Frobenius}
+
+  In this subsection, we review some fundamental properties of the Frobenius morphism, which may be trivial for experts. 
+  But for me, they are not so trivial at least at the beginning of this note.
+
+  \begin{definition}
+    Let $S$ be a scheme over $\bbF_p$.
+    Then the \emph{absolute Frobenius} morphism $\Frob_{S,p}: S \to S$ is the morphism defined locally by the $p$-th power map on the structure sheaf $\calO_S$.
+    %  \Yang{}
+  \end{definition}
+
+  \begin{proposition}
+    Let $S,T$ be schemes over $\bbF_p$ and $f: S \to T$ be a morphism.
+    Then $f$ is commutative with the absolute Frobenius $\Frob_p$.
+  \end{proposition}
+
+  \begin{definition}
+    Let $S$ be a scheme over $\bbF_p$ and $X$ be a scheme over $S$.
+    We denote by $X^{(p)}$ the base change of $X$ along the absolute Frobenius $\Frob_{S,p}$, i.e. $X^{(p/S)} = X \times_{S, \Frob_{S,p}} S$, called the \emph{Frobenius twist} of $X$.
+    It is equipped with an $S$-scheme structure given by the second projection $X^{(p/S)} \to S$.
+
+    The absolute Frobenius $\Frob_{S,p}: S \to S$ induces an $S$-morphism $\id_X \times \Frob_{S,p}: X \to X^{(p/S)}$, called the \emph{relative Frobenius} morphism of $X$ over $S$ and denoted by $\Frob_{X/S, p}$.
+    In a diagram, we have
+    \[ \begin{tikzcd}
+      X \arrow[rrd, bend left, "\Frob_{X,p}"] \arrow[rdd, bend right] \arrow[rd, "\Frob_{X/S,p}"] & & \\
+      & X^{(p/S)} \arrow[r] \arrow[d] & X \arrow[d] \\
+      & S \arrow[r, "\Frob_{S,p}"] & S.
+    \end{tikzcd} \]
+    %  \Yang{}
+  \end{definition}
+  \begin{remark}
+    We often omit the subscript $S$ on the Frobenius twist when there is no confusion, i.e. $X^{(p)}$ for $X^{(p/S)}$.
+    We also often omit the subscript $X$ on the Frobenius morphism when there is no confusion, i.e. $\Frob_p$ for $\Frob_{X,p}$ and $\Frob_{/S,p}$ for $\Frob_{X/S,p}$.
+    And we write $\Frob_{p^n}$ (resp. $\Frob_{/S,p^n}$) for the $n$-th iterate of $\Frob_p$ (resp. $\Frob_{/S,p}$).
+  \end{remark}
+
+  \begin{example}
+    Let $S = \Spec \kkk$ be the spectrum of an algebraically closed field of characteristic $p$ and $X \subset \bbA^n_\kkk$ be an affine variety defined by $f_1, \dots, f_m \in \kkk[t_1, \dots, t_n]$.
+    Then the Frobenius twist $X^{(p)}$ is given by $X^{(p)} = \Spec \kkk[t_1, \dots, t_n]/(f_1^{(p)}, \dots, f_m^{(p)})$, where $f_i^{(p)}$ is obtained by applying the $p$-th power map to the coefficients of $f_i$.
+    The projection $X^{(p)} \to X$ is given by $(a_1, \dots, a_n) \mapsto (a_1^{1/p}, \dots, a_n^{1/p})$, while the relative Frobenius $\Frob_{/S,p}: X \to X^{(p)}$ is given by $(a_1, \dots, a_n) \mapsto (a_1^p, \dots, a_n^p)$.
+    % \Yang{}
+  \end{example}
+
+  \paragraph{Relative Frobenius as endomorphisms when defined over finite fields}
+  The most interesting case for us is when $S = \Spec \bbF_q$ or $S = \Spec \overline{\bbF_q}$ and $X$ is a variety over $S$.
+  First consider the case when $S = \Spec \bbF_q$.
+  Then the absolute Frobenius $\Frob_q: \Spec \bbF_q \to \Spec \bbF_q$ is the identity morphism, so the Frobenius twist $X^{(q)}$ is just $X$ and the relative Frobenius $\Frob_{/S,q}$ is just the absolute Frobenius $\Frob_q$.
+  
+  More generally, let $\kkk$ be an arbitrary algebraically closed field of characteristic $p$ and $X$ be a variety over $\kkk$.
+  Suppose that $X$ is defined over some finite field $\bbF_q$.
+  That is, there exists a variety $X_0$ over $\bbF_q$ and an isomorphism $X \cong X_0 \times_{\bbF_q} \kkk$.
+  Then we have diagrams
+  \[ 
+    \begin{tikzcd}
+      X \arrow[r] \arrow[rdd] \arrow[rd, red] & \Spec \kkk \arrow[rd, "\Frob_q"] \arrow[rdd] & \\
+      & X \arrow[r] \arrow[d] & \Spec \kkk \arrow[d] \\
+      & X_0 \arrow[r] & \Spec \bbF_q
+    \end{tikzcd}
+    \quad \leadsto \quad
+    \begin{tikzcd}
+      X \arrow[rrd, red] \arrow[rdd] \arrow[rd, blue] & & \\
+      & X^{(q)} \arrow[r] \arrow[d] & X \arrow[d] \\
+      & \Spec \kkk \arrow[r, "\Frob_q"] & \Spec \kkk.
+    \end{tikzcd} 
+  \]
+  In particular, this gives an isomorphism $X^{(q)} \cong X$ (the blue arrow) over $\kkk$.
+  In general, for a variety $X$ over $\kkk$, we still have an isomorphism $X^{(q)} \cong X$ as schemes but not as $\kkk$-schemes.
+  Using this $\kkk$-scheme isomorphism, the relative Frobenius $\Frob_{/\kkk,q}: X \to X^{(q)}$ can be viewed as a morphism $X \to X$, which is different from the absolute Frobenius $\Frob_q: X \to X$.
+  Another more direct way to get the relative Frobenius is to take the product 
+  \[ \Frob_{/\kkk,q} = (\Frob_{q})_\kkk = \Frob_{X_0/\bbF_q, q} \times \id_\kkk: X_0 \times_{\bbF_q} \kkk \to X_0 \times_{\bbF_q} \kkk. \]
+  This is the construction we will use in the following.
+
+  If $\kkk = \overline{\bbF_q}$, then every variety over $\kkk$ is defined over some finite field, so the above construction applies to every variety over $\kkk$.
+  
+  \begin{proposition}
+    Let $X$ be a variety over $\bbF_{q}$.
+    Then for every closed point $x \in X$, $x \in X(\bbF_{q^n})$ if and only if $\Frob_{q}^n(x) = x$.
+    In particular, every closed point of $X$ is a periodic point of the Frobenius $\Frob_q$.
+    %  \Yang{}
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{proposition}
+    Let $f: X \to Y$ be a morphism of varieties over $\kkk$.
+    Suppose that $f,X,Y$ are defined over some finite field $\bbF_q$.
+    Then $f$ is commutative with the relative Frobenius $\Frob_{/\kkk,q}$.
+    %  \Yang{}
+  \end{proposition}
+  \begin{proof}
+    Choose $f_0: X_0 \to Y_0$ defined over $\bbF_q$ such that $f = f_0 \times_{\bbF_q} \kkk$.
+    Since $f_0$ is commutative with the absolute Frobenius $\Frob_q$, the base change $f = f_0 \times_{\bbF_q} \kkk$ is also commutative with the relative Frobenius $\Frob_{/\kkk,q} = (\Frob_q)_\kkk$.
+  \end{proof}
+  
+
+
+  % \Yang{}
+  % \begin{example}
+  %   Let $X = \bbA^1_\kk = \Spec \kk[t]$ be the affine line over $\kk$ and $X_\kkk = \Spec \kkk[t]$ be the base change of $X$ to $\kkk$.
+
+  %   Then the Frobenius twist $X_\kkk^{(q)}$ is given by $X_\kkk^{(q)} = \Spec \kkk[t] \otimes_{\kkk, \Frob_q} \kkk$.
+  %   We denote the ring $\kkk[t] \otimes_{\kkk, \Frob_q} \kkk$ by $R$ for simplicity.
+  %   The elements in $R$ are of form $\sum_i a_i t^i \otimes b_i$ with $a_i, b_i \in \kkk$.
+  %   The $\kkk$-algebra structure on $R$ is given by 
+  %   \[ c (at^i \otimes b) = a t^i \otimes (c b) = (c^{1/q} a) t^i \otimes b \]
+  %   for every $c \in \kkk$.
+  %   There is a natural ring isomorphism $R \to \kkk[t]$ given by $\sum_i a_i t^i \otimes b_i \mapsto \sum_i a_i^q b_i t^i$.
+
+  %   \Yang{}
+
+
+  %   There is a natural ring isomorphism $R \to \kkk[t]$ given by $\sum_i a_i t^i \otimes b_i \mapsto \sum_i a_i^q b_i t^i$.
+  %   However, use this isomorphism to identify $R$ with $\kkk[t]$, the $\kkk$-algebra structure on $\kkk[t]$ is given by $c \cdot t^i = c^q t^i$ for every $c \in \kkk$, which is different from the usual $\kkk$-algebra structure on $\kkk[t]$.
+  %   We denote by this $\kkk$-algebra $\kkk[t]$ by $\kkk[t]^{(q)}$ for clarity.
+
+  %   Now we can describe the absolute and relative Frobenius morphisms.
+  %   The absolute Frobenius $\Frob_q: X \to X$ is given by 
+  %   \[ \kkk[t] \to \kkk[t], \quad \sum a_i t^i \mapsto \sum a_i^q t^{qi}. \]
+  %   It is not $\kkk$-linear, but it is $\bbF_q$-linear.
+  %   The relative Frobenius $\Frob_{/S,q}: X \to X^{(q)}$ is also given by 
+  %   \[ \kkk[t]^{(q)} \to \kkk[t], \quad \sum a_i t^i \mapsto \sum a_i^q t^{qi}. \]
+  %   But this is $\kkk$-linear because of the $\kkk$-algebra structure on $\kkk[t]^{(q)}$.
+    
+  %   Since $\kkk$ is perfect, the absolute Frobenius $\Frob_q: \kkk \to \kkk$ is an isomorphism, so its base change 
+  %   \[ \kkk[t] \to \kkk[t]^{(q)}, \quad \sum a_i t^i \mapsto \sum a_i^q t^i \]
+  %   is also an isomorphism.
+  %   Note that this isomorphism is $\kkk$-linear.
+  %   Using this isomorphism to identify $\kkk[t]^{(q)}$ with $\kkk[t]$, the relative Frobenius becomes
+  %   \[ \kkk[t] \to \kkk[t], \quad \sum a_i^q t^i \mapsto \sum a_i^q t^{qi}. \]
+
+  %   On the other hand, the geometric Frobenius $\Frob_{X/\bbF_q, q}^{geo}: X_\kkk \to X_\kkk$ is given by
+  %   \[ \kkk[t] \to \kkk[t], \quad \sum a_i t^i \mapsto \sum a_i t^{qi}. \]
+    
+  % \end{example}
+
+  % \paragraph{Action on scheme-theoretic points and $\kk$-points.}
+
+  %   \Yang{}
+  %   Let $X$ be a scheme over $\bbF_p$ and $x \in X$ be a scheme-theoretic point.
+  %   Then the absolute Frobenius $\Frob_p$ acts on $x$ by sending it to the point $\Frob_p(x)$ defined by the ideal sheaf $\calI_{\Frob_p(x)} = \calI_x^p$.
+  %   In particular, if $x$ is a closed point, then $\Frob_p(x) = x$
+
+  % \paragraph{Graph of the Frobenius.}
+  % The graph of the absolute Frobenius $\Frob_{X,p}$ is given by
+
+
+  % \paragraph{Absolute Frobenius as morphism over finite fields.}
+  % When $\kk = \bbF_q$, the absolute Frobenius $\Frob_{q}$ is the identity morphism on $\Spec \bbF_q$.
+  % Let $X$ be a variety over $\bbF_q$, then the Frobenius twist $X^{(q)}$ is isomorphic to $X$ and the absolute Frobenius $\Frob_{X, q}$ coincides with the absolute Frobenius $\Frob_{X/\bbF_q,q}$, which is a morphism over $\bbF_q$.
+  % % so the Frobenius twist $X^{(q)}$ is isomorphic to $X$ and the absolute Frobenius $\Frob_{X, q}$ coincides with the absolute Frobenius $\Frob_{X/\bbF_q,q}$, which is a morphism over $\bbF_q$.
+
+  % \begin{proposition}
+  %   Let $X$ be a variety over $\overline{\bbF_p}$.
+  %   Then every closed point $x \in X(\overline{\bbF_p})$ is a periodic point of the absolute Frobenius $\Frob_p$.
+  %    \Yang{}
+  % \end{proposition}
+
+  % \begin{proposition}
+  %   Let $X,Y$ be varieties over $\bbF_q$ and $f: X \to Y$ be a morphism over $\bbF_q$.
+  %   Then $f$ is commutative with the absolute Frobenius $\Frob_q$.
+  %    \Yang{}
+  % \end{proposition}
+
+
+
+
