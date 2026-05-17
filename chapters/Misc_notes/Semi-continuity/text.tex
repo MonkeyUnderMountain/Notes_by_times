@@ -40,7 +40,7 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
 
 \subsection{Semi-continuity of mixed degrees}
 
-  \begin{proposition}
+  \begin{proposition}\label{prop:semi-continuity-mixed-degrees}
     % Let $f: X \dashrightarrow X$ be a family of dominant rational maps over $S$.
     Fix a $\pi$-ample divisor $L$ on $X$ and integers $m_1, \ldots, m_d \in \bbZ_{\geq 0}$.
     Then the function 
@@ -123,13 +123,24 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
     It determines a class $L_s \in \upN^1(\frakX_s)$ for every $s \in S$.
 
     Let $\eta$ be the generic point of $S$.
-    For any $s \in S$, we have $\deg_i(f_s^m) \leq \deg_i(f_\eta^m)$ for every $m$ by the previous proposition, which implies $\lambda_i(f_s) \leq \lambda_i(f_\eta)$.
+    For any $s \in S$, we have $\deg_i(f_s^m) \leq \deg_i(f_\eta^m)$ for every $m$ by the previous proposition (\cref{prop:semi-continuity-mixed-degrees}), which implies $\lambda_i(f_s) \leq \lambda_i(f_\eta)$.
+    Hence we only need to show that for every $\varepsilon_0 \in (0,1)$, there is an open subset $U \subseteq S$ such that for every $s \in U$, we have $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$.
 
-    Hence we only need to show that for every $\beta < \lambda_i(f_\eta)$, there is a nonempty open subset $U \subseteq S$ such that $\lambda_i(f_s) > \beta$ for every $s \in U$.
-    \Yang{}
+    First assume that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+    By \cref{thm:lambda_i_satisfy_conditions_IJK}, there exists $\varepsilon \in (\varepsilon_0^{1/{2d}}, 1)$ and $\delta \in (0,1)$, $m \geq 0$ such that the conditions $I(\frakA_\eta, i, m)$, $J(\frakA_\eta, i, m)$ and $K(\frakA_\eta, i, m)$ hold, where $\frakA_\eta = (\mu_1(f_\eta), \ldots, \mu_d(f_\eta); \delta, \varepsilon)$.
+    Note that the conditions $I(\frakA, i, m)$, $J(\frakA, i, m)$ and $K(\frakA, i, m)$ for $(X_s, f_s, L_s)$ depend only on the intersection numbers of $(f_s^{2m})^*L_s, (f_s^{m})^*L_s, L_s$.
+    By \cref{prop:semi-continuity-mixed-degrees}, there exists a non-empty open subset $U \subseteq S$ such that for every $s \in U$, all intersection numbers of $(f_s^{2m})^*L_s, (f_s^{m})^*L_s, L_s$ are constant on $U$.
+    Hence for every $s \in U$, the conditions $I(\frakA_\eta, i, m)$, $J(\frakA_\eta, i, m)$ and $K(\frakA_\eta, i, m)$ hold for $(X_s, f_s, L_s)$.
+    By \cref{thm:conditions_IJK_implies_estimation_of_dynamical_degrees}, for every $s \in U$, we have 
+    \[ \lambda_i(f_s) > \varepsilon^{2i} \lambda_i(f_\eta) > \varepsilon_0^{i/d} \lambda_i(f_\eta) \geq \varepsilon_0 \lambda_i(f_\eta). \]
+    This finishes the proof in the case $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
 
-
-    \Yang{}
+    Now we deal the general case.
+    Choose a non-empty open subset $U \subseteq S$ such that for every $s \in U$, we have $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$ for every $i$ such that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+    Let $a_s: [0,d] \to \bbR$ be the concave envelope of the points $(0,0), (1, \log \lambda_1(f_s)), \ldots, (d, \log \lambda_d(f_s))$.
+    Note that $a_\eta$ is a piecewise linear function with break points at exactly the integers $i$ such that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+    For two concave functions $a, b: [0,d] \to \bbR$ and $a$ is piecewise linear with break points at exactly $x_1, \ldots, x_k$, we have $a \leq b$ if and only if $a(x_i) \leq b(x_i)$ for every $i$.
+    Now applying this observation to $a_s$ and $a_\eta + \log \varepsilon_0$ with $s \in U$, we conclude that $a_s \geq a_\eta + \log \varepsilon_0$ and hence $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$ for every $i$.
   \end{proof}
 
   \begin{example}
@@ -137,5 +148,5 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
     \[ [x:y:z] \mapsto [xy:xy-2z^2:yz+3z^2]. \]
     Then we have $\lambda_1(f_{(0)}) = 2$ and $\lambda_1(f_{(p)}) < 2$ for every prime $p > 2$.
     
-    \Yang{}
+    \Yang{to be continued}
   \end{example}

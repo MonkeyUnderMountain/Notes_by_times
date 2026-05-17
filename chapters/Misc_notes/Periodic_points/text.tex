@@ -4,17 +4,6 @@
 \subsection{General strategy}
 
   \paragraph{Historical note.} On \Yang{}
-
-  First observe that if $X$ is defined over $\overline{\bbF_p}$, then for every point $x \in X(\overline{\bbF_p})$, $x$ is defined over some finite extension $\bbF_{p^n}$ of $\bbF_p$.
-  In other words, the morphism $x: \Spec \overline{\bbF_p} \to X$ factors as $\Spec \overline{\bbF_p} \xrightarrow{\sigma} \Spec \bbF_{p^n} \xrightarrow{x_0} X$ for some $n > 0$.
-  Applying the absolute Frobenius morphism $\Frob_{q}$, we get the diagram
-  \[ \begin{tikzcd}
-    x: & \Spec \overline{\bbF_p} \arrow[r, "\sigma"] & \Spec \bbF_{p^n} \arrow[r, "x_0"] & X,  \\
-    \Frob_{q}(x): & \Spec \overline{\bbF_p} \arrow[r, "\sigma"] & \Spec \bbF_{p^n} \arrow[d,"\Frob_{q}"] \arrow[r, "x_0"] & X \arrow[d,"\Frob_{q}"] \\
-      &  & \Spec \bbF_{p^n} \arrow[r, "x_0"] & X.
-  \end{tikzcd} \]
-  When $p^n = q$, the arrow $\Spec \bbF_{p^n} \xrightarrow{\Frob_q} \Spec \bbF_{p^n}$ becomes the identity, and hence $\Frob_q(x) = \Frob_p^n(x) = x$.
-  Therefore, every point $x \in X(\overline{\bbF_p})$ is a periodic point of $\Frob_p$.
   
   For a general rational self-map $f: X \dashrightarrow X$ defined over $\overline{\bbF_p}$, we will try to find intersection points of the graph of $f$ and the graph of $\Frob_p^n$ for some $n > 0$, which will be periodic points of $f$.
   To find such points, we will use the Hrushovski-Lang-Weil estimate, which is a generalization of the classical Lang-Weil estimate for counting points on varieties over fields of positive characteristic.
@@ -36,7 +25,7 @@
     Then for any proper closed subset $W \subset X$, for large enough $m$, there exists a point $x \in X(\overline{\bbF_q})$ such that $(x, \Frob_q^m(x)) \in S$ and $x \notin W$.
   \end{lemma}
 
-  \begin{lemma}
+  \begin{lemma}\label{lem:density_of_periodic_points_over_finite_fields}
     Let $X$ be a variety over $\overline{\bbF_p}$ and $f: X \dashrightarrow X$ be a dominant rational self-map.
     Then the set of periodic points of $f$ is Zariski dense in $X$.
   \end{lemma}
@@ -64,7 +53,7 @@
 
   An important fact is that isolated periodic points can be lifted to generic fibers in a family, which allows us to reduce the density of periodic points to the density of isolated periodic points on special fibers.
 
-  \begin{lemma}
+  \begin{lemma}\label{lem:lifting_isolated_periodic_points}
     Let $S = \Spec R$ be spectrum of a discrete valuation ring with special point $s$ and generic point $\eta$. 
     Let $X$ be a scheme flat and of finite type over $S$, and $f: X \dashrightarrow X$ be a rational self-map over $S$.
     Assume that the special fiber $X_s$ is irreducible and the restriction $f_s: X_s \dashrightarrow X_s$ is a dominant rational self-map. 
@@ -103,10 +92,10 @@
 
 \subsection{For cohomologically hyperbolic maps}
 
-  \begin{proposition}
+  \begin{proposition}\label{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}
     Let $X$ be a variety and $f: X \dashrightarrow X$ be a rational self-map.
-    Suppose that $f$ is cohomologically hyperbolic, then after replacing $X$ by an open dense subset, the set of periodic points of $f$ is isolated in $X$.
-    \Yang{}
+    Suppose that $f$ is cohomologically hyperbolic, then there exists an open dense subset $U$ of $X$ such that every periodic point of $f$ in $U$ is isolated.
+    % \Yang{}
   \end{proposition}
   \begin{proof}
     Set $\mu_k = \mu_k(f)$ for $1 \leq k \leq d$ and $\mu_{d+1} = 0$ by convention.
@@ -135,14 +124,27 @@
     Since $b<1$, we have $x_1 - b x_0 = (f^m)^*L \cdot C - b L \cdot C = L \cdot f^m_*C - b L \cdot C = (1-b) L \cdot C > 0$.
     Hence $(f^{nm})^*L \cdot C = x_n >  a^{nm}$ for $n \gg 0$.\Yang{} 
     However, we have $(f^{nm})^*L \cdot C = L \cdot f^{nm}_*C = L \cdot C$ since $f^{nm}_*C = C$, which is a contradiction.
-
-    \Yang{}
+    % \Yang{}
   \end{proof}
 
-  \begin{theorem}
-    Let $X$ be a variety and $f: X \dashrightarrow X$ be a rational self-map.
+  \begin{theorem}\label{thm:density_of_periodic_points_for_cohomologically_hyperbolic_maps}
+    Let $X$ be a variety and $f: X \dashrightarrow X$ be a dominant rational self-map.
     If $f$ is cohomologically hyperbolic, then the set of periodic points of $f$ is Zariski dense in $X$.
   \end{theorem}
   \begin{proof}
-    \Yang{}
+    We may assume that $X$ is over an algebraically closed field $\kkk$.
+    When $\kkk = \overline{\bbF_p}$, this is \cref{lem:density_of_periodic_points_over_finite_fields}.
+    For general case, by spreading out, we may assume that there is a Dedekind domain $R$ with $\overline{\Frac R} = \kkk$ and a family $(\pi: \calX \to \Spec R, \calf:\calX \dashrightarrow \calX)$ of dominant rational self-maps such that its geometric generic fiber is $(X,f)$.
+    By \cref{mainthm:semi-continuity}, after shrinking $\Spec R$ if necessary, we may assume that $(\calX_s, \calf_s)$ is cohomologically hyperbolic for every closed point $s \in \Spec R$.
+    Fix a closed point $s \in \Spec R$ and replace $R$ by the localization of $R$ at $s$, we may assume that $\Spec R$ is the spectrum of a discrete valuation ring with special point $s$ and generic point $\eta$.
+
+    By induction, we may assume that the set of periodic points of $\calf_s$ is Zariski dense in $\calX_s$.
+    Since $\calf_s$ is cohomologically hyperbolic, there exists an open dense subset $U$ of $\calX_s$ such that every periodic point of $\calf_s$ in $U$ is isolated and $\calX_s$ is regular at that point by \cref{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}.
+    Suppose the contrary that the set of periodic points of $\calf_\eta$ lies in a proper closed subset $Z_\eta$ of $\calX_\eta$.
+    Let $\calZ$ be the closure of $Z_\eta$ in $\calX$, then $\calZ$ is a proper closed subset of $\calX$.
+    Hence $\dim \calZ_s < \dim \calZ < \dim \calX$ and then $\dim \calZ_s \leq \dim \calX - 2$.
+    Hence $\calZ_s$ is a proper closed subset of $\calX_s$.
+    Choose a periodic point $x_s$ of $\calf_s$ in $U$ such that $x_s \notin \calZ_s$ and lift $x_s$ to a periodic point $x_\eta$ of $\calf_\eta$ in $\calX_\eta$ by \cref{lem:lifting_isolated_periodic_points}.
+    Then $x_\eta$ is a periodic point of $\calf_\eta$ and the closure of $x_\eta$ in $\calX$ contains $x_s$, which is not contained in $\calZ$.
+    Hence $x_\eta$ is not contained in $Z_\eta$, which is a contradiction.
   \end{proof}

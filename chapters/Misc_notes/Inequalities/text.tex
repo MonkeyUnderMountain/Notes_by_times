@@ -5,15 +5,63 @@
   Set $\mu_{d+1} = 0$ for convenience.
 
 
+\subsection{Sequence with exponential growth}
+
+  In this subsection, we will introduce some elementary notations and lemmas about sequences with exponential growth.
+
+  \begin{definition}
+    We say that a sequence of positive numbers $a_n$ has \emph{exponential growth} if $\lim_{n \to \infty} a_n^{1/n}$ exists and is positive.
+  \end{definition}
+
+  \begin{definition}
+    Let $a_n$ and $b_n$ be two sequences of exponential growth.
+    We write $a_n \preccurlyeq_e b_n$ (resp. $a_n \prec_e b_n$) if $\limsup_{n \to \infty} a_n/b_n \leq 1$ (resp. $<1$), and write $a_n \asymp_e b_n$ if $a_n \preccurlyeq_e b_n$ and $a_n \succcurlyeq_e b_n$.
+  \end{definition}
+
+
+  \begin{lemma}\label{lemma:elementary_inequalities}
+    Suppose that $a_n \asymp_e a^n, b_n \asymp_e b^n$, then
+    \begin{enumerate}
+      \item $a_n b_n \asymp_e (ab)^n$;
+      \item $a_n/b_n \asymp_e (a/b)^n$;
+      \item if $a_n \succ_e b_n$, then $a_n > b_n$ for every sufficiently large $n$;
+      \item if $a \geq b$, then $a_n + b_n \asymp_e a^n$;
+      \item if $a_n \geq b_n$ for every $n$ and $a > b$, then $a_n - b_n \asymp_e a^n$.
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    
+  \end{proof}
+
+
+  % \begin{notation}
+  %   For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
+  %   \[ a_m \preccurlyeq_e b_m \text{ (resp. $a_m \prec_e b_m$)}  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. $<1$)}, \]
+  %   and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.
+  %   For example, we have $\deg_i(f^m) \asymp_e \lambda_i^m$ for every $i$.
+  %   % \Yang{}
+  % \end{notation}
+
+  
+  \begin{lemma}\label{lemma:recursive_inequality_implies_exponential_growth}
+    Let $x_n$ be a sequence of positive numbers and $a>b>0$ be some numbers.
+    Suppose that 
+    \[ x_{n+2} + ab x_n \geq (a+b) x_{n+1}, \quad \forall n \geq 0 \]
+    and $x_1 > b x_0$.
+    Then we have $x_n \succcurlyeq_e a^n$.
+  \end{lemma}
+  \begin{proof}
+    The inequality can be reformulated as
+    \[ x_{n+2} - b x_{n+1} \geq a (x_{n+1} - b x_n). \]
+    Set $y_n := x_{n+1} - b x_n$.
+    Then we have $y_{n+1} \geq a y_n$ for every $n \geq 0$ and $y_0 = x_1 - b x_0 > 0$.
+    Hence, $y_n \geq a^n y_0 > 0$ for every $n \geq 0$.
+    This implies $x_{n+1} = y_n + b x_n \geq y_n \succcurlyeq_e a^n$.
+  \end{proof}
+
+
 \subsection{Inequalities}
 
-  \begin{notation}
-    For simplicity, we introduce the following notation: for two sequences of positive numbers $a_m$ and $b_m$, we write
-    \[ a_m \preccurlyeq_e b_m \text{ (resp. $a_m \prec_e b_m$)}  \quad \text{if} \quad \limsup_{m \to \infty} \left(\frac{a_m}{b_m}\right)^{1/m} \leq 1 \text{ (resp. $<1$)}, \]
-    and $a_m \asymp_e b_m$ if $a_m \preccurlyeq_e b_m$ and $a_m \succcurlyeq_e b_m$.
-    For example, we have $\deg_i(f^m) \asymp_e \lambda_i^m$ for every $i$.
-    % \Yang{}
-  \end{notation}
 
   Set 
   \[ L_m := (f^m)^* L, \quad M_m(t) := L_{2m} + t^m L. \]
@@ -38,8 +86,8 @@
       \item $E(\bfm)$ is some error term satisfying 
       \[ E(\bfm) \asymp_e 1 \quad \text{ if } \bfm = (k_1m, \ldots, k_sm) \text{ for some } k_i \in \bbZ_{>0} \text{ and } m \to \infty. \]
     \end{itemize}
-    In particular, if $\bfm = (k_1m, \ldots, k_sm)$ for some $k_1 \geq k_2 \geq \cdots \geq k_s \in \bbZ_{>0}$, then we have
-    \[ (L_{m_1}^{r_1} \cdot L_{m_2}^{r_2} \cdots L_{m_s}^{r_s}) \asymp_e \prod_i \lambda_{R_i}^{\Delta m_i} \quad \text{ as } m \to \infty. \]
+    In particular, if $\bfm = (k_1m, \ldots, k_dm)$ for some $k_1 \geq k_2 \geq \cdots \geq k_d \in \bbZ_{>0}$, then we have
+    \[ (L_{m_1} \cdot L_{m_2} \cdots L_{m_s}) \asymp_e \prod_i \lambda_{i}^{\Delta m_i} = \mu_1^{m_1} \cdot \mu_2^{m_2} \cdots \mu_d^{m_d} \quad \text{ as } m \to \infty. \]
   \end{proposition}
   \begin{proof}
     \hspace{1em}
@@ -131,121 +179,195 @@
 \subsection{Estimation of dynamical degrees}
 
   In this subsection, we will try to estimate $\lambda_i$ using only finitely many mixed degrees.
-  The key observation is the following elementary lemma about recursive inequalities.
+  % The key observation is the following elementary lemma about recursive inequalities.
 
-  \begin{lemma}\label{lemma:recursive_inequality_implies_exponential_growth}
-    Let $x_n$ be a sequence of positive numbers and $a>b>0$ be some numbers.
-    Suppose that 
-    \[ x_{n+2} + ab x_n \geq (a+b) x_{n+1}, \quad \forall n \geq 0 \]
-    and $x_1 > b x_0$.
-    Then we have $x_n \succcurlyeq_e a^n$.
-  \end{lemma}
-  \begin{proof}
-    The inequality can be reformulated as
-    \[ x_{n+2} - b x_{n+1} \geq a (x_{n+1} - b x_n). \]
-    Set $y_n := x_{n+1} - b x_n$.
-    Then we have $y_{n+1} \geq a y_n$ for every $n \geq 0$ and $y_0 = x_1 - b x_0 > 0$.
-    Hence, $y_n \geq a^n y_0 > 0$ for every $n \geq 0$.
-    This implies $x_{n+1} = y_n + b x_n \geq y_n \succcurlyeq_e a^n$.
-  \end{proof}
 
   Given numbers $\alpha_1 \geq \ldots \geq \alpha_{d} \in \bbR_{>0}$, and $\delta, \varepsilon \in (0, 1)$.
   Set $\beta_i = \alpha_1 \cdots \alpha_i$.
   We use $\frakA = (\alpha_1, \ldots, \alpha_d; \delta, \varepsilon)$ to denote the above data.
   Set 
-  \[ \Theta(\frakA; i)_m := C_{\mix} \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot \sum_{j=0}^{i-1} \frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}), \]
+  \[ \Theta(\frakA; i)_m := C_{\mix} \cdot \delta^m \cdot \sum_{j=0}^{i-1} \frac{\deg_{i-j-1}(f^{m})}{\varepsilon^{(i-j)m}\beta_{i-j-1}^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}), \]
   where $C_\mix$ is the constant in \cref{prop:estimation_of_mixed_degrees}.
-  We will see this number appears naturally in the estimation of $\lambda_i$ (\cref{eq:recursive_inequality_in_estimation_of_dynamical_degrees}\Yang{}).
+  We will see this number appears naturally in the estimation of $\lambda_i$ (\cref{eq:inequality_in_estimation_of_dynamical_degrees_define_Theta}).
   When choosing $\frakA = (\mu_1, \ldots, \mu_d; \delta, \varepsilon)$, we have 
-  \[ \Theta(\frakA; i)_m \asymp_e \left( \frac{\delta}{\varepsilon^{i}} \lambda_i \right)^m. \]
+  \[ \Theta(\frakA; i)_m \asymp_e \left( \varepsilon^{-i} \delta \lambda_i \right)^m. \]
 
   \begin{definition}
     We define the following conditions for $i = 1, \ldots, d$: 
-    % \Yang{}
     \begin{itemize}
-      \item condition $I(\frakA,i,m)$: $\Sigma(\alpha_i \alpha_{j+1} \delta; L_m^{i-j-1})_{m} > \varepsilon^m \alpha_{j+1}^m$ for every $j = 0, 1, \ldots, i-1$;
+      \item condition $I(\frakA,i,m)$: $\Sigma(\alpha_i \alpha_{i-j} \delta; L_m^{j})_{m} > \varepsilon^m \alpha_{i-j}^m$ for every $j = 0, 1, \ldots, i-1$;
       \item condition $J(\frakA,i,m)$: $\beta_i^m \varepsilon^{mi} \geq \varepsilon^{-mi} \Theta(\frakA; i)_m + \beta_i^m \varepsilon^{2mi}$;
-      \item condition $K(\frakA,i,m)$: $\deg_i(f^{(N+1)m}) - \varepsilon^{-mi}\Theta(\frakA; i)_m \cdot \deg_i(f^{Nm}) > 0$ for some $N \geq 0$.
+      \item condition $K(\frakA,i,m)$: $\deg_i(f^{2m}) - \varepsilon^{-mi}\Theta(\frakA; i)_m \cdot \deg_i(f^{m}) > 0$.
     \end{itemize}
   \end{definition}
 
   Note that all of the above conditions depend only on the intersection numbers of $L_{2m}, L_m, L$.
 
 
-  \begin{lemma}
+  \begin{theorem}\label{thm:conditions_IJK_implies_estimation_of_dynamical_degrees}
     Given a data $\frakA = (\alpha_1, \ldots, \alpha_d; \delta, \varepsilon)$.
     If conditions $I(\frakA,i,m)$, $J(\frakA,i,m)$ and $K(\frakA,i,m)$ hold, then $\lambda_i \geq \varepsilon^{2i} \beta_i$.
-    \Yang{}
-  \end{lemma}
+    % \Yang{}
+  \end{theorem}
   \begin{proof}
     \hspace{1em}
-
     \begin{step}
-      Using condition $I(\frakA,i,m)$ to get the inequality \Yang{} for all $n \geq 0$.
+      Using condition $I(\frakA,i,m)$ to get \cref{eq:inequality_from_condition_I_for_infinite_n_in_estimation_of_dynamical_degrees} for all $n \geq 0$.
     \end{step}
 
-    Let $Z_j$ be a subvariety of $X$ cutting by $L_m^{i-j-1}$ for every $j = 0, 1, \ldots, i-1$.
-    The conditions $I(\frakA,i,m)$ implies that for every $j = 0, 1, \ldots, i-1$, the divisor
-    \[ L_{2m} + \alpha_i^m \alpha_{j+1}^m \delta^m L - \varepsilon^m \alpha_{j+1}^m L_m \]
-    is big when restricted to $Z_j$.
+    % There exists a normal birational model $X'$ of $X$ such that $L_m$ is ample on $X'$.
+    We may suppose that $X$ is normal and $L_m$ is ample on $X$.
+    Fix $n \geq 0$.
+    There exists another normal birational model $X'$ of $X$ such that $f^{nm}$ is a morphism $X' \to X$.
+    By generic flatness, there exists a non-empty open subset $U$ of $X$ such that $f^{nm}$ is flat over $U$.
+    By Bertini's theorem, there is a normal subvariety $Z$ of $X$ given by cutting by $j$ general members of $|L_m|$ intersecting $U$.
+    Denote by $W_1, \ldots, W_r$ the irreducible components of $(f^{nm})^{-1}(Z)$.
+    Since $f^{nm}$ is flat at the generic point of $Z$, we have $(f^{nm})^*[Z] = \sum_i a_i [W_i]$ as cycles for some positive integers $a_i$'s.
 
-    \Yang{}
-    Descend $f^{nm}$ to a finite morphism $X' \to X$ with $X',X \in \frakX$.
-    By a \Yang{version of bertini's theorem}, by replacing $Z_j$ with a general member, we may assume that $Z_j$ is irreducible and $Z_j' = f^{-nm}(Z_j)$ is irreducible.
+    By Siu's criterion and condition $I(\frakA,i,m)$, the divisor $(L_{2m} + \alpha_i^m \alpha_{i-j}^m \delta^m L - \varepsilon^m \alpha_{i-j}^m L_m)|_{Z}$ is big on $Z$ for every $j = 0, 1, \ldots, i-1$.
     Then 
-    \[ (f^{nm})^*(L_{2m} + \alpha_i^m \alpha_{j+1}^m \delta^m L - \varepsilon^m \alpha_{j+1}^m L_m)|_{Z_j'} \]
-    is big for every $j = 0, 1, \ldots, i-1$. \Yang{}
-    Note that $[Z_j'] = (f^{nm})^* [Z_j] = L_{nm}^{i-j-1}$.
-    Intersecting with $L_{(n+1)m}^{i-j-1} \cdot L^{d-i}$, we get
-    \[ L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i} + \alpha_{j+1}^{m} \alpha_i^m \delta^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i} \geq \varepsilon^m \alpha_{j+1}^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}. \]
-    \Yang{}
+    \[ (f^{nm}_t)^*\bigl((L_{2m} + \alpha_i^m \alpha_{i-j}^m \delta^m L - \varepsilon^m \alpha_{i-j}^m L_m)|_{Z}\bigr) \] 
+    is big on $W_t$ for every $j = 0, 1, \ldots, i-1$ and $t = 1, \ldots, r$.
+    Suppose that it is represented by an effective $\bbR$-divisor $D_{t,j}$ on $W_t$.
+    Hence 
+    \[ (f^{nm})^*\bigl((L_{2m} + \alpha_i^m \alpha_{i-j}^m \delta^m L - \varepsilon^m \alpha_{i-j}^m L_m) \cdot L_m^{j} \bigr) = \sum_t a_t (\iota_t)_*D_{t,j} \in \CH^{j+1}(X')_\bbR \]
+    is represented by an effective cycle, where $\iota_t : W_t \to X'$ is the natural inclusion.
+    Intersecting with $L_{(n+2)m}^{i-j-1} \cdot L^{d-i}$, we get
+    \begin{equation}\label{eq:inequality_from_condition_I_for_infinite_n_in_estimation_of_dynamical_degrees}
+      L_{(n+2)m}^{i-j} \cdot L_{(n+1)m}^j \cdot L^{d-1} + \alpha_{i}^m \alpha_{i-j}^m \delta^m L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j} \cdot L_{nm} \cdot L^{d-i} \geq \varepsilon^m \alpha_{i-j}^m L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j+1} \cdot L^{d-i}.
+    \end{equation}
+
 
     \begin{step}
-      Show the inequality \eqref{eq:recursive_inequality_in_estimation_of_dynamical_degrees} of $\deg_i f^{nm}$.
+      Show \cref{eq:main_inequality_in_step2_in_estimation_of_dynamical_degrees} of $\deg_i f^{nm}$.
     \end{step}
 
-    Hence we get 
-    % \[ \alpha_i^{nm} \alpha_{j+1}^{nm} L^{j}_{(2+n)m} \cdot L^{k}_{(1+n)m} \cdot L_{mn} \cdot L^{d-i} > \varepsilon^{nm} \alpha_{j+1}^{nm} L^{j+1}_{(2+n)m}L^{k}_{(n+1)m} L^{d-i} - L^{j}_{(2+n)m}L^{k+1}_{(n+1)m} L^{d-i}. \]
-    \[ \frac{\alpha_i^m \delta^m L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i}}{\beta_{j}^m \varepsilon^{(j+1)m}} \geq \frac{L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}}{\beta_j^m \varepsilon^{jm}} - \frac{L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i}}{\beta_{j+1}^m \varepsilon^{(j+1)m}}. \]
-    For the left hand side, by \Yang{} proposition, we have
-    \[ L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j-1} \cdot L_{nm} \cdot L^{d-i} \leq C \cdot \deg_j(f^{m}) \cdot \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}). \]
-    Hence we can write the above inequality as
-    \[ \frac{L_{(n+2)m}^{j} \cdot L_{(n+1)m}^{i-j} \cdot L^{d-i}}{\beta_j^m \varepsilon^{jm}} - \frac{L_{(n+2)m}^{j+1} \cdot L_{(n+1)m}^{i-j-1} \cdot L^{d-i}}{\beta_{j+1}^m \varepsilon^{(j+1)m}}
-    \leq
-    C \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot\frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}). \]
-    Summing over $j = 0, 1, \ldots, i-1$, we get
-    \begin{equation}\label{eq:recursive_inequality_in_estimation_of_dynamical_degrees}
-      L_{(n+1)m}^i \cdot L^{d-i} -  \frac{L_{(n+2)m}^{i} \cdot L^{d-i}}{\beta_i^m \varepsilon^{im}}  \leq C \cdot \frac{\delta^m}{\varepsilon^{m}} \cdot \sum_{j=0}^{i-1} \frac{\deg_j(f^{m})}{\varepsilon^{jm}\beta_j^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}).
+    Divide \cref{eq:inequality_from_condition_I_for_infinite_n_in_estimation_of_dynamical_degrees} by $\varepsilon^{(i-j)m} \beta_{i-j}^m$, we get
+    \[
+      \frac{L_{(n+2)m}^{i-j} \cdot L_{(n+1)m}^j \cdot L^{d-1}}{\varepsilon^{(i-j)m} \beta_{i-j}^m} + \frac{\alpha_{i}^m \delta^m L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j} \cdot L_{nm} \cdot L^{d-i}}{\varepsilon^{(i-j)m} \beta_{i-j-1}^m} \geq \frac{L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j+1} \cdot L^{d-i}}{\varepsilon^{(i-j-1)m} \beta_{i-j-1}^m}.
+    \]
+    By \cref{prop:estimation_of_mixed_degrees}, we have
+    \[ L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j} \cdot L_{nm} \cdot L^{d-i} \leq C_{\mix} \cdot \deg_{i-j-1}(f^{m}) \cdot \deg_{i-1}(f^{m}) \cdot \deg_i(f^{nm}). \]
+    Then the above inequality can be rewritten as
+    \begin{equation}\label{eq:inequality_in_estimation_of_dynamical_degrees_define_Theta}
+      \begin{aligned}
+        \frac{L_{(n+2)m}^{i-j} \cdot L_{(n+1)m}^j \cdot L^{d-1}}{\varepsilon^{(i-j)m} \beta_{i-j}^m} - &\frac{L_{(n+2)m}^{i-j-1} \cdot L_{(n+1)m}^{j+1} \cdot L^{d-i}}{\varepsilon^{(i-j-1)m} \beta_{i-j-1}^m} \\
+        & \geq - \left( C_{\mix} \cdot \delta^m \cdot \frac{\deg_{i-j-1}(f^{m}) }{\varepsilon^{(i-j)m} \beta_{i-j-1}^m} \cdot \alpha_i^m \deg_{i-1}(f^{m}) \right) \cdot \deg_i(f^{nm}).
+      \end{aligned}
     \end{equation}
-    Using $\Theta(\frakA; i)_m$ and $\deg_i(f^{nm})$, we can rewrite the above inequality as
+
+    Summing over $j = 0, 1, \ldots, i-1$, we get
+    \[ \frac{L_{(n+2)m}^i \cdot L^{d-i}}{\varepsilon^{im} \beta_i^m} -  (L_{(n+1)m}^{i} \cdot L^{d-i}) \geq - \Theta(\frakA; i)_m \cdot \deg_i(f^{nm}). \]
+    That is,
     \begin{equation}\label{eq:main_inequality_in_step2_in_estimation_of_dynamical_degrees}
-      \deg_i f^{(n+2)m} +  \Theta(\frakA; i)_m (\beta_i\varepsilon^i)^m \deg_i f^{nm} \geq (\beta_i\varepsilon^i)^m \deg_i f^{(n+1)m}.
+      \deg_i f^{(n+2)m} - \varepsilon^{im} \beta_i^m \deg_i f^{(n+1)m} + \varepsilon^{im} \beta_i^m \Theta(\frakA; i)_m \cdot \deg_i(f^{nm}) \geq 0. 
     \end{equation}
     
+
     \begin{step}
-      Finish the proof by \Yang{}.
+      Finish the proof by \cref{lemma:recursive_inequality_implies_exponential_growth}.
     \end{step}
 
-    \Yang{}
-
+    The condition $J(\frakA,i,m)$ implies that
+    \[ \alert{\deg_i f^{(n+2)m}} + \left(\varepsilon^{2im} \beta_i^m \cdot \varepsilon^{-mi} \Theta(\frakA; i)_m\right) \cdot \alert{\deg_i(f^{nm})} \geq (\varepsilon^{2im} \beta_i^m + \varepsilon^{-mi} \Theta(\frakA; i)_m) \cdot \alert{\deg_i f^{(n+1)m}}. \]
+    While the condition $K(\frakA,i,m)$ gives the initial condition $\deg_i f^{2m} > \varepsilon^{-mi} \Theta(\frakA; i)_m \cdot \deg_i(f^{m})$.
+    Then by \cref{lemma:recursive_inequality_implies_exponential_growth}, we have $\deg_i f^{nm} \succcurlyeq_e (\varepsilon^{2im} \beta_i^m)^n$.
+    Hence $\lambda_i \geq \varepsilon^{2i} \beta_i$.
   \end{proof}
 
-
-
-  \begin{lemma}
+  
+  \begin{theorem}\label{thm:lambda_i_satisfy_conditions_IJK}
     Suppose that $\mu_i > \mu_{i+1}$.
-    For all $\varepsilon_0 \in (0, 1)$, there exists $\varepsilon \in (\varepsilon_0, 1)$, $\delta \in (0, 1)$ and $m \geq 1$ such that condition $I(\frakA,i,m)$ holds for $\frakA = (\mu_1, \ldots, \mu_d; \delta, \varepsilon)$.
-    \Yang{}
+    For every $\varepsilon_0 \in (0, 1)$, there exists $\delta \in (0, 1)$ and $\varepsilon \in (\varepsilon_0, 1)$ such that for every sufficiently large $m$, conditions $I(\frakA,i,m)$, $J(\frakA,i,m)$ and $K(\frakA,i,m)$ hold for $\frakA = (\mu_1, \ldots, \mu_d; \delta, \varepsilon)$.
+  \end{theorem}
+  \begin{proof}
+    Choose $\delta \in (0, 1)$ such that $\delta \mu_i > \mu_{i+1}$ and $\varepsilon \in (\varepsilon_0, 1) \cap (\delta^{1/3d}, 1)$.
+
+    By \cref{lem:growth_of_sigma_L_m}, there exists $m_1 > 0$ such that for every $m \geq m_1$, we have $\Sigma(\mu_i \mu_{i-j} \delta; L_m^j)_m > \varepsilon^m \mu_{i-j}^m$ for every $j = 0, 1, \ldots, i-1$.
+    Hence condition $I(\frakA,i,m)$ holds for every $m \geq m_1$.
+
+    For condition $J(\frakA,i,m)$, we have
+    \begin{align*}
+      \varepsilon^{-mi}\Theta(\frakA; i)_m + \lambda_i^m \varepsilon^{2mi} & \asymp_e \varepsilon^{-2mi} \cdot \delta^m \cdot \lambda_i^m + \varepsilon^{2mi} \lambda_i^m \\
+      & \alert{\prec_e} \varepsilon^{3dm-2im} \cdot \lambda_i^m + \varepsilon^{mi} \lambda_i^m \\
+      & \preccurlyeq_e \varepsilon^{2mi} \varepsilon^{mi} \lambda_i^m.
+    \end{align*}
+    Then there exists $m_2 > 0$ such that for every $m \geq m_2$, the condition $J(\frakA,i,m)$ holds.
+
+    For condition $K(\frakA,i,m)$, we have
+    \begin{align*}
+      \deg_i(f^{2m}) \asymp_e \lambda_i^{2m} \alert{\succ_e} \varepsilon^{m} \cdot \lambda_i^{2m} \succcurlyeq_e \varepsilon^{3dm-2im} \cdot \lambda_i^m \cdot \lambda_i^m \succcurlyeq_e \varepsilon^{-mi} \Theta(\frakA; i)_m \cdot \deg_i(f^{m}).
+    \end{align*}
+    Hence there exists $m_3 > 0$ such that for every $m \geq m_3$, the condition $K(\frakA,i,m)$ holds.
+
+    Then for every $m \geq \max\{m_1, m_2, m_3\}$, conditions $I(\frakA,i,m)$, $J(\frakA,i,m)$ and $K(\frakA,i,m)$ hold.
+  \end{proof}
+
+  \begin{lemma}\label{lem:growth_of_sigma_L_m}
+    Suppose that $\mu_i > \mu_{i+1}$.
+    The for every $\delta \in (0, 1)$ with $\delta \mu_i > \mu_{i+1}$, we have 
+    \[ \Sigma(\mu_i \mu_{i-j} \delta; L_m^j)_m \asymp_e \mu_i^m \quad \text{ for every } j = 0, 1, \ldots, i-1. \]
   \end{lemma}
   \begin{proof}
-    \Yang{}
-  \end{proof}
+    Similar to the proof of \cref{lemma:estimation_of_Sigma}.
+    We have 
+    \begin{align*}
+      & M(\mu_i \mu_{i-j} \delta)_m^{d-j} \cdot L_m^{j} \\
+      = & \sum_{k=0}^{d-j} \binom{d-j}{k} L_{2m}^{k} \cdot (\mu_{i-j}^m \mu_i^m \delta^m L)^{d-j-k} \cdot L_m^{j} \\
+      \asymp_e & \sum_{k=0}^{d-j} \mu_1^{2m} \cdots \mu_k^{2m} \cdot \mu_{k+1}^m \cdots \mu_{k+j}^m \cdot \mu_{i-j}^{m(d-j-k)} \mu_i^{m(d-j-k)} \delta^{m(d-j-k)}.
+    \end{align*}
+    Set
+    \[ a_k := \mu_1^2 \cdots \mu_k^2 \cdot \mu_{k+1} \cdots \mu_{k+j} \cdot \mu_i^{d-j-k} \mu_{i-j}^{d-j-k} \delta^{d-j-k}. \]
+    Then, by the choice of $\delta$, we have
+    \begin{equation}\label{eq:ratio_of_a_k_in_estimation_of_Sigma_and_setting_of_delta}
+      \frac{a_{k+1}}{a_k} = \frac{\mu_{k+1} \cdot \mu_{k+1+j}}{\mu_{i-j} \cdot \mu_i} \cdot \delta^{-1} \begin{cases}
+        > 1, & k \leq i-j-1, \\
+        < 1, & k \geq i-j .
+      \end{cases}
+    \end{equation}
+    Hence the maximum of $a_k$'s is attained at $k = i-j$.
+    Then 
+    \begin{equation}\label{eq:estimation_of_numerator_in_Sigma_L_m_in_lemma}
+      M(\mu_i \mu_{i-j} \delta)_m^{d-j} \cdot L_m^{j} \asymp_e \mu_1^{2m} \cdots \mu_{i-j}^{2m} \cdot \mu_{i-j+1}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}.
+    \end{equation}
 
+    Similarly, we have
+    \begin{align*}
+      M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1} & \asymp_e \sum_{k=0}^{d-j-1} \mu_1^{2m} \cdots \mu_k^{2m} \cdot \mu_{k+1}^m \cdots \mu_{k+j+1}^m \cdot \mu_{i-j}^{m(d-j-1-k)} \mu_i^{m(d-j-1-k)} \delta^{m(d-j-1-k)}.
+    \end{align*}
+    Set 
+    \[ b_k := \mu_1^2 \cdots \mu_k^2 \cdot \mu_{k+1} \cdots \mu_{k+j+1} \cdot \mu_i^{d-j-1-k} \mu_{i-j}^{d-j-1-k} \delta^{d-j-1-k}. \]
+    Then we have
+    \begin{equation}\label{eq:ratio_of_b_k_in_estimation_of_Sigma_and_setting_of_delta}
+      \frac{b_{k+1}}{b_k} = \frac{\mu_{k+1} \cdot \mu_{k+1+j+1}}{\mu_{i-j} \cdot \mu_i} \cdot \delta^{-1} 
+      \begin{dcases}
+      \geq \dfrac{\mu_{k+1+1} \cdot \mu_{k+1+j+1}}{\mu_{i-j} \cdot \mu_i} \cdot \delta^{-1} = \frac{a_{k+2}}{a_{k+1}} > 1, & k < i-j-1; \\
+      = \dfrac{\mu_{i-j} \cdot \mu_{i+1}}{\mu_{i-j} \cdot \mu_i} \cdot \delta^{-1} < 1, & k = i-j-1; \\
+      \leq \dfrac{\mu_{k+1} \cdot \mu_{k+1+j}}{\mu_{i-j} \cdot \mu_i} \cdot \delta^{-1} = \frac{a_{k+1}}{a_k} < 1, & k \geq i-j.
+    \end{dcases}
+    \end{equation}
+    Hence the maximum of $b_k$'s is attained at $k = i-j-1$.
+    Then
+    \begin{equation}\label{eq:estimation_of_denominator_in_Sigma_L_m_in_lemma}
+      M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1} \asymp_e \mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \mu_{i-j}^m \cdots \mu_{i-1}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}.
+    \end{equation}
+
+    Combining \cref{eq:estimation_of_numerator_in_Sigma_L_m_in_lemma,eq:estimation_of_denominator_in_Sigma_L_m_in_lemma}, we get 
+    \begin{align*}
+      \Sigma(\mu_i \mu_{i-j} \delta; L_m^j)_m & = \frac{M(\mu_i \mu_{i-j} \delta)_m^{d-j} \cdot L_m^{j}}{M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1}} \\
+      & \asymp_e \frac{\mu_1^{2m} \cdots \mu_{i-j}^{2m} \cdot \mu_{i-j+1}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}}{\mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \mu_{i-j}^m \cdots \mu_{i-1}^m \cdot \mu_i^{m(d-i)} \mu_{i-j-1}^{m(d-i)} \delta^{m(d-i)}} \\
+      & = \mu_{i-j}^{m}.
+    \end{align*}
+    We are done.
+  \end{proof}
+  \begin{remark}
+    The \cref{eq:ratio_of_a_k_in_estimation_of_Sigma_and_setting_of_delta,eq:ratio_of_b_k_in_estimation_of_Sigma_and_setting_of_delta} are the places where we use the condition $\delta \mu_i > \mu_{i+1}$.
+  \end{remark}
 
 
 \subsection[Lower bounds for the first dynamical degree on surfaces]{Lower bounds for $\lambda_1$ on surfaces}
 
-  \Yang{}
+  \Yang{To be written.}
 
 
 
