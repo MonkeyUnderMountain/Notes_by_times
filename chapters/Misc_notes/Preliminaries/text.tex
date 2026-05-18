@@ -35,12 +35,39 @@
   The fundamental method to study a rational map is considering its graph.
   Let $\Gamma_f \subset X \times Y$ be the scheme-theoretic image of $(\id_U, f): U \to X \times Y$, where $U \subset X$ is the dense open subset where $f$ is defined.
   This is equivalent to taking the closure of set-theoretic image of $(\id_U, f)$ in $X \times Y$.
+  
+  \begin{definition}
+    Let $X$ be a variety over $\kk$ and $f: X \dashrightarrow X$ be a dominant rational map.
+    We say that a point $x \in X(\kkk)$ is a \emph{periodic point of $f$ (of period $r$)} if $f$ is defined at the orbit of $x$ and $f^r(x) = x$ for some $r > 0$.
+
+    We say that a scheme-theoretic point $\xi \in X$ is a periodic point (of period $r$) of $f$ if it is the image of a periodic point (of period $r$) of $f$ in $X(\kkk)$.
+
+    We denote by $\Per_r(f)$ the set of periodic points of $f$ of period $r$ and by $\Per(f) = \bigcup_{r > 0} \Per_r(f)$ the set of periodic points of $f$.
+
+    A periodic point $x \in X(\kkk)$ of $f$ is called \emph{isolated} if it(or its image) is isolated in the $\Per_r(f)$ for its some period $r$.
+  \end{definition}
+
+  \begin{proposition}
+    Let $X$ be a variety over $\kk$ and $f: X \dashrightarrow X$ be a dominant rational map.
+    Then $\xi \in \Per_r(f)$ if and only if $f$ is defined at $\xi$ and $\xi$ lies in set-theoretic image of $\pi_1: \Gamma_{f^r} \cap \Delta_X \to X$ for some $r > 0$, where $\Gamma_{f^r}$ is the graph of $f^r$ and $\Delta_X$ is the diagonal of $X \times X$.
+    % \Yang{}
+  \end{proposition}
+  \begin{proof}
+    We have $\Per_r(f) \subset \pi_1(\Gamma_{f^r} \cap \Delta_X)$ since if $\xi \in \Per_r(f)$, then there exists $x \in X(\kkk)$ such that $\xi$ is the image of $x$ in $X$ and $f^r(x) = x$.
+    Hence $(x,x) \in (\Gamma_{f^r} \cap \Delta_X)(\kkk)$ and $\xi$ is the image of $\pi_1(x,x) \in \pi_1(\Gamma_{f^r} \cap \Delta_X)(\kkk)$.
+
+    Conversely, if $\xi \in \pi_1(\Gamma_{f^r} \cap \Delta_X)$, then there exists a scheme-theoretic point $\zeta \in \Gamma_{f^r} \cap \Delta_X$ such that $\pi_1(\zeta) = \xi$.
+    Pick any $y \in \Gamma_{f^r} \cap \Delta_X(\kkk)$ with image $\zeta$ in $\Gamma_{f^r} \cap \Delta_X$, then $\pi_1(y)$ has image $\xi$ in $X$.
+    Since $f$ is defined at $\xi$, we have $\pi_1(y)$ is a periodic point of $f$ of period $r$.
+    Hence $\xi \in \Per_r(f)$.
+    % \Yang{}
+  \end{proof}
 
   The graph $\Gamma_f$ is a variety birational to $X$ via $\pi_1$ and $f$ can be recovered as the composition $\pi_2 \circ \pi_1^{-1}$, where $\pi_i: \Gamma_f \to X$ is the restriction of the $i$-th projection $X \times Y \to X$.
   Using the graph, we can define the pullback and pushforward of divisors by $f$ as follows:
   \[ f^*D := \pi_{1*} \pi_2^* D, \quad f_*D := \pi_{2*} \pi_1^* D. \]
   However, not like morphisms, the pullback and pushforward by rational maps are not functorial in general, which causes some technical difficulties in the study of rational maps.
-  We will fix this issue by considering $\bfb$-cycles on birational models in Section 2.2.
+  We will fix this issue by considering $\bfb$-cycles on birational models in \cref{subsec:intersection_product_on_birational_models}.
 
   \begin{example}
     Consider the rational map $f: \bbP^2 \dashrightarrow \bbP^2$ defined by $[x:y:z] \mapsto [1/x:1/y:1/z] = [yz:xz:xy]$.
@@ -74,7 +101,7 @@
     Let $S$ be a noetherian integral scheme.
     A \emph{family of dominant rational maps} over $S$ is the following data:
     \begin{itemize}
-      \item a scheme $X$ projective and flat over $S$ such that every fiber $X_s$ with $s \in S$ is a variety over $\kappa(s)$;
+      \item a scheme $X$ of finite type and flat over $S$ such that every fiber $X_s$ with $s \in S$ is a variety over $\kappa(s)$;
       \item an open dense subset $U \subseteq X$ and a morphism $f: U \to X$ over $S$ such that for every $s \in S$, the restriction of $f$ to the fiber $U_s$ gives a dominant rational map on $X_s$.
     \end{itemize}
     We denote by $f: X \dashrightarrow X$ the family of dominant rational maps over $S$.
@@ -132,7 +159,7 @@
 
 
 
-\subsection{Intersection product on birational models}
+\subsection{Intersection product on birational models}\label{subsec:intersection_product_on_birational_models}
 
   Let $X$ be a variety over $\kk$.
   All birational models of $X$ form a directed system, we denote by $\frakX$.
@@ -209,13 +236,13 @@
 
 \subsection{Siu's inequality and dynamical degrees}
 
-  First we list some form of Siu's inequality which will be used in the proof of the main theorem also in the proof of the properties of dynamical degrees.
+  First we list some forms of Siu's inequality which will be used in the proof of the main theorem also in the proof of the properties of dynamical degrees.
 
   Then original version of Siu's inequality is the following.
-  \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.15]{Laz04a}}]\label{thm:Siu_inequality}
-    Let $X$ be a projective variety of dimension $d$ and $L,M$ be nef divisors on $X$.
-    Suppose that $M$ is big, then 
-    \[ M - \varepsilon \frac{M^d}{L \cdot M^{d-1}} L \]
+  \begin{theorem}[{Siu's criterion, cf. \cite[Theorem 2.2.15]{Laz04a}}]\label{thm:Siu_inequality}
+    Let $X$ be a projective variety of dimension $d$ and $L,M$ be ample divisors on $X$.
+    Then 
+    \[ M - \varepsilon \frac{1}{d} \frac{M^d}{L \cdot M^{d-1}} L \]
     is big for every $\varepsilon \in (0,1)$. 
     %  \Yang{}
   \end{theorem}

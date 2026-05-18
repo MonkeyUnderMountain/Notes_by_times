@@ -87,7 +87,7 @@
       \[ E(\bfm) \asymp_e 1 \quad \text{ if } \bfm = (k_1m, \ldots, k_sm) \text{ for some } k_i \in \bbZ_{>0} \text{ and } m \to \infty. \]
     \end{itemize}
     In particular, if $\bfm = (k_1m, \ldots, k_dm)$ for some $k_1 \geq k_2 \geq \cdots \geq k_d \in \bbZ_{>0}$, then we have
-    \[ (L_{m_1} \cdot L_{m_2} \cdots L_{m_s}) \asymp_e \prod_i \lambda_{i}^{\Delta m_i} = \mu_1^{m_1} \cdot \mu_2^{m_2} \cdots \mu_d^{m_d} \quad \text{ as } m \to \infty. \]
+    \[ (L_{m_1} \cdot L_{m_2} \cdots L_{m_d}) \asymp_e \prod_i \lambda_{i}^{\Delta m_i} = \mu_1^{m_1} \cdot \mu_2^{m_2} \cdots \mu_d^{m_d} \quad \text{ as } m \to \infty. \]
   \end{proposition}
   \begin{proof}
     \hspace{1em}
@@ -349,13 +349,13 @@
     Hence the maximum of $b_k$'s is attained at $k = i-j-1$.
     Then
     \begin{equation}\label{eq:estimation_of_denominator_in_Sigma_L_m_in_lemma}
-      M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1} \asymp_e \mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \mu_{i-j}^m \cdots \mu_{i-1}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}.
+      M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1} \asymp_e \mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \mu_{i-j}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}.
     \end{equation}
 
     Combining \cref{eq:estimation_of_numerator_in_Sigma_L_m_in_lemma,eq:estimation_of_denominator_in_Sigma_L_m_in_lemma}, we get 
     \begin{align*}
       \Sigma(\mu_i \mu_{i-j} \delta; L_m^j)_m & = \frac{M(\mu_i \mu_{i-j} \delta)_m^{d-j} \cdot L_m^{j}}{M(\mu_i \mu_{i-j} \delta)_m^{d-j-1} \cdot L_m^{j+1}} \\
-      & \asymp_e \frac{\mu_1^{2m} \cdots \mu_{i-j}^{2m} \cdot \mu_{i-j+1}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}}{\mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \mu_{i-j}^m \cdots \mu_{i-1}^m \cdot \mu_i^{m(d-i)} \mu_{i-j-1}^{m(d-i)} \delta^{m(d-i)}} \\
+      & \asymp_e \frac{\mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \alert{\mu_{i-j}^{2m}} \cdot \mu_{i-j+1}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}}{\mu_1^{2m} \cdots \mu_{i-j-1}^{2m} \cdot \alert{\mu_{i-j}^m} \mu_{i-j+1}^m \cdots \mu_{i}^m \cdot \mu_i^{m(d-i)} \mu_{i-j}^{m(d-i)} \delta^{m(d-i)}} \\
       & = \mu_{i-j}^{m}.
     \end{align*}
     We are done.

@@ -92,9 +92,18 @@
 
 \subsection{For cohomologically hyperbolic maps}
 
+  Given a dominant rational self-map $f: X \dashrightarrow X$ and $U \subset X$, we denoted by
+  \[ \Per_U(f) := \{x \in U: f^r(x) = x \text{ for some } r > 0 \text{ and } f^n(x) \in U \text{ for all } n \geq 0\} \]
+  the set of periodic points of $f$ whose orbits are contained in $U$.
+
+  \begin{remark}
+    The reason to introduce this notation is that in the proof of \cref{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}, we need \cref{eq:inequality_for_curve_C_in_proof_of_isolated_periodic_points_for_cohomologically_hyperbolic_maps} to hold for all $n \geq 0$.
+    If we only consider $\Per(f) \cap U$, then we can only get \cref{eq:inequality_for_curve_C_in_proof_of_isolated_periodic_points_for_cohomologically_hyperbolic_maps} for $n$ being a period of $C$, which is not enough to get a contradiction.
+  \end{remark}
+
   \begin{proposition}\label{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}
     Let $X$ be a variety and $f: X \dashrightarrow X$ be a rational self-map.
-    Suppose that $f$ is cohomologically hyperbolic, then there exists an open dense subset $U$ of $X$ such that every periodic point of $f$ in $U$ is isolated.
+    Suppose that $f$ is cohomologically hyperbolic, then there exists an open dense subset $U$ of $X$ such that every periodic point in $\Per_U(f)$ is isolated.
     % \Yang{}
   \end{proposition}
   \begin{proof}
@@ -113,38 +122,43 @@
 
     Let $U = X \setminus Z$ be the complement of $Z$ in $X$, which is an open dense subset of $X$.
     We claim that every periodic point of $f$ in $U$ is isolated.
-    Otherwise, there exists a curve $C$ intersecting $U$ such that $f^r|_C = \id_C$ for some $r > 0$.
-    After iterating $f$, we may assume that $f(C) = C$.
-    Since $f^n(C) = C$ intersects $U$ for all $n > 0$, we have 
-    \[ (f^n)^*M \cdot C = M \cdot f^n_*C \geq 0. \]
+    Otherwise, there exists a curve $C$ such that $f^n(C) \cap U \neq \emptyset$ for all $n \geq 0$ and $f^r|_C = \id_C$ for some $r > 0$.
+    Since $f^{n}(C)$ intersects $U$ for all $n \geq 0$, we have 
+    \begin{equation}\label{eq:inequality_for_curve_C_in_proof_of_isolated_periodic_points_for_cohomologically_hyperbolic_maps}
+      (f^{n m})^*M \cdot C = M \cdot f^{n m}_*C \geq 0, \quad \forall n \geq 0.
+    \end{equation}
     Then we have 
-    \[ (f^{(n+2)m})^*L \cdot C - (a^m + b^m) (f^{(n+1)m})^*L \cdot C + a^m b^m (f^{nm})^*L \cdot C \geq 0. \]
-    Let $x_n = (f^{nm})^*L \cdot C$, then $x_n$ satisfies the linear recurrence relation
+    \[ (f^{(n+2)m})^*L \cdot C - (a^m + b^m) (f^{(n +1)m})^*L \cdot C + a^m b^m (f^{n m})^*L \cdot C \geq 0. \]
+    Let $x_{n} = (f^{nm})^*L \cdot C$, then $x_n$ satisfies the linear recurrence relation
     \[ x_{n+2} - (a^m + b^m) x_{n+1} + a^m b^m x_n \geq 0. \]
-    Since $b<1$, we have $x_1 - b x_0 = (f^m)^*L \cdot C - b L \cdot C = L \cdot f^m_*C - b L \cdot C = (1-b) L \cdot C > 0$.
+    Since $b<1$ and $x_n = (f^{nm})^*L \cdot C$ takes values in a finite set for $n \geq 0$, there exists $n_0$ such that $x_{n_0+1} > b^m x_{n_0}$.
     Hence $(f^{nm})^*L \cdot C = x_n >  a^{nm}$ for $n \gg 0$ by \cref{lemma:recursive_inequality_implies_exponential_growth}.
-    However, we have $(f^{nm})^*L \cdot C = L \cdot f^{nm}_*C = L \cdot C$ since $f^{nm}_*C = C$, which is a contradiction.
+    In particular, $x_n = L \cdot (f^{nm})_*C$ is unbounded as $n \to \infty$, which contradicts to the fact that $f^r|_C = \id_C$.
     % \Yang{}
   \end{proof}
 
   \begin{theorem}\label{thm:density_of_periodic_points_for_cohomologically_hyperbolic_maps}
     Let $X$ be a variety and $f: X \dashrightarrow X$ be a dominant rational self-map.
-    If $f$ is cohomologically hyperbolic, then the set of periodic points of $f$ is Zariski dense in $X$.
+    If $f$ is cohomologically hyperbolic, then for every dense open subset $U$ of $X$, $\Per_U(f)$ is Zariski dense in $X$.
+    In particular, $\Per(f)$ is Zariski dense in $X$.
   \end{theorem}
   \begin{proof}
-    We may assume that $X$ is over algebraically closure $\kkk$ of a finitely generated field.
-    When $\kkk = \overline{\bbF_p}$, this is \cref{lem:density_of_periodic_points_over_finite_fields}.
-    For general case, by spreading out, we may assume that there is a Dedekind domain $R$ with $\overline{\Frac R} = \kkk$ and a family $(\pi: \calX \to \Spec R, \calf:\calX \dashrightarrow \calX)$ of dominant rational self-maps such that its geometric generic fiber is $(X,f)$.
+    We may assume that $X = U$ is over a finitely generated field $\kk$.
+    Hence we only need to show that $\Per(f)$ is Zariski dense in $X$.
+    The cost is that we can assume that $X$ is projective.
+
+    When $\overline{\kk} = \overline{\bbF_p}$, this is \cref{lem:density_of_periodic_points_over_finite_fields}.
+    For general case, by spreading out, we may assume that there is a Dedekind domain $R$ with infinite many closed points and $\Frac R = \kk$ and a family $(\pi: \calX \to \Spec R, \calf:\calX \dashrightarrow \calX)$ of dominant rational self-maps such that its geometric generic fiber is $(X,f)$.
     By \cref{mainthm:semi-continuity}, after shrinking $\Spec R$ if necessary, we may assume that $(\calX_s, \calf_s)$ is cohomologically hyperbolic for every closed point $s \in \Spec R$.
     Fix a closed point $s \in \Spec R$ and replace $R$ by the localization of $R$ at $s$, we may assume that $\Spec R$ is the spectrum of a discrete valuation ring with special point $s$ and generic point $\eta$.
 
-    By induction, we may assume that the set of periodic points of $\calf_s$ is Zariski dense in $\calX_s$.
-    Since $\calf_s$ is cohomologically hyperbolic, there exists an open dense subset $U$ of $\calX_s$ such that every periodic point of $\calf_s$ in $U$ is isolated and $\calX_s$ is regular at that point by \cref{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}.
+    By induction, we may assume that the theorem holds for $(\calX_s, \calf_s)$.
+    Since $\calf_s$ is cohomologically hyperbolic, there exists an open dense subset $U$ of $\calX_s$ such that every periodic point in $\Per_U(\calf_s)$ is isolated and $\calX_s$ is regular at that point by \cref{prop:isolated_periodic_points_for_cohomologically_hyperbolic_maps}.
     Suppose the contrary that the set of periodic points of $\calf_\eta$ lies in a proper closed subset $Z_\eta$ of $\calX_\eta$.
     Let $\calZ$ be the closure of $Z_\eta$ in $\calX$, then $\calZ$ is a proper closed subset of $\calX$.
     Hence $\dim \calZ_s < \dim \calZ < \dim \calX$ and then $\dim \calZ_s \leq \dim \calX - 2$.
     Hence $\calZ_s$ is a proper closed subset of $\calX_s$.
-    Choose a periodic point $x_s$ of $\calf_s$ in $U$ such that $x_s \notin \calZ_s$ and lift $x_s$ to a periodic point $x_\eta$ of $\calf_\eta$ in $\calX_\eta$ by \cref{lem:lifting_isolated_periodic_points}.
+    Choose a periodic point $x_s \in \Per_U(\calf_s)$ such that $x_s \notin \calZ_s$ and lift $x_s$ to a periodic point $x_\eta$ of $\calf_\eta$ in $\calX_\eta$ by \cref{lem:lifting_isolated_periodic_points}.
     Then $x_\eta$ is a periodic point of $\calf_\eta$ and the closure of $x_\eta$ in $\calX$ contains $x_s$, which is not contained in $\calZ$.
     Hence $x_\eta$ is not contained in $Z_\eta$, which is a contradiction.
   \end{proof}
