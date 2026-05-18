@@ -74,7 +74,7 @@
     Let $S$ be a noetherian integral scheme.
     A \emph{family of dominant rational maps} over $S$ is the following data:
     \begin{itemize}
-      \item a scheme $X$ of finite type and flat over $S$ such that every fiber $X_s$ with $s \in S$ is a variety over $\kappa(s)$;
+      \item a scheme $X$ projective and flat over $S$ such that every fiber $X_s$ with $s \in S$ is a variety over $\kappa(s)$;
       \item an open dense subset $U \subseteq X$ and a morphism $f: U \to X$ over $S$ such that for every $s \in S$, the restriction of $f$ to the fiber $U_s$ gives a dominant rational map on $X_s$.
     \end{itemize}
     We denote by $f: X \dashrightarrow X$ the family of dominant rational maps over $S$.
@@ -103,12 +103,12 @@
 
   \begin{remark}
     In general, we have no equality $(\Gamma_f)_s = \Gamma_{f_s}$.
-    For an example, see \Yang{}
+    For an example, see \cref{eg:non-continuity-of-mixed-degrees}
   \end{remark}
 
   The following lemma is well-known.
   We will use it for lifting isolated periodic points from special fibers to the generic fiber.
-  \begin{lemma}
+  \begin{lemma}\label{lem:intersection_dimension_estimate}
     Let $X$ be a noetherian scheme and $Y \subset X$ be a regular immersion.
     For any subscheme $Z \subset X$ and $x \in Y \cap Z$ (if $Y \cap Z \neq \emptyset$), we have 
     \[ \dim_x (Y \cap Z) \geq \dim_x Y + \dim_x Z - \dim_x X. \]
@@ -122,7 +122,7 @@
   \end{proof}
   
   We may need the following special case of the flattening theorem of Gruson-Raynaud.
-  \begin{theorem}[{Gruson-Raynaud, ref. \cite[Tag 0815]{Stacks}}]
+  \begin{theorem}[{Gruson-Raynaud, ref. \cite[Tag 0815]{Stacks}}]\label{thm:Gruson-Raynaud_flattening}
     Let $S$ be a noetherian integral scheme and $X,Y$ of finite type and separated scheme over $S$.
     Let $f: X \to Y$ be a morphism over $S$ and $U \subseteq Y$ be an open subset such that $f^{-1}(U) \to U$ is flat.
     Then there exists a blowup $\pi: Y' \to Y$ with center in $Y \setminus U$ such that the induced morphism $f': X' \to Y'$ is flat, where $X'$ is the Zariski closure of $f^{-1}(U) \times_U \pi^{-1}(U)$ in $X \times_Y Y'$.
@@ -212,7 +212,7 @@
   First we list some form of Siu's inequality which will be used in the proof of the main theorem also in the proof of the properties of dynamical degrees.
 
   Then original version of Siu's inequality is the following.
-  \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.15]{Laz04a}}]\label{thm:Siu's_inequality}
+  \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.15]{Laz04a}}]\label{thm:Siu_inequality}
     Let $X$ be a projective variety of dimension $d$ and $L,M$ be nef divisors on $X$.
     Suppose that $M$ is big, then 
     \[ M - \varepsilon \frac{M^d}{L \cdot M^{d-1}} L \]
@@ -223,7 +223,7 @@
   For higher codimensional cocycles, we have the following generalization of Siu's inequality.
   Note that this is a little weaker than the original version of Siu's inequality since bigness is replaced by the weaker condition that the intersection number is positive.
 
-  \begin{theorem}[{Generalized Siu's inequality, ref. \cite{JiangLi2023Siu-inequality}}]
+  \begin{theorem}[{Generalized Siu's inequality, ref. \cite{JiangLi2023Siu-inequality}}]\label{thm:generalized_Siu_inequality}
     Let $X$ be a projective variety of dimension $d$ and $\alpha \in \CH^k(X)$, $\beta \in \CH^{d-k}(X)$ be intersections of nef divisors on $X$ and $H$ a nef divisor on $X$.
     Then we have 
     \[ (\alpha \cdot \beta) \cdot H^{d} \leq \binom{d}{k} (\alpha \cdot H^{d-k}) (\beta \cdot H^{k}). \]
@@ -278,7 +278,7 @@
     \Yang{}
   \end{remark}
 
-  \begin{lemma}
+  \begin{lemma}\label{lem:characterization_of_lower_semi-continuous_functions_on_noetherian_schemes}
     A function $\theta: S \to \bbR$ is lower semi-continuous if and only if the following condition holds: 
     \begin{enumerate}
       \item for every $\eta \in S$ and every specialization $\xi \in \overline{\{\eta\}}$, we have $\theta(\xi) \leq \theta(\eta)$;
@@ -290,7 +290,7 @@
   \end{proof}
 
 
-  \begin{lemma}
+  \begin{lemma}\label{lem:properties_of_lower_semi-continuous_functions_on_noetherian_schemes}
     Let $\theta: S \to \bbR$ be a lower semi-continuous function.
     Then 
     \begin{enumerate}

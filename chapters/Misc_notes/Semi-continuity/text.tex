@@ -49,7 +49,7 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
   \end{proposition}
   \begin{proof}
     Let $\Gamma_{f,\bfm} \subset X \times_S \cdots \times_S X$ be the closure of the image of the rational map $(f^{m_1}, \ldots, f^{m_d}): X \dashrightarrow X \times_S \cdots \times_S X$.
-    By Gruson-Raynaud's flattening theorem (\Yang{}), there exists a blowup $S' \to S$ such that the strict transform $\Gamma'_{f,\bfm}$ of $\Gamma_{f,\bfm}$ is flat over $S'$.
+    By Gruson-Raynaud's flattening theorem (\cref{thm:Gruson-Raynaud_flattening}), there exists a blowup $S' \to S$ such that the strict transform $\Gamma'_{f,\bfm}$ of $\Gamma_{f,\bfm}$ is flat over $S'$.
     Let $X', L', f'$ be the base change of $X, L, f$ along $S' \to S$ respectively.
     For every $s' \in S'$ with image $s \in S$, the date $(X'_{s'}, L'_{s'}, f'_{s'})$ is the base change of $(X_s, L_s, f_s)$.
     Hence the semi-continuity on $S$ follows from the semi-continuity on $S'$.
@@ -72,11 +72,11 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
     \end{align*}
     And since the generic fiber is (geometrically) irreducible, there exists a non-empty open subset $U \subseteq S$ such that for every $s \in U$, we have $(\Gamma_{f,\bfm})_s$ is irreducible and hence equal to $\Gamma_{f_s,\bfm}$.
     Then for every $s \in U$, the above inequalities are equalities.
-    By \Yang{}, we are done.
+    By \cref{lem:properties_of_lower_semi-continuous_functions_on_noetherian_schemes}, we are done.
     % \Yang{}
   \end{proof}
 
-  \begin{example}
+  \begin{example}\label{eg:non-continuity-of-mixed-degrees}
     Let $S = \Spec \bbZ$, $X = \bbP^2_{\bbZ}$, $L = \calO(1)$, and $f: X \dashrightarrow X$ is defined by
     \[ [x:y:z] \mapsto [xz:yz+2xy:z^2]. \]
     Then the function $s \mapsto \deg_1(f_s) = L_s \cdot (f_s^*L_s)$ is not constant on $S$.
@@ -115,8 +115,9 @@ For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X
 
 \subsection[Semi-continuity of dynamical degree]{Semi-continuity of $\lambda_i(f)$}
 
-  \begin{theorem}
-    The function $s \mapsto \lambda_i(f_s)$ is lower semi-continuous on $S$.
+  \begin{theorem}\label{thm:semi-continuity-of-dynamical-degrees}
+    Let $S$ be an integral noetherian scheme, and $f: X \dashrightarrow X$ be a family of dominant rational maps over $S$.
+    Then for every $i$, the function $s \mapsto \lambda_i(f_s)$ is lower semi-continuous on $S$.
   \end{theorem}
   \begin{proof}
     Fix a $\pi$-ample divisor $L$ on $X$.
