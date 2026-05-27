@@ -1,0 +1,150 @@
+\section{The first definition}
+
+\subsection{Setup}
+
+    \begin{definition}\label{def:measure_transformation}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space. 
+        A function \(T: X \to X\) is called a measure transformation if for every measurable set \(A \in \mathcal{B}\), the preimage \(T^{-1}(A)\) is also in \(\mathcal{B}\).
+        \Yang{To be checked}
+    \end{definition}
+
+    \begin{example}\label{eg:measure_preserving_but_not_invertible}
+        Let \(X = [0, 1)\) with the Borel \(\sigma\)-algebra \(\mathcal{B}\) and the Lebesgue measure \(\mu\).
+        Define \(T: X \to X\) by \(T(x) = 2x \mod 1\).
+        Then \(T\) is a measure-preserving transformation but not invertible.
+        Indeed, for any measurable set \(A \in \mathcal{B}\), we have
+        \[
+            \mu(T^{-1}(A)) = \mu\left( \left\{ x \in [0, 1) : 2x \mod 1 \in A \right\} \right) = \frac{1}{2} \mu(A) + \frac{1}{2} \mu(A) = \mu(A).
+        \]
+        However, \(T\) is not invertible since, for example, both \(x = 0.1\) and \(x = 0.6\) map to \(T(x) = 0.2\).
+        \Yang{To be checked}
+    \end{example}
+
+    \begin{definition}\label{def:recurrent}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space and \(T: X \to X\) be a measure transformation.
+        Let \(A \in \mathcal{B}\) be a measurable set.
+        A point \(x \in A\) is called \emph{recurrent} if \(T^n(x) \in A\) for some integer \(n > 0\).
+    \end{definition}
+
+    \begin{theorem}[Poincar\'e Recurrence Theorem]\label{thm:poincare_recurrence_theorem}
+        Let $(X, \mathcal{B}, \mu)$ be a measure space with finite measure $\mu(X) < \infty$, 
+        and let $T: X \to X$ be a measure-preserving transformation, i.e., for all $A \in \mathcal{B}$, $\mu(T^{-1}(A)) = \mu(A)$. 
+        Then for any measurable set $A$ with $\mu(A) > 0$, the almost every point in $A$ is recurrent.
+    \end{theorem}
+
+    Let \((X, \mathcal{B}, \mu)\) be a measure space with finite measure \(\mu(X) < \infty\), and let \(T: X \to X\) be a measure transformation.
+    Let \(E \in \calB\) be a measurable set.
+
+    Given a point \(x \in X\) and given \(N \in \bbN\), for the ratio \(\eta\) the number of these points \(\{n \in 1,...,N: T^n(x) \in A\}\) to \(N+1\), we want to find the limit of \(\eta\) as \(N \to \infty\).
+    \Yang{To be checked}
+
+    Let \(f\) denote the characteristic function of \(E\), i.e.,
+    \[
+        f(x) = \begin{cases}
+            1, & x \in E, \\
+            0, & x \notin E.
+        \end{cases}
+    \]
+    Then the ratio \(\eta_N\) can be expressed as
+    \[
+        \eta_N = \frac{1}{N+1} \sum_{n=0}^{N} f(T^n(x)).
+    \]
+    We are interested in the limit
+    \[   \lim_{N \to \infty} \eta_N = \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} f(T^n(x)). \]
+
+    \Yang{By ``function on X'' I mean a map \(X \to \bbC\). To be checked}
+
+    Let \(f\) be a measurable function on \(X\) and \(T: X \to X\) be a measure transformation.
+    Let \(g:X \to \bbC\) be defined by \(g(x) = f(T(x))\).
+    We usually write \(g = U_f\).
+    More precisely, for every function \(f\) on \(X\), we define \(U_f = f \circ T\).
+    This gives a linear operator \(U: f \mapsto U_f\) on the space of measurable functions on \(X\).
+
+    \begin{proposition}\label{prop:U_isometry_on_L1}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space with finite measure \(\mu(X) < \infty\), and let \(T: X \to X\) be a measure-preserving transformation.
+        Let \
+        \[ L^1(X, \mu) = \{ f: X \to \bbC \mid f \text{ is measurable and } \int_X |f| d\mu < \infty \}. \]
+        Then \(U\) maps \(L^1(X, \mu)\) to itself and is an isometry, 
+        i.e., for every \(f \in L^1(X, \mu)\), we have \(U_f \in L^1(X, \mu)\) and \(\|U_f\|_1 = \|f\|_1\).
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed}
+    \end{proof}
+    
+    More generally, for \(1 \leq p \leq \infty\), let
+    \[ L^p(X, \mu) = \{ f: X \to \bbC \mid f \text{ is measurable and } \|f\|_p < \infty \}, \]
+    where
+    \[
+        \|f\|_p = \begin{cases}
+            \left( \int_X |f|^p d\mu \right)^{1/p}, & 1 \leq p < \infty, \\
+            \text{ess sup}_{x \in X} |f(x)|, & p = \infty.
+        \end{cases}
+    \]
+    Then \(L^p(X, \mu)\) is a Banach space with the norm \(\|\cdot\|_p\).
+    \cref{prop:U_isometry_on_L1} can be generalized to \(L^p\).
+
+    \paragraph{Special case: \(p=2\)}. On \(L^2(X, \mu)\), we can define an inner product by
+    \[ \langle f, g \rangle = \int_X f \overline{g} d\mu. \]
+    Then \(L^2(X, \mu)\) is a Hilbert space with the inner product \(\langle \cdot, \cdot \rangle\).
+
+    \begin{definition}\label{def:unitary_operator}
+        Let \(\calH\) be a Hilbert space.
+        A linear operator \(U: \calH \to \calH\) is called an \emph{isometry} if for every \(x \in \calH\), \(\|Ux\| = \|x\|\).
+        The operator \(U\) is called \emph{unitary} if \(<Ux, Uy> = <x, y>\) for every \(x, y \in \calH\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:unitary_iff_isometry_and_surjective}
+        Let \(U: \calH \to \calH\) be a linear operator on a Hilbert space \(\calH\).
+        Then \(U\) is isometry if and only if \(U^* U = \id_\calH\), where \(U^*\) is the adjoint operator of \(U\).
+        Moreover, \(U\) is unitary if and only if \(U^* U = U U^* = \id_\calH\).
+        In particular, \(U\) is unitary if and only if \(U\) is an isometry and surjective.
+    \end{proposition}
+
+    \begin{proposition}\label{prop:U_is_unitary_on_L2}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space with finite measure \(\mu(X) < \infty\), and let \(T: X \to X\) be a measure-preserving transformation which is also invertible.
+        Then the operator \(U: L^2(X, \mu) \to L^2(X, \mu)\) defined by \(U_f = f \circ T\) is unitary.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed}
+    \end{proof}
+
+    Recall the limit we want to find:
+    \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} f(T^n(x)). \]
+    This can be rewritten as
+    \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} U^n f(x). \]
+    So let us focus on the limit of
+    \[ \frac{1}{N+1} \sum_{n=0}^{N} U^n. \]
+
+    In the case \(\calH = \bbC\), the unitary operator \(U: \bbC \to \bbC\) is just a multiplication by a complex number \(e^{i\theta}\) with \(\theta \in \bbR\).
+    Then the limit
+    \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} U^n \]
+    converges for all \(\theta\) and the limit is given by
+    \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} U^n = \begin{cases}
+        1, & \exp(i\theta) = 1, \\
+        0, & \text{otherwise}.
+    \end{cases} \]
+
+    In the case \(\calH = \bbC^n\), the unitary operator \(U: \bbC^n \to \bbC^n\) can be represented by a unitary matrix.
+    Then the limit
+    \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} U^n = P\]
+    is the orthogonal projection onto the subspace of \(\bbC^n\) spanned by the eigenvectors of \(U\) corresponding to the eigenvalue \(1\).
+
+    \begin{theorem}[von Neumann Mean Ergodic Theorem]\label{thm:von_neumann_mean_ergodic_theorem}
+        Let \(\calH\) be a Hilbert space and \(U: \calH \to \calH\) be an isometry and \(P\) the orthogonal projection onto the subspace of \(\calH\) consisting of all vectors \(y\) such that \(U y = y\).
+        Then the limit
+        \[ \lim_{N \to \infty} \frac{1}{N+1} \sum_{n=0}^{N} U^n\]
+        converges to \(P\).
+        \Yang{To be checked}
+        \Yang{What is the projection exactly?}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be completed}
+        \Yang{Hint: \(\calH = \ker(U - I) \oplus \overline{\Image(U - I)}\) and this is the orthogonal decomposition.}
+    \end{proof}
+
+    \begin{lemma}\label{lem:U_xi_equals_xi_iff_U_star_xi_equals_xi}
+        If \(U: \calH \to \calH\) is an isometry, then \(U \xi = \xi\) if and only if \(U^* \xi = \xi\).
+    \end{lemma}
+    \begin{proof}
+        \Yang{To be completed}
+    \end{proof}

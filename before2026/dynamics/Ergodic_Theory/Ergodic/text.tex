@@ -1,0 +1,161 @@
+\section{Ergodic}
+
+\begin{definition}\label{def:ergodic_transformation}
+        A measure-preserving transformation \(T:X\to X\) on a measure space \((X, \mathcal{B}, \mu)\) is said to be \emph{ergodic} if it has no nontrivial invariant sets, i.e., for every \(A\in \mathcal{B}\) such that \(T^{-1}A = A\), we have \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\).
+        
+        % \Yang{}for every \(A\in \mathcal{B}\) such that \(T^{-1}A = A\), we have \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:characterization_of_ergodic_transformation}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation. 
+        Then the following statements are equivalent:
+        \begin{enumerate}
+            \item \(T\) is ergodic;
+            \item for each measurable set \(A\), \(m((T^{-1}A) \Delta A) = 0\) iff \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\);
+            \item for each measurable set \(A\) with \(\mu(A) > 0\), we have \(\mu\left(\bigcup_{n=0}^\infty T^{-n}A\right) = 1\);
+            \item for each measurable sets \(A, B\) with \(\mu(A)\mu(B) > 0\), there exists \(n\in \bbZ^+\) such that \(\mu(T^{-n}A \cap B) > 0\).
+        \end{enumerate}
+    \end{theorem}
+
+    % \begin{proposition}\label{prop:ergodic_imply_invariant_function_constant_ae}
+    %     Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+    %     Then \(T\) is ergodic iff any invariant function \(f\in L^1(X, \mu)\) is constant almost everywhere.
+    % \end{proposition}
+
+    \begin{theorem}\label{thm:ergodic_imply_invariant_function_constant_ae}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space with \(\mu(X) < \infty\) and \(T:X\to X\) be a measure-preserving transformation.
+        Then TFAE:
+        \begin{enumerate}
+            \item \(T\) is ergodic;
+            \item for each measurable function \(f\) which is \(T\)-invariant, \(f\) is constant almost everywhere;
+            \item for each \(f\in L^1(X, \mu)\) which is \(T\)-invariant, \(f\) is constant almost everywhere;
+            \item for each \(f\in L^2(X, \mu)\) which is \(T\)-invariant, \(f\) is constant almost everywhere.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+
+        We show that (a) \(\Rightarrow\) (b).
+    \end{proof}
+ 
+    \begin{example}\label{eg:transition_of_natural_numbers}
+        Let \(X = \bbN\) and \(\mathcal{B} = \mathcal{P}(\bbN)\) with the counting measure.
+        Define \(T:\bbN \to \bbN\) by \(Tx = x + 1\).
+        Then \(T\) is measure-preserving and ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:transition_by_2_of_natural_numbers}
+        Let \(X = \bbN\) and \(\mathcal{B} = \mathcal{P}(\bbN)\) with the counting measure.
+        Define \(T:\bbN \to \bbN\) by \(Tx = x + 2\).
+        Then \(T\) is measure-preserving but not ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:transition_by_1_of_real_numbers}
+        Let \(X = \bbR\) and \(\mathcal{B} = \mathcal{B}(\bbR)\) with the Lebesgue measure.
+        Define \(T:\bbR \to \bbR\) by \(Tx = x + 1\).
+        Then \(T\) is measure-preserving but not ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:rotation_on_unit_circle}
+        Let \(X = S^1 = \{z\in \bbC: |z| = 1\}\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = \upe^{2\pi i \theta} x\) where \(\theta \in \bbR\).
+        Then \(T\) is measure-preserving.
+        Moreover, \(T\) is ergodic iff \(\theta\) is irrational.
+    \end{example}
+
+    \begin{proposition}\label{prop:irrational_rotation_is_ergodic}
+        In \cref{eg:rotation_on_unit_circle}, if \(\theta\) is irrational, then \(T\) is ergodic.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued..., By Fourier series}
+    \end{proof}
+
+    \begin{example}\label{eg:power_map_on_unit_circle_is_ergodic}
+        Let \(X = S^1\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = x^2\).
+        Then \(T\) is measure-preserving and ergodic.
+
+        \Yang{To be continued..., By Fourier series}
+    \end{example}
+
+    \begin{proposition}\label{prop:ergodic_mean_convergence_of_sets}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        Then \(T\) is ergodic iff for all \(A, B \in \mathcal{B}\),
+        \[
+            \lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \mu(T^{-k}A \cap B) = \mu(A) \mu(B).
+        \]
+    \end{proposition}
+
+    \begin{theorem}\label{thm:ergodic_mean_convergence_of_functions}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        Then \(T\) is ergodic iff for all \(f, g \in L^2(X, \mu)\),
+        \[
+            \lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \int_X f(T^k x) g(x) \, \upd\mu(x) = \int_X f(x) \, \upd\mu(x) \int_X g(x) \, \upd\mu(x).
+        \]
+    \end{theorem}
+
+    In the language of operators, \cref{thm:ergodic_mean_convergence_of_functions} can be restated as follows.
+    \begin{corollary}\label{cor:ergodic_mean_convergence_of_operators}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        Define the operator \(U_T:L^2(X, \mu) \to L^2(X, \mu)\) by \(U_T f = f \circ T\).
+        Then \(T\) is ergodic iff for all \(f, g \in L^2(X, \mu)\),
+        \[
+            \lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left\langle U_T^k f, g \right\rangle = \langle f, 1 \rangle \langle 1, g \rangle.
+        \]
+    \end{corollary}
+
+    \begin{definition}\label{def:mixing_measure_transformation}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        We say that \(T\) is \emph{mixing} if for all \(A, B \in \mathcal{B}\),
+        \[
+            \lim_{n\to \infty} \mu(T^{-n}A \cap B) = \mu(A) \mu(B).
+        \]
+    \end{definition}
+
+    \begin{lemma}\label{lem:mixing_implies_ergodic}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        If \(T\) is mixing, then \(T\) is ergodic.
+    \end{lemma}
+
+    \begin{theorem}\label{thm:characterization_of_mixing_mp}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        TFAE:
+        \begin{enumerate}
+            \item \(T\) is mixing;
+            \item for all \(f, g \in L^2(X, \mu)\), \(\lim_{n\to \infty} \left< U_T^n f, g \right> = \langle f, 1 \rangle \langle 1, g \rangle\);
+            \item for all \(f \in L^2(X, \mu)\), \(\lim_{n\to \infty} \left< U_T^n f, f \right> = |\langle f, 1 \rangle|^2\).
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{example}\label{eg:irrational_rotation_is_ergodic_but_not_mixing}
+        Let \(X = S^1\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = cx\) where \(|c| = 1\) and \(c\) is not a root of unity.
+        Then \(T\) is ergodic but not mixing.
+    \end{example}
+
+    \begin{example}\label{eg:power_map_on_S1_is_mixing}
+        Let \(X = S^1\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = x^2\).
+        Then \(T\) is mixing.
+        \Yang{To be continued.}
+    \end{example}
+
+    \begin{definition}\label{def:weakly_mixing_measure_transformation}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        We say that \(T\) is \emph{weakly mixing} if for all \(A, B \in \mathcal{B}\),
+        \[
+            \lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left| \mu(T^{-k}A \cap B) - \mu(A) \mu(B) \right| = 0.
+        \]
+    \end{definition}
+
+    \begin{proposition}\label{prop:characterization_of_weakly_mixing_mp}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+        TFAE:
+        \begin{enumerate}
+            \item \(T\) is weakly mixing;
+            \item for all \(f, g \in L^2(X, \mu)\), \(\lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left| \left< U_T^k f, g \right> - \langle f, 1 \rangle \langle 1, g \rangle \right| = 0\);
+            \item for all \(f \in L^2(X, \mu)\), \(\lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left| \left< U_T^k f, f \right> - |\langle f, 1 \rangle|^2 \right| = 0\).
+            \item for all \(f \in L^2(X, \mu)\), \(\lim_{n\to \infty} \frac{1}{n} \sum_{k=0}^{n-1} \left| \left< U_T^k f, f \right> - |\langle f, 1 \rangle|^2 \right|^2 = 0\).
+        \end{enumerate}
+        \Yang{To be checked.}
+    \end{proposition}

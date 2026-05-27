@@ -1,0 +1,183 @@
+\section{Run the MMP on arithmetic threefolds}
+
+
+\subsection{Pseudo-effective case}
+
+    \begin{lemma}[Theorem 9.8]\label{lem:pe_terminal_modification_imply_special_termination}
+        Let \((X,B)\) be a three-dimensional \(\bbQ\)-factorial dlt pair with \(\bbR\)-boundary which is projective and surjective over \(T\).
+        Suppose that all three-dimensional \(\bbQ\)-factorial klt pairs \((X',B')\) with \(X'\) birational to \(X\) admit a terminal modification.
+        Then for any sequence of steps in the \((K_X + B)\)-MMP, after finitely many steps, it will be isomorphism near \(\Supp B_i\).
+    \end{lemma}
+
+    \begin{lemma}\label{lem:terminal_modification}
+        Let \((X,B)\) be a three-dimensional \(\bbQ\)-factorial klt pair with \(\bbR\)-boundary which is quasi projective and surjective over \(R\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Then there exists a projective birational morphism \(g:Y \to X\) and a terminal pair \((Y,B_Y)\) such that \(K_Y + B_Y = g^*(K_X + B)\).
+    \end{lemma}
+    \begin{proof}
+        Take a resolution \(\pi:Y \to X\) with 
+        \[ K_Y + B_Y + E = \pi^*(K_X + B) + F.\]
+        We can assume that components of \(B_Y+E\) are disjoint.\Yang{Why?}
+        Then \((Y,B_Y + E)\) is terminal.
+
+        Run a \(K_Y + B_Y + E\)-MMP over \(X\), which is also a \(F\)-MMP.
+        \Yang{By a difficulty argument, this MMP terminates.}
+        Since \(F\) is exceptional over \(X\), by Negativity Lemma, \(F\) will be contracted in the MMP.
+        Thus, the MMP terminates with a terminal model \((Y',B_{Y'}+E')\) such that \(K_{Y'} + B_{Y'} + E_{Y'} = \pi^*(K_X + B)\).
+    \end{proof}
+
+    \begin{theorem}\label{thm:run_mmp_pseudo_effective}
+        Let \((X,B)\) be a \(\bbQ\)-factorial three-dimensional dlt pair with \(\bbR\)-boundary which is projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Suppose that \(K_X + B\) is pseudo-effective.
+        Then we can run a \((K_X + B)\)-MMP, and any sequence of steps in the MMP terminates.
+        Consequently, we \((X,B)\) has a log minimal model.
+    \end{theorem}
+    \begin{proof}
+        Let \(K_X + B \sim_T M \geq 0\).
+        This can be checked by looking at the generic fiber and the non-vanishing theorem.
+
+        We can run a \((K_X + B)\)-MMP over \(T\).
+
+        After finitely many steps, it is isomorphic near \(\Supp \lfloor B \rfloor\) by Theorem 9.7.
+        Hence it will be a \((K_X + \Delta)\)-MMP with \(\Delta = B - \lfloor B \rfloor + \varepsilon M\).
+        By \cref{lem:pe_terminal_modification_imply_special_termination}, the MMP is isomorphic near \(\Supp B\) after finitely many steps.
+        \Yang{Why isomorphic near \(M\)?}
+        However, the extremal rays contracted are negativity on \(M\).
+    \end{proof}
+
+
+\subsection{Base point free theorem}
+
+    \begin{proposition}\label{prop:abundance_slc_curve}
+        Let \((X,B)\) be a slc curve with \(\bbQ\) boundary and \(K_X + B\) is nef.
+        Then \(K_X + B\) is semi-ample.
+    \end{proposition}
+    \begin{proof}
+        
+    \end{proof}
+
+    \begin{proposition}\label{prop:abundance_lc_surface}
+        Let \((X,B)\) be a lc surface with \(\bbQ\)-boundary projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Suppose that \(T = \Spec R\) with \((R,v,\kk)\) a local ring with residue field \(\kk\).
+        Suppose that \(K_X + B\) is nef over \(T\).
+        Then \(K_X + B\) is semi-ample over \(T\).
+    \end{proposition}
+    \begin{proof}
+        It is enough to show \((K_X + B)|_{\Exc (K_X+B)}\) is semi-ample.
+
+        By run MMP, we can assume that all components of \(\Exc (K_X+B)\) are either disjoint \(\lfloor B \rfloor\) or contained in \(\Supp B\).
+        
+        If disjoint, then linearly trivial.
+
+        If contained in \(\Supp B\), then by adjunction and \cref{prop:abundance_slc_curve}.
+    \end{proof}
+
+    \begin{lemma}\label{lem:fiber_wise_base_point_free}
+        Let \(X\) be a three-dimensional normal integral scheme which is projective and surjective over \(T\).
+        Suppose that \(\calL\) is a nef but not big line bundle on \(X\) such that \(\calL|_{X_\eta}\) and \(\calL|_{X_{\bbQ}}\) are semi-ample, where \(\eta\) is the generic point of \(T\) and \(X_{\bbQ} = X \times_T \Spec \bbQ\).
+        Then \(\calL\) is endowed with a map \(f: X \to V\) over \(T\) to an algebraic space \(V\) proper over \(T\).
+
+        Moreover, if \(\calL|_{X_v}\) is semi-ample for every \(v \in V\), then \(\calL\) is semi-ample over \(T\).
+    \end{lemma}
+    \begin{proof}
+        
+    \end{proof}
+
+    The idea is 
+    \[ \text{abundance in slc curve } \implies \text{abundance in lc surface } \implies \text{bpf in klt threefold}. \]
+
+    \begin{theorem}\label{thm:base_point_free}
+        Let \((X,B)\) be a three-dimensional klt pair with \(\bbR\)-boundary which is projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Suppose that \(\calL\) is a \(f\)-nef line bundle such that \(\calL - (K_X + B)\) is \(f\)-big and \(f\)-nef.
+        Then \(\calL\) is \(f\)-semi-ample.
+    \end{theorem}
+    \begin{proof}
+        By perturbing \(B\) slightly, we may assume that \(B\) is a \(\bbQ\)-divisor and \(L-(K_X+B)\) is \(f\)-ample.
+        
+        \begin{step}
+            We can assume that we have a commutative diagram
+            \[ \begin{tikzcd}
+                X \arrow[rr, "g"] \arrow[dr, "f"] & & V \arrow[ld] \\
+                & T & 
+            \end{tikzcd} \]
+            such that \(V = \Spec R\) with \((R,v,\kk)\) a local ring with residue field \(\kk\) of positive characteristic \(\neq 2,3,5\).
+            And we just need to show that \(\calL|_{X_v}\) is \(f\)-semi-ample.
+        \end{step}
+        \begin{subproof}
+            By previous results, we can assume that \(\calL\) is not big.
+            Choose a general \(A \sim_{\bbQ} L - (K_X + B)\) such that \((X,B+A)\) is a klt pair.
+            By bpf in lower dimension and \cref{lem:fiber_wise_base_point_free}, there is a map \(f: X \to V\) over \(T\) associated to \(L\) and we only need to check semi-ampleness of \(L\) fiber-wise over \(V\).
+            Replacing \(V\) by its localization at \(v\) and \(X\) by the fiber product.
+        \end{subproof}
+
+        \begin{step}
+            
+        \end{step}
+
+
+    \end{proof}
+
+\subsection{Cone Theorem and Mori fiber space}
+
+    \begin{lemma}[Corollary 9.18]\label{cor:contraction}
+        Let \((X,B)\) be a \(\bbQ\)-factorial three-dimensional klt pair with \(\bbR\)-boundary which is projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Suppose that \(\Sigma\) is a \((K_X+B)\)-negative extremal ray such that \(\Sigma = \overline{\symup{NE}}(X/T) \cap D^{\perp}\) with \(D\) nef and big.
+        Then there exists a contraction \(f: X \to Z\) over \(T\) associated to \(\Sigma\).
+    \end{lemma}
+
+    \begin{theorem}\label{thm:cone_theorem}
+        Let \((X,B)\) be a three-dimensional klt pair with \(\bbR\)-boundary which is projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Then 
+        \begin{enumerate}
+            \item there are countably many rational curves \(C_i\) such that
+                \[
+                    \overline{NE}(X/T) = \overline{NE}(X/T)_{K_X + B \geq 0} + \sum_i \bbR_{\geq 0}[C_i];
+                \]
+            \item the rays \(\bbR_{\geq 0}[C_i]\) do not accumulate in the half-space \(N_1(X/T)_{K_X + B < 0}\);
+            \item for each \(i\), we have 
+                \[
+                    -4d_{C_i} < -(K_X + B) \cdot C_i < 0.
+                \]
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{lemma}\label{lem:bend_break_type_lemma}
+        Let \((X,B)\) be a \(\bbQ\)-factorial klt threefold with \(\bbQ\)-boundary, projective and surjective over \(T\) with \(\dim T >0\) and all residue fields has characteristic \(\neq 2,3,5\).
+        Suppose that \(K_X + B\) is not nef over \(T\).
+        Then there exists \(n\) depending only on \((X,B)\) such that for any ample \(f\)-divisor \(H\), 
+        \[ \lambda = \min \{t \geq 0 \mid K_X + B + tH \text{ is } f\text{ nef}\} \]
+        is a rational number of form \(n/m\) for some \(m\).
+
+        Furthermore, there exists a \(K_X+B+\lambda H\)-trivial curve \(\Gamma\) satisfying
+        \[ 0 < -(K_X + B) \cdot \Gamma \leq 4d_\Gamma. \]
+    \end{lemma}
+    \begin{proof}
+        Let \(L = K_X + B + \lambda H\).
+        \begin{step}
+            We show that \(\lambda \in \bbQ\) and there is a contraction \(f:X \to Z\) associated to \(L\) over \(T\).
+        \end{step}
+        \begin{subproof}
+            If \(L\) is big, 
+        \end{subproof}
+
+        \begin{step}
+            We can run a MMP.
+        \end{step}
+
+        \begin{step}
+            Divisorial contraction case.
+        \end{step}
+
+        \begin{step}
+            Flip case.
+        \end{step}
+
+        \begin{step}
+            Mori fiber space case.
+        \end{step}
+
+        \begin{step}
+            Finally, we show that \(n\) can be chosen uniformly.
+        \end{step}
+    \end{proof}
+
+   

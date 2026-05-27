@@ -1,0 +1,305 @@
+\section{lift + stable sections}
+
+
+\subsection{+ stable sections}
+
+    \begin{definition}\label{def:plus_stable_section}
+        Consider the following setup:
+        \begin{itemize}
+            \item $X$ is a normal, integral scheme proper over a complete noetherian local domain \((R,\frakm,\kk)\) with \(\characteristic \kk = p>0\);
+            \item \(\Delta\geq 0\) is a \(\bbQ\)-divisor on \(X\);
+            \item \(M\) is a \(\bbZ\)-divisor on \(X\) and \(\calM = \calO_X(M)\).
+        \end{itemize}
+        Then define 
+        \[ \bfB^0(X,\Delta;M) = \bigcap_{Y \to X \text{ finite}} \Image(H^0(Y,\calO_Y(K_Y + \lceil f^*(M-K_X-\Delta)\rceil)) \to H^0(X,\calM)).\]
+    \end{definition}
+
+    If \(X\) is not integral but normal and equi-dimensional, we define \(\bfB^0(X,\Delta;M)\) to be the direct sum of \(\bfB^0(X_i,\Delta|_{X_i};M|_{X_i})\) where \(X_i\) are the irreducible components of \(X\).
+
+    We alway assume that \((R,\frakm, \kk)\) is a complete noetherian local domain with \(\characteristic \kk = p>0\).
+    Frequently, we will assume that \(H^0(X,\calO_X) = R\).
+
+    \begin{theorem}[Matlis duality]\label{thm:matlis_dual}
+        Let \(E\) be the injective hull of \(\kk\) in \(\Mod_R\).
+        Then the functor \(\Hom_R(-,E)\) induces an anti-equivalence of categories
+        \[ \left\{ \text{noetherian } R\text{-modules} \right\} \xleftrightarrow{\sim} \left\{ \text{artinian } R\text{-modules} \right\}.\]
+        Since \(E\) is injective, we can identify \(\Hom_R(-,E)\) with \(\sfR\Hom_R(-,E)\).
+    \end{theorem}
+
+    \begin{proposition}\label{prop:matlis_dual_b0}
+        Suppose that \(\dim X = d\). 
+        Then \(\bfB^0(X,\Delta;M)\) is the \(R\)-Matlis dual of 
+        \[ \Image(H^d\sfR\Gamma_\frakm\sfR\Gamma(X,\calO_X(K_X - M)) \to H^d\sfR\Gamma_\frakm\sfR\Gamma(X^+,\calO_{X^+}(\pi^*(K_X+\Delta-M)))).\]
+        Dually, we have
+        \[ \bfB^0(X,\Delta;M) = \Image\left(\left(\invlim_{Y \to X} H^0(Y,\calO_Y(K_Y+\lceil f^*(M-K_X-\Delta)\rceil))\right) \to H^0(X,\calM)\right).\]
+    \end{proposition}
+
+    \begin{definition}\label{def:adjoint_stable_section}
+        Settings as in \cref{def:plus_stable_section}.
+        Write \(\Delta = S = B\) with \(S=\sum S_i\) reduced and \(S_i \not\subseteq \Supp B\) for all \(i\).
+        Let \(S^\nu \to S\) be the normalization of \(S\).
+        For every \(S_i\), choose an integral subscheme \(S_i^+\) of \(X^+\) over \(S_i\) and set \(S^+ \coloneqq \coprod S_i^+\).
+        The \emph{adjoint-ideal version \(\bfB_S^0(X,\Delta;M)\)} is defined as the \(R\)-Matlis dual of image of the map
+        \[ H^d\sfR\Gamma_\frakm\sfR\Gamma(X,\calO_X(K_X - M)) \to H^d\sfR\Gamma_\frakm\sfR\Gamma\left(X^+,\bigoplus_{i=1}^t \calO_{X^+}\left(\pi^*(K_X + \Delta - M)-S_i^+\right)\right). \]
+        Dually, we have
+        \[ \bfB_S^0(X,\Delta;M) = \bigcap_{Y\to X} \Image\left(H^0\left(Y,\bigoplus_{i=1}^t \calO_Y\left(K_Y + S_{i,Y} + \lceil f^*(M-K_X-\Delta)\rceil\right)\right) \to H^0(X,\calM)\right).\]
+    \end{definition}
+
+    \begin{definition}[different]\label{def:different}
+        Let \(X\) be a normal scheme and \(S\) a reduced divisor on \(X\).
+        Let \(B\) be an effective \(\bbQ\)-divisor on \(X\) such that \(K_X + S + B\) is \(\bbQ\)-Cartier and every component of \(S\) is not contained in \(\Supp B\).
+        The \emph{different \(\Delta_{S^\nu}\) of \(K_X+S+B\) along \(S^\nu\)} is defined by 
+        \[ (K_X+S+B)|_{S^\nu} = K_{S^\nu} + \Delta_{S^\nu},\]
+        where \(S^\nu\) is the normalization of \(S\).
+    \end{definition}
+
+    \begin{proposition}\label{prop:different_effective}
+        The different \(\Delta_{S^\nu}\) of \(K_X+S+B\) along \(S^\nu\) is effective.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be completed.}
+    \end{proof}
+
+    \begin{definition}\label{def:globally_plus_regular_pair}
+        A pair \((X,\Delta)\) is called \emph{globally +-regular} if for every finite dominant morphism \(f: Y \to X\) with \(Y\) normal, the map \(\calO_X \to f_*\calO_Y(\lfloor f^*\Delta \rfloor)\) splits as \(\calO_X\)-modules.
+    \end{definition}
+
+    \begin{definition}\label{def:purely_globally_plus_regular_pair}
+        A pair \((X,S+B)\) is called \emph{purely globally +-regular (along \(S\))} if for every finite dominant morphism \(f: Y \to X\) with \(Y\) normal, the map 
+        \[ \calO_X \to f_*\left( \bigoplus_{i=1}^t \calO_Y(-S_{i,Y}+\lfloor f^*\Delta \rfloor) \right)\]
+        splits as \(\calO_X\)-modules.
+    \end{definition}
+
+
+\subsection{lifting + stable sections}
+
+
+    \begin{theorem}\label{thm:stable_section_lifting}
+        Settings as in \cref{def:adjoint_stable_section}.
+        Suppose that \(K_X + \Delta\) is \(\bbQ\)-Cartier, \(M\) is Cartier and \(M-K_X-\Delta\) is big and semiample.
+        % Write \(\Delta = S + B\) with \(S=\sum S_i\) reduced and \(S_i \not\subseteq \Supp B\) for all \(i\).
+        % Let \(S^\nu \to S\) be the normalization of \(S\).
+        Then the restriction map \(H^0(X,\calM) \to H^0(S^\nu,\calM|_{S^\nu})\) induces a surjection
+        \[ \bfB_S^0(X,\Delta;M) \surjmap \bfB^0(S^\nu,\Delta_{S^\nu};M|_{S^\nu}),\]
+        where \(\Delta_{S^\nu}\) is the different of \(K_X+S+B\) along \(S^\nu\).
+    \end{theorem}
+    \begin{proof}
+        Since \(\pi: X^+ \to X\) is affine, we will view a quasi-coherent sheaf on \(X^+\) as a quasi-coherent sheaf on \(X\).
+        Let \(L = \pi^*(K_X+S+B-M)\) on \(X^+\) and \(\calL = \calO_{X^+}(L)\).
+        Note that \(-L\) is semiample and big.
+
+        \begin{step}
+            By the standard exact sequence argument, we have a commutative diagram
+            \[ \begin{tikzcd}
+                H^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(X,\calQ) \arrow[r] \arrow[d] & H^d\sfR\Gamma_\frakm\sfR\Gamma(X,\calO_X(K_X-M)) \arrow[d] \\
+                \Image_S \arrow[r,hook] \arrow[d,hook] & \Image_X \arrow[d,hook] \\
+                H^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(S^+,\calL|_{S^+}) \arrow[r,hook] & H^d\sfR\Gamma_\frakm\sfR\Gamma(X^+,\bigoplus \calO_{X^+}(L-S_{i,X^+})),
+            \end{tikzcd} \]
+            where \(\calQ := \calO_X(K_X + S - M)/\calO_X(K_X - M)\).
+        \end{step}
+        \begin{subproof}
+            We have a commutative diagram
+            \[ \begin{tikzcd}
+                0 \arrow[r] & \calO_X(-S) \arrow[r] \arrow[d] & \calO_X \arrow[d] \arrow[r] & \calO_S \arrow[r] \arrow[d] & 0 \\
+                0 \arrow[r] & \bigoplus \calO_{X^+}(-S_{i,X^+}) \arrow[r] & \bigoplus \calO_{X^+} \arrow[r] & \calO_{S^+} \arrow[r] & 0.
+            \end{tikzcd} \]
+            Twist the top row by \(\calO_X(K_X+S-M)\) and reflex.
+            Twist the bottom row by \(\calL\).
+            Then we have a commutative diagram
+            \[ \begin{tikzcd}
+                0 \arrow[r] & \calO_X(K_X+S-M) \arrow[r] \arrow[d] & \calO_X(K_X-M) \arrow[d] \arrow[r] & \calQ \arrow[r] \arrow[d] & 0 \\
+                0 \arrow[r] & \bigoplus \calO_{X^+}(L-S_{i,X^+}) \arrow[r] & \bigoplus \calL \arrow[r] & \calO_{S^+}(L|_{S^+}) \arrow[r] & 0
+            \end{tikzcd} \]
+            since \(B\) is effective.
+            Note that \(\calL^{-1}\) is big and semiample, by the vanishing, we have 
+            \[ \upH^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(X^+,\calL) = 0 \]
+            and the injectivity of the map
+            \[ \upH^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(S^+,\calL|_{S^+}) \injmap \upH^{d-1}\sfR\Gamma_\frakm\sfR\Gamma\left(X^+,\bigoplus \calO_{X^+}(L-S_{i,X^+})\right). \]
+            \Yang{Take cohomology and then take image, we get the desired diagram.}
+        \end{subproof}
+
+        \begin{step}
+            Show that \(\Image_S\) is equal to the image of 
+            \[ \upH^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(S,\omega_S\ten (\calM^{-1}|_S)) \to \upH^{d-1}\sfR\Gamma_\frakm\sfR\Gamma(S^+,\calL|_{S^+}). \]
+        \end{step}
+        \begin{subproof}
+            By taking smooth locus and reflexive hull, we know that \(\calQ^{\vee\vee} \cong \omega_S \ten (\calM^{-1}|_S)\).
+            \Yang{Hence \(\calQ \to \calO_{S^+}(\calL|_{S^+})\) factors as \(\calQ \to \omega_S \ten (\calM^{-1}|_S) \to \calO_{S^+}(\calL|_{S^+})\).}
+            Applying \(\sfR\Hom_X(-,\omega_X)\) to the standard exact sequence 
+            \[ 0 \to \calO_X(-S) \to \calO_X \to \calO_S \to 0 \]
+            and taking the cohomology, we get 
+            \[ 0 \to \calO_X(K_X) \to \calO_X(K_X+S) \to \calO_S(K_S) \to \]
+        \end{subproof}
+
+        \begin{step}
+            Show that \(\Image_S\) is dual to \(\bfB^0(S^\nu,\Delta_{S^\nu};M|_{S^\nu})\).
+        \end{step}
+
+    \end{proof}
+
+    \begin{lemma}\label{lem:derived_and_dualing_sheaf}
+        We have \(\sfR\Hom_X(\calO_S,\omega_X^{\bullet}) \cong \omega_S^{\bullet}\) as complexes of sheaves on \(S\).
+    \end{lemma}
+    \begin{proof}
+        Note that \(i^!\omega_X^\bullet \cong \omega_S^\bullet\) where \(i: S \hookrightarrow X\) is the inclusion.
+    \end{proof}
+
+    \begin{proposition}\label{prop:dualing_complex_smooth_case}
+        Let \(X\) be a smooth integral scheme of dimension \(d\).
+        Then the dualizing complex \(\omega_X^\bullet\) is quasi-isomorphic to \(\omega_X[d]\).
+    \end{proposition}
+
+    \begin{proposition}[Adjunction and inversion adjunction]\label{prop:adjunction_inversion}
+        Settings as in \cref{def:adjoint_stable_section}.
+        Suppose that \(-K_X-\Delta\) is big and semiample.
+
+        Then \((X,\Delta)\) is purely globally +-regular along \(S\) if and only if \((S^\nu,\Delta_{S^\nu})\) is globally +-regular.
+    \end{proposition}
+
+
+    \begin{proposition}\label{prop:normality_of_purely_globally_plus_regular_center}
+        Suppose that \((X,\Delta)\) is purely globally +-regular along \(S\).
+        Then \(S\) is normal.
+    \end{proposition}
+
+    \begin{proposition}
+        Settings as in \cref{thm:stable_section_lifting}.
+        Suppose that \((S^\nu,\Delta_{S^\nu})\) is globally +-regular.
+        Then 
+        \[ H^0(X,\calM) \to H^0(S^\nu,\calM|_{S^\nu})\]
+        is surjective.
+    \end{proposition}
+
+\subsection{8.14}
+
+    Let \((R,\frakm,\kk)\) be a complete noetherian local domain with \(\characteristic \kk = p>0\).
+    Let \(X \to \Spec R\) be a proper normal integral scheme of dimension \(d\).
+    Let \(x \in X\).
+    Let \(\pi: X' \to X\) be the blow-up along \(x\) and \(E\) the exceptional divisor.
+
+    \begin{definition}\label{def:seshadri_constant}
+        Let \(A\) be a nef and big \(\bbQ\)-divisor on a \(X\) and \(x\) a point on \(X\).
+        We define the \emph{Seshadri constant} as 
+        \[ \varepsilon_{sa}(A,x) \coloneqq \sup \left\{ t \in \bbR_{>0} \mid \pi^*A - tE \text{ is nef } \right\}. \]
+    \end{definition}
+
+    By definition, we have 
+    \[ K_{X'} + (\pi^{-1})_*B + (1-a(E;X,B))E = \pi^*(K_X + B). \]
+
+    \begin{theorem}\label{thm:plus_stable_section_generate_sheaf}
+        Let \(B\) be an effective \(\bbQ\)-divisor on \(X\).
+        Let \(x \in X\) a closed point such that \(X\) is regular at \(x\), \(\Supp B\) is snc and \(X,B\) is klt.
+        Let \(\calM = \calO_X(M)\) be a line bundle on \(X\) such that \(A = M-K_X-B\) is big and semiample.
+        Suppose that \(\varepsilon_{sa}(A,x) > a(E;X,B)\).
+        
+        Then \(\bfB^0(X,B;M)\) globally generates \(\calM\) at \(x\).
+    \end{theorem}
+    \begin{proof}
+        We have 
+        \[ \pi^*A - a(E;X,B)E = \pi^*\calM - (K_{X'}+\pi^{-1}_*B+E) \]
+        is big and semiample.
+        Hence, by \cref{thm:stable_section_lifting}, we have a surjection
+        \[ \bfB^0_E(X',\pi^{-1}_*B+E;\pi^*M) \surjmap \bfB^0(E,B_E;\calO_E), \]
+        where \(B_E\) is the restriction of \(B\) to \(E\).
+
+        Base changing to \(\rkk(x)^{sep}\), we see that \(E,B_E\) is globally \(F\)-regular since \(E \cong \bbP^n\), \(\Supp B_E\) is snc and its coefficients are \(< 1\).
+        (ref. [SS10, Proposition 5.3])
+        Hence \(\bfB^0(E,B_E;\calO_E) = H^0(E,\calO_E)\).
+
+        By Lemma 4.26 and 4.19, we have 
+        \[ \bfB_E^0(X',\pi^{-1}_*B+E;\pi^*M) \subset \bfB^0(X',\pi^{-1}_*B+(1-\varepsilon)E;\pi^*M) \subset \bfB^0(X,B;M). \]
+    \end{proof}
+
+    \subsubsection{Theorem 7.14}
+
+    \begin{theorem}\label{thm:disturb_global_plus_regular_pair}
+        Let \((X,B)\) be a two-dimensional klt pair admitting a projective birational map \(f : X \to Z = \Spec R\) such that \(- (K_X + B)\) is relatively nef. 
+        Suppose further that \(B\) has standard coefficients. 
+        
+        Then, for every divisor \(D \geq 0\) and \(0 \leq \epsilon \ll 1\) depending on \(D\), 
+        we have that \((X, B + \epsilon D)\) is globally +-regular.
+    \end{theorem}
+    \begin{proof}
+        After tensoring an extension of \(R\), we can assume that \(\kk = \kk^{sep}\).
+        \begin{step}
+            There exist an effective \(\bbQ\)-divisor \(B'\) such that \(K_X+B+B'\sim_{\bbQ,Z} 0\) and \((X,B+B')\) is lc and has a unique lc center.
+        \end{step}
+        \begin{subproof}
+            By taking a resolution and disturbing, we can assume that \(-K_X - B - H'\) is effective.
+            By add a divisor from \(Z\) and taking lc threshold, by tie break argument, we can finish the proof.
+        \end{subproof}
+
+        \begin{step}\label{step:birational_morphisms}
+            We can find a diagram of birational morphisms
+            \[ \begin{tikzcd} 
+                & Y \arrow[dl,"g"'] \arrow[dr,"h"] & \\
+                X \arrow[dr,"f"] & & W \arrow[dl] \\
+                & Z &
+            \end{tikzcd} \]
+            and a curve \(C \subset Y\) which is exceptional over \(Z\) such that 
+            \begin{enumerate}
+                \item \(g\) contracts \(C\) or \(g=\id_X\) in the case \(C \subset X\);
+                \item \((Y,C+B_Y)\) and \((W,C+B_W)\) are plt;
+                \item \(h^*(K_W+C_W+B_W) - (K_Y + C + B_Y) \geq 0\).
+            \end{enumerate}
+        \end{step}
+        \begin{subproof}
+            Let \(g\) be the extraction of the lc center of \((X,B+B')\).
+            Set \(K_Y + bC_Y + B_Y = g^*(K_X + B)\) and \(G = g^*B' - (1-b) C_Y\).
+            Then \((Y,C_Y+B_Y)\) is plt.
+            We have \(K_Y + C_Y + B_Y + G = g^*(K_X + B + B')\).
+            Run a \(K_Y+C_Y+B_Y+(1+\delta)G\)-MMP over \(Z\), we get \(W, C_W + B_W\) such that \((W,C_W+B_W)\) is plt.
+            And (c) follows from the Negativity Lemma.
+        \end{subproof}
+
+        \begin{step}
+            We can further assume that \(-(K_W + C_W + B_W)\) is ample over \(Z\).
+        \end{step}
+        \begin{subproof}
+            Just need to show that \((K_W+C_W+B_W) \cdot C_W < 0\) and taking the fiberation associated to \(-(K_W+C_W+B_W)\) is enough.
+
+            If \((K_W+C_W+B_W) \cdot C_W = 0\), let \(\Gamma\) be a connected component of 
+            \[ h^*(K_W+C_W+B_W) - (K_Y + bC + B_Y) . \]
+            Note \(\Gamma^2 < 0\) since it is exceptional over \(Z\).
+            Then we have 
+            \begin{align*}
+                \Gamma^2 &= \Gamma \cdot (h^*(K_W+C_W+B_W) - (K_Y + bC + B_Y)) \\
+                    &\geq \Gamma \cdot h^*(K_W+C_W+B_W) \\
+                    &= C_W \cdot K_W + C_W + B_W.
+            \end{align*}
+        \end{subproof}
+
+        \begin{step}
+            Show that \(C_{\kkk} \cong \bbP^1\) and \(B_{C_{\kkk}}\) has standard coefficients.
+        \end{step}
+        \begin{subproof}
+            We have 
+            \[ K_{C_\kkk} + B_{C_{\kkk}} = (K_W + C_W + B_W)|_{C_{\kkk}}. \]
+            Hence it is anti-ample.
+            And note that all coefficients of \(B_{C_{\kkk}}\) are of form \(p^{n}(1-1/m)\).(\(p>5\))
+            This enforces that \(C_{\kkk}\) is \(\bbP^1\) and \(B_{C_{\kkk}}\) has standard coefficients.
+        \end{subproof}
+
+        \begin{step}
+            Show the result by adjunction and inversion adjunction on \(C\).
+        \end{step}
+        \begin{subproof}
+            Choose \(D_W\) on \(W\) such that \(D_Y \leq h^*D_W + C\) and \(C_W \not\subseteq \Supp D_W\).
+
+            We know that \(C_{\kkk}, B_{C_{\kkk}}+ \varepsilon D_W|_{C_{\kkk}}\) is globally \(F\)-regular.
+            
+            By Corollary 6.18, \(C,B_C + \varepsilon D_W|_C\) is globally +-regular.
+            
+            By inversion of adjunction, \((W,C_W+B_W+\varepsilon D_W)\) is purely globally +-regular along \(C_W\).
+            
+            By Proposition 6.28, \((Y,h^*(C+B_W+\varepsilon D_W))\) is purely globally +-regular along \(C\).
+            
+            By (c) in \cref{step:birational_morphisms}, \((Y,C+B_Y+\varepsilon h^*D_W)\) is purely globally +-regular along \(C\).
+            
+            By Lemma 6.27 and \(D_Y \leq h^*D_W + C\), \((Y,b+B_Y+\varepsilon D_Y)\) is globally +-regular.
+            
+            By Proposition 6.19, \((X,B+\varepsilon D)\) is globally +-regular.
+        \end{subproof}
+
+
+    \end{proof}

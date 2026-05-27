@@ -1,0 +1,90 @@
+\section{Definitions and examples of Lie algebra}
+
+The main reference for this section is \cite{Hum80}.
+
+\subsection{Basic Definition of Lie algebra}
+
+    \begin{definition}\label{def:Lie_algebra}
+        Let \(\kk\) be a field.
+        A \emph{Lie algebra} over \(\kk\) is a vector space \(\frakg\) over \(\kk\) equipped with a bilinear map (called the \emph{Lie bracket})
+        \[[\cdot,\cdot]:\frakg\times \frakg\to \frakg\]
+        satisfying the following axioms:
+        \begin{enumerate}
+            \item (Anticommutativity) For all \(x \in \frakg\), we have
+            \[[x,x]=0.\]
+            \item (Jacobi identity) For all \(x,y,z\in \frakg\), we have
+            \[[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0.\]
+        \end{enumerate}
+    \end{definition}
+
+    \begin{example}\label{eg:linear_Lie_algebra}
+        Let \(V\) be a vector space over \(\kk\).
+        The set \(\gl(V) = \End(V)\) of all linear transformations from \(V\) to itself forms a Lie algebra over \(\kk\) with the Lie bracket defined by
+        \[[A,B]=AB-BA,\quad A,B\in \gl(V).\]
+        In particular, if \(V=\kk^n\), we denote \(\gl_n(\kk)=\gl(\kk^n)\), which is the set of all \(n\times n\) matrices over \(\kk\).
+    \end{example}
+
+    \begin{definition}\label{def:ideal_of_Lie_algebra}
+        Let \(\frakg\) be a Lie algebra over \(\kk\).
+        A \(\kk\)-linear subspace \(\fraki\subseteq \frakg\) is called an \emph{ideal} of \(\frakg\) if for all \(x\in \frakg\) and \(y\in \fraki\), we have
+        \[[x,y]\in \fraki.\]
+
+        Endowed with the Lie bracket inherited from \(\frakg\), the linear space \(\frakg/\fraki\) becomes a Lie algebra over \(\kk\), called the \emph{quotient Lie algebra} of \(\frakg\) by \(\fraki\).
+    \end{definition}
+
+    \begin{example}\label{eg:ideal_of_Lie_algebra}
+        Let \(\frakg\) be a Lie algebra over \(\kk\) and \(\fraki,\frakj\) two ideals of \(\frakg\).
+        Then \(\fraki+\frakj=\{x+y:x\in \fraki,y\in \frakj\}\) and \([\fraki,\frakj]=\span_\kk\{[x,y]:x\in \fraki,y\in \frakj\}\) are also ideals of \(\frakg\).
+
+        The \emph{center} of \(\frakg\), defined by
+        \[Z(\frakg)=\{x\in \frakg:[x,y]=0\text{ for all }y\in \frakg\},\]
+        is also an ideal of \(\frakg\).
+
+        The ideal \([\frakg,\frakg]\) is called the \emph{derived algebra} of \(\frakg\).
+    \end{example}
+
+    \begin{definition}\label{def:homomorphism_of_Lie_algebra}
+        Let \(\frakg\) and \(\frakh\) be Lie algebras over \(\kk\).
+        A \(\kk\)-linear map \(\varphi:\frakg\to \frakh\) is called a \emph{homomorphism} of Lie algebras if for all \(x,y\in \frakg\), we have
+        \[\varphi([x,y])=[\varphi(x),\varphi(y)].\]
+    \end{definition}
+
+    Given a homomorphism \(\varphi:\frakg\to \frakh\) of Lie algebras over \(\kk\), the kernel \(\ker(\varphi)\) is an ideal of \(\frakg\) and the image \(\Image(\varphi)\) is a subalgebra of \(\frakh\).
+    Moreover, we have the first isomorphism theorem: \(\frakg/\ker(\varphi)\cong \Image(\varphi)\).
+
+    \begin{definition}\label{def:representation_of_Lie_algebra}
+        Let \(\frakg\) be a Lie algebra over \(\kk\).
+        A \emph{representation} of \(\frakg\) is a homomorphism of Lie algebras
+        \[\varphi:\frakg\to \gl(V)\]
+        for some vector space \(V\) over \(\kk\).
+        The vector space \(V\) is called the \emph{representation space} of \(\varphi\).
+    \end{definition}
+
+    \begin{example}\label{eg:adjoint_representation}
+        Let \(\frakg\) be a Lie algebra over \(\kk\).
+        For each \(x\in \frakg\), define a linear map \(\ad_x:\frakg\to \frakg\) by
+        \[\ad_x(y)=[x,y],\quad y\in \frakg.\]
+        The map \(\ad:\frakg\to \gl(\frakg)\) defined by \(x\mapsto \ad_x\) is a representation of \(\frakg\), called the \emph{adjoint representation} of \(\frakg\).
+        We need to verify that \(\ad\) is a homomorphism of Lie algebras, i.e., for all \(x,y\in \frakg\), we have
+        \Yang{To be continued...}
+    \end{example}
+
+    \define{definition}\label{def:simple_and_semisimple_Lie_algebra}
+        A Lie algebra \(\frakg\) over \(\kk\) is called \emph{simple} if \([\frakg,\frakg] \neq 0\) and the only ideals of \(\frakg\) are \(0\) and \(\frakg\) itself.
+
+        A Lie algebra \(\frakg\) over \(\kk\) is called \emph{semisimple} if \(\frakg\) is a direct sum of simple Lie algebras.
+    \end{definition}
+
+    \begin{definition}\label{def:solvable_Lie_algebra}
+        Let \(\frakg\) be a Lie algebra over \(\kk\).
+        The \emph{derived series} of \(\frakg\) is defined inductively by
+        \[\frakg^{(0)}=\frakg,\quad \frakg^{(n+1)}=[\frakg^{(n)},\frakg^{(n)}],\quad n\ge 0.\]
+        The Lie algebra \(\frakg\) is called \emph{solvable} if there exists some \(n\ge 0\) such that \(\frakg^{(n)}=0\).
+    \end{definition}
+
+    \begin{definition}\label{def:nilpotent_Lie_algebra}
+        Let \(\frakg\) be a Lie algebra over \(\kk\).
+        The \emph{lower central series} of \(\frakg\) is defined inductively by
+        \[\frakg^0=\frakg,\quad \frakg^{n+1}=[\frakg,\frakg^n],\quad n\ge 0.\]
+        The Lie algebra \(\frakg\) is called \emph{nilpotent} if there exists some \(n\ge 0\) such that \(\frakg^n=0\).
+    \end{definition}

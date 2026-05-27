@@ -1,0 +1,12 @@
+\section{Definition and Examples}
+
+    In this section and all the books, we denote by \(\calh\) the upper half plane, and let \(\SL_2(\bbz)\) act on \(\calh\) in the natural way.
+
+    \begin{definition}\label{def: modular form}
+        Let \(\Gamma < \SL_2(\bbz)\) be a subgroup of finite index. 
+        A \emph{modular form} of \emph{weight} \(k\) and \emph{level} \(\Gamma\) is a holomorphic function \(f: \calh \to \bbc\) such that:
+        \begin{enumerate}
+            \item (Automorphy) For all \(\gamma = \mat{a}{b}{c}{d} \in \Gamma\), we have \(f(\gamma(z)) = (cz + d)^k f(z) \).
+            \item (Holomorphic at the cusps) For every \(\gamma \in \Gamma\), the function \((cz + d)^{-k} f(\gamma(z))\) is bounded as \(\Im(z) \to +\infty\).
+        \end{enumerate}
+    \end{definition}

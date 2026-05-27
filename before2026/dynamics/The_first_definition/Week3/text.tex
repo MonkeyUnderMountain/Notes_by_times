@@ -1,0 +1,117 @@
+\section{Week 3}
+
+
+\subsection{}
+
+    \begin{theorem}[Birkhoff Ergodic Theorem]\label{thm:Birkhoff_Ergodic_Theorem}
+        Let \(T:X\to X\) be a measure-preserving transformation on a measure space \((X, \mathcal{B}, \mu)\). 
+        Let \(f\in L^1(X, \mu)\). 
+        Then 
+        \[ \frac{1}{n} \sum_{i=0}^{n-1} f(T^i x) \]
+        converges for almost every \(x\in X\).
+        The limit function \(\tilde{f}\) is integrable and \(T\)-invariant, i.e., \(\tilde{f}(Tx) = \tilde{f}(x)\) for almost every \(x\in X\).
+        If \(\mu(X) < \infty\), then
+        \[ \int_X f \upd\mu = \int_X \tilde{f} \upd\mu. \]
+    \end{theorem}
+    \begin{proof}
+        We may assume that \(f\) is real-valued, since we can apply the theorem to the real and imaginary parts of \(f\) separately.
+
+        \Yang{To be continued...}
+    \end{proof}
+
+    \begin{theorem}[Maximal Ergodic Theorem]\label{thm:Maximal_Ergodic_Theorem}
+        Let \(U: L_\bbR^1 \to L_\bbR^1\) be a linear operator such that
+        \begin{enumerate}
+            \item \(\|Uf\|_1 \leq \|f\|_1\) for all \(f\in L^1\);
+            \item \(Uf \geq_{a.e.} 0\) if \(f\geq_{a.e.} 0\).
+        \end{enumerate}
+        Let \(N>0\) and \(f \in L^1_\bbR(X, \mu)\). 
+        Define \(f_0 = 0\) and \(f_n = Uf_{n-1} + f\) for \(n\geq 1\).
+        Let \(F_N = \max_{0\leq n \leq N} f_n\) and \(E = \{x\in X: F_N(x) > 0\}\).
+        Then 
+        \[
+            \int_E f \upd\mu \geq 0.
+        \]
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+    \end{proof}
+
+
+\subsection{Ergodic}
+
+    \begin{definition}\label{def:ergodic_transformation}
+        A measure-preserving transformation \(T:X\to X\) on a measure space \((X, \mathcal{B}, \mu)\) is said to be \emph{ergodic} if it has no nontrivial invariant sets, i.e., for every \(A\in \mathcal{B}\) such that \(T^{-1}A = A\), we have \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\).
+        
+        % \Yang{}for every \(A\in \mathcal{B}\) such that \(T^{-1}A = A\), we have \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\).
+    \end{definition}
+
+    \begin{theorem}\label{thm:characterization_of_ergodic_transformation}
+        Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation. 
+        Then the following statements are equivalent:
+        \begin{enumerate}
+            \item \(T\) is ergodic;
+            \item for each measurable set \(A\), \(m((T^{-1}A) \Delta A) = 0\) iff \(\mu(A) = 0\) or \(\mu(X\setminus A) = 0\);
+            \item for each measurable set \(A\) with \(\mu(A) > 0\), we have \(\mu\left(\bigcup_{n=0}^\infty T^{-n}A\right) = 1\);
+            \item for each measurable sets \(A, B\) with \(\mu(A)\mu(B) > 0\), there exists \(n\in \bbZ^+\) such that \(\mu(T^{-n}A \cap B) > 0\).
+        \end{enumerate}
+    \end{theorem}
+
+    % \begin{proposition}\label{prop:ergodic_imply_invariant_function_constant_ae}
+    %     Let \((X, \mathcal{B}, \mu)\) be a probability space and \(T:X\to X\) be a measure-preserving transformation.
+    %     Then \(T\) is ergodic iff any invariant function \(f\in L^1(X, \mu)\) is constant almost everywhere.
+    % \end{proposition}
+
+    \begin{theorem}\label{thm:ergodic_imply_invariant_function_constant_ae}
+        Let \((X, \mathcal{B}, \mu)\) be a measure space with \(\mu(X) < \infty\) and \(T:X\to X\) be a measure-preserving transformation.
+        Then TFAE:
+        \begin{enumerate}
+            \item \(T\) is ergodic;
+            \item for each measurable function \(f\) which is \(T\)-invariant, \(f\) is constant almost everywhere;
+            \item for each \(f\in L^1(X, \mu)\) which is \(T\)-invariant, \(f\) is constant almost everywhere;
+            \item for each \(f\in L^2(X, \mu)\) which is \(T\)-invariant, \(f\) is constant almost everywhere.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        \Yang{To be continued...}
+
+        We show that (a) \(\Rightarrow\) (b).
+    \end{proof}
+ 
+    \begin{example}\label{eg:transition_of_natural_numbers}
+        Let \(X = \bbN\) and \(\mathcal{B} = \mathcal{P}(\bbN)\) with the counting measure.
+        Define \(T:\bbN \to \bbN\) by \(Tx = x + 1\).
+        Then \(T\) is measure-preserving and ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:transition_by_2_of_natural_numbers}
+        Let \(X = \bbN\) and \(\mathcal{B} = \mathcal{P}(\bbN)\) with the counting measure.
+        Define \(T:\bbN \to \bbN\) by \(Tx = x + 2\).
+        Then \(T\) is measure-preserving but not ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:transition_by_1_of_real_numbers}
+        Let \(X = \bbR\) and \(\mathcal{B} = \mathcal{B}(\bbR)\) with the Lebesgue measure.
+        Define \(T:\bbR \to \bbR\) by \(Tx = x + 1\).
+        Then \(T\) is measure-preserving but not ergodic.
+    \end{example}
+
+    \begin{example}\label{eg:rotation_on_unit_circle}
+        Let \(X = S^1 = \{z\in \bbC: |z| = 1\}\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = \upe^{2\pi i \theta} x\) where \(\theta \in \bbR\).
+        Then \(T\) is measure-preserving.
+        Moreover, \(T\) is ergodic iff \(\theta\) is irrational.
+    \end{example}
+
+    \begin{proposition}\label{prop:irrational_rotation_is_ergodic}
+        In Example \ref{eg:rotation_on_unit_circle}, if \(\theta\) is irrational, then \(T\) is ergodic.
+    \end{proposition}
+    \begin{proof}
+        \Yang{To be continued..., By Fourier series}
+    \end{proof}
+
+    \begin{example}
+        Let \(X = S^1\) and \(\mathcal{B} = \mathcal{B}(S^1)\) with the Lebesgue measure.
+        Define \(T:S^1 \to S^1\) by \(Tx = x^2\).
+        Then \(T\) is measure-preserving and ergodic.
+    \end{example}
