@@ -1,0 +1,51 @@
+\section{Iitaka fibrations}
+
+
+\subsection{Iitaka dimension and Kodaira dimension}
+
+  \Yang{}
+
+  \begin{definition}
+    Let $D$ be a divisor on a projective variety $X$.
+    We define the \emph{Iitaka dimension} of $D$ as
+    \[ \kappa(X, D) := \max \{ k \in \bbZ_{\geq 0} \mid \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \} \in \{-\infty\} \cup \bbZ_{\geq 0}. \]
+    If $D = K_X$ is the canonical divisor, we call $\kappa(X, K_X)$ the \emph{Kodaira dimension} of $X$.
+  \end{definition}
+
+  \begin{proposition}
+    Let $D$ be a semi-ample divisor on a projective variety $X$.
+    Then there exists a morphism $\phi: X \to Y$ to a projective variety $Y$ such that $\calO_X(mD) \cong \phi^* \calO_Y(1)$ for some ample divisor on $Y$ and some integer $m > 0$, and we have $\kappa(X, D) = \dim Y$.
+    \Yang{}
+  \end{proposition}
+
+
+\subsection{Base loci of linear systems}
+
+  \begin{definition}
+    Let $D$ be a divisor on a projective variety $X$.
+    We define the \emph{stable base locus} of $D$ as
+    \[ \mathbf{B}(D) := \bigcap_{m > 0} \Bs(|mD|). \]
+    We define the \emph{augmented base locus} of $D$ as
+    \[ \mathbf{B}_+(D) := \bigcap_{A} \mathbf{B}(D - A) \]
+    where $A$ runs through all ample $\bbQ$-divisors on $X$.
+    We define the \emph{restricted base locus} of $D$ as
+    \[ \mathbf{B}_-(D) := \bigcup_{A} \mathbf{B}(D + A) \]
+    where $A$ runs through all ample $\bbQ$-divisors on $X$.
+    \Yang{}
+  \end{definition}
+
+  \Yang{}
+
+
+\subsection{Iitaka fibrations}
+
+  \begin{theorem}
+    Let $D$ be a divisor on a projective variety $X$ with $\kappa(X, D) \geq 0$.
+    Then there exist an integer $m > 0$ and a rational map $\phi: X \dashrightarrow Y$ to a projective variety $Y$ such that $\calO_X(mD) \cong \phi^* \calO_Y(1)$ for some ample divisor on $Y$, and we have $\kappa(X, D) = \dim Y$.
+    We call such a rational map an \emph{Iitaka fibration} of $D$.
+    \Yang{}
+  \end{theorem}
+
+    \Yang{}
+
+

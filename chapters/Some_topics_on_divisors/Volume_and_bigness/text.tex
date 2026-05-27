@@ -1,0 +1,102 @@
+\section{Volume and bigness}
+
+
+% \section{Asymptotic behavior of divisors}
+
+    Let $\kkk$ be an algebraically closed field, usually of characteristic $0$.
+    Let $X$ be a normal projective variety over $\kkk$ of dimension $d$.
+    
+\subsection{Volume and bigness}
+
+    \begin{definition}
+        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+        The \emph{volume} of $D$ is defined as
+        \[ \vol(D) \coloneqq \lim_{m \to +\infty} \frac{h^0(X, \calO_X(mD))}{m^d/d!}. \]
+    \end{definition}
+
+
+    \begin{theorem}
+        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+        \begin{enumerate}
+            \item The limit in the definition of $\vol(D)$ exists.
+            \item If $D$ is ample, then $\vol(D) = D^d$.
+            \item The volume $\vol(D)$ depends only on the numerical equivalence class of $D$.
+            \item The volume function $\vol: \NS(X)_\bbQ \to \bbR$ is locally uniformly continuous and homogeneous of degree $d$, and hence extends to a continuous function $\vol: \upN^1(X) = \NS(X)_\bbR \to \bbR$.
+        \end{enumerate}
+    \end{theorem}
+
+
+    \begin{definition}
+        A divisor $D$ on a projective variety $X$ is called \emph{big} if $\vol(D) > 0$.
+    \end{definition}
+
+
+    \begin{theorem}
+        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+        \begin{enumerate}
+            \item If $D \equiv D'$ and $D$ is big, then $D'$ is also big.
+            \item If $D$ is big, then there exist an ample divisor $A$ and an effective divisor $E$ such that $D \sim_\bbQ A + E$.
+            \item A numerical class $D \in \NS(X)_\bbQ$ is big if and only if it lies in the interior of the pseudo-effective cone $\Psef^1(X)$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.16]{Laz04a}}]
+        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+        Then $D$ is big if and only if there exist an ample divisor $A$ and an effective divisor $E$ such that $D \sim_\bbQ A + E$.
+        \Yang{}
+    \end{theorem}
+
+    \begin{corollary}
+        If $D$ is a nef divisor on a projective variety $X$ of dimension $d$ such that $D^d > 0$, then $D$ is big.
+    \end{corollary}
+
+
+\subsection{Okounkov bodies}
+
+    \Yang{}
+
+  \begin{definition}
+    Let $X$ be a projective variety of dimension $d$ and $D$ be a divisor on $X$.
+    Let $Y_\bullet: X = Y_0 \supset Y_1 \supset \cdots \supset Y_d = \{x\}$ be an admissible flag on $X$, i.e. each $Y_i$ is an irreducible subvariety of codimension $i$ in $X$ that is smooth at the point $x$.
+    We define the \emph{Okounkov body} of $D$ with respect to the flag $Y_\bullet$ as
+    \[ \Delta_{Y_\bullet}(D) := \text{the closure of the convex hull of } \{ \nu_{Y_\bullet}(s) / m \mid s \in H^0(X, mD) \setminus \{0\}, m > 0 \} \subseteq \bbR^d, \]
+    where $\nu_{Y_\bullet}(s) = (\nu_1(s), \ldots, \nu_d(s))$ is defined inductively as follows: $\nu_1(s) = \ord_{Y_1}(s)$, and for $i > 1$, we define $\nu_i(s)$ as the order of vanishing of the image of $s$ in $H^0(Y_{i-1}, mD - \sum_{j=1}^{i-1} \nu_j(s) Y_j)$ along $Y_i$.
+    \Yang{}
+  \end{definition}
+
+
+  \begin{theorem}
+    Let $D$ be a divisor on a projective variety $X$ of dimension $d$ and $Y_\bullet$ be an admissible flag on $X$.
+    Then we have $\vol(D) = d! \cdot \vol_{\bbR^d}(\Delta_{Y_\bullet}(D))$ where $\vol_{\bbR^d}$ is the standard Euclidean volume on $\bbR^d$.
+    \Yang{}
+  \end{theorem}
+
+
+
+
+
+
+\subsection{Convexity of the volume function}
+
+    \begin{theorem}
+        Volume is log-concave on the big cone, i.e. for any big divisors $D_1, D_2$ on a projective variety $X$ of dimension $d$, we have
+        \[ \vol(D_1 + D_2)^{1/d} \geq \vol(D_1)^{1/d} + \vol(D_2)^{1/d}. \]
+    \end{theorem}
+
+
+
+
+\subsection{Relative setting}
+
+    \begin{theorem}
+        Volume is semi-continuous on a family.
+    \end{theorem}
+
+
+    
+
+% \subsection{Zariski decomposition}
+
+
+% \subsection{BDPP's criterion}
+
