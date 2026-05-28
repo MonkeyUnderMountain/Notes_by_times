@@ -1,0 +1,151 @@
+\section{May 28}
+
+
+  \begin{example}
+    Let $X$ be a smooth projective variety over $\kkk$.
+    Define the \emph{singular homology} of $X$ as
+    \[ H_n^{\sing}(X,\bbZ) := H_n(C_*(\bbZ_{tr}(X)(\Spec \kkk))) \]
+    By definition, $C_*(\bbZ_{tr}(X)(\Spec \kkk))$ is the complex
+    \[ \cdots \to \upoperatorname{Cor}(\Delta^2, X) \to \upoperatorname{Cor}(\Delta^1, X) \to \upoperatorname{Cor}(\Delta^0, X) \to 0. \]
+    We want to compute $H_0^{\sing}(X)$.
+    Note that $\upoperatorname{Cor}(\Delta^0, X) = \upoperatorname{Cor}(\Spec \kkk, X) = Z_0(X)$, the group of zero-cycles on $X$.
+    And 
+    \[ \upoperatorname{Cor}(\Delta^1, X) = \bigoplus_{C \subset \Delta^1 \times X, C \text{ finite and surjective over } \Delta^1} \bbZ \cdot [C]. \]
+    Then $\Image \partial_1 \subset \upoperatorname{Rat}_0(X)$ and hence $H_0^{\sing}(X) \surjmap \CH_0(X)$.
+
+    If $X$ is proper, then every closed curve $C \subset \bbP^1 \times X$ which dominates $\bbP^1$ is finite and surjective over $\bbP^1$,
+    hence $C|_{\Delta^1} \subset \Delta^1 \times X$ is also finite and surjective over $\Delta^1$.
+    So $H_0^{\sing}(X) \to \CH_0(X)$ is an isomorphism.
+
+    Otherwise, if $X$ is not proper, they might differ.
+    In fact, $H_0^{\sing}(\bbA^1,\bbZ) = \bbZ$ but $\CH_0(\bbA^1) = 0$.
+
+    Conceptually, $H_0^{\sing}(X,\bbZ)$ is the group ``homology with compact support'' of $X$.
+    And $\CH^i(X), \CH^i(X,n)$ are the ``Borel-Moore homology'' of $X$.
+  \end{example}
+
+  \begin{definition}
+    Let $F$ be a presheaf on $\Sm_{\kkk}$, i.e. a contravariant functor from $\Sm_{\kkk}$ to $\Ab$.
+    We say that $F$ is \emph{homotopy invariant} if for every $X \in \Sm_{\kkk}$, the pullback map $F(X) \to F(X \times \bbA^1)$ along projection $X \times \bbA^1 \to X$ is an isomorphism.
+  \end{definition}
+
+  Since $p$ has a section, the pullback map $F(X) \to F(X \times \bbA^1)$ is always injective.
+  For instance, $\CH^i(-)$ is homotopy invariant.
+
+  For a $\kk$-point $\alpha \in \bbA^1(\kk)$, let $i_\alpha: X \to X \times \bbA^1$ be the section of $p$ defined by $x \mapsto (x, \alpha)$.
+  
+  \begin{lemma}
+    Let $F$ be a presheaf on $\Sm_{\kkk}$.
+    Then $F$ is homotopy invariant if and only if for every $X \in \Sm_{\kkk}$, the pullback map $i_0^* = i_1^*: F(X \times \bbA^1) \to F(X)$ are the same.
+  \end{lemma}
+  \begin{proof}
+    The ``only if'' part is trivial since $i_0^* \circ p^* = i_1^* \circ p^* = \id$.
+
+    For the ``if'' part.
+    Let $m: \bbA^1 \times \bbA^1 \to \bbA^1$ be the multiplication map.
+    Consider the composition
+    \[ X \times \bbA^1 \xrightarrow{i_\alpha \times \id} X \times \bbA^1 \times \bbA^1 \xrightarrow{\id \times m} X \times \bbA^1. \]
+    When $\alpha = 0$, this composition is the projection $p: X \times \bbA^1 \to X \times \{0\}$.
+    When $\alpha = 1$, this composition is the identity map on $X \times \bbA^1$.
+    Hence $i_0^* \circ p^* = \id$.
+  \end{proof}
+
+  \begin{lemma}
+    Let $F$ be a presheaf on $\Sm_{\kkk}$.
+    Then for all $X \in \Sm_{\kkk}$, $i_0^*, i_1^*: F(X \times \bbA^1) \to F(X)$ are homotopic.
+  \end{lemma}
+  \begin{proof}
+    For $i \in [n]$, let 
+    \[ \theta_i: \Delta^{n+1} \to \Delta^n \times \bbA^1, u_j \mapsto \begin{cases}
+      (0, u_j), & j \leq i \\
+      (1, u_{j-1}), & j > i
+    \end{cases} \]
+    Define $h_i := (\id_X \times \theta_i)^* : F(X \times \Delta^n \times \bbA^1) \to F(X \times \Delta^{n+1})$ and $h := \sum_{i=0}^n (-1)^i h_i$.
+    Then $h$ is a homotopy between $i_0^*$ and $i_1^*$.
+  \end{proof}
+
+  \begin{proposition}
+    Let $F$ be a presheaf on $\Sm_{\kkk}$.
+    Then $\forall n$, $H_nC_*F: X \mapsto H_n(C_*(F(X)))$ is homotopy invariant.
+  \end{proposition}
+  \begin{proof}
+    By the previous lemma, $i_0^*, i_1^*: F(X \times \Delta^n \times \bbA^1) \to F(X \times \Delta^n)$ are homotopic.
+    Hence they induce the same map on homology, i.e. $i_0^* = i_1^*: H_nC_*F(X \times \bbA^1) \to H_nC_*F(X)$.
+    Then the conclusion follows from the previous previous lemma.
+  \end{proof}
+
+
+\subsection{Motivic cohomology}
+
+  \begin{definition}
+    The \emph{motivic complex $\bbZ(q)$} is defined as the complex of presheaves with transfer:
+    \[ \bbZ(q) := C_*(\bbZ_{tr}((\bbG_m)^{\wedge q}))[-q]. \]
+  \end{definition}
+
+  In explicit terms, $\bbZ(q)$ is the complex
+  \[ \cdots \to C_q(\bbZ_{tr}((\bbG_m)^{\wedge q})) \to C_{q-1}(\bbZ_{tr}((\bbG_m)^{\wedge q})) \to \cdots \to C_0(\bbZ_{tr}((\bbG_m)^{\wedge q})) \to 0. \]
+  And the $C_q(\bbZ_{tr}((\bbG_m)^{\wedge q}))$ is placed in degree $0$.
+  We will also regard this as a bounded above cochain complex, where $\bbZ(q)^n = C_{q-n}(\bbZ_{tr}((\bbG_m)^{\wedge q}))$.
+
+  For $A \in \Ab$, we define $A(q) := \bbZ(q) \otimes A$.
+
+  \begin{lemma}
+    For every $Y \in \Sm_{\kkk}$, $\bbZ_{tr}(Y)$ is a Zariski sheaf,
+    and $C_*(\bbZ_{tr}(Y))$ is a complex of Zariski sheaves.
+    For any $A \in \Ab$, the same holds for $\bbZ_{tr}(Y) \otimes A$ and $C_*(\bbZ_{tr}(Y)) \otimes A$.
+  \end{lemma}
+  \begin{proof}
+    Let $U \in \Sm_{\kkk}$ and $\{U_0, U_1\}$ be a Zariski open cover of $U$.
+    We need to show that the sequence
+    \[ 0 \to \bbZ_{tr}(Y)(U) \to \bbZ_{tr}(Y)(U_0) \oplus \bbZ_{tr}(Y)(U_1) \to \bbZ_{tr}(Y)(U_0 \cap U_1) \]
+    is exact.
+    That is 
+    \[ 0 \to \upoperatorname{Cor}(U, Y) \xrightarrow{(j_0^*, j_1^*)} \upoperatorname{Cor}(U_0, Y) \oplus \upoperatorname{Cor}(U_1, Y) \xrightarrow{(j_{01}^1)^* - (j_{10}^0)^*} \upoperatorname{Cor}(U_0 \cap U_1, Y) \to 0. \]
+
+    We may assume that $U$ is irreducible.
+    $(j_0^*, j_1^*)$ is injective since every finite correspondence from $U$ to $Y$ is determined by its restriction to the dense open subsets $U_0, U_1$.
+
+    \Yang{}
+  \end{proof}
+
+  \begin{proposition}
+    $\bbZ(q)$ is a complex of Zariski sheaves.
+  \end{proposition}
+  \begin{proof}
+    ETS $\bbZ_{tr}((\bbG_m)^{\wedge q})$ is a complex of Zariski sheaves.
+    \Yang{}
+  \end{proof}
+
+  \begin{definition}
+    Let $X \in \Sm_{\kkk}$ and $\bbZ_X(q) := \bbZ(q)|_{X_{\zar}}$ be the restriction of $\bbZ(q)$ to $X_{\zar}$.
+    Define the \emph{motivic cohomology} of $X$ as
+    \[ H^{p,q}(X,\bbZ) := \bbH^p_\zar(X, \bbZ_X(q)). \]
+    Here we regard $\bbZ_X(q)$ as a cochain complex of Zariski sheaves.
+  \end{definition}
+
+  In above, $\bbH^p_\zar(X, -)$ is the $p$-th hypercohomology group of the complex of Zariski sheaves on $X$, computed as follows:
+  pass to a quasi-isomorphic complex of injective Zariski sheaves, apply $\Gamma_\zar(X, -)$ and compute the cohomology of the resulting complex of abelian groups.
+
+  For $A \in \Ab$, we define $H^{p,q}(X,A) := \bbH^p_\zar(X, A(q))$.
+
+  \begin{proposition}
+    For every $X \in \Sm_{\kkk}$, $A \in \Ab$, $H^{p,q}(X,A) = 0$ if $p > q + \dim X$.
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{proposition}
+    $H^{p,q}(X,\bbZ)$ is contravariant in $X$.
+  \end{proposition}
+
+  \begin{proposition}
+    Let $X \in \Sm_{\kkk}$.
+    Then there is a pairing
+    \[ H^{p,q}(X,\bbZ) \otimes H^{p',q'}(X,\bbZ) \to H^{p+p', q+q'}(X,\bbZ) \]
+  \end{proposition}
+
+
+
+
+
