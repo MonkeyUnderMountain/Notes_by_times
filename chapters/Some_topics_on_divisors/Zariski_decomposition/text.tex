@@ -52,17 +52,17 @@
   \end{corollary}
 
 
-  \begin{proposition}
+  \begin{remark}
     In general, there does not exist a Zariski decomposition for pseudo-effective divisors on higher dimensional varieties.
    \Yang{}
-  \end{proposition}
+  \end{remark}
 
   \begin{example}
     \Yang{}
   \end{example}
 
 
-\subsection{Nakayama Zariski Decomposition}
+\subsection[Nakayama Zariski Decomposition]{Nakayama Zariski $\sigma$-Decomposition}
 
   Let $X$ be a normal projective variety and $D$ be a pseudo-effective $\bbR$-divisor on $X$. For any prime divisor $E$ on $X$, we define
   \[ \sigma_E(D) := \inf\ \{ \Mult_E D' \mid D' \sim_\bbR D, D' \geq 0 \}. \]
@@ -73,10 +73,27 @@
   \begin{theorem}
     There is a unique decomposition
     \[ D = P_\sigma(D) + N_\sigma(D) \]
-    such that $P_\sigma(D)$ is pseudo-effective and $\sigma_E(P_\sigma(D)) = 0$ for any prime divisor $E$ on $X$. 
+    such that $P_\sigma(D) \in \overline{\Mov}^1(X)$ and $N_\sigma(D)$ is effective $\bbR$-divisor such that \Yang{}
+    
     We call this decomposition the \emph{Nakayama Zariski decomposition} of $D$.
 
     \Yang{}
   \end{theorem}
+
+
+
+\subsection[b-divisorial Zariski decomposition]{$\bfb$-divisorial Zariski decomposition}
+
+  \begin{theorem}[{ref.}]
+    Let $X$ be a normal projective variety and $D$ be a pseudo-effective $\bbR$-divisor on $X$. Then there exists a unique decomposition
+    \[ D = P_\bfb(D) + N_\bfb(D) \]
+    such that $P_\bfb(D)$ is pseudo-effective and for any birational morphism $f: Y \to X$ and any prime divisor $E$ on $Y$, we have $\Mult_E f^* P_\bfb(D) = 0$. We call this decomposition the \emph{$\bfb$-divisorial Zariski decomposition} of $D$.
+    \Yang{}
+  \end{theorem}
+
+
+
+\subsection{Other Zariski decomposition}
+
 
 

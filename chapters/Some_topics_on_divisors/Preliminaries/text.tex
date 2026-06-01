@@ -1,12 +1,109 @@
 \section{Preliminaries}
 
-  Let $\kkk$ be an algebraically closed field, usually of characteristic $0$.
-  Let $X$ be a normal projective variety over $\kkk$ of dimension $d$.
+
+  The goal of this note is to illustrate the difference between the following notions of positivity for divisors on a projective variety $X$:
+  \begin{center}
+    \begin{tikzcd}
+      \boxed{\text{base point free}} \arrow[d, Rightarrow] \arrow[r, Rightarrow] & \boxed{\text{(linearly/numerically) effective}} \arrow[d, Rightarrow] \\ 
+      \boxed{\text{nef}} \arrow[r, Rightarrow] & \boxed{\text{pseudo-effective}}
+    \end{tikzcd}
+  \end{center}
+  
+
+\subsection{Notations and conventions}
+
+  \begin{notation}
+    We will use the following notations throughout this note.
+    \begin{itemize}
+      \item We denote by $\kk$ an arbitrary field, and $\kkk$ its the algebraic closure or an algebraically closed field.
+        We do not restrict the characteristic of $\kk$ unless otherwise specified.
+      \item A \emph{variety} is a geometrically integral separated scheme of finite type over $\kk$.
+      \item A \emph{divisor} will usually indicate a Cartier divisor, unless otherwise specified.
+        However, by \emph{prime divisor} we will always mean a prime Weil divisor.
+        The group of Cartier (resp. Weil) divisors is denoted by $\Div(X) = \CaDiv(X)$ (resp. $\WDiv(X) = Z_{d-1}(X)$, where $d = \dim X$).
+      \item The linear equivalence of divisors (or Weil divisors) will be denoted by $\sim$.
+        The group of linear equivalence classes of divisors (resp. Weil divisors) is denoted by $\Pic(X)$ (resp. $\CH_{d-1}(X)$).
+        The $\bbQ$-linear equivalence of divisors (or Weil divisors) will be denoted by $\sim_\bbQ$.
+        Note that for integral divisors, we have $D \sim_\bbQ D' \iff D - D'$ is torsion in $\Pic(X)$.
+       
+      \item Suppose that $X$ is projective.
+        The \emph{numerical equivalence} of divisors is defined by intersecting with curves, denoted by $\equiv$.
+        Since for numerical equivalence, there is no issue of torsion, we will not distinguish between $\bbR$, $\bbQ$ and $\bbZ$-numerical equivalence.
+        The group of numerical equivalence classes of divisors is denoted by $\NS(X)$, and $\NS(X)_\bbQ = \NS(X) \otimes_\bbZ \bbQ$, and $\upN^1(X) = \NS(X) \otimes_\bbZ \bbR$.
+        The dual space of $\upN^1(X)$ is denoted by $\upN_1(X)$.
+        We have a natural surjective map $Z_1(X)_\bbR \to \upN_1(X)$ induced by the intersection pairing.
+        As real vectors spaces, we have $\dim_\bbR \upN^1(X) = \dim_\bbR \upN_1(X) < \infty$; see \cite[Theorem 2.5.1]{Dang20degrees}.
+        Although Dang only deals with the case when $\kk$ is algebraically closed and $X$ is normal, and his definition is slightly different, the same proof works in our setting by basing change to $\kkk$.
+    \end{itemize}
+    
+    \Yang{}
+  \end{notation}
+
+  \begin{remark}
+    Although I try to work over an arbitrary field $\kk$, 
+    one should be careful when $\kk$ is not algebraically closed or when $\kk$ has positive characteristic, since I may not be aware of some subtleties in these cases.
+     \Yang{}
+  \end{remark}
+
+  \Yang{support of a cartier divisor when $X$ is not normal}
 
 
-\subsection{Resolution of singularities}
 
-  \begin{theorem}
-    Let $X$ be a normal projective variety over $\kkk$.
-    Then there exists a smooth projective variety $Y$ and a birational morphism $f: Y \to X$.
-  \end{theorem}
+
+\subsection[b-divisors]{$\bfb$-divisors}
+
+  Let $X$ be a projective variety over $\kk$.
+  The partially ordered set of all birational models of $X$ forms a directed system, we denote it by $\frakX$.
+  Note that here $\frakX$ is just a notation for a set (with a partial order), and it has no geometric structure.
+  Also note that $\frakX$ only depends on the field extension $\kk(X)/\kk$.
+  Sometimes we will also consider the sub-directed system of all normal (resp. smooth) birational models of $X$, which we will denote by $\frakX_{\mathrm{nor}}$ (resp. $\frakX_{\sm}$).
+  We define the following datum of $\frakX$.
+
+  \begin{definition}
+    We define 
+    \[ \Div(\frakX) \coloneqq \CaDiv(\frakX) \coloneqq \dirlim_{Y \in \frakX} \Div(Y). \]
+    Similar definitions for $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$, etc.
+    Elements of $\Div(\frakX)$ (resp. $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$) are called \emph{$\bfb$-Cartier divisors} (resp. \emph{linearly equivalent classes of $\bfb$-Cartier divisors}, \emph{numerical equivalence classes of $\bfb$-Cartier divisors}, \emph{real numerical equivalence classes of $\bfb$-Cartier divisors}).
+
+    For cycles, we define
+    \[ Z_{k}(\frakX) \coloneqq \invlim_{Y \in \frakX} Z_{k}(Y), \]
+    Similar definitions for $\CH_{k}(\frakX)$, $\upN_k(\frakX)$, etc.
+    Elements of $Z_{k}(\frakX)$ (resp. $\CH_{k}(\frakX)$, $\upN_1(\frakX)$) are called \emph{$\bfb$-cycles} (resp. \emph{$\bfb$-cycle classes}, \emph{numerical equivalence classes of $\bfb$-cycles}).
+    If we only consider normal birational models, we will also use the notation $\WDiv(\frakX) \coloneqq Z_{d-1}(\frakX_\nor)$, $\WCl(\frakX) \coloneqq \CH_{d-1}(\frakX_\nor)$.
+    %  \Yang{}
+  \end{definition}
+
+  For the cohomological objects, for instance, $\Div(\frakX)$, we have the following description:
+  an element of $\Div(\frakX)$ is represented by a divisor $D_Y$ on some birational model $Y$ of $X$, and two divisors $D_Y$ and $D_{Y'}$ represent the same element in $\Div(\frakX)$ if there exists a birational model $Z$ dominating both $Y$ and $Y'$ such that the pullbacks of $D_Y$ and $D_{Y'}$ to $Z$ are equal.
+
+  For the homological objects, for instance, $\WDiv(\frakX)$, we have the following description:
+  an element of $\WDiv(\frakX)$ is represented by a collection of divisors $D_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $D_{Y} = f_* D_{Y'}$.
+
+
+
+
+  % \begin{lemma}
+  %   There is a one-to-one correspondence between the following two sets:
+  %   \begin{enumerate}
+  %     \item transcendental, finitely generated field extensions $\KK/\kk$,
+  %     \item birational equivalence classes of normal projective varieties over $\kk$.
+  %   \end{enumerate}
+  %    \Yang{}
+  % \end{lemma}
+
+  % \begin{definition}
+  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+  % \end{definition}
+
+  % \begin{definition}[Zariski-Riemann space]
+  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+  %   The \emph{Zariski-Riemann space} $\frakX$ of $\KK/\kk$ is the projective limit of all projective varieties $X$ over $\kk$ such that $\kk(X) \cong \KK$, i.e.
+  %   \[ \frakX := \varprojlim_{X} X. \]
+  %    \Yang{}
+  % \end{definition}
+
+
+  % \begin{definition}
+  %   Let $X$ be a normal variety.
+  %   A \emph{$\bfb$-divisor} $\bfD$ on $X$ is a collection of divisors $\bfD_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $\bfD_{Y'} = f^* \bfD_Y$.
+  % \end{definition}

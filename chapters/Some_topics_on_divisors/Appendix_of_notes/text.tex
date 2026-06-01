@@ -1,0 +1,352 @@
+\section{Appendix}
+
+
+\subsection{Explicit statements of some well-known results}
+
+  Here we write down an explicit statement of the resolution of singularities in our setting.
+
+  \begin{theorem}[{ref. \cite[Theorem 3.37]{Kollar-2007-resolution}}]\label{thm:resolution_of_singularities}
+    Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+    Then there exists a \emph{resolution of singularities} of $X$, i.e. a proper birational morphism $\pi: \tilde{X} \to X$ such that $\tilde{X}$ is smooth and $\pi$ is an isomorphism over the smooth locus of $X$.
+  \end{theorem}
+
+  \begin{theorem}[{ref. \cite[Theorem 3.36]{Kollar-2007-resolution}}]\label{thm:snc_lization_of_subschemes}
+    Let $\kk$ be a field of characteristic $0$ and $X$ be a smooth variety over $\kk$.
+    Let $Z \subseteq X$ be a closed subscheme defined by a nonzero ideal sheaf $\calI$.
+    Then there exists a proper birational morphism $\pi: \tilde{X} \to X$ such that
+    \begin{enumerate}
+      \item $\pi$ is an isomorphism over $X \setminus Z$,
+      \item $\pi$ consists of a sequence of blow-ups along smooth centers, 
+      \item $\pi^* \calI$ defines a divisor with simple normal crossings support on $\tilde{X}$.\Yang{snc or snc support?}
+    \end{enumerate}
+  \end{theorem}
+
+  \begin{remark}
+    Seems \cref{thm:resolution_of_singularities} is a consequence of \cref{thm:snc_lization_of_subschemes}.
+    But when do the so-called log resolutions, I think we need to do \cref{thm:resolution_of_singularities} first to get a smooth variety, 
+    and then apply \cref{thm:snc_lization_of_subschemes} to get a log resolution of the singularities of the original variety.
+  \end{remark}
+
+  \begin{definition}
+    Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+    An \emph{snc divisor} on $X$ is a divisor \Yang{}
+  \end{definition}
+
+  \begin{theorem}[{Bertini's theorem, ref. }]\label{thm:Bertini}
+    Let $\kk$ be an infinite field and $X$ be a smooth projective variety over $\kk$.
+    Let $|D|$ be a base-point-free linear system on $X$.
+    Then a general member of $|D|$ is smooth.
+    \Yang{}
+  \end{theorem}
+
+  \begin{theorem}[{Generic principle, ref. }]\label{thm:generic_principle}
+    Let $\kk$ be an infinite field and $X$ be a variety over $\kk$.
+    Let $P(x)$ be a property of points on $X$ such that the set of points satisfying $P$ is constructible in $X$.
+    If there exists a point on $X$ satisfying $P$, then a general point on $X$ satisfies $P$.
+    \Yang{}
+    
+  \end{theorem}
+
+  
+  \begin{theorem}[Cohomology and proper base change, ref.]
+    Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
+    Let $y \in Y$ be a point and $i_y: X_y \to X$ be the inclusion of the fiber over $y$.
+    Then there is a natural base change morphism
+    \[ (R^i f_* \calF)_y \to H^i(X_y, i_y^* \calF) \]
+    for every $i \geq 0$, which is an isomorphism if either of the following conditions holds:
+    \begin{enumerate}
+      \item $R^i f_* \calF$ is locally free at $y$ and the base change morphism is surjective;
+      \item $H^i(X_y, i_y^* \calF) = 0$.
+    \end{enumerate}
+     \Yang{}
+  \end{theorem}
+
+
+
+
+\subsection{Fibrations}
+
+  Here we only deal with fibrations between varieties, and we do not require the morphism to be proper.
+
+  \begin{definition}
+    Let $\kk$ be a field and $A$ be a $\kk$-algebra.
+    We say $A$ is \emph{separable} over $\kk$ if $A \ten_\kk \bfL$ is reduced for every field extension $\kk \subseteq \bfL$.
+     \Yang{}
+  \end{definition}
+
+  \begin{lemma}
+    Let $\KK/\kk$ be a field extension.
+    Suppose that $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is separable.
+    Then for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
+     \Yang{}
+  \end{lemma}
+
+  Recall some facts about field extensions.
+  \begin{theorem}[{ref. \cite[Theorem 26.2]{Mat70}}]\label{thm:characterization_of_regular_extensions}
+    Let $\KK/\kk$ be a finitely generated field extension.
+    Then the following conditions are equivalent:
+    \begin{enumerate}
+      \item $\KK \ten_\kk \bfL$ is reduced for every field extension $\kk \subseteq \bfL$;
+      \item there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$.
+    \end{enumerate}
+      \Yang{}
+  \end{theorem}
+
+
+  \begin{proposition}\label{prop:characterization_of_fibrations}
+    Let $f: X \to Y$ be a dominant morphism between varieties.
+    TFAE:
+    \begin{itemize}
+      \item[(a)] the generic fiber of $f$ is geometrically irreducible;
+      \item[(b)] $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
+    \end{itemize}
+    if $f$ is proper, they are also equivalent to the following condition:
+    \begin{itemize}
+      \item[(c)] $f_*\calO_X = \calO_Y$.
+    \end{itemize}
+  \end{proposition}
+  \begin{proof}
+    \textbf{(a) $\iff$ (b).}
+    Denote by $\KK = \fkk(Y)$, $\eta = \Spec \KK$ the generic point of $Y$, $\overline{\eta}$ a geometric point over $\eta$, $X_\eta$ (resp. $X_{\overline{\eta}}$) the fiber of $f$ over $\eta$ (resp. $\overline{\eta}$).
+    Let $\bfL$ be the algebraic closure of $\KK$ in $\fkk(X_\eta) = \fkk(X)$.
+    Then $\bfL$ is a finite extension of $\KK$, and we have commutative diagram
+    \[
+      \begin{tikzcd}
+        \Spec  \fkk(X) \ten_\KK \overline{\KK} \ar[r] \ar[d] & \Spec \fkk(X) \ten_\KK \bfL \ar[r] \ar[d] & \Spec \fkk(X) \ar[d] \\
+        X_{\overline{\eta}} \ar[r] \ar[d] & X_\eta \times_{\eta} \Spec \bfL \ar[r] \ar[d] & X_\eta \ar[d] \\
+        \Spec \overline{\KK} \ar[r] & \Spec \bfL \ar[r] & \Spec \KK.
+      \end{tikzcd}
+    \]
+
+    Recall that for a finite field extension $\bfL/\KK$, $\bfL \ten_\KK \bfL$ is an integral domain if and only if $\bfL = \KK$.
+    If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
+    If $\bfL = \KK$, then $\fkk(X)/\KK$ is a purely transcendental extension, and hence $\fkk(X) \ten_\KK \KK'$ is a field for every fi
+     
+    
+
+    I claim that $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
+     \Yang{}
+    First assume that $X$ is affine, say $X = \Spec A$.
+    Then the arrow $\Spec \fkk(X) \to X_\eta$ is given by a localization of $A \ten_\kk \KK$ with respect to the multiplicative subset $S = (A \ten_\kk \KK) \setminus \{0\}$.
+    Hence $\Spec \fkk(X) \ten_\KK \overline{\KK} \to X_{\overline{\eta}}$ is also given by a localization of $A \ten_\kk \overline{\KK}$ with respect to $S \subset A \ten_\kk \KK \subset A \ten_\kk \overline{\KK}$.
+    Note that $S$ does not meet the set of zero-divisors of $A \ten_\kk \overline{\KK}$ since $\KK \to \overline{\KK}$ is faithfully flat.
+    Then $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
+    For the general case, let $\{U_i\}$ be an affine open cover of $X$.
+    Then $X_{\overline{\eta}}$ is integral if and only if each $U_i \times_X X_{\overline{\eta}}$ is integral, which reduces to the affine case.
+
+     \Yang{}
+
+
+    If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
+    On the other hand, by looking at an affine open dense subset $U = \Spec A$ of $X_{\eta}$, we see that $\Spec \fkk(X) \to U$ is given by a localization of $A$.
+    Hence so is $\Spec \fkk(X) \ten_\KK \overline{\KK} \to U_{\overline{\eta}}$.
+    In particular, $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain since $U_{\overline{\eta}}$ is integral by the assumption that $X_{\overline{\eta}}$ is integral.
+    Therefore, we must have $\bfL = \KK$, which means $\KK$ is algebraically closed in $\fkk(X)$.
+
+    \textbf{(b) $\implies$ (a).}
+     Denote by
+     
+
+    % If $\fkk(X) \ten_\KK \bfL$ is not an integral domain, then so is $\fkk(X_{\overline{\eta}})$ since $\overline{\KK} / 
+
+
+    \Yang{}
+  \end{proof}
+
+  \begin{lemma}[{ref. }]
+    Let $\KK/\kk$ be a field extension.
+    Then $\kk$ is algebraically closed in $\KK$ if and only if for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
+    Such a field extension $\KK/\kk$ is called \emph{regular}.
+     \Yang{}
+  \end{lemma}
+
+
+  \begin{definition}
+    A \emph{fibration} is a dominant morphism $f: X \to Y$ satisfying the equivalent conditions in \cref{prop:characterization_of_fibrations}.
+     \Yang{}
+    % between varieties with geometrically integral generic fiber.
+    % geometrically connected fibers.
+    % \Yang{or geometrically integral fibers?}
+  \end{definition}
+  % \begin{remark}
+  %   Seems there is no a standard definition of fibration in a general setting.
+  %   In \cref{prop:characterization_of_fibrations}, we will see some different characterizations of fibrations under specific assumptions.
+  % \end{remark}
+
+  \begin{proposition}
+    Let $f: X \to Y$ be a fibration between varieties.
+    Then for a (scheme-theoretic) general point $y \in Y$, the fiber $X_y$ is a variety over $\kappa(y)$ in our sense.
+    %  \Yang{}
+  \end{proposition}
+
+
+  % \begin{example}[Fibration with non-reduced fibers]
+  %   Let $\kk$ be a field of characteristic $p > 0$ and $X = \Spec \kk[x,y]/(y^p - x)$, $Y = \Spec \kk[x]$.
+  %   Then the morphism $f: X \to Y$ defined by $\kk[x] \to \kk[x,y]/(y^p - x)$ is a fibration, but the fiber over the generic point of $Y$ is not reduced.
+  %   \Yang{}
+    
+  % \end{example}
+
+  % \begin{example}
+  %   Let $F = \Frob_p: \bbA^1_{\bbF_p} \to \bbA^1_{\bbF_p}$ be the absolute Frobenius morphism.
+
+  %   \Yang{}
+    
+  % \end{example}
+
+  \begin{slogan}
+    We can split a morphism between varieties into a fibration followed by a quasi-finite morphism.
+    \Yang{}
+  \end{slogan}
+
+
+
+  \begin{construction}[Relative normalization]
+    Let $f: X \to Y$ be a morphism between varieties.
+    We can construct the \emph{relative normalization $Y'$ of $Y$ in $X$} as follows.
+
+    Let $\nu: \tilde{X} \to X$ be the normalization of $X$ and $\tilde{f} = f \circ \nu: \tilde{X} \to Y$.
+    Then we define $\hat{X}$ as the unique irreducible component of $\tilde{X}$ that dominates $Y$, and we define $\hat{f}: \hat{X} \to Y$ as the restriction of $\tilde{f}$ to $\hat{X}$.
+     \Yang{}
+  \end{construction}
+
+  \begin{proposition}
+    Let $f: X \to Y$ be a morphism between varieties and $Y'$ be the relative normalization of $Y$ in $X$.
+    Suppose that $X$ is normal.
+    Then the morphism $f': X \to Y'$ induced by $f$ is a fibration.
+     \Yang{}
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{example}
+    The assumption that $X$ is normal in the above proposition is necessary.
+  \end{example}
+  
+  \begin{corollary}[{Stein factorization, ref. \cite[Tag 03H2 and 0AVK]{Stacks}}]
+    Let $f: X \to Y$ be a proper morphism between varieties.
+    Then there exist a variety $Z$ and morphisms $g: X \to Z$ and $h: Z \to Y$ such that $f = h \circ g$, $g_* \calO_X = \calO_Z$, and $h$ is finite.
+  \end{corollary}
+
+
+
+
+  In general we cannot control every fiber of a fibration, but for a proper fibration, we have the following connectedness principle.
+
+  \begin{proposition}[{Connectedness principle, ref. }]
+    Let $f: X \to Y$ be a proper morphism between varieties such that $f_* \calO_X = \calO_Y$.
+    Then every fiber of $f$ is connected.
+     \Yang{}
+  \end{proposition}
+
+  \begin{remark}
+    Easily see that the ``proper'' assumption in the connectedness principle is necessary.
+     \Yang{}
+  \end{remark}
+
+  \begin{proposition}
+    Let $f: X \to Y$ be a proper morphism between varieties with connected fibers.
+    Suppose that $X$ is normal.
+    Then $f_* \calO_X = \calO_Y$.
+     \Yang{}  
+  \end{proposition}
+
+
+
+\subsection{Valuations of higher rank}
+
+  In this subsection, we review some facts about valuation on a fields.
+
+  \begin{definition}
+    Let $\KK$ be a field and $\Gamma$ be a totally ordered abelian group.
+    A \emph{(Krull) valuation} on $\KK$ is a map $v: \KK^\times \to \Gamma$ such that for any $f, g \in \KK^\times$, we have
+    \begin{enumerate}
+      \item $v(fg) = v(f) + v(g)$,
+      \item $v(f + g) \geq \min\{v(f), v(g)\}$.
+    \end{enumerate}
+    The \emph{valuation group} of $v$ is image of $v$ in $\Gamma$.
+     \Yang{}
+
+    Let $\kk$ be a subfield of $\KK$.
+    We say $v$ is a \emph{valuation of $\KK$ over $\kk$} if $v$ is trivial on $\kk$, i.e. $v(c) = 0$ for every $c \in \kk^\times$.
+     \Yang{}
+
+    We say $v$ is a \emph{valuation of rank $r$} if there is an embedding of ordered abelian groups $\Gamma \hookrightarrow \bbR^r$ with the lexicographic order.
+
+    The dimension of $v$ is defined as the Krull dimension of the valuation ring of $v$ (see below).
+     \Yang{}
+
+    \Yang{}
+  \end{definition}
+
+  \begin{remark}[Characterization of valuation rings]
+    Let $\KK$ be a field and $A$ be a subring of $\KK$.
+    Then $A$ is the valuation ring of a valuation on $\KK$ if and only if for every $f \in \KK^\times$, we have either $f \in A$ or $f^{-1} \in A$.
+     \Yang{}
+    For more details, I refer to \cite[Tag 00I8]{Stacks}.
+  \end{remark}
+
+  The main case we care about is when $\KK$ is a finitely generated field extension of $\kk$ and $v$ is a valuation that is trivial on $\kk$.
+  In this case, the set $\KK_{\nu \geq \alpha}$ is a $\kk$-vector subspace of $\KK$ for every $\alpha \in \Gamma$.
+
+  \begin{definition}
+    For every $\alpha \in \Gamma$, we define the \emph{leaf} of $v$ at $\alpha$ as 
+    \[ \call_\alpha(\KK/\kk,v) \coloneqq \call_\alpha(\KK) := \left\{ f \in \KK^\times : v(f) \geq \alpha \right\} / \left\{ f \in \KK^\times : v(f) > \alpha \right\}. \]
+
+    We say that $\nu$ has \emph{one-dimensional leaves} if $\call_\alpha(\KK/\kk,v)$ is at most one-dimensional (as a $\kk$-vector space) for every $\alpha \in \Gamma$.
+     \Yang{}
+  \end{definition}
+
+  An important example of a valuation of higher rank is the so-called \emph{Parshin valuation}, which is defined as follows.\Yang{ref.}
+
+  \begin{example}[Parshin valuation]
+     
+    Let $\kk$ be an arbitrary field and $\KK = \kk((t_1, \dots, t_r))$ be the field of formal Laurent series in $r$ variables over $\kk$.
+  \end{example}
+
+  \begin{question}
+    Does every valuation of rank $r$ with one-dimensional leaves arise from a Parshin valuation?
+     \Yang{}
+  \end{question}
+
+
+\subsection{Asymptotic Riemann-Roch}
+
+  \begin{proposition}
+    Let $X$ be a projective variety, $\calF$ a coherent sheaf on $X$, and $D$ an ample divisor on $X$.
+    Then we have $h^0(X, \calF(mD))$ is a polynomial in $m$ of degree at most $\dim \Supp \calF$ for $m \gg 0$.
+     \Yang{}
+  \end{proposition}
+
+  \begin{theorem}[{Asymptotic Riemann-Roch, ref. \cite[Example 1.2.19]{Laz04a}}]
+    Let $X$ be a \Yang{? smooth, seems normal is enough and by bertini} projective variety of dimension $d$ and $D$ be an ample divisor on $X$.
+    Then we have
+    \[ h^0(X, mD) = \frac{D^d}{d!} m^d + O(m^{d-1}) \]
+    as $m \to +\infty$.
+  \end{theorem}
+  \begin{proof}
+    
+  \end{proof}
+
+
+\subsection{Convex bodies}
+
+  \begin{definition}
+    A \emph{convex body} in $\bbR^n$ is a compact convex subset of $\bbR^n$ with non-empty interior.
+     \Yang{}
+  \end{definition}
+
+  \begin{example}
+     \Yang{}
+  \end{example}
+
+  \begin{theorem}[Brunn-Minkowski inequality, ref.]
+    Let $A$ and $B$ be convex bodies in $\bbR^n$.
+    Then we have
+    \[ \vol(A + B)^{1/n} \geq \vol(A)^{1/n} + \vol(B)^{1/n}, \]
+    where $A + B = \{ a + b : a \in A, b \in B \}$ is the Minkowski sum of $A$ and $B$.
+     \Yang{}
+  \end{theorem}
+  
+

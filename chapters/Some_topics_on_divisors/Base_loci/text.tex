@@ -1,0 +1,327 @@
+\section{Base loci of divisors}
+
+
+% Base loci of divisors play an important role in the study of positivity of divisors.
+% At least for me, there are two main reasons for this, respectively from \cref{thm:semi-ample_fibration} and \cref{prop:properties_augmented_and_restricted_base_loci}.
+% \Yang{}
+
+
+\subsection{Base loci of line bundles}
+
+  On this subsection, we do not require $X$ to be projective.
+
+  We begin from the support of a Cartier divisor.
+
+  \begin{definition}
+    Let $X$ be a variety and $D$ an effective divisor on $X$.
+    The support of $D$ is defined as 
+    \[ \Supp D \coloneqq \bigcup_{\xi \in X, f_\xi \notin \calO_{X,\xi}^*} \overline{\{\xi\}}. \]
+    Here $\xi$ takes over all scheme-theoretic points of $X$ and $f_\xi$ is a local equation of $D$ at $\xi$, which is well-defined up to multiplication by a unit in $\calO_{X,\xi}$, so the above definition is well-defined.
+  \end{definition}
+
+  Suppose that $D$ is defined by $\{U_i, f_i\}$, by assuming that $U_i$ is affine, one can see that $\Supp D$ is the union of the closed subsets defined by $f_i$ on $U_i$.
+  Hence $\Supp D$ is a closed subset of $X$.
+  When $X$ is normal, the support of $D$ is just the union of all prime divisors that appear in $D$ with non-zero coefficients.
+
+  \begin{remark}
+    However, when $X$ is not normal, $\Supp D$ may contain some components of codimension strictly greater than $1$; see \cref{eg:support_of_Cartier_divisor_when_nonnormal_by_whitney_umbrella}.
+  \end{remark}
+
+  \begin{example}[Whitney umbrella]\label{eg:support_of_Cartier_divisor_when_nonnormal_by_whitney_umbrella}
+    Let $X$ be the surface defined by $x^2 = y^2 z$ in $\bbA^3$ with coordinates $x,y,z$, and let $D$ be the divisor defined by 
+    \[ \frac{x}{y} \text{ on } U_y = X \setminus \{y=0\}, \quad \frac{yz}{x} \text{ on } U_x = X \setminus \{x=0\}. \]
+     \Yang{}
+  \end{example}
+
+  \begin{definition}
+    Let $D$ be a (linearly effective) divisor on a variety $X$.
+    The \emph{base locus} of $D$ is defined as
+    \[ \Bs(D) \coloneqq \bigcap_{D \sim D' \geq 0} \Supp D'. \]
+    If $D$ is not linearly equivalent to any effective divisor, we define $\Bs(D) \coloneqq X$.
+    Since the definition only depends on the linear equivalence class of $D$, we can also define the base locus for linear equivalence classes of divisors.
+  \end{definition}
+
+  This definition gives a closed subset of $X$.
+  We can also define the base locus as a subscheme of $X$.
+
+  % \begin{remark}
+  %   Due to personal preference, I will try to avoid using the language of linear systems, so I will not use the notation $|D|$.
+  % \end{remark}
+
+  \begin{definition}
+    Let $D$ be a (linear equivalence class of) divisor on a variety $X$.
+    We define the \emph{base ideal} of $D$ as the image of the evaluation map:
+    \[ \frakb(D) \coloneqq \Image\Bigl( H^0(X, D) \otimes_\kk \calO_X(-D) \to \calO_X \Bigr). \]
+    We define the \emph{base scheme} of $D$ as the closed subscheme of $X$ defined by the base ideal of $D$.
+  \end{definition}
+
+  Let $\pi: X \to \Spec \kk$ be the structure morphism.
+  Note that 
+  \[ H^0(X, D) \otimes_\kk \calO_X(-D) = \pi^*\pi_*\calO(D) \otimes_{\calO_X} \calO_X(-D), \]
+  so the image of the evaluation map is indeed an ideal sheaf on $X$.
+
+  \begin{definition}
+    We say a (linear equivalence class of) divisor $D$ on a variety $X$ is \emph{base point free} if $\Bs(D) = \emptyset$.
+  \end{definition}
+
+  We also consider the following asymptotic versions of base loci.
+  \begin{definition}
+    Let $D$ be a (linear equivalence class of) $\bbQ$-divisor on a variety $X$.
+    We define the \emph{stable base locus} or \emph{$\bbQ$-base locus} of $D$ as
+    \[ \bfB(D) \coloneqq \bigcap_{\substack{m \in \bbZ_{>0},\\ mD \in \Div(X)}} \Bs(mD) = \bigcap_{\substack{D' \in \Div(X)_\bbQ, \\ D \sim_\bbQ D'\geq 0}} \Supp D' \eqqcolon \Bs_\bbQ(D). \]
+  \end{definition}
+
+  \begin{definition}
+    Let $D$ be a (linear equivalence class of) $\bbQ$-divisor on a variety $X$.
+    We say that $D$ is \emph{semi-ample} if $\bfB(D) = \emptyset$.
+  \end{definition}
+
+  
+  \begin{example}
+    Let $X = \Bl_p \bbP^2$ be the blow-up of $\bbP^2$ at a point $p$, $\tilde{H}$ be the strict transform of a line in $\bbP^2$ passing through $p$, and let $E$ be the exceptional divisor.
+    Then for $a,b \in \bbZ_{\geq 0}$, we have
+    \[ \Bs(a\tilde{H} + bE) = \begin{cases}
+      \emptyset & a \geq b, \\
+      E & a < b.
+    \end{cases} \]
+    % \Yang{}
+  \end{example}
+
+  \begin{example}
+    Let $E$ be an elliptic curve over $\kkk$ and $P \in E(\kkk)$.
+    Set $X = \bbP(\calO_E \oplus \calO_E(-P))$ with the natural projection $\pi: X \to E$ and the unique minimal section $C_0$ with $C_0^2 = -1$.
+    Let $D = C_0 + \pi^*P$.
+    Then 
+    \[ \Bs D = \{Q\}, \]
+    where $Q$ is some point on $X$ projecting to $P$.
+
+    Indeed, we have 
+    \[ h^0(X, D) = h^0(E, \pi_*\left(\calO_X(C_0) \otimes \pi^*\calO_E(P) \right)) = h^0(E, \calO_E \oplus \calO_E(P)) = 2. \]
+    Thus $\dim |D| = 1$.
+    For $D_t \in |D|$, write $D_t = H_t + \pi^*B$ where $H_t$ is the horizontal part and $B \in \Div(E)$ is the vertical part.
+    Intersecting with fibers, we get that $H_t$ is prime and a section of $\pi$.
+    By Bernstein's theorem, for general $t$, $D_t$ is irreducible and thus $D_t = H_t$.
+    Since $D^2 = 1$, we only need to find the intersection of two distinct members of $|D|$ to find the base locus.
+    Note on $\CH_0(X)$, we have 
+    \[ D_t \cap D_s = (C_0 + \pi^*P) \cdot (C_0 + \pi^*P) = [Q] \]
+    for a point $Q$.
+    By proper pushforward of $\CH_0$, we see that $Q$ projects to $P$.
+    It follows that any two irreducible members of $|D|$ intersect at $Q$ since they are section and $\Bs |D| \subset \{Q\}$.
+    
+    Fix an irreducible member $D_0 \in |D|$.
+    For every $D_t = H_t + \pi^*B_t \in |D|$, $H_t$ is different from $D_0$ and thus 
+    \[ D_t \cap D_0 = [H_t \cap D_0] + [\pi^*B_t \cap D_0] = [Q]. \]
+    Note both $[H_t \cap D_0]$ and $[\pi^*B_t \cap D_0]$ are effective, we get that $[\pi^*B_t \cap D_0] = [Q]$ or $0$.
+    If $[\pi^*B_t \cap D_0] = [Q]$, then $B_t = P$ and thus $D_t = H_t + \pi^*P \sim C_0 + \pi^*P$.
+    Then $H_t \sim C_0$ and thus $H_t = C_0$.
+    It pass through $Q$.
+    Otherwise, $[\pi^*B_t \cap D_0] = 0$ and thus $B_t = 0$ and thus $D_t$ is irreducible.
+    We have seen that $D_t$ also pass through $Q$.
+    Hence, $\Bs |D| = \{Q\}$.
+    \Yang{}
+    % Hence $Q$ is the unique base point of $|D|$.
+  \end{example}
+
+  We have the following properties of base loci.
+
+  \begin{proposition}
+    Let $D$ be a divisor on a variety $X/\kk$.
+    \begin{enumerate}
+      \item The support of the base scheme of $D$ is exactly the base locus of $D$, i.e. 
+        \[ \Supp \calO_X/\frakb(D) = \Bs D. \]
+      \item For any $m,n \geq 0$, we have $\frakb(mD) \cdot \frakb(nD) \subseteq \frakb((m+n)D)$ and hence 
+      \[ \Bs((m+n)D) \subseteq \Bs mD \cup \Bs nD. \]
+      \item If $m \mid n$, then $\frakb(mD) \subseteq \frakb(nD)$ and hence $\Bs nD \subseteq \Bs mD$.
+      \item $\bfB(D) = \Bs (mD)$ for $m$ sufficiently divisible.
+      \item $D$ is base point free on $X \setminus \Bs D$ and semi-ample on $X \setminus \bfB(D)$.
+       \Yang{}
+      \item If $\characteristic \kk = 0$, then there exists a birational morphism $\pi: \tilde{X} \to X$ from a smooth projective variety $\tilde{X}$ such that 
+      \[ \pi^* D = M + F, \quad \Bs M = \emptyset, \quad F \geq 0, \quad \Supp \pi^* D = \Supp F. \]
+    \end{enumerate}
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{remark}
+    % By (c) in the above proposition, we have $m \mapsto \Bs mD$ is order-reversing for the divisibility order on $\bbZ_{\geq 0}$ and the inclusion order on the set of closed subsets of $X$.
+    In general, we do NOT have $\Bs(mD) \subseteq \Bs (nD)$ for any $m < n$. 
+    For example, if $\calO(D)$ is a non-trivial torsion line bundle, then $\Bs(mD) = \emptyset$ for $m$ divisible by the order of $D$ in $\Pic(X)$, and $\Bs(mD) = X$ otherwise.
+    %  \Yang{}
+  \end{remark}
+    
+  An important property of semi-ample divisors is that they are pullbacks of ample divisors under a fibration.
+
+  \begin{theorem}\label{thm:semi-ample_fibration}
+    Let $D$ be a semi-ample $\bbQ$-divisor on a variety $X$.
+    Then there exists a fibration $f: X \to Y$ to a variety $Y$ and an ample $\bbQ$-divisor $A$ on $Y$ such that $D \sim_\bbQ f^* A$.
+    Such a fibration $f$ is unique up to isomorphism, and it is called the \emph{semi-ample fibration} associated to $D$.
+     \Yang{}
+  \end{theorem}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+% \subsection{Iitaka fibrations}
+
+  \begin{definition}
+     We say $D$ is movable if $\Bs(D)$ has codimension at least $2$ in $X$.
+     \Yang{}
+  \end{definition}
+  
+  \begin{proposition}
+    Let $D$ be a divisor on a normal  projective variety $X$.
+    If $D$ is base point free, then 
+    \[ \codim \left(\bigcap_{\mu_*D \sim D' \geq 0} \Supp D'\right) \geq 2 \]
+    for any proper birational morphism $\mu: X \to Y$ to a normal projective variety $Y$.
+    In particular, if $\mu_*D$ is Cartier, then $\mu_*D$ is movable.
+    \Yang{}
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  % \subsection{Iitaka dimension}
+
+  \Yang{}
+
+  \begin{definition}
+    Let $D$ be a divisor on a projective variety $X$.
+    We define the \emph{Iitaka dimension} of $D$ as
+    \[ \kappa(X, D) \coloneqq \max \left\{ k \in \bbZ_{\geq 0} \;\middle|\; \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \right\} \in \{-\infty\} \cup \bbZ_{\geq 0}. \]
+    If $D = K_X$ is the canonical divisor, we call $\kappa(X, K_X)$ the \emph{Kodaira dimension} of $X$ and denote it by $\kappa(X)$ simply.
+  \end{definition}
+  
+
+  \begin{proposition}
+    Let $D$ be an effective divisor on a variety $X$ with fibration $f: X \setminus \bfB(D) \surjmap Y$.
+    Then we have $\kappa(X, D) = \dim Y$.
+    % \Yang{}
+    % Then there exists a fibration $f: X \to Y$ to a quasi-projective variety $Y$ such that $\calO_X(mD) \cong f^* \calO_Y(1)$ for some ample divisor on $Y$, and we have $\kappa(X, D) = \dim Y$.
+    % \Yang{}
+  \end{proposition}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \begin{remark}
+    Iitaka dimension is not a numerical invariant, i.e. it may happen that $D \equiv D'$ but $\kappa(X, D) \neq \kappa(X, D')$.
+    \Yang{arXiv:1904.10832}
+  \end{remark}
+
+
+
+% \subsection{Iitaka fibrations}
+
+  In characteristic zero, we have the following birational analog of the above proposition, which is the main result of this section.
+
+  \begin{theorem}
+    Let $\kk$ be a field of characteristic zero and $X$ a projective variety over $\kk$.
+    Let $D$ be a divisor on $X$ with $\kappa(X, D) \geq 0$.
+    There exists a fibration $f: X' \surjmap Y$ with $X'$ birational to $X$ such that for sufficiently large and \Yang{} divisible $m > 0$, the fibration $\phi_m: X \dashrightarrow Y_m$ associated to $mD$ is birational to $f$.
+
+    We call such a rational map an \emph{Iitaka fibration} of $D$.
+    \Yang{}
+  \end{theorem}
+
+
+  \begin{remark}
+    The notion of base point free works for any variety (do not require projectivity).
+    Hence one may try to construct the Iitaka fibration by restricting $D$ to $X \setminus \bfB(D)$ and considering the morphism $\phi_{mD}: X \setminus \bfB(D) \to Y$ induced by $mD$ (since $mD$ is base point free on $X \setminus \bfB(D)$ for $m$ sufficiently divisible).
+    However, this morphism may fail to be a fibration and in this case we do not have the Stein factorization due to the non-properness of $X \setminus \bfB(D)$.
+  \end{remark}
+
+    \Yang{}
+
+
+
+\subsection{Base loci of numerical divisor classes}
+
+  If one want to ...
+
+  Another important property of base loci is that intersection.
+  For this purpose, we need that $X$ to be projective and we can only consider the numerical equivalence class of $D$.
+  First we need to extend the definition of support to $\bbR$-divisors.
+
+  \Yang{} It waw first introduced by 
+
+  % \begin{definition}
+  %   Let $D$ be an $\bbR$-divisor on a variety $X$.
+  %   We define the support of $D$ as 
+  %   \[ \Supp D = \bigcap_{D = \sum_i a_i D_i,\ a_i \neq 0} \left( \bigcup_i \Supp D_i \right), \]
+  %   where $D_i$ are Cartier divisors and $a_i \in \bbR$.
+  %   % And the numerical base locus of $D$ is defined as
+  %   % \[ \Bs_{\equiv}(D) = \bigcap_{D \equiv D' \geq 0} \Supp D'. \]
+  %    \Yang{}
+  % \end{definition}
+  
+
+  \begin{definition}
+    Let $D$ be a $\bbR$-divisor on a projective variety $X$.
+    The \emph{augmented base locus} (also called the \emph{non-ample locus}) of $D$ is defined as
+    \[ \bfB_+(D) \coloneqq \bigcap_{\substack{A \in \Div(X)_\bbR \text{ ample } \\ D - A \in \Div(X)_\bbQ}} \bfB(D - A). \]
+    The \emph{restricted base locus} (also called the \emph{non-nef locus}) of $D$ is defined as
+    \[ \bfB_-(D) \coloneqq \bigcup_{\substack{A \in \Div(X)_\bbR \text{ ample } \\ D + A \in \Div(X)_\bbQ}} \bfB(D + A). \]
+    \Yang{}
+  \end{definition}
+
+  \begin{remark}
+    There seems many different definitions of $\bfB_+(D)$ and $\bfB_-(D)$ in the literature, see \cite{Birkar-2017-augmented-base-locus,Ein-Lazarsfeld-Mustața-Nakamaye-Popa-2006-asymptotic-invariants-base-loci}.
+    The equivalence of these definitions \Yang{right?}
+  \end{remark}
+
+  \begin{example}
+    Let $X = \Bl_p \bbP^2$ be the blow-up of $\bbP^2$ at a point $p$, and let $E$ be the exceptional divisor.
+    Then for $a,b \in \bbR_{\geq 0}$, we have
+    \[ \bfB_+(a\tilde{H} + bE) = \begin{cases}
+      \emptyset & a > b, \\
+      E & a \leq b,
+    \end{cases} \quad \bfB_-(a\tilde{H} + bE) = \begin{cases}
+      \emptyset & a > b, \\
+      E & a < b.
+    \end{cases} \]
+    In particular, $\bfB_+(bE) = X$ but $\bfB_-(bE) = E$ for any $b > 0$.
+     \Yang{}
+  \end{example}
+
+  \begin{remark}
+    The restricted base locus $\bfB_-(D)$ is a countable union of closed subsets of $X$, so it is not necessarily closed.
+     \Yang{arXiv:1212.3738}
+  \end{remark}
+
+  \begin{question}
+    Suppose that $X$ is defined over a finitely generated field over $\bbQ$.
+    Suppose that $D$ is pseudo-effective.
+    Is $\bfB_-(D)$ always adelic closed or contained in a proper adelic closed subset of $X$?
+     \Yang{}
+  \end{question}
+
+  \begin{example}
+    \Yang{}
+  \end{example}
+
+  \begin{theorem}\label{prop:properties_augmented_and_restricted_base_loci}
+    Let $D$ be a $\bbR$-divisor on a projective variety $X$.
+    \begin{enumerate}
+      \item Both restricted and augmented base loci only depend on the numerical equivalence class of $D$.
+      \item We have $\bfB_-(D) \subseteq \bfB(D) \subseteq \bfB_+(D)$ when $D$ is a $\bbQ$-divisor.
+      \item The intersection in the definition of $\bfB_+(D)$ will stabilize, i.e. fix a norm on $\upN^1(X)$, there exists $\varepsilon > 0$ such that for any ample $\bbQ$-divisor $A$ with $0 < \|A\| \leq \varepsilon$, we have $\bfB_+(D) = \bfB(D - A)$.
+      %  \Yang{}
+      \item Let $C$ be a curve on $X$ such that $C \not\subset \bfB_-(D)$, then $D \cdot C \geq 0$.
+        In particular, $D$ is nef if and only if $\bfB_-(D) = \emptyset$; $D$ is pseudo-effective if and only if $\bfB_-(D) \neq X$.
+       \Yang{}
+      \item Augmented base locus $\bfB_+(D)$ coincides with the its exceptional locus, i.e.
+      \[ \bfB_+(D) = \bigcup_{\substack{V \subseteq X \text{ subvariety} \\ D|_V \text{ not big}}} V. \]
+      In particular, $D$ is big if and only if $\bfB_+(D) \neq X$ and $D$ is ample if and only if $\bfB_+(D) = \emptyset$. ref. \cite{Birkar-2017-augmented-base-locus}.
+      %  \Yang{}
+    \end{enumerate}
+    \Yang{}
+  \end{theorem}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  \Yang{}
+
+
+

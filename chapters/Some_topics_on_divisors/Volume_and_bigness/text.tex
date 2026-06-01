@@ -1,74 +1,152 @@
 \section{Volume and bigness}
 
-
-% \section{Asymptotic behavior of divisors}
-
-    Let $\kkk$ be an algebraically closed field, usually of characteristic $0$.
-    Let $X$ be a normal projective variety over $\kkk$ of dimension $d$.
+Let $X$ be a projective variety over a field $\kk$.
     
 \subsection{Volume and bigness}
 
-    \begin{definition}
-        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
-        The \emph{volume} of $D$ is defined as
-        \[ \vol(D) \coloneqq \lim_{m \to +\infty} \frac{h^0(X, \calO_X(mD))}{m^d/d!}. \]
-    \end{definition}
+  \begin{definition}
+    Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+    The \emph{volume} of $D$ is defined as
+    \[ \vol(D) \coloneqq \lim_{m \to +\infty} \frac{h^0(X, \calO_X(mD))}{m^d/d!}. \]
+  \end{definition}
+
+  By the definition, we have $\vol(D)$ only depends on the linear equivalence class of $D$.
+
+  \begin{remark}
+    This definition seems also make sense for Weil divisors, but I am not sure if the limit always exists in that case.
+     \Yang{}
+  \end{remark}
 
 
-    \begin{theorem}
-        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
-        \begin{enumerate}
-            \item The limit in the definition of $\vol(D)$ exists.
-            \item If $D$ is ample, then $\vol(D) = D^d$.
-            \item The volume $\vol(D)$ depends only on the numerical equivalence class of $D$.
-            \item The volume function $\vol: \NS(X)_\bbQ \to \bbR$ is locally uniformly continuous and homogeneous of degree $d$, and hence extends to a continuous function $\vol: \upN^1(X) = \NS(X)_\bbR \to \bbR$.
-        \end{enumerate}
-    \end{theorem}
-
-
-    \begin{definition}
-        A divisor $D$ on a projective variety $X$ is called \emph{big} if $\vol(D) > 0$.
-    \end{definition}
-
-
-    \begin{theorem}
-        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
-        \begin{enumerate}
-            \item If $D \equiv D'$ and $D$ is big, then $D'$ is also big.
-            \item If $D$ is big, then there exist an ample divisor $A$ and an effective divisor $E$ such that $D \sim_\bbQ A + E$.
-            \item A numerical class $D \in \NS(X)_\bbQ$ is big if and only if it lies in the interior of the pseudo-effective cone $\Psef^1(X)$.
-        \end{enumerate}
-    \end{theorem}
-
-    \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.16]{Laz04a}}]
-        Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
-        Then $D$ is big if and only if there exist an ample divisor $A$ and an effective divisor $E$ such that $D \sim_\bbQ A + E$.
-        \Yang{}
-    \end{theorem}
-
-    \begin{corollary}
-        If $D$ is a nef divisor on a projective variety $X$ of dimension $d$ such that $D^d > 0$, then $D$ is big.
-    \end{corollary}
-
-
-\subsection{Okounkov bodies}
-
+  \begin{theorem}
+    Let $D$ be a divisor on a projective variety $X$ of dimension $d$.
+    \begin{enumerate}
+      \item The limit in the definition of $\vol(D)$ exists.
+      \item If $D$ is nef, then $\vol(D) = D^d$.
+      \item The volume $\vol(D)$ depends only on the numerical equivalence class of $D$.
+      \item The volume is birational invariant, i.e. if $\mu: X' \to X$ is a birational morphism and $D' = \mu^* D$, then $\vol_X(D) = \vol_{X'}(D')$.
+       \Yang{}
+      \item The volume function $\vol: \NS(X)_\bbQ \to \bbR$ is locally uniformly continuous and homogeneous of degree $d$, and hence extends to a continuous function $\vol: \upN^1(X) \to \bbR$.
+    \end{enumerate}
+  \end{theorem}
+  Proof of these statements will use the \emph{Newton-Okounkov body} of $D$, which will be defined in \cref{subsec:Newton-Okounkov_bodies}.
+  \begin{proof}
     \Yang{}
+  \end{proof}
+    \Yang{}
+
+  \begin{remark}
+    If $X$ is normal, ... \Yang{}
+    But in general, it still holds that $\vol(D) = \vol(\mu^* D)$ for any birational morphism $\mu: X' \to X$ and $D' = \mu^* D$.
+     \Yang{}
+  \end{remark}
+
+\subsection{Big divisors}
 
   \begin{definition}
-    Let $X$ be a projective variety of dimension $d$ and $D$ be a divisor on $X$.
-    Let $Y_\bullet: X = Y_0 \supset Y_1 \supset \cdots \supset Y_d = \{x\}$ be an admissible flag on $X$, i.e. each $Y_i$ is an irreducible subvariety of codimension $i$ in $X$ that is smooth at the point $x$.
-    We define the \emph{Okounkov body} of $D$ with respect to the flag $Y_\bullet$ as
-    \[ \Delta_{Y_\bullet}(D) := \text{the closure of the convex hull of } \{ \nu_{Y_\bullet}(s) / m \mid s \in H^0(X, mD) \setminus \{0\}, m > 0 \} \subseteq \bbR^d, \]
-    where $\nu_{Y_\bullet}(s) = (\nu_1(s), \ldots, \nu_d(s))$ is defined inductively as follows: $\nu_1(s) = \ord_{Y_1}(s)$, and for $i > 1$, we define $\nu_i(s)$ as the order of vanishing of the image of $s$ in $H^0(Y_{i-1}, mD - \sum_{j=1}^{i-1} \nu_j(s) Y_j)$ along $Y_i$.
-    \Yang{}
+    A $\bbR$-divisor $D$ on a projective variety $X$ is called \emph{big} if $\vol(D) > 0$.
   \end{definition}
+
+  We have the following characterizations of big divisors.
+
+  \begin{theorem}
+    Let $D$ be a $\bbR$-divisor on a projective variety $X$ of dimension $d$.
+    \begin{enumerate}
+      \item If $D \equiv D'$ and $D$ is big, then $D'$ is also big.
+      \item An nef divisor $D$ is big if and only if $D^d > 0$.
+      \item If there exists an ample divisor $A$ and an effective divisor $E$ such that $D \sim_\bbQ A + E$, then $D$ is big.
+      \item If $D$ is big, then for any ample divisor $A$, there exists an effective divisor $E$ such that $D \sim_\bbQ A + E$.
+      \item A numerical class $D \in \NS(X)_\bbQ$ is big if and only if it lies in the interior of the pseudo-effective cone $\Psef^1(X)$.
+    \end{enumerate}
+  \end{theorem}
+
+  The following criterion may be useful in practice.
+
+  \begin{theorem}[{Siu's criterion, ref. \cite[Theorem 2.2.16]{Laz04a}}]
+    Let $L,M$ be nef divisors on a projective variety $X$ of dimension $d$.
+    If $L^d > d L^{d-1} \cdot M$ and $M$ is big, then $L - M$ is big.
+  \end{theorem}
+  \begin{proof}
+    \Yang{}
+  \end{proof}
+
+  % \begin{corollary}
+  %   If $D$ is a nef divisor on a projective variety $X$ of dimension $d$ such that $D^d > 0$, then $D$ is big.
+  % \end{corollary}
+
+
+\subsection{Newton-Okounkov bodies}\label{subsec:Newton-Okounkov_bodies}
+
+% \Yang{}
+
+  The main references for this subsection are \cite{Lazarsfeld-Mustață-2009-Okounkov-Bodies,kaveh-Khovanskii-2012-Newton-Okounkov-bodies}.
+
+
+  \begin{construction}
+
+    Let $X$ be a projective variety of dimension $d$ and $\nu$ be a valuation of rank $d$ on the function field $\fkk(X)/\kk$ with one-dimensional leaves and valuation group $\Gamma_\nu = \bbZ^d$ with the lexicographic order.
+
+    Let $D$ be a divisor on $X$.
+    Recall that we have an inclusion $H^0(X, mD) \subseteq \fkk(X)$ depending on $D$ (rather than the linear equivalence class of $D$), and hence we can apply the valuation $\nu$ to any nonzero section $s \in H^0(X, mD)$ to get an element $\nu(s) \in \bbZ^d$.
+
+    The \emph{Newton-Okounkov body} of $D$ with respect to the valuation $\nu$ is defined as 
+    \[ \Delta_{\nu}(D) \coloneqq \overline{\mathrm{conv}}\left( \left\{ \frac{\nu(s)}{m}\ \middle|\ s \in H^0(X, mD) \setminus \{0\}, m > 0 \right\} \right) \subseteq \bbR^d = \Gamma_\nu \ten \bbR. \]
+    If the valuation $\nu$ arises from an admissible flag $Y_\bullet$ on $X$, we also write $\Delta_{Y_\bullet}(D)$ for $\Delta_\nu(D)$.
+
+
+     \Yang{}
+
+
+
+
+
+    % A \emph{admissible flag} on $X$ is a sequence of irreducible subvarieties
+    % \[ X = Y_0 \supset Y_1 \supset \cdots \supset Y_d = \{x\} \]
+    % such that each $Y_i$ is of codimension $i$ in $X$ and is smooth at the point $x$.
+
+    % We can define a valuation of rank $d$ associated to the flag $Y_\bullet$:
+    % \[ \nu_{Y_\bullet}: H^0(X, mD) \setminus \{0\} \to \bbZ^d \]
+    % inductively as follows: $\nu_1(s) = \ord_{Y_1}(s)$, and for $i > 1$, we define $\nu_i(s)$ as the order of vanishing of the image of $s$ in $H^0(Y_{i-1}, mD - \sum_{j=1}^{i-1} \nu_j(s) Y_j)$ along $Y_i$.
+
+    % The \emph{Newton-Okounkov body} of $D$ with respect to the valuation $\nu_{Y_\bullet}$ is defined as 
+    % \[ \Delta_{Y_\bullet}(D) := \overline{\mathrm{conv}}\left( \left\{ \frac{\nu_{Y_\bullet}(s)}{m} \mid s \in H^0(X, mD) \setminus \{0\}, m > 0 \right\} \right) \subseteq \bbR^d. \]
+    %  \Yang{}
+  \end{construction}
 
 
   \begin{theorem}
     Let $D$ be a divisor on a projective variety $X$ of dimension $d$ and $Y_\bullet$ be an admissible flag on $X$.
-    Then we have $\vol(D) = d! \cdot \vol_{\bbR^d}(\Delta_{Y_\bullet}(D))$ where $\vol_{\bbR^d}$ is the standard Euclidean volume on $\bbR^d$.
+    \begin{enumerate}
+      \item $\vol(D) = d! \cdot \vol_{\bbR^d}(\Delta_{Y_\bullet}(D))$, where $\vol_{\bbR^d}$ is the standard Lebesgue measure on $\bbR^d$.
+      \item The Okounkov body $\Delta_{Y_\bullet}(D)$ depends only on the numerical equivalence class of $D$.
+      \item $\Delta_\nu(D) + \Delta_\nu(D') \subseteq   \Delta_\nu(D + D')$.
+      \item $\Delta_\nu(qD) = q \Delta_\nu(D)$ for any rational number $q > 0$. 
+        Hence the definition of $\Delta_\nu(D)$ extends to any $\bbQ$-divisor $D$.
+      \item there exists a closed convex cone $\Delta_{Y_\bullet}(X) \subseteq \bbR^d \times \NS(X)_\bbR$ such that the fiber of $\Delta_{Y_\bullet}(X)$ over any big class $\xi \in \NS(X)_\bbR$ is exactly $\Delta_{Y_\bullet}(\xi)$.
+    \end{enumerate}
     \Yang{}
+  \end{theorem}
+
+  \begin{remark}
+    In general, we have no equality in (c) above, \Yang{}
+  \end{remark}
+
+  \begin{lemma}
+    Let $C \subset \bbN^d$ be a semigroup that generates $\bbZ^d$ as a group such that $C_\bbR = C \ten_\bbZ \bbR \subset \bbR^d$ is a salient cone. 
+
+    Let $H$ be an affine hyperplane in $\bbR^d$ that intersects $C_\bbR$ 
+
+
+    Then we have $\vol_{\bbR^d}(\overline{\mathrm{conv}}(C)) = \vol_{\bbR^d}(C_\bbR)$.
+     \Yang{}
+  \end{lemma}
+
+
+  \begin{theorem}[Fujita approximation]
+    Let $D$ be a big divisor on a projective variety $X$ of dimension $d$.
+    Then for any $\varepsilon > 0$, there exist a birational morphism $\mu: X' \to X$, an ample divisor $A$ and an effective divisor $E$ on $X'$ such that 
+    \[ \mu^* D = A + E, \quad \text{and} \quad \vol(A) \leq \vol(D) \leq \vol(A) + \varepsilon. \]
+     \Yang{}
   \end{theorem}
 
 
@@ -78,22 +156,56 @@
 
 \subsection{Convexity of the volume function}
 
-    \begin{theorem}
-        Volume is log-concave on the big cone, i.e. for any big divisors $D_1, D_2$ on a projective variety $X$ of dimension $d$, we have
-        \[ \vol(D_1 + D_2)^{1/d} \geq \vol(D_1)^{1/d} + \vol(D_2)^{1/d}. \]
+  \begin{slogan}
+    Intersection of nef divisors $\leftrightsquigarrow$ (mixed) volume of divisors $\leftrightsquigarrow$ volume of convex bodies.
+  \end{slogan}
+
+    \begin{theorem}[{Brunn-Minkowski inequality for volume, ref. \cite[Theorem ?]{Laz04a}}]
+      For any big divisors $D_1, D_2$ on a projective variety $X$ of dimension $d$, we have
+      \[ \vol(D_1 + D_2)^{1/d} \geq \vol(D_1)^{1/d} + \vol(D_2)^{1/d}. \]
     \end{theorem}
 
+    \begin{corollary}[{Generalized Hodge type inequalities, ref. \cite[Theorem 1.6.1]{Laz04a}}]
+      Let $D_1,\cdots,D_d$ be nef divisors on a projective variety $X$ of dimension $d$.
+      Then we have
+      \[ (D_1 \cdots D_d)^d \geq D_1^d \cdots D_d^d. \]
+     \Yang{}
+    \end{corollary}
 
+    \begin{corollary}[{A-F inequality, ref. \cite[Theorem ?]{Laz04a}}]
+      Let $D_1,\cdots,D_d$ be nef divisors on a projective variety $X$ of dimension $d$.
+      Then we have
+      \[ (D_1 \cdots D_d) \geq D_1^{1/d} \cdots D_d^{1/d}. \]
+     \Yang{}
+    \end{corollary}
 
 
 \subsection{Relative setting}
 
-    \begin{theorem}
-        Volume is semi-continuous on a family.
-    \end{theorem}
+
+  \begin{theorem}
+    Let $S$ be a noetherian integral scheme and $f: X \to S$ be a flat projective such that the generic fiber of $f$ is geometrically integral.
+    Let $D$ be a divisor on $X$.
+    Then the function $s \mapsto \vol(X_s, D|_{X_s})$ is upper semi-continuous on $S$.
+     \Yang{}
+  \end{theorem}
+  Roughly speaking, volume is upper semi-continuous on a family.
 
 
-    
+  \begin{definition}
+    Let $f: X \to Z$ be a projective morphism of relative dimension $d$ between varieties and $D$ be a divisor on $X$.
+    We define the \emph{relative volume} of $D$ over $Z$ as
+    \[ \vol_{X/Z}(D) := \lim_{m \to +\infty} \frac{\rank_{\calO_Z} f_* \calO_X(mD)}{m^d/d!}. \]
+     \Yang{}
+  \end{definition}
+
+
+  \begin{corollary}
+    We have 
+    \[ \vol(X_\eta, D|_{X_\eta}) = \vol(X/S,D) \geq \vol(X_s, D|_{X_s}) \]
+    for any $s \in S$.
+     \Yang{}
+  \end{corollary}
 
 % \subsection{Zariski decomposition}
 

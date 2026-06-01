@@ -1,47 +1,45 @@
 \section{Iitaka fibrations}
 
 
-\subsection{Iitaka dimension and Kodaira dimension}
+\subsection{Iitaka dimension}
 
-  \Yang{}
+  % \Yang{}
 
   \begin{definition}
     Let $D$ be a divisor on a projective variety $X$.
     We define the \emph{Iitaka dimension} of $D$ as
-    \[ \kappa(X, D) := \max \{ k \in \bbZ_{\geq 0} \mid \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \} \in \{-\infty\} \cup \bbZ_{\geq 0}. \]
-    If $D = K_X$ is the canonical divisor, we call $\kappa(X, K_X)$ the \emph{Kodaira dimension} of $X$.
+    \[ \kappa(X, D) \coloneqq \max \left\{ k \in \bbZ_{\geq 0} \;\middle|\; \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \right\} \in \{-\infty\} \cup \bbZ_{\geq 0}. \]
+    If $D = K_X$ is the canonical divisor, we call $\kappa(X, K_X)$ the \emph{Kodaira dimension} of $X$ and denote it by $\kappa(X)$ simply.
   \end{definition}
+  
 
   \begin{proposition}
-    Let $D$ be a semi-ample divisor on a projective variety $X$.
-    Then there exists a morphism $\phi: X \to Y$ to a projective variety $Y$ such that $\calO_X(mD) \cong \phi^* \calO_Y(1)$ for some ample divisor on $Y$ and some integer $m > 0$, and we have $\kappa(X, D) = \dim Y$.
-    \Yang{}
+    Let $D$ be an effective divisor on a variety $X$ with fibration $f: X \setminus \bfB(D) \surjmap Y$.
+    Then we have $\kappa(X, D) = \dim Y$.
+    % \Yang{}
+    % Then there exists a fibration $f: X \to Y$ to a quasi-projective variety $Y$ such that $\calO_X(mD) \cong f^* \calO_Y(1)$ for some ample divisor on $Y$, and we have $\kappa(X, D) = \dim Y$.
+    % \Yang{}
   \end{proposition}
-
-
-\subsection{Base loci of linear systems}
-
-  \begin{definition}
-    Let $D$ be a divisor on a projective variety $X$.
-    We define the \emph{stable base locus} of $D$ as
-    \[ \mathbf{B}(D) := \bigcap_{m > 0} \Bs(|mD|). \]
-    We define the \emph{augmented base locus} of $D$ as
-    \[ \mathbf{B}_+(D) := \bigcap_{A} \mathbf{B}(D - A) \]
-    where $A$ runs through all ample $\bbQ$-divisors on $X$.
-    We define the \emph{restricted base locus} of $D$ as
-    \[ \mathbf{B}_-(D) := \bigcup_{A} \mathbf{B}(D + A) \]
-    where $A$ runs through all ample $\bbQ$-divisors on $X$.
+  \begin{proof}
     \Yang{}
-  \end{definition}
+  \end{proof}
 
-  \Yang{}
+  \begin{remark}
+    Iitaka dimension is not a numerical invariant, i.e. it may happen that $D \equiv D'$ but $\kappa(X, D) \neq \kappa(X, D')$.
+    \Yang{arXiv:1904.10832}
+  \end{remark}
+
 
 
 \subsection{Iitaka fibrations}
 
+  In characteristic zero, we have the following birational analog of the above proposition, which is the main result of this section.
+
   \begin{theorem}
-    Let $D$ be a divisor on a projective variety $X$ with $\kappa(X, D) \geq 0$.
-    Then there exist an integer $m > 0$ and a rational map $\phi: X \dashrightarrow Y$ to a projective variety $Y$ such that $\calO_X(mD) \cong \phi^* \calO_Y(1)$ for some ample divisor on $Y$, and we have $\kappa(X, D) = \dim Y$.
+    Let $\kk$ be a field of characteristic zero and $X$ a projective variety over $\kk$.
+    Let $D$ be a divisor on $X$ with $\kappa(X, D) \geq 0$.
+    There exists a fibration $f: X' \surjmap Y$ with $X'$ birational to $X$ such that for sufficiently large and \Yang{} divisible $m > 0$, the fibration $\phi_m: X \dashrightarrow Y_m$ associated to $mD$ is birational to $f$.
+
     We call such a rational map an \emph{Iitaka fibration} of $D$.
     \Yang{}
   \end{theorem}
