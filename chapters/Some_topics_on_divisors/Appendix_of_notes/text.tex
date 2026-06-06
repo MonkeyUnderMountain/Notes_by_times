@@ -61,16 +61,38 @@
      \Yang{}
   \end{theorem}
 
+  % \begin{theorem}[{Nagata's compactification, ref. \Yang{}}]\label{thm:Nagata_compactification}
+  %   Let $f: X \to Y$ be a morphism between varieties.
+  %   Then there exists a compactification of $f$, i.e. a proper morphism $\overline{f}: \overline{X} \to Y$ and an open immersion $j: X \to \overline{X}$ such that $f = \overline{f} \circ j$.
+  %    \Yang{}
+  % \end{theorem}
 
 
 
-\subsection{Fibrations}
+\subsection{Varieties over non-closed fields}
 
-  Here we only deal with fibrations between varieties, and we do not require the morphism to be proper.
+  In this subsection, we review some facts about varieties over non-closed fields.
+  Let $\kk$ be a field and $\kkk$ be its algebraic closure.
+
+  \begin{example}
+    Let $X = \Spec \bbR[x, y]/(x^2 + y^2 - 1)$.
+
+    \Yang{}
+  \end{example}
 
   \begin{definition}
+    Let $X$ be a scheme of finite type over $\kk$.
+    We say $X$ is \emph{geometrically integral} (resp. \emph{geometrically irreducible}, \emph{geometrically reduced}, \emph{geometrically connected}) if $X_\kkk = X \times_\kk \kkk$ is integral (resp. irreducible, reduced, connected).
+    One can similarly define other notions of geometric properties, for example, \emph{geometrically normal}, \emph{geometrically regular}, etc.
+  \end{definition}
+
+  
+  \begin{definition}\label{def:separable_field_extensions_and_morphisms}
     Let $\kk$ be a field and $A$ be a $\kk$-algebra.
     We say $A$ is \emph{separable} over $\kk$ if $A \ten_\kk \bfL$ is reduced for every field extension $\kk \subseteq \bfL$.
+
+    Let $f: X \to Y$ be a dominant morphism between integral schemes.
+    We say $f$ is \emph{separable} if the field extension $\fkk(Y) \subseteq \fkk(X)$ is separable.
      \Yang{}
   \end{definition}
 
@@ -93,91 +115,288 @@
   \end{theorem}
 
 
-  \begin{proposition}\label{prop:characterization_of_fibrations}
-    Let $f: X \to Y$ be a dominant morphism between varieties.
-    TFAE:
+
+
+\subsection{Fibrations}
+
+  % Here we only deal with fibrations between varieties, and we do not require the morphism to be proper.
+
+  \begin{construction}[Relative normalization]
+    Let $X$ be a noetherian integral scheme and $\calA$ be a quasi-coherent $\calO_X$-algebra.
+    The \emph{integral closure} of $\calO_X$ in $\calA$ is defined as the quasi-coherent $\calO_X$-algebra $\calA'$ such that for every affine open subset $U = \Spec A$ of $X$, we have $\calA'(U) = \overline{A}$, where $\overline{A}$ is the integral closure of $A$ in $\calA(U)$.
+    The integral closure exists; see \cite[\href{https://stacks.math.columbia.edu/tag/035F}{Tag 035F}]{Stacks}.
+
+    Let $f: Y \to X$ be a morphism between noetherian integral schemes.
+    The \emph{relative normalization of $X$ in $Y$} is defined as
+    \[ X' = \calSpec_X \calA', \]
+    together with the factorization $Y \xrightarrow{f'} X' \xrightarrow{\nu} X$ of $f$,
+    where $\calA'$ is the integral closure of $\calO_X$ in $f_* \calO_Y$.
+  \end{construction}
+
+  \Yang{normalization of variety is still a variety.}
+
+  In our setting, the relative normalization of $X$ in $Y$ is characterized by the following universal property.
+
+  \begin{proposition}\label{prop:universal_property_of_relative_normalization}
+    Let $f: Y \to X$ be a morphism between noetherian integral schemes and $Y \xrightarrow{f'} X' \xrightarrow{\nu} X$ be the relative normalization of $X$ in $Y$.
+    Assuming that $X,Y$ are excellent and $f$ is of finite type, then we have the following properties.
+    \begin{enumerate}
+      \item The structure morphism $\nu: X' \to X$ is finite; see \cite[\href{https://stacks.math.columbia.edu/tag/03GR}{Tag 03GR}]{Stacks}.
+      \item For every factorization $Y \xrightarrow{f''} X'' \xrightarrow{\pi'} X$ of $f$ such that $\pi'$ is finite and $X''$ is integral, there is a unique morphism $g: X' \to X''$ making the following diagram commute:
+      \[
+        \begin{tikzcd}
+          Y \ar[r, "f'"] \ar[d, "f''"'] & X' \ar[d, "\nu"] \ar[ld, gray, "g"] \\
+          X'' \ar[r, "\nu'"'] & X
+        \end{tikzcd}
+      \]
+      see \cite[\href{https://stacks.math.columbia.edu/tag/035I}{Tag 035I}]{Stacks}.
+      % \item Let $Y^n,{X'}^n,X^n$ be the (absolute) normalizations of $Y,X',X$ respectively. 
+      %   Then the induced factorization $Y^n \to {X'}^n \to X^n$ is the relative normalization of $X^n$ in $Y^n$.\Yang{}
+    \end{enumerate}
+    %  \Yang{}
+  \end{proposition}
+
+  \begin{example}
+    Let $f_1$ be a morphism with geometrically integral fibers, for example, $f_1: \bbA^2_\kk \to \bbA^1_\kk$ defined by $\kk[x] \to \kk[x,y]$;
+    $f_2$ be an open immersion into a normal variety, for example, $f_2: \bbA^1_\kk \to \bbP^1_\kk$;
+    $f_3$ be a finite surjective morphism, for example, $f_3: \bbP^1_\kk \to \bbP^1_\kk$ defined by $[u:v] \mapsto [u^2:v^2]$;
+    and $f_4$ be a closed immersion, for example, $f_4: \bbP^1_\kk \to \bbP^2_\kk$ defined by $[u:v] \mapsto [u^2:uv:v^2]$.
+    Set $f = f_4 \circ f_3 \circ f_2 \circ f_1: \bbA^2_\kk \to \bbP^2_\kk$.
+    Then the relative normalization of $\bbP^2_\kk$ in $\bbA^2_\kk$ is $\bbP^1_\kk \xrightarrow{f_3} \bbP^1_\kk \xrightarrow{f_4} \bbP^2_\kk$, and the morphism $\bbA^2_\kk \to \bbP^1_\kk$ is given by $\bbA^2_\kk \xrightarrow{f_1} \bbA^1_\kk \xrightarrow{f_2} \bbP^1_\kk$.
+  \end{example}
+
+  \begin{example}
+    Let $X$ be an integral excellent noetherian scheme and $U$ be the normal locus of $X$.
+    Then the relative normalization of $X$ in $U$ is $U \injmap X' \xrightarrow{\nu} X$, where $\nu$ is the normalization of $X$.
+  \end{example}
+
+  By the construction of the relative normalization, we can factor a morphism $f: Y \to X$ into a ``finite part'' $X' \to X$ and another morphism $Y \to X'$.
+  Now we describe the part $Y \to X'$ in more details, which motivates the definition of fibrations.
+
+  \begin{definition}
+    Let $f: X \to Y$ be a morphism of finite type between noetherian integral schemes.
+    We say $f$ is a \emph{fibration} if the relative normalization of $Y$ in $X$ is identical to $Y$, i.e. the structure morphism $Y' \to Y$ is an isomorphism.
+    %  \Yang{}
+  \end{definition}
+
+  \begin{proposition}\label{prop:basic_properties_of_fibrations}
+    Let $f: X \to Y$ be a fibration.
+    Then 
     \begin{itemize}
-      \item[(a)] the generic fiber of $f$ is geometrically irreducible;
-      \item[(b)] $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
+      \item[(a)] $f$ is dominant;
     \end{itemize}
-    if $f$ is proper, they are also equivalent to the following condition:
+    suppose further that $X$ is normal, then
     \begin{itemize}
-      \item[(c)] $f_*\calO_X = \calO_Y$.
+      \item[(b)] suppose that $X$ is normal, then $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
+      \item[(c)] the generic fiber (and hence, general fibers) of $f$ is geometrically irreducible.
     \end{itemize}
   \end{proposition}
   \begin{proof}
-    \textbf{(a) $\iff$ (b).}
-    Denote by $\KK = \fkk(Y)$, $\eta = \Spec \KK$ the generic point of $Y$, $\overline{\eta}$ a geometric point over $\eta$, $X_\eta$ (resp. $X_{\overline{\eta}}$) the fiber of $f$ over $\eta$ (resp. $\overline{\eta}$).
-    Let $\bfL$ be the algebraic closure of $\KK$ in $\fkk(X_\eta) = \fkk(X)$.
-    Then $\bfL$ is a finite extension of $\KK$, and we have commutative diagram
+    For (a), let $Z$ be the scheme-theoretic image of $f$.
+    Then $f$ factors through the closed immersion $Z \to Y$ and hence $Y \xrightarrow{\id} Y$ factors through $Z$ by the universal property of the relative normalization, which implies $Z = Y$ and hence $f$ is dominant.
+
+    For (b), replace $Y$ by an affine open subset and $X$ by its preimage, we may assume that $Y = \Spec A$ is affine.
+    Let $\KK = \fkk(Y)$ and $\KK'$ be the algebraic closure of $\KK$ in $\fkk(X)$.
+    If $\KK' \neq \KK$, then the integral closure $A'$ of $A$ in $\KK'$ is not equal to $A$.
+    The inclusion $A \subset A' \subset \fkk(X)$ induces a factorization $U \xrightarrow{f'} Y' \xrightarrow{v} Y$ of $f$, where $U$ is an affine open dense subset of $X$ and $Y' = \Spec A'$, since $X \to Y$ is of finite type.
+    Let $X'$ be the closure of $\Gamma_{f'} \subset U \times_Y Y'$ in $X \times_Y Y'$, where $\Gamma_{f'}$ is the graph of $f'$.
+    Then we have a commutative diagram
     \[
       \begin{tikzcd}
-        \Spec  \fkk(X) \ten_\KK \overline{\KK} \ar[r] \ar[d] & \Spec \fkk(X) \ten_\KK \bfL \ar[r] \ar[d] & \Spec \fkk(X) \ar[d] \\
-        X_{\overline{\eta}} \ar[r] \ar[d] & X_\eta \times_{\eta} \Spec \bfL \ar[r] \ar[d] & X_\eta \ar[d] \\
-        \Spec \overline{\KK} \ar[r] & \Spec \bfL \ar[r] & \Spec \KK.
+        X' \ar[r, "u"] \ar[d,"f'"'] & X \ar[d, "f"] \ar[ld, dashed, "f'"'] \\
+        Y' \ar[r, "v"] & Y.
       \end{tikzcd}
     \]
-
-    Recall that for a finite field extension $\bfL/\KK$, $\bfL \ten_\KK \bfL$ is an integral domain if and only if $\bfL = \KK$.
-    If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
-    If $\bfL = \KK$, then $\fkk(X)/\KK$ is a purely transcendental extension, and hence $\fkk(X) \ten_\KK \KK'$ is a field for every fi
-     
+    Note that $u$ is given $X' \injmap X \times_Y Y' \to X$ and hence is finite.
+    On the other hand, $u$ is birational.
+    Then the normality of $X$ implies that $u_* \calO_{X'} = \calO_X$ and hence $f_* u_* \calO_{X'} = f_* \calO_X$.
+    Note that the relative normalization only depends on $f'_* \calO_{X'}$.
+    Hence $X' \to Y$ is also a fibration.
+    By the universal property of the relative normalization, finite morphism $Y' \to Y$ factors through $Y \xrightarrow{\id} Y$, which is a contradiction since $Y' \neq Y$.
     
+    The assertion (c) follows from (b) and \Yang{}.
+  \end{proof}
 
-    I claim that $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
+  The following example shows that the assumption that $X$ is normal in the assertions (b) and (c) of \cref{prop:basic_properties_of_fibrations} is necessary.
+  \begin{example}
+    Let $A = \kk[u^2]$ and 
+    \[ B = \kk[v,uv,u^2] = \kk[u^2] + v \kk[u] = \{f + vg \in \kk[u,v] : f \in \kk[u^2], g \in \kk[u]\}. \]
+    be the coordinate ring of the Whitney umbrella (see \Yang{}).
+    Then $A$ is integral closed in $B$ since the integral closure of $A$ in $\Frac(B) = \kk(v,u)$ is $\kk[u]$ and $\kk[u] \cap B = A$.
+    However, $\Frac(A) = \kk(u^2)$ is not algebraically closed in $\Frac(B) = \kk(v,u)$ since $u$ is algebraic over $\kk(u^2)$ but not contained in $\kk(u^2)$.
+
+    Write $B = \kk[x,y,t]/(y^2 - x^2 t)$ with $x = v$, $y = uv$, and $t = u^2$.
+    Then the fiber of $\Spec B \to \Spec A$ over the generic point of $\Spec A$ is given by $\Spec \kk(t)[x,y]/(y^2 - x^2 t)$.
+    It is not geometrically irreducible when $\characteristic \kk \neq 2$ since $\kk(t)[x,y]/(y^2 - x^2 t) \ten_{\kk(t)} \kk(u) \cong \kk(u)[x,y]/(y^2 - x^2 u^2)$ has two irreducible components defined by $y = xu$ and $y = -xu$ respectively.
+  \end{example}
+
+  % \begin{figure}
+  %   \centering
+  %   \includegraphics[width=0.5\textwidth]{whitney_umbrella.png}
+  %   \caption{The Whitney umbrella. Figure from \url{https://mathworld.wolfram.com/WhitneyUmbrella.html}}
+  %   \label{fig:whitney_umbrella}
+  % \end{figure}
+
+  There may be not a standard definition of fibration in literatures, but the following proposition shows that the above definition is equivalent to the many usual definitions of fibrations in the case of proper morphisms between varieties.
+
+  % \begin{proposition}\label{prop:characterization_of_fibrations}
+  %   Let $f: X \to Y$ be a dominant morphism of finite type between noetherian integral schemes.
+  %   \begin{enumerate}
+  %     \item If $X$ and $Y$ are normal, then $f$ is a fibration if and only if $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
+  %     \item If $f$ is proper, then $f$ is a fibration if and only if $f_* \calO_X = \calO_Y$.
+  %     \item If $f$ is separable (see \cref{def:separable_field_extensions_and_morphisms}), then $f$ is a fibration if and only if the generic fiber of $f$ is geometrically integral.
+  %     \item If $f$ is separable and $X$ is normal, then $f$ is a fibration if and only if $f$ has geometrically connected fibers over closed points.\Yang{}
+  %   \end{enumerate}
+  % \end{proposition}
+  % \begin{proof}
+  %   \Yang{}
+  % \end{proof}
+
+
+  \begin{proposition}
+    Let $f: X \to Y$ be a dominant morphism between excellent noetherian integral schemes.
+    Consider the following conditions:
+    \begin{itemize}
+      \item (fibration) $f$ is a fibration;
+      \item (integral) the generic fiber of $f$ is geometrically integral;
+      \item (irreducible) the generic fiber of $f$ is geometrically irreducible;
+      \item (connected) $f$ has geometrically connected fibers over closed points.
+      \item (alg. closed) $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
+      \item ($f_* \calO_X = \calO_Y$) $f_* \calO_X = \calO_Y$.
+    \end{itemize}
+    % And the following settings:
+    % \begin{itemize}
+    %   \item (domain normal) $X$ is normal;
+    %   \item (target normal) $Y$ is normal;
+    %   \item (proper) $f$ is proper;
+    %   \item (separable) $f$ is separable.
+    % \end{itemize}
+    Then we have the following implications:
+    \begin{enumerate}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item ($f_*\calO_X = \calO_Y$) implies (fibration);
+        \item if $f$ is proper, then (fibration) implies ($f_*\calO_X = \calO_Y$);
+      \end{itemize}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item suppose that $X$ is normal, then (fibration) implies (alg. closed); 
+        \item suppose that $Y$ is normal, then (alg. closed) implies (fibration).
+      \end{itemize}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item if $Y$ is normal, then (integral) implies (fibration); 
+        \item if $X$ is normal, then (fibration) implies (irreducible);
+        \item if $f$ is separable, then (irreducible) iff (integral);
+      \end{itemize}  
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item if $f$ is proper, then (fibration) implies (connected);
+        \item if $f$ is separable, then (connected) implies (fibration).
+      \end{itemize}
+    \end{enumerate}
+    In particular, if $X$ and $Y$ are normal projective varieties and $\characteristic \kk = 0$, then all the above conditions are equivalent.
      \Yang{}
-    First assume that $X$ is affine, say $X = \Spec A$.
-    Then the arrow $\Spec \fkk(X) \to X_\eta$ is given by a localization of $A \ten_\kk \KK$ with respect to the multiplicative subset $S = (A \ten_\kk \KK) \setminus \{0\}$.
-    Hence $\Spec \fkk(X) \ten_\KK \overline{\KK} \to X_{\overline{\eta}}$ is also given by a localization of $A \ten_\kk \overline{\KK}$ with respect to $S \subset A \ten_\kk \KK \subset A \ten_\kk \overline{\KK}$.
-    Note that $S$ does not meet the set of zero-divisors of $A \ten_\kk \overline{\KK}$ since $\KK \to \overline{\KK}$ is faithfully flat.
-    Then $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
-    For the general case, let $\{U_i\}$ be an affine open cover of $X$.
-    Then $X_{\overline{\eta}}$ is integral if and only if each $U_i \times_X X_{\overline{\eta}}$ is integral, which reduces to the affine case.
-
-     \Yang{}
-
-
-    If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
-    On the other hand, by looking at an affine open dense subset $U = \Spec A$ of $X_{\eta}$, we see that $\Spec \fkk(X) \to U$ is given by a localization of $A$.
-    Hence so is $\Spec \fkk(X) \ten_\KK \overline{\KK} \to U_{\overline{\eta}}$.
-    In particular, $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain since $U_{\overline{\eta}}$ is integral by the assumption that $X_{\overline{\eta}}$ is integral.
-    Therefore, we must have $\bfL = \KK$, which means $\KK$ is algebraically closed in $\fkk(X)$.
-
-    \textbf{(b) $\implies$ (a).}
-     Denote by
-     
-
-    % If $\fkk(X) \ten_\KK \bfL$ is not an integral domain, then so is $\fkk(X_{\overline{\eta}})$ since $\overline{\KK} / 
-
-
+  \end{proposition}
+  \begin{proof}
     \Yang{}
   \end{proof}
 
-  \begin{lemma}[{ref. }]
-    Let $\KK/\kk$ be a field extension.
-    Then $\kk$ is algebraically closed in $\KK$ if and only if for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
-    Such a field extension $\KK/\kk$ is called \emph{regular}.
-     \Yang{}
-  \end{lemma}
 
 
-  \begin{definition}
-    A \emph{fibration} is a dominant morphism $f: X \to Y$ satisfying the equivalent conditions in \cref{prop:characterization_of_fibrations}.
-     \Yang{}
-    % between varieties with geometrically integral generic fiber.
-    % geometrically connected fibers.
-    % \Yang{or geometrically integral fibers?}
-  \end{definition}
-  % \begin{remark}
-  %   Seems there is no a standard definition of fibration in a general setting.
-  %   In \cref{prop:characterization_of_fibrations}, we will see some different characterizations of fibrations under specific assumptions.
-  % \end{remark}
 
-  \begin{proposition}
-    Let $f: X \to Y$ be a fibration between varieties.
-    Then for a (scheme-theoretic) general point $y \in Y$, the fiber $X_y$ is a variety over $\kappa(y)$ in our sense.
-    %  \Yang{}
-  \end{proposition}
+
+  \Yang{The following need to be revised.}
+
+
+
+
+
+
+
+
+
+  % \begin{proposition}
+  %   Let $f: X \to Y$ be a dominant morphism between varieties.
+  %   TFAE:
+  %   \begin{itemize}
+  %     \item[(a)] the generic fiber of $f$ is geometrically irreducible;
+  %     \item[(b)] $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
+  %   \end{itemize}
+  %   if $f$ is proper, they are also equivalent to the following condition:
+  %   \begin{itemize}
+  %     \item[(c)] $f_*\calO_X = \calO_Y$.
+  %   \end{itemize}
+  % \end{proposition}
+  % \begin{proof}
+  %   \textbf{(a) $\iff$ (b).}
+  %   Denote by $\KK = \fkk(Y)$, $\eta = \Spec \KK$ the generic point of $Y$, $\overline{\eta}$ a geometric point over $\eta$, $X_\eta$ (resp. $X_{\overline{\eta}}$) the fiber of $f$ over $\eta$ (resp. $\overline{\eta}$).
+  %   Let $\bfL$ be the algebraic closure of $\KK$ in $\fkk(X_\eta) = \fkk(X)$.
+  %   Then $\bfL$ is a finite extension of $\KK$, and we have commutative diagram
+  %   \[
+  %     \begin{tikzcd}
+  %       \Spec  \fkk(X) \ten_\KK \overline{\KK} \ar[r] \ar[d] & \Spec \fkk(X) \ten_\KK \bfL \ar[r] \ar[d] & \Spec \fkk(X) \ar[d] \\
+  %       X_{\overline{\eta}} \ar[r] \ar[d] & X_\eta \times_{\eta} \Spec \bfL \ar[r] \ar[d] & X_\eta \ar[d] \\
+  %       \Spec \overline{\KK} \ar[r] & \Spec \bfL \ar[r] & \Spec \KK.
+  %     \end{tikzcd}
+  %   \]
+
+  %   Recall that for a finite field extension $\bfL/\KK$, $\bfL \ten_\KK \bfL$ is an integral domain if and only if $\bfL = \KK$.
+  %   If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
+  %   If $\bfL = \KK$, then $\fkk(X)/\KK$ is a purely transcendental extension, and hence $\fkk(X) \ten_\KK \KK'$ is a field for every fi
+     
+    
+
+  %   I claim that $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
+  %    \Yang{}
+  %   First assume that $X$ is affine, say $X = \Spec A$.
+  %   Then the arrow $\Spec \fkk(X) \to X_\eta$ is given by a localization of $A \ten_\kk \KK$ with respect to the multiplicative subset $S = (A \ten_\kk \KK) \setminus \{0\}$.
+  %   Hence $\Spec \fkk(X) \ten_\KK \overline{\KK} \to X_{\overline{\eta}}$ is also given by a localization of $A \ten_\kk \overline{\KK}$ with respect to $S \subset A \ten_\kk \KK \subset A \ten_\kk \overline{\KK}$.
+  %   Note that $S$ does not meet the set of zero-divisors of $A \ten_\kk \overline{\KK}$ since $\KK \to \overline{\KK}$ is faithfully flat.
+  %   Then $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
+  %   For the general case, let $\{U_i\}$ be an affine open cover of $X$.
+  %   Then $X_{\overline{\eta}}$ is integral if and only if each $U_i \times_X X_{\overline{\eta}}$ is integral, which reduces to the affine case.
+
+  %    \Yang{}
+
+
+  %   If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
+  %   On the other hand, by looking at an affine open dense subset $U = \Spec A$ of $X_{\eta}$, we see that $\Spec \fkk(X) \to U$ is given by a localization of $A$.
+  %   Hence so is $\Spec \fkk(X) \ten_\KK \overline{\KK} \to U_{\overline{\eta}}$.
+  %   In particular, $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain since $U_{\overline{\eta}}$ is integral by the assumption that $X_{\overline{\eta}}$ is integral.
+  %   Therefore, we must have $\bfL = \KK$, which means $\KK$ is algebraically closed in $\fkk(X)$.
+
+  %   \textbf{(b) $\implies$ (a).}
+  %    Denote by
+     
+
+  %   % If $\fkk(X) \ten_\KK \bfL$ is not an integral domain, then so is $\fkk(X_{\overline{\eta}})$ since $\overline{\KK} / 
+
+
+  %   \Yang{}
+  % \end{proof}
+
+  % \begin{lemma}[{ref. }]
+  %   Let $\KK/\kk$ be a field extension.
+  %   Then $\kk$ is algebraically closed in $\KK$ if and only if for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
+  %   Such a field extension $\KK/\kk$ is called \emph{regular}.
+  %    \Yang{}
+  % \end{lemma}
+
+
+  % \begin{definition}
+  %   A \emph{fibration} is a dominant morphism $f: X \to Y$ satisfying the equivalent conditions in \cref{prop:characterization_of_fibrations}.
+  %    \Yang{}
+  %   % between varieties with geometrically integral generic fiber.
+  %   % geometrically connected fibers.
+  %   % \Yang{or geometrically integral fibers?}
+  % \end{definition}
+  % % \begin{remark}
+  % %   Seems there is no a standard definition of fibration in a general setting.
+  % %   In \cref{prop:characterization_of_fibrations}, we will see some different characterizations of fibrations under specific assumptions.
+  % % \end{remark}
+
+  % \begin{proposition}
+  %   Let $f: X \to Y$ be a fibration between varieties.
+  %   Then for a (scheme-theoretic) general point $y \in Y$, the fiber $X_y$ is a variety over $\kappa(y)$ in our sense.
+  %   %  \Yang{}
+  % \end{proposition}
 
 
   % \begin{example}[Fibration with non-reduced fibers]
@@ -194,21 +413,11 @@
     
   % \end{example}
 
-  \begin{slogan}
-    We can split a morphism between varieties into a fibration followed by a quasi-finite morphism.
-    \Yang{}
-  \end{slogan}
+  % \begin{slogan}
+  %   We can split a morphism between varieties into a fibration followed by a quasi-finite morphism.
+  %   \Yang{}
+  % \end{slogan}
 
-
-
-  \begin{construction}[Relative normalization]
-    Let $f: X \to Y$ be a morphism between varieties.
-    We can construct the \emph{relative normalization $Y'$ of $Y$ in $X$} as follows.
-
-    Let $\nu: \tilde{X} \to X$ be the normalization of $X$ and $\tilde{f} = f \circ \nu: \tilde{X} \to Y$.
-    Then we define $\hat{X}$ as the unique irreducible component of $\tilde{X}$ that dominates $Y$, and we define $\hat{f}: \hat{X} \to Y$ as the restriction of $\tilde{f}$ to $\hat{X}$.
-     \Yang{}
-  \end{construction}
 
   \begin{proposition}
     Let $f: X \to Y$ be a morphism between varieties and $Y'$ be the relative normalization of $Y$ in $X$.
@@ -220,9 +429,9 @@
     \Yang{}
   \end{proof}
 
-  \begin{example}
-    The assumption that $X$ is normal in the above proposition is necessary.
-  \end{example}
+  % \begin{example}
+  %   The assumption that $X$ is normal in the above proposition is necessary.
+  % \end{example}
   
   \begin{corollary}[{Stein factorization, ref. \cite[Tag 03H2 and 0AVK]{Stacks}}]
     Let $f: X \to Y$ be a proper morphism between varieties.
