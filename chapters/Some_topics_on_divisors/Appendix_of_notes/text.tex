@@ -3,34 +3,34 @@
 
 \subsection{Explicit statements of some well-known results}
 
-  Here we write down an explicit statement of the resolution of singularities in our setting.
+%   Here we write down an explicit statement of the resolution of singularities in our setting.
 
-  \begin{theorem}[{ref. \cite[Theorem 3.37]{Kollar-2007-resolution}}]\label{thm:resolution_of_singularities}
-    Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
-    Then there exists a \emph{resolution of singularities} of $X$, i.e. a proper birational morphism $\pi: \tilde{X} \to X$ such that $\tilde{X}$ is smooth and $\pi$ is an isomorphism over the smooth locus of $X$.
-  \end{theorem}
+%   \begin{theorem}[{ref. \cite[Theorem 3.37]{Kollar-2007-resolution}}]\label{thm:resolution_of_singularities}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+%     Then there exists a \emph{resolution of singularities} of $X$, i.e. a proper birational morphism $\pi: \tilde{X} \to X$ such that $\tilde{X}$ is smooth and $\pi$ is an isomorphism over the smooth locus of $X$.
+%   \end{theorem}
 
-  \begin{theorem}[{ref. \cite[Theorem 3.36]{Kollar-2007-resolution}}]\label{thm:snc_lization_of_subschemes}
-    Let $\kk$ be a field of characteristic $0$ and $X$ be a smooth variety over $\kk$.
-    Let $Z \subseteq X$ be a closed subscheme defined by a nonzero ideal sheaf $\calI$.
-    Then there exists a proper birational morphism $\pi: \tilde{X} \to X$ such that
-    \begin{enumerate}
-      \item $\pi$ is an isomorphism over $X \setminus Z$,
-      \item $\pi$ consists of a sequence of blow-ups along smooth centers, 
-      \item $\pi^* \calI$ defines a divisor with simple normal crossings support on $\tilde{X}$.\Yang{snc or snc support?}
-    \end{enumerate}
-  \end{theorem}
+%   \begin{theorem}[{ref. \cite[Theorem 3.36]{Kollar-2007-resolution}}]\label{thm:snc_lization_of_subschemes}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a smooth variety over $\kk$.
+%     Let $Z \subseteq X$ be a closed subscheme defined by a nonzero ideal sheaf $\calI$.
+%     Then there exists a proper birational morphism $\pi: \tilde{X} \to X$ such that
+%     \begin{enumerate}
+%       \item $\pi$ is an isomorphism over $X \setminus Z$,
+%       \item $\pi$ consists of a sequence of blow-ups along smooth centers, 
+%       \item $\pi^* \calI$ defines a divisor with simple normal crossings support on $\tilde{X}$.\Yang{snc or snc support?}
+%     \end{enumerate}
+%   \end{theorem}
 
-  \begin{remark}
-    Seems \cref{thm:resolution_of_singularities} is a consequence of \cref{thm:snc_lization_of_subschemes}.
-    But when do the so-called log resolutions, I think we need to do \cref{thm:resolution_of_singularities} first to get a smooth variety, 
-    and then apply \cref{thm:snc_lization_of_subschemes} to get a log resolution of the singularities of the original variety.
-  \end{remark}
+%   \begin{remark}
+%     Seems \cref{thm:resolution_of_singularities} is a consequence of \cref{thm:snc_lization_of_subschemes}.
+%     But when do the so-called log resolutions, I think we need to do \cref{thm:resolution_of_singularities} first to get a smooth variety, 
+%     and then apply \cref{thm:snc_lization_of_subschemes} to get a log resolution of the singularities of the original variety.
+%   \end{remark}
 
-  \begin{definition}
-    Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
-    An \emph{snc divisor} on $X$ is a divisor \Yang{}
-  \end{definition}
+%   \begin{definition}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+%     An \emph{snc divisor} on $X$ is a divisor \Yang{}
+%   \end{definition}
 
   \begin{theorem}[{Bertini's theorem, ref. }]\label{thm:Bertini}
     Let $\kk$ be an infinite field and $X$ be a smooth projective variety over $\kk$.
@@ -47,26 +47,32 @@
     
   \end{theorem}
 
-  
-  \begin{theorem}[Cohomology and proper base change, ref.]
+  \begin{theorem}[Finiteness of proper morphisms, ref.]
     Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
-    Let $y \in Y$ be a point and $i_y: X_y \to X$ be the inclusion of the fiber over $y$.
-    Then there is a natural base change morphism
-    \[ (R^i f_* \calF)_y \to H^i(X_y, i_y^* \calF) \]
-    for every $i \geq 0$, which is an isomorphism if either of the following conditions holds:
-    \begin{enumerate}
-      \item $R^i f_* \calF$ is locally free at $y$ and the base change morphism is surjective;
-      \item $H^i(X_y, i_y^* \calF) = 0$.
-    \end{enumerate}
+    Then $R^i f_* \calF$ is a coherent sheaf on $Y$ for every $i \geq 0$.
      \Yang{}
+    
   \end{theorem}
+  
+%   \begin{theorem}[Cohomology and proper base change, ref.]
+%     Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
+%     Let $y \in Y$ be a point and $i_y: X_y \to X$ be the inclusion of the fiber over $y$.
+%     Then there is a natural base change morphism
+%     \[ (R^i f_* \calF)_y \to H^i(X_y, i_y^* \calF) \]
+%     for every $i \geq 0$, which is an isomorphism if either of the following conditions holds:
+%     \begin{enumerate}
+%       \item $R^i f_* \calF$ is locally free at $y$ and the base change morphism is surjective;
+%       \item $H^i(X_y, i_y^* \calF) = 0$.
+%     \end{enumerate}
+%      \Yang{}
+%   \end{theorem}
 
-  % \begin{theorem}[{Nagata's compactification, ref. \Yang{}}]\label{thm:Nagata_compactification}
-  %   Let $f: X \to Y$ be a morphism between varieties.
-  %   Then there exists a compactification of $f$, i.e. a proper morphism $\overline{f}: \overline{X} \to Y$ and an open immersion $j: X \to \overline{X}$ such that $f = \overline{f} \circ j$.
-  %    \Yang{}
-  % \end{theorem}
-
+%   % \begin{theorem}[{Nagata's compactification, ref. \Yang{}}]\label{thm:Nagata_compactification}
+%   %   Let $f: X \to Y$ be a morphism between varieties.
+%   %   Then there exists a compactification of $f$, i.e. a proper morphism $\overline{f}: \overline{X} \to Y$ and an open immersion $j: X \to \overline{X}$ such that $f = \overline{f} \circ j$.
+%   %    \Yang{}
+%   % \end{theorem}
+%
 
 
 \subsection{Varieties over non-closed fields}
@@ -74,10 +80,37 @@
   In this subsection, we review some facts about varieties over non-closed fields.
   Let $\kk$ be a field and $\kkk$ be its algebraic closure.
 
+  When dealing with varieties over non-closed fields, we need to be careful about the degree of a closed point.
+
   \begin{example}
     Let $X = \Spec \bbR[x, y]/(x^2 + y^2 - 1)$.
+    Note that $X$ is a open subscheme of $\bbP^1_\bbR \cong \Proj \bbR[x,y,z]/(x^2 + y^2 - z^2)$.
+    
+    We have $\Pic X = \bbZ/2\bbZ$ rather than $0$ since $X = \bbP^1_\bbR \setminus \{P\}$, where $P$ is a closed point with $\rkk(P) = \bbC$ and hence $\calO_{\bbP^1_\bbR}(P) \cong \calO_{\bbP^1_\bbR}(2)$.
+    Then $\Pic X \cong \bbZ/2\bbZ$ follows from the localization sequence of Picard groups since $P$ is irreducible closed subscheme of $\bbP^1_\bbR$.
+    And we have $\Pic X_\bbC = 0$ since $X_\bbC \cong \bbP^1_\bbC \setminus \{P_1, P_2\}$, where $P_1$ and $P_2$ are two distinct $\bbC$-points mapping to $P$.
+    % \Yang{}
+  \end{example}
 
-    \Yang{}
+  Many properties of schemes are not stable under base change to $\kkk$, for example, being integral, irreducible, reduced, connected, etc.
+
+  \begin{example}
+    Let $X = \Spec \bbR[x,y]/(x^2 + y^2)$.
+    Then $X$ is integral.
+    However, $X_\bbC = \Spec \bbC[x,y]/(x^2 + y^2)$ has two irreducible components defined by $y = ix$ and $y = -ix$ respectively, and hence is not integral.
+    %  \Yang{}
+  \end{example}
+
+  \begin{example}
+    Let $\kk$ be a field and $\kk' = \kk(\alpha) = \kk[x]/(f)$ be a finite algebraic extension, where $f$ is an irreducible polynomial of degree $n \geq 2$ over $\kk$.
+    Then $X = \Spec \kk'$ is integral, but $X_\kkk = \Spec \kk' \ten_\kk \kkk$ is not integral since 
+    \[ \kk' \ten_\kk \kkk \cong \kkk[x]/(f) \cong \prod_{i=1}^k \kkk[x]/((x - \alpha_i)^{m_i}), \] 
+    where $\alpha_i$ are the distinct roots of $f$ in $\kkk$ and $m_i$ are their multiplicities.
+
+    More generally, suppose $k \geq 2$ (i.e., $f$ has at least two distinct roots in $\kkk$) and let $Y$ be any integral scheme over $\kk'$.
+    Regard $Y$ as a scheme over $\kk$ via the composition $Y \to \Spec \kk' \to \Spec \kk$.
+    Then $Y$ is integral, but $Y \times_\kk \kkk = Y \times_{\kk'} (\kk' \ten_\kk \kkk)$ is not integral since it has at least two irreducible components $Y \times_{\kk'} \kkk[x]/((x - \alpha_i)^{m_i})$ for $i = 1, 2$.
+    %  \Yang{}
   \end{example}
 
   \begin{definition}
@@ -86,40 +119,49 @@
     One can similarly define other notions of geometric properties, for example, \emph{geometrically normal}, \emph{geometrically regular}, etc.
   \end{definition}
 
+  For geometrically irreducibility, one only needs to check the separable closure of $\kk$ in $\fkk(X)$.
+
+  \begin{lemma}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33} and \href{https://stacks.math.columbia.edu/tag/054Q}{054Q}]{Stacks}}]
+    Let $X$ be an integral scheme of finite type over $\kk$ and $\kk' \subset \fkk(X)$ be the field consisting of elements of $\fkk(X)$ that are separably algebraic over $\kk$.
+    Then $X$ is geometrically irreducible if and only if $\kk' = \kk$.
+  \end{lemma}
+  % \begin{proof}
+  %   By \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33}]{Stacks}, we have $X_\kkk = X \times_\kk \kkk \cong X \times_{\Spec \kk'} \Spec \kkk$.
+  %   Then $X_\kkk$ is irreducible if and only if $X$ is irreducible over $\kk'$, which is equivalent to $\kk' = \kk$ since $X$ is integral over $\kk$.
+  %   \Yang{}
+  % \end{proof}
+
+  The case of geometrically reduced is more subtle, namely, we cannot only check the algebraic part of $\fkk(X)/\kk$; see the following example.
+
+  \begin{example}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/020F}{Tag 020F}]{Stacks}}]
+    Let $\kk = \bbF_p(s,t)$ and $\KK = \Frac (\kk[x,y]/(sx^p + ty^p + 1))$.
+    Then $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is not separable.
+    See \cref{eg:fibration_with_non_reduced_fiber} for a geometric views.
+    \Yang{}
+  \end{example}
+
+  We list the following results without proof, and refer to \cite[\href{https://stacks.math.columbia.edu/tag/030I}{Tag 030I}, \href{https://stacks.math.columbia.edu/tag/05DS}{Tag 05DS}, \href{https://stacks.math.columbia.edu/tag/05DT}{Tag 05DT}, \href{https://stacks.math.columbia.edu/tag/05DU}{Tag 05DU} and \href{https://stacks.math.columbia.edu/tag/035U}{Tag 035U}]{Stacks} for details.
   
   \begin{definition}\label{def:separable_field_extensions_and_morphisms}
-    Let $\kk$ be a field and $A$ be a $\kk$-algebra.
-    We say $A$ is \emph{separable} over $\kk$ if $A \ten_\kk \bfL$ is reduced for every field extension $\kk \subseteq \bfL$.
+    Let $\KK/\kk$ be a field extension.
+    We say $\KK/\kk$ is \emph{separable} if $\KK \ten_\kk \bfL$ is a reduced ring for every field extension $\kk \subseteq \bfL$.
 
     Let $f: X \to Y$ be a dominant morphism between integral schemes.
     We say $f$ is \emph{separable} if the field extension $\fkk(Y) \subseteq \fkk(X)$ is separable.
-     \Yang{}
   \end{definition}
 
   \begin{lemma}
-    Let $\KK/\kk$ be a field extension.
-    Suppose that $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is separable.
-    Then for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
-     \Yang{}
-  \end{lemma}
-
-  Recall some facts about field extensions.
-  \begin{theorem}[{ref. \cite[Theorem 26.2]{Mat70}}]\label{thm:characterization_of_regular_extensions}
-    Let $\KK/\kk$ be a finitely generated field extension.
-    Then the following conditions are equivalent:
+    Let $\kk$ be a field, $X$ be an integral scheme of finite type over $\kk$, and $\KK/\kk$ be a finitely generated field extension.
     \begin{enumerate}
-      \item $\KK \ten_\kk \bfL$ is reduced for every field extension $\kk \subseteq \bfL$;
-      \item there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$.
+      \item If $\fkk(X)/\kk$ is separable, then $X$ is geometrically reduced (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030U}{Tag 030U}]{Stacks}).
+      \item If $\characteristic \kk = 0$, then any extension $\KK/\kk$ is separable (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030Z}{Tag 030Z}]{Stacks}).
+      \item The extension $\KK/\kk$ is separable if and only if there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$ (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030X}{Tag 030X}]{Stacks}; \cite[Theorem 26.2]{Mat89}).
+      %  \Yang{}
     \end{enumerate}
-      \Yang{}
-  \end{theorem}
-
-
+  \end{lemma}
 
 
 \subsection{Fibrations}
-
-  % Here we only deal with fibrations between varieties, and we do not require the morphism to be proper.
 
   \begin{construction}[Relative normalization]
     Let $X$ be a noetherian integral scheme and $\calA$ be a quasi-coherent $\calO_X$-algebra.
@@ -133,8 +175,6 @@
     where $\calA'$ is the integral closure of $\calO_X$ in $f_* \calO_Y$.
   \end{construction}
 
-  \Yang{normalization of variety is still a variety.}
-
   In our setting, the relative normalization of $X$ in $Y$ is characterized by the following universal property.
 
   \begin{proposition}\label{prop:universal_property_of_relative_normalization}
@@ -145,15 +185,12 @@
       \item For every factorization $Y \xrightarrow{f''} X'' \xrightarrow{\pi'} X$ of $f$ such that $\pi'$ is finite and $X''$ is integral, there is a unique morphism $g: X' \to X''$ making the following diagram commute:
       \[
         \begin{tikzcd}
-          Y \ar[r, "f'"] \ar[d, "f''"'] & X' \ar[d, "\nu"] \ar[ld, gray, "g"] \\
+          Y \ar[r, "f'"] \ar[d, "f''"'] & X' \ar[d, "\nu"] \ar[ld, gray, "g"'] \\
           X'' \ar[r, "\nu'"'] & X
         \end{tikzcd}
       \]
       see \cite[\href{https://stacks.math.columbia.edu/tag/035I}{Tag 035I}]{Stacks}.
-      % \item Let $Y^n,{X'}^n,X^n$ be the (absolute) normalizations of $Y,X',X$ respectively. 
-      %   Then the induced factorization $Y^n \to {X'}^n \to X^n$ is the relative normalization of $X^n$ in $Y^n$.\Yang{}
     \end{enumerate}
-    %  \Yang{}
   \end{proposition}
 
   \begin{example}
@@ -180,22 +217,89 @@
   \end{definition}
 
   \begin{proposition}\label{prop:basic_properties_of_fibrations}
-    Let $f: X \to Y$ be a fibration.
-    Then 
-    \begin{itemize}
-      \item[(a)] $f$ is dominant;
-    \end{itemize}
-    suppose further that $X$ is normal, then
-    \begin{itemize}
-      \item[(b)] suppose that $X$ is normal, then $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
-      \item[(c)] the generic fiber (and hence, general fibers) of $f$ is geometrically irreducible.
-    \end{itemize}
+    Let $f: X \to Y$ be a morphism of finite type between excellent noetherian integral schemes. 
+    \begin{enumerate}
+      \item If $f$ is a fibration, then $f$ is dominant.
+      \item Let $Y' \to Y$ be the relative normalization of $Y$ in $X$, then the morphism $X \to Y'$ is a fibration.
+      \item The relative normalization $Y'$ of $Y$ in $X$ is still excellent noetherian integral.
+        In particular, if $X$ and $Y$ are varieties over $\kk$, then the relative normalization of $Y$ in $X$ is also a variety over $\kk$. 
+    \end{enumerate}
   \end{proposition}
   \begin{proof}
     For (a), let $Z$ be the scheme-theoretic image of $f$.
     Then $f$ factors through the closed immersion $Z \to Y$ and hence $Y \xrightarrow{\id} Y$ factors through $Z$ by the universal property of the relative normalization, which implies $Z = Y$ and hence $f$ is dominant.
 
-    For (b), replace $Y$ by an affine open subset and $X$ by its preimage, we may assume that $Y = \Spec A$ is affine.
+    Assertion (b) follows from the universal property of the relative normalization (see \cref{prop:universal_property_of_relative_normalization}).
+
+    Now we prove (c).
+    Denote by $Y' \to Y$ the relative normalization of $Y$ in $X$.
+    Since $X \to Y'$ is dominant and $X$ is irreducible, $Y'$ is also irreducible.
+    Since locally $\calO_{Y'}$ is a subalgebra of $f_* \calO_X$, $Y'$ is also reduced.
+    Noetherian and excellent properties of $Y'$ follow from the fact that $Y' \to Y$ is finite.
+    If $X$ and $Y$ are varieties over $\kk$, we only need to check that $Y'$ is geometrically integral over $\kk$.
+    Note that $\calO_{Y'_\kkk}$ locally is still a subalgebra of $f_* \calO_{X_\kkk}$ and dominance is preserved under flat base change (\cite[\href{https://stacks.math.columbia.edu/tag/0H3F}{Tag 0H3F}]{Stacks}), so $Y'_\kkk$ is still integral.
+    % I claim that $Y'_\kkk$ is the relative normalization of $Y_\kkk$ in $X_\kkk$.
+    % Then the conclusion follows directly.
+    % By replace $Y$ by an affine open subset and $X$ by $\Spec \calO_X(X)$, we may assume that $Y = \Spec A$ and $X = \Spec B$ are affine.
+    % Then $Y' = \Spec A'$, where $A'$ is the integral closure of $A$ in $B$.
+    % Let $C \subset B_\kkk$ be the integral closure of $A_\kkk$ in $B_\kkk$.
+    % For any $f \in C$, we show that $f \in A'_\kkk$.
+    % First for any finite extension $\bfl/\kk$, if $\alpha \in B_\bfl$ is integral over $A_\bfl$ with minimal polynomial $x^n + a_{n-1} x^{n-1} + \cdots + a_0$,  
+    % There exists a finite extension $\kk'/\kk$ such that $f \in B \ten_\kk \kk'$, since $B$ is of finite type over $\kk$.
+    % Then $f$ is integral over $A \ten_\kk \kk'$, 
+    % \Yang{}
+  \end{proof}
+
+  There may be not a standard definition of fibration in literatures, but the following proposition shows that the above definition is equivalent to the many usual definitions of fibrations in the case of proper morphisms between varieties.
+
+  \begin{proposition}\label{prop:equivalent_definitions_of_fibrations}
+    Let $f: X \to Y$ be a dominant morphism between excellent noetherian integral schemes.
+    Consider the following conditions:
+    \begin{itemize}
+      \item (fibration) $f$ is a fibration;
+      \item (integral) the generic fiber of $f$ is geometrically integral;
+      \item (irreducible) the generic fiber of $f$ is geometrically irreducible;
+      \item (connected) $f$ has geometrically connected fibers over closed points.
+      \item (alg. closed) $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
+      \item ($f_* \calO_X = \calO_Y$) $f_* \calO_X = \calO_Y$.
+    \end{itemize}
+    Then we have the following implications:
+    \begin{enumerate}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item ($f_*\calO_X = \calO_Y$) $\implies$ (fibration);
+        \item if $f$ is proper, then (fibration) $\implies$ ($f_*\calO_X = \calO_Y$);
+      \end{itemize}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item if $X$ is normal, then (fibration) $\implies$ (alg. closed); 
+        \item if $Y$ is normal, then (alg. closed) $\implies$ (fibration);
+      \end{itemize}
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item if $X$ is normal, then (fibration) $\implies$ (irreducible);
+        \item if $Y$ is normal, then (integral) $\implies$ (fibration); 
+        % \item if $f$ is separable, then (irreducible) iff (integral);
+      \end{itemize}  
+      \item \begin{itemize}[leftmargin=1em,nosep]
+        \item if $f$ is proper, then (fibration) $\implies$ (connected);
+        \item if $f$ is separable and $X$ is normal, then (connected) $\implies$ (fibration).
+      \end{itemize}
+    \end{enumerate}
+    In particular, if $X$ and $Y$ are normal proper varieties and $\characteristic \kk = 0$, then all the above conditions are equivalent.
+     \Yang{}
+  \end{proposition}
+  \begin{proof}
+    \hspace{1em}
+    \begin{step}
+      Assertion (a).
+    \end{step}
+
+    The assertion (a) follows from the definition of the relative normalization and the fact that $f_* \calO_X$ is a quasi-coherent $\calO_Y$-algebra.\Yang{}
+
+    \begin{step}
+      Assertion (b).
+    \end{step}
+
+    First we show that (fibration) $\implies$ (alg. closed) when $X$ is normal.
+    Replacing $Y$ by an affine open subset and $X$ by its preimage, we may assume that $Y = \Spec A$ is affine.
     Let $\KK = \fkk(Y)$ and $\KK'$ be the algebraic closure of $\KK$ in $\fkk(X)$.
     If $\KK' \neq \KK$, then the integral closure $A'$ of $A$ in $\KK'$ is not equal to $A$.
     The inclusion $A \subset A' \subset \fkk(X)$ induces a factorization $U \xrightarrow{f'} Y' \xrightarrow{v} Y$ of $f$, where $U$ is an affine open dense subset of $X$ and $Y' = \Spec A'$, since $X \to Y$ is of finite type.
@@ -213,15 +317,33 @@
     Note that the relative normalization only depends on $f'_* \calO_{X'}$.
     Hence $X' \to Y$ is also a fibration.
     By the universal property of the relative normalization, finite morphism $Y' \to Y$ factors through $Y \xrightarrow{\id} Y$, which is a contradiction since $Y' \neq Y$.
+
+    When $Y$ is normal, for any affine open subset $U \subset Y$, $\calO_Y(U)$ is integral closed in $\fkk(Y)$ and $\fkk(Y)$ is algebraically closed in $\fkk(X)$, so $\calO_Y(U)$ is integral closed in $\fkk(X)$ and hence in $\calO_X(f^{-1}(U))$.
+    Then the relative normalization of $Y$ in $X$ is $Y$ itself and hence $f$ is a fibration.
+
+
+    \begin{step}
+      Assertion (c).
+    \end{step}
+
+     For (c), the assertion (c) $\implies$ (fibration) when $Y$ is normal follows from (b).
     
     The assertion (c) follows from (b) and \Yang{}.
+
+    \begin{step}
+      Assertion (d).
+    \end{step}
+
+    \Yang{}
   \end{proof}
 
-  The following example shows that the assumption that $X$ is normal in the assertions (b) and (c) of \cref{prop:basic_properties_of_fibrations} is necessary.
+  The following examples shows that some assumptions in \cref{prop:equivalent_definitions_of_fibrations} are necessary.
+
   \begin{example}
     Let $A = \kk[u^2]$ and 
     \[ B = \kk[v,uv,u^2] = \kk[u^2] + v \kk[u] = \{f + vg \in \kk[u,v] : f \in \kk[u^2], g \in \kk[u]\}. \]
-    be the coordinate ring of the Whitney umbrella (see \Yang{}).
+    be the coordinate ring of the Whitney umbrella (see \cref{fig:whitney_umbrella}).
+    Note $B$ is not a normal ring since $v$ is integral over $B$ but not contained in $B$.
     Then $A$ is integral closed in $B$ since the integral closure of $A$ in $\Frac(B) = \kk(v,u)$ is $\kk[u]$ and $\kk[u] \cap B = A$.
     However, $\Frac(A) = \kk(u^2)$ is not algebraically closed in $\Frac(B) = \kk(v,u)$ since $u$ is algebraic over $\kk(u^2)$ but not contained in $\kk(u^2)$.
 
@@ -230,73 +352,31 @@
     It is not geometrically irreducible when $\characteristic \kk \neq 2$ since $\kk(t)[x,y]/(y^2 - x^2 t) \ten_{\kk(t)} \kk(u) \cong \kk(u)[x,y]/(y^2 - x^2 u^2)$ has two irreducible components defined by $y = xu$ and $y = -xu$ respectively.
   \end{example}
 
-  % \begin{figure}
-  %   \centering
-  %   \includegraphics[width=0.5\textwidth]{whitney_umbrella.png}
-  %   \caption{The Whitney umbrella. Figure from \url{https://mathworld.wolfram.com/WhitneyUmbrella.html}}
-  %   \label{fig:whitney_umbrella}
-  % \end{figure}
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{WhitneysUmbrella_700.jpg}
+    \caption{The Whitney umbrella. 
+      Figure from \url{https://mathworld.wolfram.com/WhitneyUmbrella.html}}
+    \label{fig:whitney_umbrella}
+  \end{figure}
 
-  There may be not a standard definition of fibration in literatures, but the following proposition shows that the above definition is equivalent to the many usual definitions of fibrations in the case of proper morphisms between varieties.
+  \begin{example}\label{eg:fibration_with_non_reduced_fiber}
+    Suppose $\characteristic \kk = p > 0$.
+    Let $Y = \Spec \kk[s,t]$ and $X = \Spec \kk[s,t,x,y]/(sx^p + ty^p - 1)$.
+    Since $Y$ is normal and $\KK := \fkk(Y) = \kk(s,t)$ is algebraically closed in $\fkk(X)$, the morphism $f: X \to Y$ is a fibration.
 
-  % \begin{proposition}\label{prop:characterization_of_fibrations}
-  %   Let $f: X \to Y$ be a dominant morphism of finite type between noetherian integral schemes.
-  %   \begin{enumerate}
-  %     \item If $X$ and $Y$ are normal, then $f$ is a fibration if and only if $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
-  %     \item If $f$ is proper, then $f$ is a fibration if and only if $f_* \calO_X = \calO_Y$.
-  %     \item If $f$ is separable (see \cref{def:separable_field_extensions_and_morphisms}), then $f$ is a fibration if and only if the generic fiber of $f$ is geometrically integral.
-  %     \item If $f$ is separable and $X$ is normal, then $f$ is a fibration if and only if $f$ has geometrically connected fibers over closed points.\Yang{}
-  %   \end{enumerate}
-  % \end{proposition}
-  % \begin{proof}
-  %   \Yang{}
-  % \end{proof}
+    The generic fiber of $f$ is given by $\Spec \KK[x,y]/(sx^p + ty^p - 1)$.
+    Over corresponding geometric point $\Spec \KKK$ of $\Spec \KK$, the fiber is given by $\Spec \KKK[x,y]/(sx^p + ty^p - 1) = \Spec \KKK[x,y]/((s^{1/p}x + t^{1/p}y - 1)^p)$, which is not reduced.
+    %  \Yang{}
+  \end{example}
 
 
-  \begin{proposition}
-    Let $f: X \to Y$ be a dominant morphism between excellent noetherian integral schemes.
-    Consider the following conditions:
-    \begin{itemize}
-      \item (fibration) $f$ is a fibration;
-      \item (integral) the generic fiber of $f$ is geometrically integral;
-      \item (irreducible) the generic fiber of $f$ is geometrically irreducible;
-      \item (connected) $f$ has geometrically connected fibers over closed points.
-      \item (alg. closed) $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
-      \item ($f_* \calO_X = \calO_Y$) $f_* \calO_X = \calO_Y$.
-    \end{itemize}
-    % And the following settings:
-    % \begin{itemize}
-    %   \item (domain normal) $X$ is normal;
-    %   \item (target normal) $Y$ is normal;
-    %   \item (proper) $f$ is proper;
-    %   \item (separable) $f$ is separable.
-    % \end{itemize}
-    Then we have the following implications:
-    \begin{enumerate}
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item ($f_*\calO_X = \calO_Y$) implies (fibration);
-        \item if $f$ is proper, then (fibration) implies ($f_*\calO_X = \calO_Y$);
-      \end{itemize}
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item suppose that $X$ is normal, then (fibration) implies (alg. closed); 
-        \item suppose that $Y$ is normal, then (alg. closed) implies (fibration).
-      \end{itemize}
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item if $Y$ is normal, then (integral) implies (fibration); 
-        \item if $X$ is normal, then (fibration) implies (irreducible);
-        \item if $f$ is separable, then (irreducible) iff (integral);
-      \end{itemize}  
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item if $f$ is proper, then (fibration) implies (connected);
-        \item if $f$ is separable, then (connected) implies (fibration).
-      \end{itemize}
-    \end{enumerate}
-    In particular, if $X$ and $Y$ are normal projective varieties and $\characteristic \kk = 0$, then all the above conditions are equivalent.
-     \Yang{}
-  \end{proposition}
-  \begin{proof}
-    \Yang{}
-  \end{proof}
+  When $f$ is proper morphism between varieties, the construction of the relative normalization is exactly the Stein factorization of $f$.
+
+  \begin{corollary}[{Stein factorization, ref. \cite[Tag 03H2 and 0AVK]{Stacks}}]
+    Let $f: X \to Y$ be a proper morphism between varieties.
+    Then there exist a variety $Z$ and morphisms $g: X \to Z$ and $h: Z \to Y$ such that $f = h \circ g$, $g_* \calO_X = \calO_Z$, and $h$ is finite.
+  \end{corollary}
 
 
 
@@ -372,94 +452,20 @@
   %   \Yang{}
   % \end{proof}
 
-  % \begin{lemma}[{ref. }]
-  %   Let $\KK/\kk$ be a field extension.
-  %   Then $\kk$ is algebraically closed in $\KK$ if and only if for every field extension $\kk \subseteq \bfL$, the ring $\KK \ten_\kk \bfL$ is an integral domain.
-  %   Such a field extension $\KK/\kk$ is called \emph{regular}.
+
+
+  % In general we cannot control every fiber of a fibration, but for a proper fibration, we have the following connectedness principle.
+
+  % \begin{proposition}[{Connectedness principle, ref. }]
+  %   Let $f: X \to Y$ be a proper morphism between varieties such that $f_* \calO_X = \calO_Y$.
+  %   Then every fiber of $f$ is connected.
   %    \Yang{}
-  % \end{lemma}
-
-
-  % \begin{definition}
-  %   A \emph{fibration} is a dominant morphism $f: X \to Y$ satisfying the equivalent conditions in \cref{prop:characterization_of_fibrations}.
-  %    \Yang{}
-  %   % between varieties with geometrically integral generic fiber.
-  %   % geometrically connected fibers.
-  %   % \Yang{or geometrically integral fibers?}
-  % \end{definition}
-  % % \begin{remark}
-  % %   Seems there is no a standard definition of fibration in a general setting.
-  % %   In \cref{prop:characterization_of_fibrations}, we will see some different characterizations of fibrations under specific assumptions.
-  % % \end{remark}
-
-  % \begin{proposition}
-  %   Let $f: X \to Y$ be a fibration between varieties.
-  %   Then for a (scheme-theoretic) general point $y \in Y$, the fiber $X_y$ is a variety over $\kappa(y)$ in our sense.
-  %   %  \Yang{}
   % \end{proposition}
 
-
-  % \begin{example}[Fibration with non-reduced fibers]
-  %   Let $\kk$ be a field of characteristic $p > 0$ and $X = \Spec \kk[x,y]/(y^p - x)$, $Y = \Spec \kk[x]$.
-  %   Then the morphism $f: X \to Y$ defined by $\kk[x] \to \kk[x,y]/(y^p - x)$ is a fibration, but the fiber over the generic point of $Y$ is not reduced.
-  %   \Yang{}
-    
-  % \end{example}
-
-  % \begin{example}
-  %   Let $F = \Frob_p: \bbA^1_{\bbF_p} \to \bbA^1_{\bbF_p}$ be the absolute Frobenius morphism.
-
-  %   \Yang{}
-    
-  % \end{example}
-
-  % \begin{slogan}
-  %   We can split a morphism between varieties into a fibration followed by a quasi-finite morphism.
-  %   \Yang{}
-  % \end{slogan}
-
-
-  \begin{proposition}
-    Let $f: X \to Y$ be a morphism between varieties and $Y'$ be the relative normalization of $Y$ in $X$.
-    Suppose that $X$ is normal.
-    Then the morphism $f': X \to Y'$ induced by $f$ is a fibration.
-     \Yang{}
-  \end{proposition}
-  \begin{proof}
-    \Yang{}
-  \end{proof}
-
-  % \begin{example}
-  %   The assumption that $X$ is normal in the above proposition is necessary.
-  % \end{example}
-  
-  \begin{corollary}[{Stein factorization, ref. \cite[Tag 03H2 and 0AVK]{Stacks}}]
-    Let $f: X \to Y$ be a proper morphism between varieties.
-    Then there exist a variety $Z$ and morphisms $g: X \to Z$ and $h: Z \to Y$ such that $f = h \circ g$, $g_* \calO_X = \calO_Z$, and $h$ is finite.
-  \end{corollary}
-
-
-
-
-  In general we cannot control every fiber of a fibration, but for a proper fibration, we have the following connectedness principle.
-
-  \begin{proposition}[{Connectedness principle, ref. }]
-    Let $f: X \to Y$ be a proper morphism between varieties such that $f_* \calO_X = \calO_Y$.
-    Then every fiber of $f$ is connected.
-     \Yang{}
-  \end{proposition}
-
-  \begin{remark}
-    Easily see that the ``proper'' assumption in the connectedness principle is necessary.
-     \Yang{}
-  \end{remark}
-
-  \begin{proposition}
-    Let $f: X \to Y$ be a proper morphism between varieties with connected fibers.
-    Suppose that $X$ is normal.
-    Then $f_* \calO_X = \calO_Y$.
-     \Yang{}  
-  \end{proposition}
+  % \begin{remark}
+  %   Easily see that the ``proper'' assumption in the connectedness principle is necessary.
+  %    \Yang{}
+  % \end{remark}
 
 
 
