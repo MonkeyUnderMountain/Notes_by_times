@@ -8,7 +8,7 @@
 
 \subsection{Base loci of line bundles}
 
-  On this subsection, we do not require $X$ to be projective unless otherwise specified.
+  % On this subsection, we do not require $X$ to be projective unless otherwise specified.
 
   We begin from the support of a Cartier divisor.
 
@@ -43,32 +43,28 @@
     Let $\frakm_0 = (s,t)$ and $\frakm_1 = (s-1,t)$ be the two maximal ideals of $\kk[s,t]$ corresponding to the two points.
     As $\kk$-modules, we have $\kk[s,t] = \kk \oplus \frakm_0 = \kk \oplus \frakm_1$.
     Then $A = \kk \oplus (\frakm_0 \cap \frakm_1)$ as $\kk$-modules.
-    Since $\frakm_0 \cap \frakm_1 = (t, s(s-1), ts)$, we have 
-    \[ A = \kk[t,u,v]/((v-t)v-t^2u). \]
-    
-    \Yang{}
-    
-    Then $A$ is a noetherian integral domain but not normal.
-    and $X = \Spec A$.
-    Then $X$ is obtained by gluing two points of $\bbA^2$ with coordinates $s,t$.
-    Let $D$ be the divisor defined by $s$ on \Yang{}
+    We have $\frakm_0 \cap \frakm_1 = (t, s(s-1))$ (as $\kk[s,t]$-module).
+    Set $u = s(s-1)$, $v = s^2(s-1)$ and $w = ts$.
+    We have $s^nt = (s^2-s)s^{n-2}t + s^{n-1}t$ and $st,t \in \kk[t,u,v,w]$.
+    Hence inductively we have $s^{n}t \in \kk[t,u,v,w]$.
+    Similarly, the equation $(s^2-s)s^{n} = (s^2-s)s^{n-2}u+s^{n-1}u$ implies $(s^2-s)s^{n} \in \kk[t,u,v,w]$ since $u,su = v \in \kk[t,u,v,w]$.
+    Hence $A = \kk[t,u,v,w] \subset \kk[s,t]$ is a noetherian integral domain but not normal.
 
-    We describe $A$ more explicitly.
-    Indeed, 
-    \[ A = \kk[u,v,w]...\]
+    The normalization of $A$ is $\kk[s,t]$ since $s$ is integral over $A$ ($s^2-s-u=0$).
+    Moreover, $\kk[s,t,1/u]=A[1/u]$ and $\kk[s,t,1/t]=A[1/t]$ since $s=v/u = w/t$.
+    Hence $\Spec \kk[s,t] \setminus V((u,t)) = \Spec A \setminus V((u,t))$.
+    Note that $(u,t) = \frakm_0 \cap \frakm_1$ (on both $\kk[s,t]$).
+    And on $A$, $A/(u,t) = \kk$ and hence $(u,t) \subset A$ is a maximal ideal.
 
-    \Yang{}
+    Suppose that $\# \kk > 2$.
+    Consider the principle Cartier divisor $D = \divisor (s-a)$, $a \neq 0,1 \in \kk$.
+    On the open subset $A \setminus V((u,t))$, we can find support of $D$ by looking on $\Spec \kk[s,t] \setminus V((u,t))$.
+    Hence $(\Supp D)|_{\Spec \kk[s,t] \setminus V((u,t))} = V(s-a)$.
+    On $\frakm = (u,t) \subset A$, note $s \notin A_{\frakm}$ and hence $s-a \notin A_\frakm$.
+    Then $\frakm \in \Supp D$.
+    Then $\Supp D = V(s-a) \cup \{\frakm\}$.
+    We see that $V(s-a) \cong \bbA^1$ is a component of codimension $1$ and $\{\frakm\}$ is an isolated component of codimension $2$.
   \end{example}
-
-  % \begin{example}[Whitney umbrella]\label{eg:support_of_Cartier_divisor_when_nonnormal_by_whitney_umbrella}
-  %   Let $X$ be the surface defined by $x^2 = y^2 z$ in $\bbA^3$ with coordinates $x,y,z$, and let $D$ be the divisor defined by 
-  %   \[ \frac{x}{y} \text{ on } U_y = X \setminus \{y=0\} \cong \Spec \kk\left[x,y,\frac{1}{y}\right], \quad \frac{yz}{x} \text{ on } U_x = X \setminus \{x=0\} \cong \Spec \kk\left[x,y,z,\frac{1}{x}\right]/(x^2 - y^2 z). \]
-  %   On the overlap $U_x \cap U_y$, we have $\frac{yz}{x} = \frac{x}{y}$, so the above data defines a Cartier divisor on $X$.
-
-  %    \Yang{}
-  % \end{example}
-
-
 
   \begin{definition}
     Let $D$ be a (linearly effective) divisor on a variety $X$.
@@ -124,6 +120,19 @@
     % \Yang{}
   \end{example}
 
+  \begin{example}[Base locus of divisors on curves]
+    Let $C$ be a curve over $\kk$ and $D$ a divisor on $C$.
+
+
+    Let $X = V(y^2=(x-a_1)\cdots (x-a_n)) \subset \bbP^2$ be a hyperelliptic curve, where $a_i \in \kk$ are point-wise different.
+    It is well-known that $X$ is of genus $g = (n+1)(n+2)/2$ and admits a double cover $f$ to $\bbP^1$ via $\kk(x) \subset \kk(x)[y]/(y^2-(x-a_1)\cdots (x-a_n))$.
+
+
+    base locus on hyperelliptic curve.
+
+    \Yang{}
+  \end{example}
+
   \begin{example}
     Let $E$ be an elliptic curve over $\kkk$ and $P \in E(\kkk)$.
     Set $X = \bbP(\calO_E \oplus \calO_E(-P))$ with the natural projection $\pi: X \to E$ and the unique minimal section $C_0$ with $C_0^2 = -1$.
@@ -162,7 +171,6 @@
     This is because $2D = 2C_0 + 2\pi^*P \sim 2C_0 + \pi^*(P_1+P_2)$ for some $P_1,P_2 \in E(\kkk)$ different from $P$.
     Then $Q$ is not contained in $C_0 \cup \pi^{-1}(P_1) \cup \pi^{-1}(P_2)$, so $Q$ is not contained in the base locus of $2D$.
     % \Yang{}
-    % Hence $Q$ is the unique base point of $|D|$.
   \end{example}
 
   We list some basic properties of base loci and base ideals of divisors.
@@ -170,7 +178,7 @@
   \begin{proposition}
     Let $D$ be a divisor on a variety $X/\kk$.
     \begin{enumerate}
-      \item The support of the base scheme of $D$ is exactly the base locus of $D$, i.e. 
+      \item The underlying closed subset of the scheme-theoretic base locus of $D$ is exactly the base locus of $D$, i.e. 
         \[ \Supp \calO_X/\frakb(D) = \Bs D. \]
       \item For any other divisor $E$ on $X$, we have $\frakb(D) \cdot \frakb(E) \subseteq \frakb(D+E)$ and hence 
       \[ \Bs(D+E) \subseteq \Bs D \cup \Bs E. \]
@@ -189,7 +197,7 @@
   \end{proposition}
   \begin{proof}
     For (a), we check the equality locally.
-    Let $\xi$ be a scheme-theoretic point of $X$,$\frakm$ the maximal ideal of $\calO_{X,\xi}$ and $f$ the local equation of $D$ near $\xi$.
+    Let $\xi$ be a scheme-theoretic point of $X$, $\frakm$ the maximal ideal of $\calO_{X,\xi}$ and $f$ the local equation of $D$ near $\xi$.
     Then $\frakb(D)_\xi$ is generated by $\{gf \mid g \in H^0(X, D)\}$.
     Hence $\frakb(D)_\xi \subseteq \frakm$ if and only if $gf \in \frakm$ for any $g \in H^0(X, D)$, which is equivalent to $\xi \in \Bs D$.
 
@@ -226,42 +234,79 @@
     In general, we do NOT have $\Bs(mD) \subseteq \Bs (nD)$ for any $m < n$. 
     For example, if $\calO(D)$ is a non-trivial torsion line bundle, then $\Bs(mD) = \emptyset$ for $m$ divisible by the order of $D$ in $\Pic(X)$, and $\Bs(mD) = X$ otherwise.
   \end{remark}
-    
-  An important property of semi-ample divisors is that they are pullbacks of ample divisors under a fibration.
 
-  \begin{theorem}\label{thm:semi-ample_fibration}
-    Let $D$ be a semi-ample $\bbQ$-divisor on a variety $X$.
-    Then there exists a fibration $f: X \to Y$ to a variety $Y$ and an ample $\bbQ$-divisor $A$ on $Y$ such that $D \sim_\bbQ f^* A$.
-    
-    Such a fibration $f$ is unique up to isomorphism, and it is called the \emph{semi-ample fibration} associated to $D$.
-    % When $D$ is on a projective variety $Y$ and $X = Y \setminus \bfB(D)$, it is also called the \emph{Iitaka fibration} of $D$.
-     \Yang{}
-  \end{theorem}
+  From now, we consider the asymptotic behavior of divisors on proper varieties.
+
+  \begin{proposition}\label{thm:semi-ample_fibration}
+    Let $D$ be a semi-ample $\bbQ$-divisor on a proper variety $X$.
+    Then there exists a fibration $f: X \to Y$ to a projective variety $Y$ and an ample $\bbQ$-divisor $A$ on $Y$ such that $D \sim_\bbQ f^* A$.
+    Such a fibration is unique up to isomorphism, and it is called the \emph{semi-ample fibration} associated to $D$.
+  \end{proposition}
   \begin{proof}
+    \hspace{1em}
+
+    \begin{step}
+      Existence.
+    \end{step}
+
     Replace $D$ by a sufficiently divisible multiple, we may assume that $D$ is a base point free Cartier divisor.
-    By noetherianity of $X$, there exists finitely many sections $s_0, \dots, s_n \in H^0(X, D)\subset \fkk(X)$ such that $\bigcap_{i=0}^n \Supp(D + \divisor(s_i)) = \Bs D = \emptyset$.
-    Let $\phi_D: X \to \bbP^n$ be the morphism induced by $s_0, \dots, s_n$ (\cite[Chapter II, Theorem 7.1]{Har77}) and $Y$ be relative normalization (\Yang{}) of $X$ in $\bbP^n$.
-    Then $\phi_D$ factors as $X \xrightarrow{f} Y \xrightarrow{g} \bbP^n$ with $g$ finite and $f$ a fibration.
-    Let $A = g^* \calO_{\bbP^n}(1)$, then $A$ is ample since $g$ is finite, and $D \sim f^* A$ since $\phi_D^* \calO_{\bbP^n}(1) \sim D$.
+    % By noetherianity of $X$, there exists finitely many sections $s_0, \dots, s_n \in H^0(X, D)\subset \fkk(X)$ such that $\bigcap_{i=0}^n \Supp(D + \divisor(s_i)) = \Bs D = \emptyset$.
+    Let $\phi_D: X \to \bbP_\kk^n = \bbP_\kk(H^0(X,D))$ be the morphism induced by $D$ (\cite[Chapter II, Theorem 7.1]{Har77}) and $Y$ be relative normalization (\Yang{}) of $X$ in $\bbP_\kk^n$.
+    Then $\phi_D$ factors as $X \xrightarrow{f} Y \xrightarrow{g} \bbP_\kk^n$ with $g$ finite and $f$ a fibration.
+    Let $A = g^* \calO_{\bbP_\kk^n}(1)$, then $A$ is ample since $g$ is finite, and $D \sim f^* A$ since $\phi_D^* \calO_{\bbP_\kk^n}(1) \sim D$.
     Hence we get the existence of the desired fibration.
 
-    Let $f':X \to Y'$ and $A'$ on $Y'$ be another such fibration and ample divisor.
-    Replace $D$ be a sufficiently divisible multiple, we may assume that both $A$ and $A'$ are very ample.
-    
-    
+    \begin{step}
+      Uniqueness.
+    \end{step}
 
+    Let $f:X \to Y$ be a fibration and $A$ be an ample divisor on $Y$ such that $f^*D \sim_\bbQ A$.
+    Replace $D,A$ by sufficiently divisible multiples, we may assume that $A$ is a very ample Cartier divisor and $f^*A \sim D$.
+    Choose $s_1,\cdots, s_n \in H^0(Y,A)$ determining a closed immersion $\psi_n: Y \to \bbP^{n-1}$.
+    For any $u_{n+1},\cdots,u_{n+m} \in H^0(X,D)$, let $\phi_{n+m}: X \to \bbP^{n+m-1}$ be the morphism associated to $f^*s_1,\cdots,f^*s_{n},u_{n+1},\cdots,u_{n+m}$.
+    Let $L_n \subset \bbP^{n+m-1}$ be the linear subspace defined by $x_0=x_1=\cdots =x_n = 0$.
+    Then $\phi_{n+m}(X) \cap L_n = \emptyset$ since $f^*s_0,\cdots,f^*s_{n}$ globally generate $\calO_X(D)$.
+    We have a commutative diagram
+    \[ \begin{tikzcd}
+      X \ar[r,"\phi_{n+m}"] \ar[dr,"f"'] &\phi_{n+m}(X) \ar[d] \ar[r, hook] & \bbP^{n+m-1} \setminus L_n \ar[d, "\pi_n"] \\
+        & Y \ar[r, "\psi_n", hook] & \bbP^{n-1}
+    \end{tikzcd} \]
+    where $\pi_n$ is the projection by $[x_1:\cdots:x_{n+m}] \mapsto [x_1:\cdots:x_n]$.
+    Note that $\bbP^{n+m} \setminus L_n \cong \bbP^{n-1} \times \bbA^m$ and $\pi$ is the projection to $\bbP^{n-1}$ under this identification.
+    Then $\pi_n$ and hence $\pi_n|_{\phi_{n+m}(X)}:\phi_{n+m}(X) \to Y$ is affine.
+    Note that $X$ is proper.
+    Hence $\pi_n|_{\phi_{n+m}(X)}$ is finite since it is affine and proper.
+    Then it must be an isomorphism since $f$ is a fibration.
 
-    \Yang{}
+    Let $f':X \to Y'$ and $A'$ on $Y'$ be another fibration and ample divisor such that $f'^*A' \sim_\bbQ D$.
+    Replace $D,A,A'$ by a sufficiently divisible multiple, we may assume that both $A$ and $A'$ are very ample and $f'^*A' \sim D$.
+    Choose $t_1,\cdots, t_m \in H^0(Y',A')$ determining a closed immersion $\psi_m: Y' \to \bbP^{m-1}$ and let $u_i = f'^*t_i$ in above construction.
+    The we have the commutative diagram 
+    \[ \begin{tikzcd}
+        & Y' \ar[r, "\psi_m", hook] & \bbP^{m-1}\\
+      X \ar[r,"\phi_{n+m}"] \ar[dr,"f"'] \ar[ur,"f'"] &\phi_{n+m}(X) \ar[d] \ar[u] \ar[r, hook] & \bbP^{n+m-1} \setminus (L_n\cup L_m) \ar[d, "\pi_n"] \ar[u, "\pi_m"] \\
+        & Y \ar[r, "\psi_n", hook] & \bbP^{n-1},
+    \end{tikzcd} \]
+    where $\pi_m$ and $L_m$ is defined similarly to $\pi_n$ and $L_n$.
+    The middle column gives us desired isomorphism $h:Y \to Y'$.
+    The left thing is to check $A \sim_\bbQ h^*A'$.
+    Since $f^*A \sim f^*h^*A'=f'^*A'$, we have $f_*f^*\calO(A) \cong f_*f^*\calO(h^*A')$ and hence $\calO(A) \cong \calO(h^*A')$ by projection formula and the fact $f$ is a proper fibration.
   \end{proof}
+  \begin{remark}
+    The key point in the proof is to deduce the finiteness of $\pi|_{\phi_{n+m}(X)}$ by its affinity and properness.
+    Here we essentially use the fact $X$ is proper.
+    If $X$ is not proper, then the fibration associated to a semiample divisor is not necessarily unique.
+    For example, let $D$ be any divisor on $\bbA^n_\kk$.
+    Since $\Pic(\bbA^n) = 0$, $D \sim 0$ is base point free.
+    Then any surjective linear projection $\bbA^n \to \bbA^m$ satisfying the condition in \cref{thm:semi-ample_fibration}.
+  \end{remark}
 
-  % \Yang{}
-
-  When $X$ is projective, we can detect the dimension of the image of the Iitaka fibration by some asymptotic behavior of the dimension of global sections of multiples of $D$.
+  We can detect the dimension of the image of the semiample fibration by some asymptotic behavior of the dimension of global sections of multiples of $D$.
 
   \begin{definition}
     Let $D$ be a divisor on a projective variety $X$.
     We define the \emph{Iitaka dimension} of $D$ as
-    \[ \kappa(X, D) \coloneqq \max \left\{ k \in \bbZ_{\geq 0} \;\middle|\; \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \right\} \in \{-\infty\} \cup \bbZ_{\geq 0}. \]
+    \[ \kappa(X, D) \coloneqq \max \left\{ k \in \bbR_{\geq 0} \;\middle|\; \limsup_{m \to +\infty} \frac{h^0(X, mD)}{m^k} > 0 \right\} \in \{-\infty\} \cup \bbR_{\geq 0}. \]
     If $D = K_X$ is the canonical divisor, we call $\kappa(X, K_X)$ the \emph{Kodaira dimension} of $X$ and denote it by $\kappa(X)$ simply.
   \end{definition}
 
@@ -285,25 +330,6 @@
 
 
 
-% \subsection{Iitaka fibrations}
-
-  % In characteristic zero, we have the following birational analog of the above proposition, which is the main result of this section.
-
-  % \begin{theorem}
-  %   Let $\kk$ be a field of characteristic zero and $X$ a projective variety over $\kk$.
-  %   Let $D$ be a divisor on $X$ with $\kappa(X, D) \geq 0$.
-  %   There exists a fibration $f: X' \surjmap Y$ with $X'$ birational to $X$ such that for sufficiently large and \Yang{} divisible $m > 0$, the fibration $\phi_m: X \dashrightarrow Y_m$ associated to $mD$ is birational to $f$.
-
-  %   We call such a rational map an \emph{Iitaka fibration} of $D$.
-  %   \Yang{}
-  % \end{theorem}
-
-
-  % \begin{remark}
-  %   The notion of base point free works for any variety (do not require projectivity).
-  %   Hence one may try to construct the Iitaka fibration by restricting $D$ to $X \setminus \bfB(D)$ and considering the morphism $\phi_{mD}: X \setminus \bfB(D) \to Y$ induced by $mD$ (since $mD$ is base point free on $X \setminus \bfB(D)$ for $m$ sufficiently divisible).
-  %   However, this morphism may fail to be a fibration and in this case we do not have the Stein factorization due to the non-properness of $X \setminus \bfB(D)$.
-  % \end{remark}
 
     \Yang{}
 
@@ -311,22 +337,10 @@
 
 \subsection{Base loci of numerical divisor classes}
 
-  Another important property of base loci is that intersection.
+  Another important property of base loci is intersection.
   For this purpose, we need that $X$ to be projective and we can only consider the numerical equivalence class of $D$.
 
-
   % \Yang{} It was first introduced by 
-
-  % First we need to extend the definition of support to $\bbR$-divisors.
-  % % \begin{definition}
-  % %   Let $D$ be an $\bbR$-divisor on a variety $X$.
-  % %   We define the support of $D$ as 
-  % %   \[ \Supp D = \bigcap_{D = \sum_i a_i D_i,\ a_i \neq 0} \left( \bigcup_i \Supp D_i \right), \]
-  % %   where $D_i$ are Cartier divisors and $a_i \in \bbR$.
-  % %   % And the numerical base locus of $D$ is defined as
-  % %   % \[ \Bs_{\equiv}(D) = \bigcap_{D \equiv D' \geq 0} \Supp D'. \]
-  % %    \Yang{}
-  % % \end{definition}
 
   \begin{definition}
     Let $D$ be a $\bbR$-divisor on a projective variety $X$.
@@ -334,7 +348,7 @@
     \[ \bfB_+(D) \coloneqq \bigcap_{\substack{A \in \Div(X)_\bbR \text{ ample } \\ D - A \in \Div(X)_\bbQ}} \bfB(D - A). \]
     The \emph{restricted base locus} (also called the \emph{non-nef locus}) of $D$ is defined as
     \[ \bfB_-(D) \coloneqq \bigcup_{\substack{A \in \Div(X)_\bbR \text{ ample } \\ D + A \in \Div(X)_\bbQ}} \bfB(D + A). \]
-    \Yang{}
+    % \Yang{}
   \end{definition}
 
   \begin{remark}

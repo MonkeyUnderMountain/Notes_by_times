@@ -1,166 +1,6 @@
 \section{Appendix}
 
 
-\subsection{Explicit statements of some well-known results}
-
-%   Here we write down an explicit statement of the resolution of singularities in our setting.
-
-%   \begin{theorem}[{ref. \cite[Theorem 3.37]{Kollar-2007-resolution}}]\label{thm:resolution_of_singularities}
-%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
-%     Then there exists a \emph{resolution of singularities} of $X$, i.e. a proper birational morphism $\pi: \tilde{X} \to X$ such that $\tilde{X}$ is smooth and $\pi$ is an isomorphism over the smooth locus of $X$.
-%   \end{theorem}
-
-%   \begin{theorem}[{ref. \cite[Theorem 3.36]{Kollar-2007-resolution}}]\label{thm:snc_lization_of_subschemes}
-%     Let $\kk$ be a field of characteristic $0$ and $X$ be a smooth variety over $\kk$.
-%     Let $Z \subseteq X$ be a closed subscheme defined by a nonzero ideal sheaf $\calI$.
-%     Then there exists a proper birational morphism $\pi: \tilde{X} \to X$ such that
-%     \begin{enumerate}
-%       \item $\pi$ is an isomorphism over $X \setminus Z$,
-%       \item $\pi$ consists of a sequence of blow-ups along smooth centers, 
-%       \item $\pi^* \calI$ defines a divisor with simple normal crossings support on $\tilde{X}$.\Yang{snc or snc support?}
-%     \end{enumerate}
-%   \end{theorem}
-
-%   \begin{remark}
-%     Seems \cref{thm:resolution_of_singularities} is a consequence of \cref{thm:snc_lization_of_subschemes}.
-%     But when do the so-called log resolutions, I think we need to do \cref{thm:resolution_of_singularities} first to get a smooth variety, 
-%     and then apply \cref{thm:snc_lization_of_subschemes} to get a log resolution of the singularities of the original variety.
-%   \end{remark}
-
-%   \begin{definition}
-%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
-%     An \emph{snc divisor} on $X$ is a divisor \Yang{}
-%   \end{definition}
-
-  \begin{theorem}[{Bertini's theorem, ref. }]\label{thm:Bertini}
-    Let $\kk$ be an infinite field and $X$ be a smooth projective variety over $\kk$.
-    Let $|D|$ be a base-point-free linear system on $X$.
-    Then a general member of $|D|$ is smooth.
-    \Yang{}
-  \end{theorem}
-
-  \begin{theorem}[{Generic principle, ref. }]\label{thm:generic_principle}
-    Let $\kk$ be an infinite field and $X$ be a variety over $\kk$.
-    Let $P(x)$ be a property of points on $X$ such that the set of points satisfying $P$ is constructible in $X$.
-    If there exists a point on $X$ satisfying $P$, then a general point on $X$ satisfies $P$.
-    \Yang{}
-    
-  \end{theorem}
-
-  \begin{theorem}[Finiteness of proper morphisms, ref.]
-    Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
-    Then $R^i f_* \calF$ is a coherent sheaf on $Y$ for every $i \geq 0$.
-     \Yang{}
-    
-  \end{theorem}
-  
-%   \begin{theorem}[Cohomology and proper base change, ref.]
-%     Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
-%     Let $y \in Y$ be a point and $i_y: X_y \to X$ be the inclusion of the fiber over $y$.
-%     Then there is a natural base change morphism
-%     \[ (R^i f_* \calF)_y \to H^i(X_y, i_y^* \calF) \]
-%     for every $i \geq 0$, which is an isomorphism if either of the following conditions holds:
-%     \begin{enumerate}
-%       \item $R^i f_* \calF$ is locally free at $y$ and the base change morphism is surjective;
-%       \item $H^i(X_y, i_y^* \calF) = 0$.
-%     \end{enumerate}
-%      \Yang{}
-%   \end{theorem}
-
-%   % \begin{theorem}[{Nagata's compactification, ref. \Yang{}}]\label{thm:Nagata_compactification}
-%   %   Let $f: X \to Y$ be a morphism between varieties.
-%   %   Then there exists a compactification of $f$, i.e. a proper morphism $\overline{f}: \overline{X} \to Y$ and an open immersion $j: X \to \overline{X}$ such that $f = \overline{f} \circ j$.
-%   %    \Yang{}
-%   % \end{theorem}
-%
-
-
-\subsection{Varieties over non-closed fields}
-
-  In this subsection, we review some facts about varieties over non-closed fields.
-  Let $\kk$ be a field and $\kkk$ be its algebraic closure.
-
-  When dealing with varieties over non-closed fields, we need to be careful about the degree of a closed point.
-
-  \begin{example}
-    Let $X = \Spec \bbR[x, y]/(x^2 + y^2 - 1)$.
-    Note that $X$ is a open subscheme of $\bbP^1_\bbR \cong \Proj \bbR[x,y,z]/(x^2 + y^2 - z^2)$.
-    
-    We have $\Pic X = \bbZ/2\bbZ$ rather than $0$ since $X = \bbP^1_\bbR \setminus \{P\}$, where $P$ is a closed point with $\rkk(P) = \bbC$ and hence $\calO_{\bbP^1_\bbR}(P) \cong \calO_{\bbP^1_\bbR}(2)$.
-    Then $\Pic X \cong \bbZ/2\bbZ$ follows from the localization sequence of Picard groups since $P$ is irreducible closed subscheme of $\bbP^1_\bbR$.
-    And we have $\Pic X_\bbC = 0$ since $X_\bbC \cong \bbP^1_\bbC \setminus \{P_1, P_2\}$, where $P_1$ and $P_2$ are two distinct $\bbC$-points mapping to $P$.
-    % \Yang{}
-  \end{example}
-
-  Many properties of schemes are not stable under base change to $\kkk$, for example, being integral, irreducible, reduced, connected, etc.
-
-  \begin{example}
-    Let $X = \Spec \bbR[x,y]/(x^2 + y^2)$.
-    Then $X$ is integral.
-    However, $X_\bbC = \Spec \bbC[x,y]/(x^2 + y^2)$ has two irreducible components defined by $y = ix$ and $y = -ix$ respectively, and hence is not integral.
-    %  \Yang{}
-  \end{example}
-
-  \begin{example}
-    Let $\kk$ be a field and $\kk' = \kk(\alpha) = \kk[x]/(f)$ be a finite algebraic extension, where $f$ is an irreducible polynomial of degree $n \geq 2$ over $\kk$.
-    Then $X = \Spec \kk'$ is integral, but $X_\kkk = \Spec \kk' \ten_\kk \kkk$ is not integral since 
-    \[ \kk' \ten_\kk \kkk \cong \kkk[x]/(f) \cong \prod_{i=1}^k \kkk[x]/((x - \alpha_i)^{m_i}), \] 
-    where $\alpha_i$ are the distinct roots of $f$ in $\kkk$ and $m_i$ are their multiplicities.
-
-    More generally, suppose $k \geq 2$ (i.e., $f$ has at least two distinct roots in $\kkk$) and let $Y$ be any integral scheme over $\kk'$.
-    Regard $Y$ as a scheme over $\kk$ via the composition $Y \to \Spec \kk' \to \Spec \kk$.
-    Then $Y$ is integral, but $Y \times_\kk \kkk = Y \times_{\kk'} (\kk' \ten_\kk \kkk)$ is not integral since it has at least two irreducible components $Y \times_{\kk'} \kkk[x]/((x - \alpha_i)^{m_i})$ for $i = 1, 2$.
-    %  \Yang{}
-  \end{example}
-
-  \begin{definition}
-    Let $X$ be a scheme of finite type over $\kk$.
-    We say $X$ is \emph{geometrically integral} (resp. \emph{geometrically irreducible}, \emph{geometrically reduced}, \emph{geometrically connected}) if $X_\kkk = X \times_\kk \kkk$ is integral (resp. irreducible, reduced, connected).
-    One can similarly define other notions of geometric properties, for example, \emph{geometrically normal}, \emph{geometrically regular}, etc.
-  \end{definition}
-
-  For geometrically irreducibility, one only needs to check the separable closure of $\kk$ in $\fkk(X)$.
-
-  \begin{lemma}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33} and \href{https://stacks.math.columbia.edu/tag/054Q}{054Q}]{Stacks}}]
-    Let $X$ be an integral scheme of finite type over $\kk$ and $\kk' \subset \fkk(X)$ be the field consisting of elements of $\fkk(X)$ that are separably algebraic over $\kk$.
-    Then $X$ is geometrically irreducible if and only if $\kk' = \kk$.
-  \end{lemma}
-  % \begin{proof}
-  %   By \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33}]{Stacks}, we have $X_\kkk = X \times_\kk \kkk \cong X \times_{\Spec \kk'} \Spec \kkk$.
-  %   Then $X_\kkk$ is irreducible if and only if $X$ is irreducible over $\kk'$, which is equivalent to $\kk' = \kk$ since $X$ is integral over $\kk$.
-  %   \Yang{}
-  % \end{proof}
-
-  The case of geometrically reduced is more subtle, namely, we cannot only check the algebraic part of $\fkk(X)/\kk$; see the following example.
-
-  \begin{example}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/020F}{Tag 020F}]{Stacks}}]
-    Let $\kk = \bbF_p(s,t)$ and $\KK = \Frac (\kk[x,y]/(sx^p + ty^p + 1))$.
-    Then $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is not separable.
-    See \cref{eg:fibration_with_non_reduced_fiber} for a geometric views.
-    \Yang{}
-  \end{example}
-
-  We list the following results without proof, and refer to \cite[\href{https://stacks.math.columbia.edu/tag/030I}{Tag 030I}, \href{https://stacks.math.columbia.edu/tag/05DS}{Tag 05DS}, \href{https://stacks.math.columbia.edu/tag/05DT}{Tag 05DT}, \href{https://stacks.math.columbia.edu/tag/05DU}{Tag 05DU} and \href{https://stacks.math.columbia.edu/tag/035U}{Tag 035U}]{Stacks} for details.
-  
-  \begin{definition}\label{def:separable_field_extensions_and_morphisms}
-    Let $\KK/\kk$ be a field extension.
-    We say $\KK/\kk$ is \emph{separable} if $\KK \ten_\kk \bfL$ is a reduced ring for every field extension $\kk \subseteq \bfL$.
-
-    Let $f: X \to Y$ be a dominant morphism between integral schemes.
-    We say $f$ is \emph{separable} if the field extension $\fkk(Y) \subseteq \fkk(X)$ is separable.
-  \end{definition}
-
-  \begin{lemma}
-    Let $\kk$ be a field, $X$ be an integral scheme of finite type over $\kk$, and $\KK/\kk$ be a finitely generated field extension.
-    \begin{enumerate}
-      \item If $\fkk(X)/\kk$ is separable, then $X$ is geometrically reduced (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030U}{Tag 030U}]{Stacks}).
-      \item If $\characteristic \kk = 0$, then any extension $\KK/\kk$ is separable (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030Z}{Tag 030Z}]{Stacks}).
-      \item The extension $\KK/\kk$ is separable if and only if there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$ (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030X}{Tag 030X}]{Stacks}; \cite[Theorem 26.2]{Mat89}).
-      %  \Yang{}
-    \end{enumerate}
-  \end{lemma}
-
-
 \subsection{Fibrations}
 
   \begin{construction}[Relative normalization]
@@ -194,10 +34,13 @@
   \end{proposition}
 
   \begin{example}
-    Let $f_1$ be a morphism with geometrically integral fibers, for example, $f_1: \bbA^2_\kk \to \bbA^1_\kk$ defined by $\kk[x] \to \kk[x,y]$;
-    $f_2$ be an open immersion into a normal variety, for example, $f_2: \bbA^1_\kk \to \bbP^1_\kk$;
-    $f_3$ be a finite surjective morphism, for example, $f_3: \bbP^1_\kk \to \bbP^1_\kk$ defined by $[u:v] \mapsto [u^2:v^2]$;
-    and $f_4$ be a closed immersion, for example, $f_4: \bbP^1_\kk \to \bbP^2_\kk$ defined by $[u:v] \mapsto [u^2:uv:v^2]$.
+    Let 
+    \begin{itemize}[nosep]
+      \item $f_1$ be a surjective morphism with geometrically integral fibers, for example, $f_1: \bbA^2_\kk \to \bbA^1_\kk$ defined by $\kk[x] \to \kk[x,y]$;
+      \item $f_2$ be an open immersion into a normal variety, for example, $f_2: \bbA^1_\kk \injmap \bbP^1_\kk$;
+      \item $f_3$ be a finite surjective morphism, for example, $f_3: \bbP^1_\kk \to \bbP^1_\kk$ defined by $[u:v] \mapsto [u^2:v^2]$;
+      \item $f_4$ be a closed immersion, for example, $f_4: \bbP^1_\kk \to \bbP^2_\kk$ defined by $[u:v] \mapsto [u^2:uv:v^2]$.
+    \end{itemize}
     Set $f = f_4 \circ f_3 \circ f_2 \circ f_1: \bbA^2_\kk \to \bbP^2_\kk$.
     Then the relative normalization of $\bbP^2_\kk$ in $\bbA^2_\kk$ is $\bbP^1_\kk \xrightarrow{f_3} \bbP^1_\kk \xrightarrow{f_4} \bbP^2_\kk$, and the morphism $\bbA^2_\kk \to \bbP^1_\kk$ is given by $\bbA^2_\kk \xrightarrow{f_1} \bbA^1_\kk \xrightarrow{f_2} \bbP^1_\kk$.
   \end{example}
@@ -232,59 +75,32 @@
     Assertion (b) follows from the universal property of the relative normalization (see \cref{prop:universal_property_of_relative_normalization}).
 
     Now we prove (c).
-    Denote by $Y' \to Y$ the relative normalization of $Y$ in $X$.
+    Denote by $g:Y' \to Y$ the relative normalization of $Y$ in $X$.
+    Since $g$ is finite, $Y'$ is excellent and noetherian.
     Since $X \to Y'$ is dominant and $X$ is irreducible, $Y'$ is also irreducible.
-    Since locally $\calO_{Y'}$ is a subalgebra of $f_* \calO_X$, $Y'$ is also reduced.
-    Noetherian and excellent properties of $Y'$ follow from the fact that $Y' \to Y$ is finite.
+    Take any affine open subset $U \subset Y$, $g^{-1}(U)$ is still affine.
+    We have $\calO_{Y'}(g^{-1}(U)) \subset \calO_X(f^{-1}(U))$.
+    Since $X$ is integral, $\calO_{Y'}(g^{-1}(U))$ is reduced.
+    This shows that $Y'$ is reduced.
+
     If $X$ and $Y$ are varieties over $\kk$, we only need to check that $Y'$ is geometrically integral over $\kk$.
     Note that $\calO_{Y'_\kkk}$ locally is still a subalgebra of $f_* \calO_{X_\kkk}$ and dominance is preserved under flat base change (\cite[\href{https://stacks.math.columbia.edu/tag/0H3F}{Tag 0H3F}]{Stacks}), so $Y'_\kkk$ is still integral.
-    % I claim that $Y'_\kkk$ is the relative normalization of $Y_\kkk$ in $X_\kkk$.
-    % Then the conclusion follows directly.
-    % By replace $Y$ by an affine open subset and $X$ by $\Spec \calO_X(X)$, we may assume that $Y = \Spec A$ and $X = \Spec B$ are affine.
-    % Then $Y' = \Spec A'$, where $A'$ is the integral closure of $A$ in $B$.
-    % Let $C \subset B_\kkk$ be the integral closure of $A_\kkk$ in $B_\kkk$.
-    % For any $f \in C$, we show that $f \in A'_\kkk$.
-    % First for any finite extension $\bfl/\kk$, if $\alpha \in B_\bfl$ is integral over $A_\bfl$ with minimal polynomial $x^n + a_{n-1} x^{n-1} + \cdots + a_0$,  
-    % There exists a finite extension $\kk'/\kk$ such that $f \in B \ten_\kk \kk'$, since $B$ is of finite type over $\kk$.
-    % Then $f$ is integral over $A \ten_\kk \kk'$, 
-    % \Yang{}
   \end{proof}
 
   There may be not a standard definition of fibration in literatures, but the following proposition shows that the above definition is equivalent to the many usual definitions of fibrations in the case of proper morphisms between varieties.
 
   \begin{proposition}\label{prop:equivalent_definitions_of_fibrations}
-    Let $f: X \to Y$ be a dominant morphism between excellent noetherian integral schemes.
-    Consider the following conditions:
-    \begin{itemize}
-      \item (fibration) $f$ is a fibration;
-      \item (integral) the generic fiber of $f$ is geometrically integral;
-      \item (irreducible) the generic fiber of $f$ is geometrically irreducible;
-      \item (connected) $f$ has geometrically connected fibers over closed points.
-      \item (alg. closed) $\fkk(Y)$ is algebraically closed in $\fkk(X)$.
-      \item ($f_* \calO_X = \calO_Y$) $f_* \calO_X = \calO_Y$.
-    \end{itemize}
-    Then we have the following implications:
+    Let $f: X \to Y$ be a dominant morphism of finite type between excellent noetherian integral schemes.
     \begin{enumerate}
       \item \begin{itemize}[leftmargin=1em,nosep]
-        \item ($f_*\calO_X = \calO_Y$) $\implies$ (fibration);
-        \item if $f$ is proper, then (fibration) $\implies$ ($f_*\calO_X = \calO_Y$);
+        \item If $f_*\calO_X = \calO_Y$, then $f$ is a fibration;
+        \item if $f$ is a proper fibration, then $f_*\calO_X = \calO_Y$.
       \end{itemize}
       \item \begin{itemize}[leftmargin=1em,nosep]
-        \item if $X$ is normal, then (fibration) $\implies$ (alg. closed); 
-        \item if $Y$ is normal, then (alg. closed) $\implies$ (fibration);
-      \end{itemize}
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item if $X$ is normal, then (fibration) $\implies$ (irreducible);
-        \item if $Y$ is normal, then (integral) $\implies$ (fibration); 
-        % \item if $f$ is separable, then (irreducible) iff (integral);
-      \end{itemize}  
-      \item \begin{itemize}[leftmargin=1em,nosep]
-        \item if $f$ is proper, then (fibration) $\implies$ (connected);
-        \item if $f$ is separable and $X$ is normal, then (connected) $\implies$ (fibration).
+        \item If $f$ is a fibration and $X$ is normal, then $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
+        \item if $\fkk(Y)$ is algebraically closed in $\fkk(X)$ and $Y$ is normal, then $f$ is a fibration.
       \end{itemize}
     \end{enumerate}
-    In particular, if $X$ and $Y$ are normal proper varieties and $\characteristic \kk = 0$, then all the above conditions are equivalent.
-     \Yang{}
   \end{proposition}
   \begin{proof}
     \hspace{1em}
@@ -292,7 +108,10 @@
       Assertion (a).
     \end{step}
 
-    The assertion (a) follows from the definition of the relative normalization and the fact that $f_* \calO_X$ is a quasi-coherent $\calO_Y$-algebra.\Yang{}
+    If $f_*\calO_X = \calO_Y$, then by definition of relative normalization we must have $\calO_{Y'} = \calO_Y$ and hence $f$ is a fibration.
+    Conversely, suppose $f$ is proper.
+    Then $f_*\calO_X$ is a coherent sheaf by Finiteness of Proper Morphism (\cite[\href{https://stacks.math.columbia.edu/tag/02O5}{Tag 02O5}]{Stacks}) and hence is finite over $\calO_Y$.
+    Since the integral closure of $\calO_Y$ in $f_*\calO_X$ is $\calO_Y$ itself, it enforces $\calO_Y = f_*\calO_X$.
 
     \begin{step}
       Assertion (b).
@@ -318,28 +137,13 @@
     Hence $X' \to Y$ is also a fibration.
     By the universal property of the relative normalization, finite morphism $Y' \to Y$ factors through $Y \xrightarrow{\id} Y$, which is a contradiction since $Y' \neq Y$.
 
-    When $Y$ is normal, for any affine open subset $U \subset Y$, $\calO_Y(U)$ is integral closed in $\fkk(Y)$ and $\fkk(Y)$ is algebraically closed in $\fkk(X)$, so $\calO_Y(U)$ is integral closed in $\fkk(X)$ and hence in $\calO_X(f^{-1}(U))$.
+    When $Y$ is normal, for any affine open subset $U \subset Y$, $\calO_Y(U)$ is integral closed in $\fkk(Y)$ and $\fkk(Y)$ is algebraically closed in $\fkk(X)$, so $\calO_Y(U)$ is integral closed in $\fkk(X)$ and hence in $\calO_X(f^{-1}(U))$ (since $\calO_X(f^{-1}(U)) \subset \fkk(X)$).
     Then the relative normalization of $Y$ in $X$ is $Y$ itself and hence $f$ is a fibration.
-
-
-    \begin{step}
-      Assertion (c).
-    \end{step}
-
-     For (c), the assertion (c) $\implies$ (fibration) when $Y$ is normal follows from (b).
-    
-    The assertion (c) follows from (b) and \Yang{}.
-
-    \begin{step}
-      Assertion (d).
-    \end{step}
-
-    \Yang{}
   \end{proof}
 
-  The following examples shows that some assumptions in \cref{prop:equivalent_definitions_of_fibrations} are necessary.
+  The following example shows that the assumption of normality in \cref{prop:equivalent_definitions_of_fibrations} are necessary.
 
-  \begin{example}
+  \begin{example}[Whitney umbrella]
     Let $A = \kk[u^2]$ and 
     \[ B = \kk[v,uv,u^2] = \kk[u^2] + v \kk[u] = \{f + vg \in \kk[u,v] : f \in \kk[u^2], g \in \kk[u]\}. \]
     be the coordinate ring of the Whitney umbrella (see \cref{fig:whitney_umbrella}).
@@ -360,118 +164,82 @@
     \label{fig:whitney_umbrella}
   \end{figure}
 
-  \begin{example}\label{eg:fibration_with_non_reduced_fiber}
-    Suppose $\characteristic \kk = p > 0$.
-    Let $Y = \Spec \kk[s,t]$ and $X = \Spec \kk[s,t,x,y]/(sx^p + ty^p - 1)$.
-    Since $Y$ is normal and $\KK := \fkk(Y) = \kk(s,t)$ is algebraically closed in $\fkk(X)$, the morphism $f: X \to Y$ is a fibration.
+  \begin{corollary}
+    Let $f: X \to Y$ be a dominant morphism of finite type between excellent noetherian integral schemes.
+    Suppose that $X$ is normal and separable over $Y$.
+    Then the generic fiber $X_\eta$ is geometrically integral and hence a variety in our sense.
+  \end{corollary}
+  \begin{proof}
+    Follows from \cref{lem:geometrically_irreducible_and_separably_close_in_function_field,lem:criterion_of_geometrical_reducedness_by_separability,prop:equivalent_definitions_of_fibrations}.
+  \end{proof}
 
-    The generic fiber of $f$ is given by $\Spec \KK[x,y]/(sx^p + ty^p - 1)$.
-    Over corresponding geometric point $\Spec \KKK$ of $\Spec \KK$, the fiber is given by $\Spec \KKK[x,y]/(sx^p + ty^p - 1) = \Spec \KKK[x,y]/((s^{1/p}x + t^{1/p}y - 1)^p)$, which is not reduced.
-    %  \Yang{}
-  \end{example}
+  The condition $f_*\calO_X = \calO_Y$ has a very clear geometric mean.
 
+  \begin{proposition}\label{lem:connected_fiber_by_pushforward_of_structure_sheaves}
+    Let $f: X \to Y$ be a dominant morphism of finite type between excellent noetherian integral schemes.
+    Suppose that $f_*\calO_X = \calO_Y$.
+    Then $f$ has geometrically connected fibers.
+  \end{proposition}
+  \begin{proof}
+    The connectedness of fiber follows from two things: one is the geometrically connectedness can be checked over all \'{e}tale covers (\cite[\href{https://stacks.math.columbia.edu/tag/03GZ}{Tag 03GZ}]{Stacks}); the other is the Theorem on Formal Function (\cite[\href{https://stacks.math.columbia.edu/tag/02OD}{Tag 02OD}]{Stacks}).
+
+    Let $g:U \to Y$ be any \'etale morphism and $f_U:X_U \to Y_U$ be the base change of $f$ along $g$.
+    By Cohomology and Flat Base Change (\cite[\href{https://stacks.math.columbia.edu/tag/02KH}{Tag 02KH}]{Stacks}), we have $(f_U)_*\calO_{X_U} = g^*(f_*\calO_X) = g^*\calO_Y=\calO_{U}$.
+    Hence we only need to prove that all fiber of $f$ is connected.
+
+    Let $y \in Y$. 
+    Denote by $X_{y,n} = X \times_Y \calSpec_Y \calO_Y/\frakm_y^n$.
+    The Theorem on Formal Function shows that $\invlim_{n} H^0(X_{y,n},\calO_{X_{y,n}}) \cong \widehat{(f_*\calO_X)_y} = \widehat{\calO_{Y,y}}$.
+    If $X_y$ has at least two irreducible components, so is $X_{y,n}$ for all $n$.
+    Hence the left hand side can be written as direct sum of two rings, namely $A_1$ and $A_2$.
+    Then we have $\widehat{\calO_{Y,y}} = A_1 \oplus A_2$.
+    Let $e_i$ be unit in $A_i$.
+    Since $\widehat{\calO_{Y,y}}$ is a local ring, $e_1e_2 = 0$ implies $e_1,e_2 \in \widehat{\frakm_{y}}$.
+    However, the sum $e_1+e_2$ is a unit in $A_1 \oplus A_2$, which is a contradiction.
+  \end{proof}  
 
   When $f$ is proper morphism between varieties, the construction of the relative normalization is exactly the Stein factorization of $f$.
 
-  \begin{corollary}[{Stein factorization, ref. \cite[Tag 03H2 and 0AVK]{Stacks}}]
+  \begin{corollary}[{Stein Factorization, ref. \cite[\href{https://stacks.math.columbia.edu/tag/03H2}{Tag 03H2}]{Stacks}}]
     Let $f: X \to Y$ be a proper morphism between varieties.
     Then there exist a variety $Z$ and morphisms $g: X \to Z$ and $h: Z \to Y$ such that $f = h \circ g$, $g_* \calO_X = \calO_Z$, and $h$ is finite.
+    In particular, $g$ has geometrically connected fibers.
   \end{corollary}
 
+  Another application is the Zariski's main theorem.
+
+  \begin{corollary}[Zariski's Main Theorem]
+    Let $f:X \to Y$ be a proper birational morphism of varieties and $Y$ is normal.
+    Then $f$ has (geometrically) connected fibers.
+  \end{corollary}
+  \begin{proof}
+    Follows from \cref{prop:equivalent_definitions_of_fibrations,lem:connected_fiber_by_pushforward_of_structure_sheaves}.
+  \end{proof}
 
 
 
+\subsection{Valuations in general settings}
+  
+  In this subsection, we review some facts about valuation on a fields.\footnote{The symbol $\nu$ is the Greek letter ``nu'' and $v$ is the English letter ``v''.}
+  The references are \cite{Günther-2016-valuation-theoretic-methods-birational-geometry,Vaquie-2006-valuations}.
 
-  \Yang{The following need to be revised.}
+  \begin{definition}
+    A \emph{totally ordered abelian group} is an abelian group $\Gamma$ together with a total order $\geq$ satisfying $a \geq b \implies a + c \geq b + c$ for all $a,b,c \in \Gamma$.
+  \end{definition}
 
+  \begin{example}
+    The real number $\bbR$ equipped usual addition and order is a totally ordered abelian group.
+    Note that every subgroup of a totally ordered abelian group is a totally ordered abelian group.
+    Hence $\bbZ,\bbQ$ with addition and usual order are also totally order abelian groups.
+  \end{example}
 
-
-
-
-
-
-
-
-  % \begin{proposition}
-  %   Let $f: X \to Y$ be a dominant morphism between varieties.
-  %   TFAE:
-  %   \begin{itemize}
-  %     \item[(a)] the generic fiber of $f$ is geometrically irreducible;
-  %     \item[(b)] $\fkk(Y)$ is algebraically closed in $\fkk(X)$;
-  %   \end{itemize}
-  %   if $f$ is proper, they are also equivalent to the following condition:
-  %   \begin{itemize}
-  %     \item[(c)] $f_*\calO_X = \calO_Y$.
-  %   \end{itemize}
-  % \end{proposition}
-  % \begin{proof}
-  %   \textbf{(a) $\iff$ (b).}
-  %   Denote by $\KK = \fkk(Y)$, $\eta = \Spec \KK$ the generic point of $Y$, $\overline{\eta}$ a geometric point over $\eta$, $X_\eta$ (resp. $X_{\overline{\eta}}$) the fiber of $f$ over $\eta$ (resp. $\overline{\eta}$).
-  %   Let $\bfL$ be the algebraic closure of $\KK$ in $\fkk(X_\eta) = \fkk(X)$.
-  %   Then $\bfL$ is a finite extension of $\KK$, and we have commutative diagram
-  %   \[
-  %     \begin{tikzcd}
-  %       \Spec  \fkk(X) \ten_\KK \overline{\KK} \ar[r] \ar[d] & \Spec \fkk(X) \ten_\KK \bfL \ar[r] \ar[d] & \Spec \fkk(X) \ar[d] \\
-  %       X_{\overline{\eta}} \ar[r] \ar[d] & X_\eta \times_{\eta} \Spec \bfL \ar[r] \ar[d] & X_\eta \ar[d] \\
-  %       \Spec \overline{\KK} \ar[r] & \Spec \bfL \ar[r] & \Spec \KK.
-  %     \end{tikzcd}
-  %   \]
-
-  %   Recall that for a finite field extension $\bfL/\KK$, $\bfL \ten_\KK \bfL$ is an integral domain if and only if $\bfL = \KK$.
-  %   If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
-  %   If $\bfL = \KK$, then $\fkk(X)/\KK$ is a purely transcendental extension, and hence $\fkk(X) \ten_\KK \KK'$ is a field for every fi
-     
-    
-
-  %   I claim that $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
-  %    \Yang{}
-  %   First assume that $X$ is affine, say $X = \Spec A$.
-  %   Then the arrow $\Spec \fkk(X) \to X_\eta$ is given by a localization of $A \ten_\kk \KK$ with respect to the multiplicative subset $S = (A \ten_\kk \KK) \setminus \{0\}$.
-  %   Hence $\Spec \fkk(X) \ten_\KK \overline{\KK} \to X_{\overline{\eta}}$ is also given by a localization of $A \ten_\kk \overline{\KK}$ with respect to $S \subset A \ten_\kk \KK \subset A \ten_\kk \overline{\KK}$.
-  %   Note that $S$ does not meet the set of zero-divisors of $A \ten_\kk \overline{\KK}$ since $\KK \to \overline{\KK}$ is faithfully flat.
-  %   Then $X_{\overline{\eta}}$ is integral if and only if $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain.
-  %   For the general case, let $\{U_i\}$ be an affine open cover of $X$.
-  %   Then $X_{\overline{\eta}}$ is integral if and only if each $U_i \times_X X_{\overline{\eta}}$ is integral, which reduces to the affine case.
-
-  %    \Yang{}
-
-
-  %   If $\bfL \neq \KK$, then $\fkk(X) \ten_\KK \overline{\KK}$ is not an integral domain since it contains $\bfL \ten_\KK \bfL$ as a subring.
-  %   On the other hand, by looking at an affine open dense subset $U = \Spec A$ of $X_{\eta}$, we see that $\Spec \fkk(X) \to U$ is given by a localization of $A$.
-  %   Hence so is $\Spec \fkk(X) \ten_\KK \overline{\KK} \to U_{\overline{\eta}}$.
-  %   In particular, $\fkk(X) \ten_\KK \overline{\KK}$ is an integral domain since $U_{\overline{\eta}}$ is integral by the assumption that $X_{\overline{\eta}}$ is integral.
-  %   Therefore, we must have $\bfL = \KK$, which means $\KK$ is algebraically closed in $\fkk(X)$.
-
-  %   \textbf{(b) $\implies$ (a).}
-  %    Denote by
-     
-
-  %   % If $\fkk(X) \ten_\KK \bfL$ is not an integral domain, then so is $\fkk(X_{\overline{\eta}})$ since $\overline{\KK} / 
-
-
-  %   \Yang{}
-  % \end{proof}
-
-
-
-  % In general we cannot control every fiber of a fibration, but for a proper fibration, we have the following connectedness principle.
-
-  % \begin{proposition}[{Connectedness principle, ref. }]
-  %   Let $f: X \to Y$ be a proper morphism between varieties such that $f_* \calO_X = \calO_Y$.
-  %   Then every fiber of $f$ is connected.
-  %    \Yang{}
-  % \end{proposition}
-
-  % \begin{remark}
-  %   Easily see that the ``proper'' assumption in the connectedness principle is necessary.
-  %    \Yang{}
-  % \end{remark}
-
-
-
-\subsection{Valuations of higher rank}
-
-  In this subsection, we review some facts about valuation on a fields.
+  \begin{example}
+    Let $\Gamma_1,\Gamma_2$ be two totally ordered abelian groups.
+    Then its direct sum $\Gamma = \Gamma_1 \oplus \Gamma_2$ equipped with lexicographic order is a totally ordered abelian group.
+    Indeed, if $(a_1,a_2) \geq (b_1,b_2)$, then either $a_1 > b_1$ or $a_1 = b_1, a_2 \geq b_2$.
+    We have $a_1 + c_1 > b_1 + c_1$ or $a_1 + c_1 = b_1 + c_1, a_2 + c_2 \geq b_2 + c_2$ respectively.
+    Hence $(a_1,a_2) + (c_1,c_2) \geq (b_1,b_2) + (c_1,c_2)$.
+  \end{example}
 
   \begin{definition}
     Let $\KK$ be a field and $\Gamma$ be a totally ordered abelian group.
@@ -480,27 +248,146 @@
       \item $v(fg) = v(f) + v(g)$,
       \item $v(f + g) \geq \min\{v(f), v(g)\}$.
     \end{enumerate}
-    The \emph{valuation group} of $v$ is image of $v$ in $\Gamma$.
-     \Yang{}
+
+    The \emph{valuation group} of $v$ is image of $v$ in $\Gamma$, denoted by $\Gamma_v$.
+    Condition (a) guarantees that $\Gamma_v$ is a subgroup of $\Gamma$ and hence is also a totally ordered abelian group.
+
+    The \emph{valuation ring} of $v$ is defined as $\calO_v = \{ f \in \KK : v(f) \geq 0 \}$, which is a local ring with maximal ideal $\frakm_v = \{ f \in \KK : v(f) > 0 \}$ and residue field $\calk_v = \calO_v / \frakm_v$.
+    Two valuation $v,v'$ are said \emph{equivalent} is they define the same valuation ring.
 
     Let $\kk$ be a subfield of $\KK$.
-    We say $v$ is a \emph{valuation of $\KK$ over $\kk$} if $v$ is trivial on $\kk$, i.e. $v(c) = 0$ for every $c \in \kk^\times$.
-     \Yang{}
-
-    We say $v$ is a \emph{valuation of rank $r$} if there is an embedding of ordered abelian groups $\Gamma \hookrightarrow \bbR^r$ with the lexicographic order.
-
-    The dimension of $v$ is defined as the Krull dimension of the valuation ring of $v$ (see below).
-     \Yang{}
-
-    \Yang{}
+    We say $v$ is a \emph{valuation of $\KK/\kk$} if $v$ is trivial on $\kk$, i.e. $v(c) = 0$ for every $c \in \kk^\times$.
+    In this case, the valuation ring $\calO_v$ is a $\kk$-algebra and the residue field $\calk_v$ is an extension of $\kk$.
   \end{definition}
 
   \begin{remark}[Characterization of valuation rings]
     Let $\KK$ be a field and $A$ be a subring of $\KK$.
     Then $A$ is the valuation ring of a valuation on $\KK$ if and only if for every $f \in \KK^\times$, we have either $f \in A$ or $f^{-1} \in A$.
-     \Yang{}
-    For more details, I refer to \cite[Tag 00I8]{Stacks}.
+
+    The ``only if'' part is trivial.
+    For the ``if'' part, we can construct a valuation as follow.
+    Let $\Gamma = \KK^\times / A^\times$ be the abelian group (the operator will be written as addition)
+    equipped an order given by $f>g$ if $f-g$ lies in the image of $A\setminus\{0\}$ under $\KK^\times \to \Gamma$.
+    Then $\Gamma$ is a totally ordered abelian group.
+    The valuation $v:\KK^\times \to \Gamma$ is the quotient map.
+
+    For more details, see \cite[\href{https://stacks.math.columbia.edu/tag/00I8}{Tag 00I8}]{Stacks}.
   \end{remark}
+
+  A fact is that a valuation ring is noetherian if and only if it is a DVR or a field (\cite[\href{https://stacks.math.columbia.edu/tag/00II}{Tag 00II}]{Stacks}).
+  On this subsection, we will focus on some more general valuation rings.
+
+  \begin{example}\label{eg:monomial_valuation}
+    Let $\kk$ be a field and $\KK = \kk((x_1,\cdots,x_d))$ be the field of formal Laurent series in $d$ variable over $\kk$.
+    Let $\Gamma = \bbZ^d$ equipped lexicographic order.
+    We define a valuation $\nu: \KK^\times \to \Gamma$ by 
+    \[ f = \sum_{I \in \bbZ^d} a_I x^I \mapsto \inf \ \{I \in \bbZ^d : a_I \neq 0\}, \]
+    where the infimum is taken with respect to the lexicographic order.
+    Since there are only finitely many items in $f$ with negative exponents, the infimum above is indeed a minimum and hence $\nu$ is well-defined.
+    By checking monomial of form $x^I$ and the fact that every $f \in \KK$ can be written as $f = a_{\nu(f)} x^{\nu(f)} + f_0$ with $\nu(f_0) > \nu(f)$, we see that $\nu$ is indeed a valuation.
+    Note that when $d = 1$, then $\nu$ is just the order of a formal Laurent power series and $\calO_\nu = \kk[[x_1]]$.
+
+    Suppose that $d > 2$.
+    Then the valuation ring $\calO_\nu$ of $\nu$ is strictly large than the ring $\kk[[x_1,\cdots,x_d]]$ of formal power series since $x_1x_2^{n} \in \calO_\nu$ for all $n \in \bbZ$.
+    As we have mentioned, $\calO_\nu$ is a local ring.
+    Moreover, all ideals of $\calO_\nu$ forms a totally ordered set under inclusion.
+    This is because $f \in \fraka$ for an ideal $\fraka \subset \calO_\nu$ will imply $g \in \fraka$ for all $g \in \KK$ with $\nu(g) \geq \nu(f)$ since $g/f \in \calO_\nu$.
+    The ring $\calO_\nu$ is not noetherian since $(x_1x_2^{0}) \subset (x_1x_2^{-1}) \subset (x_1x_2^{-2}) \subset \cdots$ is a strictly ascending chains of ideals in $\calO_\nu$.
+    
+    Finally, we compute the Krull dimension of $\calO_{\nu}$.
+    For simplicity, we choose the reverse lexicographic order on $\bbZ^d$, i.e. $\nu(x_d) > \nu(x_{d-1}) > \cdots > \nu(x_1)$.
+    Easily see this is isomorphic to the original valuation by changing notations of indeterminates.
+    Consider the chain of ideal
+    \begin{equation}\label{eq:strictly_chain_of_prime_ideals_in_formal_fields}
+      0 \subsetneq (x_d) \subsetneq (x_{d-1}) \subsetneq \cdots \subsetneq (x_1).
+    \end{equation}
+    Denote by $\calO_d$ the valuation ring $\calO_{\nu_d}$ of $\nu_d: \kk((x_1,\cdots,x_d)) \to \bbZ^d$ constructed above (with reverse lexicographic order).
+    Then we have an isomorphism $\calO_d/(x_{k+1}) \to \calO_{k}$ by looking at the obvious $\kk$-basis of $\calO_d$ and $\calO_{k}$.
+    Then \cref{eq:strictly_chain_of_prime_ideals_in_formal_fields} is a strictly ascending sequence of prime ideals.
+    Inductively, we may assume that there is no other prime ideal can be added into $(x_d) \subsetneq (x_{d-1}) \subsetneq \cdots \subsetneq (x_1)$. 
+    Let $\fraka$ be an ideal with $0 \subsetneq \fraka \subsetneq (x_d)$.
+    Then $x_d \not\in \fraka$ and $x_d^n \in \fraka$ for $n \gg 0$ since for any $f \in \KK$, $\nu(x_d^n) \geq \nu(f)$ for $n \gg 0$.
+    Hence $\fraka$ is not prime.
+    Then \cref{eq:strictly_chain_of_prime_ideals_in_formal_fields} is the strict ascending chain of prime ideals of maximal length in $\calO_{\nu_d}$.
+    Thus the Krull dimension of $\calO_{\nu_d}$ is $d$.
+    % \Yang{}
+  \end{example}
+
+
+  \begin{definition}
+    Let $\nu: \KK^\times \to \Gamma_\nu$ be a valuation on $\KK/\kk$.
+    There are three notion to measure the ``dimension'' of $\nu$:
+    \begin{itemize}
+      \item the \emph{dimension}: $\dim \nu \coloneqq \trdeg \calk_\nu/\kk$;
+      \item the \emph{rank}: $\rank \nu \coloneqq \dim \calO_\nu$, here $\dim \calO_\nu$ is the Krull dimension of the ring $\calO_\nu$;
+      \item the \emph{rational rank}: $\rank_\bbQ \nu \coloneqq \dim_\bbQ \Gamma_\nu \ten_\bbZ \bbQ$, here $\dim_\bbQ \Gamma_\nu \ten_\bbZ \bbQ$ means the dimension of $\Gamma_\nu \ten_\bbZ \bbQ$ as a $\bbQ$-vector space.
+    \end{itemize}
+  \end{definition}
+
+  Here are two inequalities relate these numbers.
+
+  \begin{theorem}[{ref. \cite[Remark 1.14]{Vaquie-2006-valuations}}]
+    Let $\nu: \KK^\times \to \Gamma_\nu$ be a valuation on $\KK/\kk$.
+    Then we have 
+    \[ \rank \nu \leq \rank_\bbQ \nu, \quad \rank_\bbQ \nu + \dim \nu \leq \trdeg \KK/\kk. \]
+  \end{theorem}
+
+  Note that here we do not require that $\KK/\kk$ is finitely generated and all numbers in above inequalities can take values in $\bbZ_{\geq 0} \cup \{\infty\}$.
+
+  Note though the definition of $\rank \nu$ depends on $\calO_{\nu}$.\Yang{}
+
+  \begin{definition}
+    ideal of totally ordered abelian group \Yang{}
+  \end{definition}
+
+  \begin{proposition}
+    \begin{enumerate}
+      \item all ideals of $\calO_\nu$ forms a totally ordered set.
+      \item there is $1:1$-correspondence;
+      \item $\rank v = \dim \calO_\nu = \rank \Gamma$.
+    \end{enumerate}
+    \Yang{}
+  \end{proposition}
+
+
+  \begin{example}
+    A valuation is of rank $1$ iff $\Gamma_v \subset \bbR$.
+    \Yang{}
+  \end{example}
+
+  The construction of \cref{eg:monomial_valuation} can be generalized to any totally ordered abelian group as follow.
+
+  \begin{example}
+    Let $\kk$ be a field and $\Gamma$ be a totally ordered abelian group.
+    We can define the \emph{field of generalized Laurent series with exponents in $\Gamma$} as follow:
+    \[ \kk((\Gamma)) \coloneqq \left\{ (a_\gamma)_{\gamma \in \Gamma} \in \kk^{\Gamma} \;\middle|\; \Supp (a_\gamma) \subset \Gamma \text{ is well-order set (or satisfies DCC)} \right\}. \] 
+    % \[ \kk((\Gamma)) \coloneqq \left\{ \sum_{\alpha \geq \alpha_0 \in \Gamma} a_\alpha x^\alpha \;\middle|\; \alpha_0 \in \Gamma, a_\alpha \in \kk \right\}. \]
+    Here $x^\alpha$ is a formal symbol satisfying the relation $x^\alpha \cdot x^\beta = x^{\alpha+\beta}$.
+
+
+    \Yang{}
+  \end{example}
+
+  The following notions seem useful in the theory of K-stability; see \Yang{}.
+
+  \begin{definition}
+    We say that \emph{quasi-monomial} if 
+
+    We say that \emph{Abhyankar valuation} if ...
+    \Yang{}
+  \end{definition}
+
+  \begin{theorem}
+    Let $v$ be valuation on a finitely generated field extension $\KK/\kk$.
+    Then $v$ is quasi-monomial iff $v$ is Abhyankar.
+  \end{theorem}
+
+  \begin{theorem}[Embedding Theorem of Kaplansky]
+    
+  \end{theorem}
+
+
+    \Yang{}
 
   The main case we care about is when $\KK$ is a finitely generated field extension of $\kk$ and $v$ is a valuation that is trivial on $\kk$.
   In this case, the set $\KK_{\nu \geq \alpha}$ is a $\kk$-vector subspace of $\KK$ for every $\alpha \in \Gamma$.
@@ -513,36 +400,77 @@
      \Yang{}
   \end{definition}
 
-  An important example of a valuation of higher rank is the so-called \emph{Parshin valuation}, which is defined as follows.\Yang{ref.}
+  % An important example of a valuation of higher rank is the so-called \emph{Parshin valuation}, which is defined as follows.\Yang{ref.}
 
-  \begin{example}[Parshin valuation]
+  % \begin{example}[Parshin valuation]
      
-    Let $\kk$ be an arbitrary field and $\KK = \kk((t_1, \dots, t_r))$ be the field of formal Laurent series in $r$ variables over $\kk$.
-  \end{example}
+  %   Let $\kk$ be an arbitrary field and $\KK = \kk((t_1, \dots, t_r))$ be the field of formal Laurent series in $r$ variables over $\kk$.
+  % \end{example}
 
-  \begin{question}
-    Does every valuation of rank $r$ with one-dimensional leaves arise from a Parshin valuation?
-     \Yang{}
-  \end{question}
+  % \begin{question}
+  %   Does every valuation of rank $r$ with one-dimensional leaves arise from a Parshin valuation?
+  %    \Yang{}
+  % \end{question}
 
 
-\subsection{Asymptotic Riemann-Roch}
+\subsection[b-divisors and Riemann-Zariski spaces]{$\bfb$-divisors and Riemann-Zariski spaces}
 
-  \begin{proposition}
-    Let $X$ be a projective variety, $\calF$ a coherent sheaf on $X$, and $D$ an ample divisor on $X$.
-    Then we have $h^0(X, \calF(mD))$ is a polynomial in $m$ of degree at most $\dim \Supp \calF$ for $m \gg 0$.
-     \Yang{}
-  \end{proposition}
+  Let $X$ be a projective variety over $\kk$.
+  The partially ordered set of all birational models of $X$ forms a directed system, we denote it by $\frakX$.
+  Note that here $\frakX$ is just a notation for a set (with a partial order), and it has no geometric structure.
+  Also note that $\frakX$ only depends on the field extension $\kk(X)/\kk$.
+  Sometimes we will also consider the sub-directed system of all normal (resp. smooth) birational models of $X$, which we will denote by $\frakX_{\mathrm{nor}}$ (resp. $\frakX_{\sm}$).
+  We define the following datum of $\frakX$.
 
-  \begin{theorem}[{Asymptotic Riemann-Roch, ref. \cite[Example 1.2.19]{Laz04a}}]
-    Let $X$ be a \Yang{? smooth, seems normal is enough and by bertini} projective variety of dimension $d$ and $D$ be an ample divisor on $X$.
-    Then we have
-    \[ h^0(X, mD) = \frac{D^d}{d!} m^d + O(m^{d-1}) \]
-    as $m \to +\infty$.
-  \end{theorem}
-  \begin{proof}
-    
-  \end{proof}
+  \begin{definition}
+    We define 
+    \[ \Div(\frakX) \coloneqq \CaDiv(\frakX) \coloneqq \dirlim_{Y \in \frakX} \Div(Y). \]
+    Similar definitions for $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$, etc.
+    Elements of $\Div(\frakX)$ (resp. $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$) are called \emph{$\bfb$-Cartier divisors} (resp. \emph{linearly equivalent classes of $\bfb$-Cartier divisors}, \emph{numerical equivalence classes of $\bfb$-Cartier divisors}, \emph{real numerical equivalence classes of $\bfb$-Cartier divisors}).
+
+    For cycles, we define
+    \[ Z_{k}(\frakX) \coloneqq \invlim_{Y \in \frakX} Z_{k}(Y), \]
+    Similar definitions for $\CH_{k}(\frakX)$, $\upN_k(\frakX)$, etc.
+    Elements of $Z_{k}(\frakX)$ (resp. $\CH_{k}(\frakX)$, $\upN_1(\frakX)$) are called \emph{$\bfb$-cycles} (resp. \emph{$\bfb$-cycle classes}, \emph{numerical equivalence classes of $\bfb$-cycles}).
+    If we only consider normal birational models, we will also use the notation $\WDiv(\frakX) \coloneqq Z_{d-1}(\frakX_\nor)$, $\WCl(\frakX) \coloneqq \CH_{d-1}(\frakX_\nor)$.
+    %  \Yang{}
+  \end{definition}
+
+  For the cohomological objects, for instance, $\Div(\frakX)$, we have the following description:
+  an element of $\Div(\frakX)$ is represented by a divisor $D_Y$ on some birational model $Y$ of $X$, and two divisors $D_Y$ and $D_{Y'}$ represent the same element in $\Div(\frakX)$ if there exists a birational model $Z$ dominating both $Y$ and $Y'$ such that the pullbacks of $D_Y$ and $D_{Y'}$ to $Z$ are equal.
+
+  For the homological objects, for instance, $\WDiv(\frakX)$, we have the following description:
+  an element of $\WDiv(\frakX)$ is represented by a collection of divisors $D_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $D_{Y} = f_* D_{Y'}$.
+
+
+
+
+  % \begin{lemma}
+  %   There is a one-to-one correspondence between the following two sets:
+  %   \begin{enumerate}
+  %     \item transcendental, finitely generated field extensions $\KK/\kk$,
+  %     \item birational equivalence classes of normal projective varieties over $\kk$.
+  %   \end{enumerate}
+  %    \Yang{}
+  % \end{lemma}
+
+  % \begin{definition}
+  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+  % \end{definition}
+
+  % \begin{definition}[Zariski-Riemann space]
+  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+  %   The \emph{Zariski-Riemann space} $\frakX$ of $\KK/\kk$ is the projective limit of all projective varieties $X$ over $\kk$ such that $\kk(X) \cong \KK$, i.e.
+  %   \[ \frakX := \varprojlim_{X} X. \]
+  %    \Yang{}
+  % \end{definition}
+
+
+  % \begin{definition}
+  %   Let $X$ be a normal variety.
+  %   A \emph{$\bfb$-divisor} $\bfD$ on $X$ is a collection of divisors $\bfD_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $\bfD_{Y'} = f^* \bfD_Y$.
+  % \end{definition}
+
 
 
 \subsection{Convex bodies}
@@ -565,3 +493,296 @@
   \end{theorem}
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+% \subsection{Asymptotic Riemann-Roch}
+
+%   \begin{proposition}
+%     Let $X$ be a projective variety, $\calF$ a coherent sheaf on $X$, and $D$ an ample divisor on $X$.
+%     Then we have $h^0(X, \calF(mD))$ is a polynomial in $m$ of degree at most $\dim \Supp \calF$ for $m \gg 0$.
+%      \Yang{}
+%   \end{proposition}
+
+%   \begin{theorem}[{Asymptotic Riemann-Roch, ref. \cite[Example 1.2.19]{Laz04a}}]
+%     Let $X$ be a \Yang{? smooth, seems normal is enough and by bertini} projective variety of dimension $d$ and $D$ be an ample divisor on $X$.
+%     Then we have
+%     \[ h^0(X, mD) = \frac{D^d}{d!} m^d + O(m^{d-1}) \]
+%     as $m \to +\infty$.
+%   \end{theorem}
+%   \begin{proof}
+    
+%   \end{proof}
+
+
+% \subsection{Explicit statements of some well-known results}
+
+%   Here we write down an explicit statement of the resolution of singularities in our setting.
+
+%   \begin{theorem}[{ref. \cite[Theorem 3.37]{Kollar-2007-resolution}}]\label{thm:resolution_of_singularities}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+%     Then there exists a \emph{resolution of singularities} of $X$, i.e. a proper birational morphism $\pi: \tilde{X} \to X$ such that $\tilde{X}$ is smooth and $\pi$ is an isomorphism over the smooth locus of $X$.
+%   \end{theorem}
+
+%   \begin{theorem}[{ref. \cite[Theorem 3.36]{Kollar-2007-resolution}}]\label{thm:snc_lization_of_subschemes}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a smooth variety over $\kk$.
+%     Let $Z \subseteq X$ be a closed subscheme defined by a nonzero ideal sheaf $\calI$.
+%     Then there exists a proper birational morphism $\pi: \tilde{X} \to X$ such that
+%     \begin{enumerate}
+%       \item $\pi$ is an isomorphism over $X \setminus Z$,
+%       \item $\pi$ consists of a sequence of blow-ups along smooth centers, 
+%       \item $\pi^* \calI$ defines a divisor with simple normal crossings support on $\tilde{X}$.\Yang{snc or snc support?}
+%     \end{enumerate}
+%   \end{theorem}
+
+%   \begin{remark}
+%     Seems \cref{thm:resolution_of_singularities} is a consequence of \cref{thm:snc_lization_of_subschemes}.
+%     But when do the so-called log resolutions, I think we need to do \cref{thm:resolution_of_singularities} first to get a smooth variety, 
+%     and then apply \cref{thm:snc_lization_of_subschemes} to get a log resolution of the singularities of the original variety.
+%   \end{remark}
+
+%   \begin{definition}
+%     Let $\kk$ be a field of characteristic $0$ and $X$ be a variety over $\kk$.
+%     An \emph{snc divisor} on $X$ is a divisor \Yang{}
+%   \end{definition}
+
+  % \begin{theorem}[{Bertini's theorem, ref. }]\label{thm:Bertini}
+  %   Let $\kk$ be an infinite field and $X$ be a smooth projective variety over $\kk$.
+  %   Let $|D|$ be a base-point-free linear system on $X$.
+  %   Then a general member of $|D|$ is smooth.
+  %   \Yang{}
+  % \end{theorem}
+
+  % \begin{theorem}[{Generic principle on regularity, ref. }]\label{thm:generic_principle_on_regularity}
+  %   Let $f: X \to Y$ be a morphism of finite type between noetherian integral excellent schemes and $\calF$ be a coherent sheaf on $X$.
+  %   Suppose $Y$ is regular.
+  %   \begin{enumerate}
+  %     \item Suppose that $f$ is separable and $X$ satisfies Serre's condition $R_k$.
+  %       Then there exists a nonempty open subset $U$ of $Y$ such that $X_y$ satisfies Serre's condition $R_k$ for every $y \in U$.
+  %     \item Suppose that $\calF$ satisfies Serre's condition $S_k$.
+  %       Then there exists a nonempty open subset $U$ of $Y$ such that $\calF|_{X_y}$ satisfies Serre's condition $S_k$ for every $y \in U$.
+  %   \end{enumerate}
+  %   \Yang{}
+  % \end{theorem}
+
+  % % \begin{theorem}
+  % %   Let $f: X \to Y$ be a morphism of finite type between noetherian integral excellent schemes and $\calF$ be a coherent sheaf on $X$.
+  % %   Suppose $Y$ is regular.
+  % %   Suppose that $\calF$ satisfies Serre's condition $S_k$ for some $k \geq 0$.
+  % %   Then there exists a nonempty open subset $U$ of $Y$ such that $\calF_y$ satisfies Serre's condition $S_k$ for every $y \in U$.
+  % %    \Yang{}
+  % % \end{theorem}
+
+  % \begin{theorem}[Finiteness of proper morphisms, ref.]
+  %   Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
+  %   Then $R^i f_* \calF$ is a coherent sheaf on $Y$ for every $i \geq 0$.
+  %    \Yang{}
+    
+  % \end{theorem}
+  
+%   \begin{theorem}[Cohomology and proper base change, ref.]
+%     Let $f: X \to Y$ be a proper morphism between varieties and $\calF$ be a coherent sheaf on $X$.
+%     Let $y \in Y$ be a point and $i_y: X_y \to X$ be the inclusion of the fiber over $y$.
+%     Then there is a natural base change morphism
+%     \[ (R^i f_* \calF)_y \to H^i(X_y, i_y^* \calF) \]
+%     for every $i \geq 0$, which is an isomorphism if either of the following conditions holds:
+%     \begin{enumerate}
+%       \item $R^i f_* \calF$ is locally free at $y$ and the base change morphism is surjective;
+%       \item $H^i(X_y, i_y^* \calF) = 0$.
+%     \end{enumerate}
+%      \Yang{}
+%   \end{theorem}
+
+%   % \begin{theorem}[{Nagata's compactification, ref. \Yang{}}]\label{thm:Nagata_compactification}
+%   %   Let $f: X \to Y$ be a morphism between varieties.
+%   %   Then there exists a compactification of $f$, i.e. a proper morphism $\overline{f}: \overline{X} \to Y$ and an open immersion $j: X \to \overline{X}$ such that $f = \overline{f} \circ j$.
+%   %    \Yang{}
+%   % \end{theorem}
+%
+
+
+% \subsection{Varieties over non-closed fields}
+
+%   In this subsection, we review some facts about varieties over non-closed fields.
+%   Let $\kk$ be a field and $\kkk$ be its algebraic closure.
+
+%   When dealing with varieties over non-closed fields, we need to be careful about the degree of a closed point.
+
+%   \begin{example}
+%     Let $X = \Spec \bbR[x, y]/(x^2 + y^2 - 1)$.
+%     Note that $X$ is a open subscheme of $\bbP^1_\bbR \cong \Proj \bbR[x,y,z]/(x^2 + y^2 - z^2)$.
+    
+%     We have $\Pic X = \bbZ/2\bbZ$ rather than $0$ since $X = \bbP^1_\bbR \setminus \{P\}$, where $P$ is a closed point with $\rkk(P) = \bbC$ and hence $\calO_{\bbP^1_\bbR}(P) \cong \calO_{\bbP^1_\bbR}(2)$.
+%     Then $\Pic X \cong \bbZ/2\bbZ$ follows from the localization sequence of Picard groups since $P$ is irreducible closed subscheme of $\bbP^1_\bbR$.
+%     And we have $\Pic X_\bbC = 0$ since $X_\bbC \cong \bbP^1_\bbC \setminus \{P_1, P_2\}$, where $P_1$ and $P_2$ are two distinct $\bbC$-points mapping to $P$.
+%     % \Yang{}
+%   \end{example}
+
+%   Many properties of schemes are not stable under base change to $\kkk$, for example, being integral, irreducible, reduced, connected, etc.
+
+%   \begin{example}
+%     Let $X = \Spec \bbR[x,y]/(x^2 + y^2)$.
+%     Then $X$ is integral.
+%     However, $X_\bbC = \Spec \bbC[x,y]/(x^2 + y^2)$ has two irreducible components defined by $y = ix$ and $y = -ix$ respectively, and hence is not integral.
+%     %  \Yang{}
+%   \end{example}
+
+%   \begin{example}\label{eg:algebraic_extension_and_geometrically_integrality}
+%     Let $\kk$ be a field and $\kk' = \kk(\alpha) = \kk[x]/(f)$ be a finite algebraic extension, where $f$ is an irreducible polynomial of degree $n \geq 2$ over $\kk$.
+%     Then $X = \Spec \kk'$ is integral, but $X_\kkk = \Spec \kk' \ten_\kk \kkk$ is not integral since 
+%     \[ \kk' \ten_\kk \kkk \cong \kkk[x]/(f) \cong \prod_{i=1}^k \kkk[x]/((x - \alpha_i)^{m_i}), \] 
+%     where $\alpha_i$ are the distinct roots of $f$ in $\kkk$ and $m_i$ are their multiplicities.
+
+%     More generally, suppose $k \geq 2$ (i.e., $f$ has at least two distinct roots in $\kkk$) and let $Y$ be any integral scheme over $\kk'$.
+%     Regard $Y$ as a scheme over $\kk$ via the composition $Y \to \Spec \kk' \to \Spec \kk$.
+%     Then $Y$ is integral, but $Y \times_\kk \kkk = Y \times_{\kk'} (\kk' \ten_\kk \kkk)$ is not integral since it has at least two irreducible components $Y \times_{\kk'} \kkk[x]/((x - \alpha_i)^{m_i})$ for $i = 1, 2$.
+%     %  \Yang{}
+%   \end{example}
+
+%   \begin{definition}
+%     Let $X$ be a scheme of finite type over $\kk$.
+%     We say $X$ is \emph{geometrically integral} (resp. \emph{geometrically irreducible}, \emph{geometrically reduced}, \emph{geometrically connected}) if $X_{\kk'} = X \times_\kk \kk'$ is integral (resp. irreducible, reduced, connected) for any field extension $\kk'/\kk$.
+%     One can similarly define other notions of geometric properties, for example, \emph{geometrically normal}, \emph{geometrically regular}, etc.
+%   \end{definition}
+
+%   A fact is that we only need to check the algebraical closure of $\kk$ (\cite[\href{https://stacks.math.columbia.edu/tag/030V}{Tag 030V}, \href{https://stacks.math.columbia.edu/tag/037K}{Tag 037K} and \href{https://stacks.math.columbia.edu/tag/0FWF}{0FWF}]{Stacks}).
+
+%   For geometrically irreducibility, one only needs to check the separable closure of $\kk$ in $\fkk(X)$.
+
+%   \begin{lemma}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33} and \href{https://stacks.math.columbia.edu/tag/054Q}{054Q}]{Stacks}}]\label{lem:geometrically_irreducible_and_separably_close_in_function_field}
+%     Let $X$ be an integral scheme of finite type over $\kk$ and $\kk' \subset \fkk(X)$ be the field consisting of elements of $\fkk(X)$ that are separably algebraic over $\kk$.
+%     Then $X$ is geometrically irreducible if and only if $\kk' = \kk$.
+%   \end{lemma}
+%   % \begin{proof}
+%   %   By \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33}]{Stacks}, we have $X_\kkk = X \times_\kk \kkk \cong X \times_{\Spec \kk'} \Spec \kkk$.
+%   %   Then $X_\kkk$ is irreducible if and only if $X$ is irreducible over $\kk'$, which is equivalent to $\kk' = \kk$ since $X$ is integral over $\kk$.
+%   %   \Yang{}
+%   % \end{proof}
+
+%   The case of geometrically reduced is more subtle, namely, we cannot only check the algebraic part of $\fkk(X)/\kk$; see the following example.
+
+%   \begin{example}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/020F}{Tag 020F}]{Stacks}}]
+%     Let $\kk = \bbF_p(s,t)$ and $\KK = \Frac (\kk[x,y]/(sx^p + ty^p + 1))$.
+%     Then $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is not separable.
+%     See \cref{eg:fibration_with_non_reduced_fiber} for a geometric views.
+%     \Yang{}
+%   \end{example}
+
+%   We list the following results without proof, and refer to \cite[\href{https://stacks.math.columbia.edu/tag/030I}{Tag 030I}, \href{https://stacks.math.columbia.edu/tag/05DS}{Tag 05DS}, \href{https://stacks.math.columbia.edu/tag/05DT}{Tag 05DT}, \href{https://stacks.math.columbia.edu/tag/05DU}{Tag 05DU} and \href{https://stacks.math.columbia.edu/tag/035U}{Tag 035U}]{Stacks} for details.
+  
+%   \begin{definition}\label{def:separable_field_extensions_and_morphisms}
+%     Let $\KK/\kk$ be a field extension.
+%     We say $\KK/\kk$ is \emph{separable} if $\KK \ten_\kk \bfL$ is a reduced ring for every field extension $\kk \subseteq \bfL$.
+
+%     Let $f: X \to Y$ be a dominant morphism between integral schemes.
+%     We say $f$ is \emph{separable} if the field extension $\fkk(Y) \subseteq \fkk(X)$ is separable.
+%   \end{definition}
+
+%   \begin{lemma}
+%     Let $\kk$ be a field, $X$ be an integral scheme of finite type over $\kk$, and $\KK/\kk$ be a finitely generated field extension.
+%     \begin{enumerate}
+%       \item If $\fkk(X)/\kk$ is separable, then $X$ is geometrically reduced (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030U}{Tag 030U}]{Stacks}).
+%       \item If $\characteristic \kk = 0$, then any extension $\KK/\kk$ is separable (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030Z}{Tag 030Z}]{Stacks}).
+%       \item The extension $\KK/\kk$ is separable if and only if there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$ (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030X}{Tag 030X}]{Stacks}; \cite[Theorem 26.2]{Mat89}).
+%       %  \Yang{}
+%     \end{enumerate}
+%   \end{lemma}
+
+
+
+% \subsection{Generic principle}
+
+%   In this subsection, we prove the generic principle for flatness, smoothness and Serre's condition $S_k$ and $R_k$.
+%   The main reference is \cite{FOV99:joinsAndIntersections}.
+
+%   For convenience, we list the definition and some properties of $S_k$ condition.
+
+%   \begin{definition}
+%     Let $X$ be a 
+%   \end{definition}
+
+%   \begin{proposition}
+%     \Yang{}
+%   \end{proposition}
+
+%   \begin{theorem}
+%     Let 
+%     \Yang{}
+%   \end{theorem}
+
+%   \begin{theorem}
+%     Let $f: X \to Y$ be a morphism and $\calF$ be a coherent sheaf on $X$.
+%     Then 
+%     \Yang{}
+%   \end{theorem}
+
+
+%   As an application, the family of hyperplane sections of a projective variety $X \subset \bbP^N_\kk$ is a fibration if $\characteristic \kk = 0$.
+  
+%   \begin{proposition}\label{prop:family_of_hyperplane_sectios_is_a_fibration_char_0}
+%     Let $X \subset \bbP^N_\kk$ be a projective variety over a field $\kk$ of characteristic $0$ of dimension $\geq 2$.
+%     Let $T = (\bbP^N)^*$ be the projective space parameterizing the hyperplane in $\bbP^N$ via universal family $\calU \subset \bbP^N \times T$.
+%     Concretely, $\calU$ is given by 
+%     \[ \calU(\kk') = \left\{([x_0:\cdots :x_N],[a_0:\cdots :a_N]) \in \bbP^N(\kk') \times \bbP^N(\kk') \;\middle|\; \sum a_ix_i = 0 \right\} \]
+%     for any field extension $\kk'/\kk$.
+%     Let $\calH \subset X \times T$ be the pullback of $\calU$ along $X \injmap \bbP^N$.
+%     Then $\calH \to T$ via the second projection is a fibration.
+%   \end{proposition}
+%   \begin{proof}
+%     For any (scheme-theoretical) point $\tau \in T$, let $\overline{\tau}$ be a geometric point over $\tau$, i.e., $\Spec \overline{\rkk(\tau)} \to \Spec \tau \to T$, then $\calH_{\overline{\tau}}$ is an ample divisor on $X_{\overline{\rkk(\tau)}}$.
+%     Then by \cite[Chapter III, Corollary 7.9]{Har77}, $\calH_{\overline{\tau}}$ is connected.
+%     Hence so is $\calH_\tau$.
+%     Then the conclusion follows from (d) of \cref{prop:equivalent_definitions_of_fibrations}.
+%   \end{proof}
+
+%   And hence we can deduce the following Bertini's type theorem.
+
+%   \begin{corollary}[Bertini's type theorem (on characteristic $0$)]\label{cor:bertini_char_0}
+%     Let $X$ be a projective variety over a field $\kk$ of characteristic $0$ and $\calL$ be a very ample line bundle on $X$.
+%     Then for a general member $H \in |\calL|$, $H$ is geometrically irreducible (resp. $S_k$, $R_k$) if $X$ is.
+%     %  \Yang{}
+%   \end{corollary}
+%   \begin{proof}
+%     The assertion of geometrical irreducibility follows from \cref{prop:family_of_hyperplane_sectios_is_a_fibration_char_0} and \Yang{normal of $X$?} (c) of \cref{prop:equivalent_definitions_of_fibrations}.
+%     The $S_k$ and $R_k$ follows from Generic Principle (\cite[Theorem 3.3.10 and 3.3.15]{FOV99:joinsAndIntersections}).
+%     % \Yang{}
+%   \end{proof}
+
+%   \begin{remark}
+%     \cref{cor:bertini_char_0} still holds in positive characteristic (assuming $\# \kk = \infty$), but needs more arguments; see \cite[3.4.10 and Corollary 3.4.14]{FOV99:joinsAndIntersections}.
+    
+%     On the other hands, \cref{prop:family_of_hyperplane_sectios_is_a_fibration_char_0} indeed fails in positive characteristic.
+
+
+%     \Yang{}
+%   \end{remark}
+
+
+% \subsection{Bertini's theorem}dered abelian groups.

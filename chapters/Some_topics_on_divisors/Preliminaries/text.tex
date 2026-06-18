@@ -33,12 +33,14 @@
         The group of numerical equivalence classes of divisors is denoted by $\NS(X)$, and $\NS(X)_\bbQ = \NS(X) \otimes_\bbZ \bbQ$, and $\upN^1(X) = \NS(X) \otimes_\bbZ \bbR$.
         The dual space of $\upN^1(X)$ is denoted by $\upN_1(X)$.
         We have a natural surjective map $Z_1(X)_\bbR \to \upN_1(X)$ induced by the intersection pairing.
-        As real vectors spaces, we have $\dim_\bbR \upN^1(X) = \dim_\bbR \upN_1(X) < \infty$; see \cite[Theorem 2.5.1]{Dang20degrees}.
-        Although Dang only deals with the case when $\kk$ is algebraically closed and $X$ is normal, and his definition is slightly different, the same proof works in our setting by basing change to $\kkk$.
+
     \end{itemize}
     
     \Yang{}
   \end{notation}
+  
+  As real vectors spaces, we have $\dim_\bbR \upN^1(X) = \dim_\bbR \upN_1(X) < \infty$; see \cite[Theorem 2.5.1]{Dang20degrees}.
+    Although Dang only deals with the case when $\kk$ is algebraically closed and $X$ is normal, and his definition is slightly different, the same proof works in our setting by basing change to $\kkk$.\Yang{}
 
   \begin{remark}
     Although I try to work over an arbitrary field $\kk$, 
@@ -51,60 +53,184 @@
 
 
 
-\subsection[b-divisors]{$\bfb$-divisors}
+\subsection{Varieties over non-closed fields}
 
-  Let $X$ be a projective variety over $\kk$.
-  The partially ordered set of all birational models of $X$ forms a directed system, we denote it by $\frakX$.
-  Note that here $\frakX$ is just a notation for a set (with a partial order), and it has no geometric structure.
-  Also note that $\frakX$ only depends on the field extension $\kk(X)/\kk$.
-  Sometimes we will also consider the sub-directed system of all normal (resp. smooth) birational models of $X$, which we will denote by $\frakX_{\mathrm{nor}}$ (resp. $\frakX_{\sm}$).
-  We define the following datum of $\frakX$.
+  In this subsection, we review some facts about varieties over non-closed fields.
+  Let $\kk$ be a field and $\kkk$ be its algebraic closure.
+
+  Many properties of schemes are not stable under base change to $\kkk$, for example, being integral, irreducible, reduced, connected, etc.
+
+  \begin{example}
+    Let $X = \Spec \bbR[x,y]/(x^2 + y^2)$.
+    Then $X$ is integral.
+    However, $X_\bbC = \Spec \bbC[x,y]/(x^2 + y^2)$ has two irreducible components defined by $y = ix$ and $y = -ix$ respectively, and hence is not integral.
+    %  \Yang{}
+  \end{example}
+
+  \begin{example}\label{eg:algebraic_extension_and_geometrically_integrality}
+    Let $\kk$ be a field and $\kk' = \kk(\alpha) = \kk[x]/(f)$ be a finite algebraic extension, where $f$ is an irreducible polynomial of degree $n \geq 2$ over $\kk$.
+    Then $X = \Spec \kk'$ is integral, but $X_\kkk = \Spec \kk' \ten_\kk \kkk$ is not integral since 
+    \[ \kk' \ten_\kk \kkk \cong \kkk[x]/(f) \cong \prod_{i=1}^k \kkk[x]/((x - \alpha_i)^{m_i}), \] 
+    where $\alpha_i$ are the distinct roots of $f$ in $\kkk$ and $m_i$ are their multiplicities.
+
+    More generally, suppose $k \geq 2$ (i.e., $f$ has at least two distinct roots in $\kkk$) and let $Y$ be any integral scheme over $\kk'$.
+    Regard $Y$ as a scheme over $\kk$ via the composition $Y \to \Spec \kk' \to \Spec \kk$.
+    Then $Y$ is integral, but $Y \times_\kk \kkk = Y \times_{\kk'} (\kk' \ten_\kk \kkk)$ is not integral since it has at least two irreducible components $Y \times_{\kk'} \kkk[x]/((x - \alpha_i)^{m_i})$ for $i = 1, 2$.
+    %  \Yang{}
+  \end{example}
 
   \begin{definition}
-    We define 
-    \[ \Div(\frakX) \coloneqq \CaDiv(\frakX) \coloneqq \dirlim_{Y \in \frakX} \Div(Y). \]
-    Similar definitions for $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$, etc.
-    Elements of $\Div(\frakX)$ (resp. $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$) are called \emph{$\bfb$-Cartier divisors} (resp. \emph{linearly equivalent classes of $\bfb$-Cartier divisors}, \emph{numerical equivalence classes of $\bfb$-Cartier divisors}, \emph{real numerical equivalence classes of $\bfb$-Cartier divisors}).
-
-    For cycles, we define
-    \[ Z_{k}(\frakX) \coloneqq \invlim_{Y \in \frakX} Z_{k}(Y), \]
-    Similar definitions for $\CH_{k}(\frakX)$, $\upN_k(\frakX)$, etc.
-    Elements of $Z_{k}(\frakX)$ (resp. $\CH_{k}(\frakX)$, $\upN_1(\frakX)$) are called \emph{$\bfb$-cycles} (resp. \emph{$\bfb$-cycle classes}, \emph{numerical equivalence classes of $\bfb$-cycles}).
-    If we only consider normal birational models, we will also use the notation $\WDiv(\frakX) \coloneqq Z_{d-1}(\frakX_\nor)$, $\WCl(\frakX) \coloneqq \CH_{d-1}(\frakX_\nor)$.
-    %  \Yang{}
+    Let $X$ be a scheme of finite type over $\kk$.
+    We say $X$ is \emph{geometrically integral} (resp. \emph{geometrically irreducible}, \emph{geometrically reduced}, \emph{geometrically connected}) if $X_{\kk'} = X \times_\kk \kk'$ is integral (resp. irreducible, reduced, connected) for any field extension $\kk'/\kk$.
+    One can similarly define other notions of geometric properties, for example, \emph{geometrically normal}, \emph{geometrically regular}, etc.
   \end{definition}
 
-  For the cohomological objects, for instance, $\Div(\frakX)$, we have the following description:
-  an element of $\Div(\frakX)$ is represented by a divisor $D_Y$ on some birational model $Y$ of $X$, and two divisors $D_Y$ and $D_{Y'}$ represent the same element in $\Div(\frakX)$ if there exists a birational model $Z$ dominating both $Y$ and $Y'$ such that the pullbacks of $D_Y$ and $D_{Y'}$ to $Z$ are equal.
+  A fact is that we only need to check the algebraical closure of $\kk$ (\cite[\href{https://stacks.math.columbia.edu/tag/030V}{Tag 030V}, \href{https://stacks.math.columbia.edu/tag/037K}{Tag 037K} and \href{https://stacks.math.columbia.edu/tag/0FWF}{0FWF}]{Stacks}).
 
-  For the homological objects, for instance, $\WDiv(\frakX)$, we have the following description:
-  an element of $\WDiv(\frakX)$ is represented by a collection of divisors $D_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $D_{Y} = f_* D_{Y'}$.
+  For geometrically irreducibility, one only needs to check the separable closure of $\kk$ in $\fkk(X)$.
+
+  \begin{lemma}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33} and \href{https://stacks.math.columbia.edu/tag/054Q}{054Q}]{Stacks}}]\label{lem:geometrically_irreducible_and_separably_close_in_function_field}
+    Let $X$ be an integral scheme of finite type over $\kk$ and $\kk' \subset \fkk(X)$ be the field consisting of elements of $\fkk(X)$ that are separably algebraic over $\kk$.
+    Then $X$ is geometrically irreducible if and only if $\kk' = \kk$.
+  \end{lemma}
+  % \begin{proof}
+  %   By \cite[\href{https://stacks.math.columbia.edu/tag/0G33}{Tag 0G33}]{Stacks}, we have $X_\kkk = X \times_\kk \kkk \cong X \times_{\Spec \kk'} \Spec \kkk$.
+  %   Then $X_\kkk$ is irreducible if and only if $X$ is irreducible over $\kk'$, which is equivalent to $\kk' = \kk$ since $X$ is integral over $\kk$.
+  %   \Yang{}
+  % \end{proof}
+
+  The case of geometrically reduced is more subtle, namely, we cannot only check the algebraic part $\kk'/\kk$ of $\fkk(X)/\kk$; see the following example.
+
+  \begin{example}[{ref. \cite[\href{https://stacks.math.columbia.edu/tag/020F}{Tag 020F}]{Stacks}}]
+    Let $\kk = \bbF_p(s,t)$ and $\KK = \Frac (\kk[x,y]/(sx^p + ty^p + 1))$.
+    Then $\kk$ is algebraically closed in $\KK$ and $\KK/\kk$ is not separable.
+    See \cref{eg:fibration_with_non_reduced_fiber} for a geometric views.
+    \Yang{}
+  \end{example}
+
+  \begin{example}\label{eg:fibration_with_non_reduced_fiber}
+    Suppose $\characteristic \kk = p > 0$.
+    Let $Y = \Spec \kk[s,t]$ and $X = \Spec \kk[s,t,x,y]/(sx^p + ty^p - 1)$.
+    Since $Y$ is normal and $\KK := \fkk(Y) = \kk(s,t)$ is algebraically closed in $\fkk(X)$, the morphism $f: X \to Y$ is a fibration.
+
+    The generic fiber of $f$ is given by $\Spec \KK[x,y]/(sx^p + ty^p - 1)$.
+    Over corresponding geometric point $\Spec \KKK$ of $\Spec \KK$, the fiber is given by $\Spec \KKK[x,y]/(sx^p + ty^p - 1) = \Spec \KKK[x,y]/((s^{1/p}x + t^{1/p}y - 1)^p)$, which is not reduced.
+     \Yang{}
+  \end{example}
+
+  We list the following results without proof, and refer to \cite[\href{https://stacks.math.columbia.edu/tag/030I}{Tag 030I}, \href{https://stacks.math.columbia.edu/tag/05DS}{Tag 05DS}, \href{https://stacks.math.columbia.edu/tag/05DT}{Tag 05DT}, \href{https://stacks.math.columbia.edu/tag/05DU}{Tag 05DU} and \href{https://stacks.math.columbia.edu/tag/035U}{Tag 035U}]{Stacks} for details.
+  
+  \begin{definition}\label{def:separable_field_extensions_and_morphisms}
+    Let $\KK/\kk$ be a field extension.
+    We say $\KK/\kk$ is \emph{separable} if $\KK \ten_\kk \bfL$ is a reduced ring for every field extension $\kk \subseteq \bfL$.
+
+    Let $f: X \to Y$ be a dominant morphism between integral schemes.
+    We say $f$ is \emph{separable} if the field extension $\fkk(Y) \subseteq \fkk(X)$ is separable.
+  \end{definition}
+
+  \begin{lemma}\label{lem:criterion_of_geometrical_reducedness_by_separability}
+    Let $\kk$ be a field, $X$ be an integral scheme of finite type over $\kk$, and $\KK/\kk$ be a finitely generated field extension.
+    \begin{enumerate}
+      \item If $\fkk(X)/\kk$ is separable, then $X$ is geometrically reduced (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030U}{Tag 030U}]{Stacks}).
+      \item If $\characteristic \kk = 0$, then any extension $\KK/\kk$ is separable (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030Z}{Tag 030Z}]{Stacks}).
+      \item The extension $\KK/\kk$ is separable if and only if there exists a transcendence basis $\{x_1, \dots, x_r\}$ of $\KK/\kk$ such that $\KK$ is a separable algebraic extension of $\kk(x_1, \dots, x_r)$ (ref. \cite[\href{https://stacks.math.columbia.edu/tag/030X}{Tag 030X}]{Stacks}; \cite[Theorem 26.2]{Mat89}).
+      %  \Yang{}
+    \end{enumerate}
+  \end{lemma}
+
+
+\subsection{Line bundles on varieties over non-closed fields}
+
+
+
+  \begin{proposition}
+
+
+    We have 
+    \begin{enumerate}
+      \item $\Pic(X)_\bbQ = \Pic(X_\kkk)_\bbQ$ under $\pi^*: X_\kkk \to X$.
+      \item $X$ admit an ample divisor iff $X_\kkk$.
+      \item Suppose that $X$ is projective.
+        Then under $\pi^*: X_\kkk \to X$, we have $\upN^1(X) = \upN^1(X_\kkk)$, so is $\Psef^1, \Nef^1$.
+    \end{enumerate}
+    
+    
+    \Yang{}
+  \end{proposition}
+
+  
+  When dealing with varieties over non-closed fields, we need to be careful about the degree of a closed point.
+
+  \begin{example}
+    Let $X = \Spec \bbR[x, y]/(x^2 + y^2 - 1)$ be the ``unit circle''.
+    Note that $X$ is a open subscheme of $\bbP^1_\bbR \cong \Proj \bbR[x,y,z]/(x^2 + y^2 - z^2)$.
+    
+    We have $\Pic X = \bbZ/2\bbZ$ rather than $0$ since $X = \bbP^1_\bbR \setminus \{P\}$, where $P$ is a closed point with $\rkk(P) = \bbC$ and hence $\calO_{\bbP^1_\bbR}(P) \cong \calO_{\bbP^1_\bbR}(2)$.
+    Then $\Pic X \cong \bbZ/2\bbZ$ follows from the localization sequence of Picard groups since $P$ is irreducible closed subscheme of $\bbP^1_\bbR$.
+    And we have $\Pic X_\bbC = 0$ since $X_\bbC \cong \bbP^1_\bbC \setminus \{P_1, P_2\}$, where $P_1$ and $P_2$ are two distinct $\bbC$-points mapping to $P$.
+    % \Yang{}
+  \end{example}
 
 
 
 
-  % \begin{lemma}
-  %   There is a one-to-one correspondence between the following two sets:
-  %   \begin{enumerate}
-  %     \item transcendental, finitely generated field extensions $\KK/\kk$,
-  %     \item birational equivalence classes of normal projective varieties over $\kk$.
-  %   \end{enumerate}
-  %    \Yang{}
-  % \end{lemma}
-
-  % \begin{definition}
-  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
-  % \end{definition}
-
-  % \begin{definition}[Zariski-Riemann space]
-  %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
-  %   The \emph{Zariski-Riemann space} $\frakX$ of $\KK/\kk$ is the projective limit of all projective varieties $X$ over $\kk$ such that $\kk(X) \cong \KK$, i.e.
-  %   \[ \frakX := \varprojlim_{X} X. \]
-  %    \Yang{}
-  % \end{definition}
 
 
-  % \begin{definition}
-  %   Let $X$ be a normal variety.
-  %   A \emph{$\bfb$-divisor} $\bfD$ on $X$ is a collection of divisors $\bfD_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $\bfD_{Y'} = f^* \bfD_Y$.
-  % \end{definition}
+
+% \subsection[b-divisors]{$\bfb$-divisors}
+
+%   Let $X$ be a projective variety over $\kk$.
+%   The partially ordered set of all birational models of $X$ forms a directed system, we denote it by $\frakX$.
+%   Note that here $\frakX$ is just a notation for a set (with a partial order), and it has no geometric structure.
+%   Also note that $\frakX$ only depends on the field extension $\kk(X)/\kk$.
+%   Sometimes we will also consider the sub-directed system of all normal (resp. smooth) birational models of $X$, which we will denote by $\frakX_{\mathrm{nor}}$ (resp. $\frakX_{\sm}$).
+%   We define the following datum of $\frakX$.
+
+%   \begin{definition}
+%     We define 
+%     \[ \Div(\frakX) \coloneqq \CaDiv(\frakX) \coloneqq \dirlim_{Y \in \frakX} \Div(Y). \]
+%     Similar definitions for $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$, etc.
+%     Elements of $\Div(\frakX)$ (resp. $\Pic(\frakX)$, $\NS(\frakX)$, $\upN^1(\frakX)$) are called \emph{$\bfb$-Cartier divisors} (resp. \emph{linearly equivalent classes of $\bfb$-Cartier divisors}, \emph{numerical equivalence classes of $\bfb$-Cartier divisors}, \emph{real numerical equivalence classes of $\bfb$-Cartier divisors}).
+
+%     For cycles, we define
+%     \[ Z_{k}(\frakX) \coloneqq \invlim_{Y \in \frakX} Z_{k}(Y), \]
+%     Similar definitions for $\CH_{k}(\frakX)$, $\upN_k(\frakX)$, etc.
+%     Elements of $Z_{k}(\frakX)$ (resp. $\CH_{k}(\frakX)$, $\upN_1(\frakX)$) are called \emph{$\bfb$-cycles} (resp. \emph{$\bfb$-cycle classes}, \emph{numerical equivalence classes of $\bfb$-cycles}).
+%     If we only consider normal birational models, we will also use the notation $\WDiv(\frakX) \coloneqq Z_{d-1}(\frakX_\nor)$, $\WCl(\frakX) \coloneqq \CH_{d-1}(\frakX_\nor)$.
+%     %  \Yang{}
+%   \end{definition}
+
+%   For the cohomological objects, for instance, $\Div(\frakX)$, we have the following description:
+%   an element of $\Div(\frakX)$ is represented by a divisor $D_Y$ on some birational model $Y$ of $X$, and two divisors $D_Y$ and $D_{Y'}$ represent the same element in $\Div(\frakX)$ if there exists a birational model $Z$ dominating both $Y$ and $Y'$ such that the pullbacks of $D_Y$ and $D_{Y'}$ to $Z$ are equal.
+
+%   For the homological objects, for instance, $\WDiv(\frakX)$, we have the following description:
+%   an element of $\WDiv(\frakX)$ is represented by a collection of divisors $D_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $D_{Y} = f_* D_{Y'}$.
+
+
+
+
+%   % \begin{lemma}
+%   %   There is a one-to-one correspondence between the following two sets:
+%   %   \begin{enumerate}
+%   %     \item transcendental, finitely generated field extensions $\KK/\kk$,
+%   %     \item birational equivalence classes of normal projective varieties over $\kk$.
+%   %   \end{enumerate}
+%   %    \Yang{}
+%   % \end{lemma}
+
+%   % \begin{definition}
+%   %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+%   % \end{definition}
+
+%   % \begin{definition}[Zariski-Riemann space]
+%   %   Let $\KK/\kk$ be a transcendental, finitely generated field extension.
+%   %   The \emph{Zariski-Riemann space} $\frakX$ of $\KK/\kk$ is the projective limit of all projective varieties $X$ over $\kk$ such that $\kk(X) \cong \KK$, i.e.
+%   %   \[ \frakX := \varprojlim_{X} X. \]
+%   %    \Yang{}
+%   % \end{definition}
+
+
+%   % \begin{definition}
+%   %   Let $X$ be a normal variety.
+%   %   A \emph{$\bfb$-divisor} $\bfD$ on $X$ is a collection of divisors $\bfD_Y$ on all birational models $Y$ of $X$ such that for any birational morphism $f: Y' \to Y$, we have $\bfD_{Y'} = f^* \bfD_Y$.
+%   % \end{definition}
