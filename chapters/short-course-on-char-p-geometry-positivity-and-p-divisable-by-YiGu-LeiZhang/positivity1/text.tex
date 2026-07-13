@@ -1,0 +1,249 @@
+% !TeX root = positivity1.tex
+\section[Positivity 1: positivity in characteristic 0]{Positivity 1: positivity in characteristic $0$}
+
+Plan:
+\begin{enumerate}[label=(\arabic*)]
+	\item Positivity in characteristic $0$.
+	\item Tools for positivity in characteristic $p$.
+	\item Positivity in characteristic $p$.
+	\item Discussion, applications, and open questions.
+\end{enumerate}
+
+
+\subsection{Introduction to positivity}
+
+Let $\kkk$ be an algebraically closed field, $X$ a projective variety over $\kkk$.
+By divisor, we mean a Cartier divisor.
+
+\paragraph{Positivity of divisors.}
+Recall that a divisor $D$ is \emph{ample} if for some $m>0$, the line bundle $\calO_X(mD)$ is very ample, i.e., it gives an embedding of $X$ into some projective space.
+Recall the following properties of ample divisors.
+
+\begin{theorem}[Vanishing theorems]
+	Let $D$ be an ample divisor on $X$.
+	\begin{enumerate}
+		\item (Serre vanishing) For any coherent sheaf $\calF$ on $X$, $H^i(X, \calF\otimes \cal_X(mD))=0$ for all $i>0$ and $m\gg 0$.
+		\item (Fujita vanishing) For any coherent sheaf $\calF$ on $X$, there exists an integer $m_0$ such that for all $m\ge m_0$ and any nef divisor $N$, we have $H^i(X, \calF\otimes \cal_X(mD+N))=0$ for all $i>0$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Numerical criterion for ampleness]
+	Let $D$ be a divisor on $X$.
+	The following are equivalent:
+	\begin{enumerate}
+		\item $D$ is ample.
+		\item (Nakai-Moishezon) For any subvariety $Y\subseteq X$, we have $(D^{\dim Y}\cdot Y)>0$.
+		\item (Kleiman) For any non-zero pseudo-effective $1$-cycle $C$ on $X$, we have $(D\cdot C)>0$.
+	\end{enumerate}
+\end{theorem}
+
+By the numerical criterion for ampleness, we can define the notion of nefness: a divisor $D$ is \emph{nef} if $(D\cdot C)\ge 0$ for any non-zero pseudo-effective $1$-cycle $C$ on $X$,
+or equivalently, $(D^{\dim Y}\cdot Y)\ge 0$ for any subvariety $Y\subseteq X$.
+And we can define the notion of \emph{strictly nef}: a divisor $D$ is strictly nef if $(D\cdot C)>0$ for any irreducible curve $C$ on $X$.
+Also, from the original definition of ampleness, we can define the notion of \emph{semi-ample}:
+a divisor $D$ is semi-ample if for some $m>0$, the line bundle $\calO_X(mD)$ is globally generated,
+i.e., the global sections of $\calO_X(mD)$ generate the sheaf $\calO_X(mD)$ at every point of $X$.
+
+\begin{remark}
+	We have the following implications:
+	\begin{align*}
+		\text{ample}\implies \text{semi-ample}\implies \text{nef}. \\
+		\text{ample}\implies \text{strictly nef}\implies \text{nef}.
+	\end{align*}
+\end{remark}
+\begin{remark}
+	Above notations can be generalized to $\bbQ$-Cartier divisors.
+\end{remark}
+\begin{remark}
+	Let $D$ be a nef divisor on $X$ and $A$ an ample divisor on $X$.
+	Then $D+tA$ is ample for any $t>0$.
+	And hence, all nef divisors are limits of ample divisors.
+\end{remark}
+
+\paragraph{Positivity of higher rank sheaves.}
+Now we discuss the positivity of higher rank sheaves, for example, vector bundles.
+Let $\calE$ be a vector bundle on $X$.
+Recall that we can define the projective bundle $\bbP(\calE)$ over $X$ and the tautological line bundle $\calO_{\bbP(\calE)}(1)$ on $\bbP(\calE)$
+(here we adopt the notation of Grothendieck, i.e., $\bbP(\calE)$ parameter the quotients of $\calE$).
+Then we can define the positivity of $\calE$ by the positivity of $\calO_{\bbP(\calE)}(1)$.
+We say that $\calE$ is ample (resp. nef) if $\calO_{\bbP(\calE)}(1)$ is ample (resp. nef).
+
+\begin{definition}[Viehweg's weak positivity]
+	Let $\calF$ be a torsion-free coherent sheaf on $X$.
+	We say that $\calF$ is \emph{weakly positive} if for any ample divisor $A$ on $X$ and any integer $m>0$, there exists an integer $l>0$ such that $\left(\Sym^{l}(\Sym^{m}(\calF)\otimes \calO_X(A))\right)^{\vee\vee}$ is globally generated on some non-empty open subset of $X$.
+\end{definition}
+
+\begin{proposition}
+	Let $\calE$ be a vector bundle on $X$.
+	Then
+	\begin{enumerate}
+		\item suppose $\calE$ is nef, then $\calE$ is weakly positive;
+		\item if $X$ is a smooth curve, then $\calE$ is nef if and only if $\calE$ is weakly positive.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\textbf{(a)}
+	Let $\pi:\bbP(\calE)\to X$ be the projective bundle associated to $\calE$ and $\calO_{\bbP(\calE)}(1)$ the tautological line bundle on $\bbP(\calE)$.
+	Then we have $\pi_*\calO_{\bbP(\calE)}(m)=\Sym^m(\calE)$ for any $m>0$.
+	Fix ample line bundle $\calH$ on $X$ and integer $m>0$.
+	Then $\Sym^m(\calE)\otimes \calH = \pi_*\calO_{\bbP(\calE)}(m)\otimes \calH = \pi_*(\calO_{\bbP(\calE)}(m)\otimes \pi^*\calH)$.
+	Note that $\calL = \calO_{\bbP(\calE)}(m)\otimes \pi^*\calH$ is ample since $\calO_{\bbP(\calE)}(1)$ is nef and relatively ample.
+	Then there exists an integer $l>0$ such that $\calL^{\otimes l}$ is very ample.
+	Hence its pushforward (after replace $l$ by some sufficiently large number) $\pi_*(\calO_{\bbP(\calE)}(lm)\otimes \pi^*\calH^{\otimes l}) = \Sym^{l}(\Sym^{m}(\calE)\otimes \calH)$ is globally generated by \cref{rmk:pushforward-of-ample-is-globally-generated}.
+
+	% Consider the exact sequence
+	% \[ H^0(\bbP(\calE), \calL^{\otimes l})\otimes \calO_{\bbP(\calE)} \to \calL^{\otimes l} \to 0. \]
+	% Denote the kernel of the above map by $\calK$.
+	% Then we have the exact sequence
+	% \[ 0 \to \calK \otimes \calL^{\otimes n} \to H^0(\bbP(\calE), \calL^{\otimes l})\otimes \calL^{\otimes n } \to \calL^{\otimes (l+n)} \to 0. \]
+	% Pushing forward the above exact sequence to $X$, we have the exact sequence
+	% \[ H^0(\bbP(\calE), \calL^{\otimes l})\otimes \pi_*\calL^{\otimes n} \to \pi_*\calL^{\otimes (l+n)} \to R^1\pi_*(\calK \otimes \calL^{\otimes n}). \]
+	% By relative Serre vanishing, we have $R^1\pi_*(\calK \otimes \calL^{\otimes n})=0$ for $n\gg 0$.
+	%
+	% \[ H^0(\bbP(\calE), \calO_{\bbP(\calE)}(lm)\otimes \pi^*\calH^{\otimes l})\otimes \calO_X \to \pi_*(\calO_{\bbP(\calE)}(lm)\otimes \pi^*\calH^{\otimes l}) \to R^1\pi_*\calK. \]
+	%
+
+	\textbf{(b)}
+	Let $C$ be a smooth curve and $\calE$ a vector bundle on $C$.
+	Suppose $\calE$ is weakly positive.
+	Let $D \subset \bbP(\calE)$ be an irreducible curve surjecting onto $C$ via $\pi:\bbP(\calE)\to C$.
+	Denote by $f: D \to C$ the restriction of $\pi$ to $D$.
+	Then we have
+
+
+	For (b),
+
+
+	\Yang{}.
+\end{proof}
+
+\begin{remark}\label{rmk:pushforward-of-ample-is-globally-generated}
+	Let $f: X \to Y$ be a fibration of projective varieties over $\kkk$ and $\calL$ is an ample line bundle on $X$.
+	Then $f_*\calL^{\otimes n}$ is globally generated for sufficiently large $n$.
+
+	First we show that there exists an integer $n_1$ such that restricted map $H^0(X, \calL^{\otimes n}) \to H^0(X_y, \calL^{\otimes n}|_{X_y})$ is surjective for any $n\ge n_1$ and any $y\in Y$.
+
+	Then we show that there exists an integer $n_2$ such that $f_*\calL^{\otimes n}$ is globally generated for any $n\ge n_2$.
+	By Serre vanishing, there exists an integer $n_0$ such that $R^if_*\calL^{\otimes n}=0$ for any $n\ge n_0$ and any $i>0$.
+	Then we have $H^i(X_y, \calL^{\otimes n}|_{X_y}) = 0$ for any $n\ge n_0$, $i>0$, and any $y\in Y$ by the cohomology and proper base change theorem.
+	Hence $h^0(X_y, \calL^{\otimes n}|_{X_y}) = \chi(X_y, \calL^{\otimes n}|_{X_y})$ is constant with respect to $y\in Y$ for any $n\ge n_0$.
+	Then by Grauert's theorem, the natural map $f_*\calL^{\otimes n}\otimes k(y) \to H^0(X_y, \calL^{\otimes n}|_{X_y})$ is an isomorphism for any $n\ge n_0$ and any $y\in Y$.
+	Consider the evaluation map
+	\[ H^0(Y, f_*\calL^{\otimes n})\otimes \calO_Y \to f_*\calL^{\otimes n}. \]
+
+	\Yang{}
+
+\end{remark}
+
+
+
+
+
+\subsection{Canonical divisor and duality}
+
+\begin{theorem}[{Grothendieck duality, \Yang{reference request}}]
+	Let $f:X\to Y$ be a proper morphism of noetherian schemes of pure relative dimension $n$.
+	Then there exists a functor $f^!:\sfD^+(Y)\to \sfD^+(X)$ such that for any $\calF\in \sfD^+(X)$ and $\calG\in \sfD^-(Y)$, we have
+	\[ \sfR f_*\sfR \calHom_X(\calF, f^!\calG) \cong \sfR \calHom_Y(\sfR f_*\calF, \calG). \]
+\end{theorem}
+
+Many other duality theorems can be deduced from Grothendieck duality.
+Let us consider the Serre duality as an example.
+
+\begin{example}
+	Let $\calF$ be a locally free sheaf on a smooth projective variety $X$ of dimension $n$ over an algebraically closed field $\kkk$.
+	Take $\calG = \calO_Y = \kkk$.
+	Then the Grothendieck duality gives
+	\[ \Hom_\kkk(\sfR \Gamma(\calF), \kkk) \cong \sfR \Gamma(\sfR \calHom_X(\calF, f^!\calO_Y)). \]
+	The sheaf $f^!\calO_Y$ is just the twisted cannonical sheaf $\omega_X[n]$ with $\omega_X = \bigwedge^n \Omega_X$ since $X$ is projective smooth.
+	The LHS is equal to $\Hom_\kkk(\sfR \Gamma(\calF), \kkk) = \Hom(H^i(X, \calF), \kkk)[-i]$.\Yang{}.
+	Then RHS is equal to $\sfR \Gamma(\sfR \calHom_X(\calF, \omega_X[n])) = \sfR \Gamma(\calF^\vee\otimes \omega_X[n]) = H^{n-i}(X, \calF^\vee\otimes \omega_X)[-i]$.\Yang{}
+	\Yang{to be continued}
+\end{example}
+
+Set the dualing complex $\omega_{X/Y} = f^!\calO_Y[-n]$.
+
+For general $\calG$, $f^! \calG \cong \calG \otimes^\sfL f^!\calO_Y$.
+
+
+Let $f: X \to Y$ be a finite surjective morphism of projective varieties over $\kkk$.
+
+
+
+
+
+
+\subsection{Some questions}
+
+Recall that we can define the Iitaka dimension of a divisor $D$ on a projective variety $X$.
+
+\begin{conjecture}[Abundance conjecture]
+	Let $X$ be a smooth projective variety over an algebraically closed field $\kkk$ and $D$ a nef divisor on $X$.
+	If the Iitaka dimension of $D$ is equal to the numerical dimension of $D$, then $D$ is semi-ample.
+	\Yang{}
+\end{conjecture}
+
+
+\begin{conjecture}[Iitaka conjecture]
+	Let $f:X\to Y$ be a surjective morphism of smooth projective varieties over $\bbC$.
+	Then we have
+	\[ \kappa(X) \ge \kappa(Y) + \kappa(F), \]
+	where $F$ is a general fiber of $f$.
+	\Yang{}
+
+\end{conjecture}
+
+When $Y$ is of general type, Viehweg proved the Iitaka conjecture by using the notion of weak positivity.
+
+
+\subsection[Positivity results in characteristic 0]{Positivity results in characteristic $0$}
+
+\begin{theorem}[Viehweg' 83]
+	Let $f:X\to Y$ be a surjective projective morphism of smooth projective varieties over $\bbC$.
+	Then
+	\begin{enumerate}
+		\item $f_*\omega_{X/Y}$ is weakly positive;
+		\item $f_*\omega_{X/Y}^{\otimes m}$ is weakly positive for any $m>0$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Campana'04]
+	Let $(X,\Delta)$ be a lc pair and $f:X\to Y$ a surjective projective morphism of smooth projective varieties over $\bbC$.
+	Then $f_*\calO_X(m(K_{X/Y}+\Delta))$ is weakly positive for any $m>0$ such that $m(K_{X/Y}+\Delta)$ is Cartier.
+	\Yang{}
+\end{theorem}
+
+The key ingredient of the proof is
+\begin{enumerate}
+	\item VHS (Fujino-Fujisana 18) / Kodaira vanishing + Mumford regularity.
+	\item (a) + covering trick.
+\end{enumerate}
+
+\begin{example}
+	Let $f: X \to C$ be a fibration with $C$ a smooth projective curve of genus $g(C) \ge 2$.
+	\Yang{}
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

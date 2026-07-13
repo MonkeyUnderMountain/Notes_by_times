@@ -1,0 +1,215 @@
+% !TeX root = positivity2.tex
+\section{Positivity 2: tools in positive characteristic}
+
+In this section, let $\kk$ be a $F$-finite characteristic $p$ field, for example, perfect fields.
+
+\subsection{Frobenius morphism}
+
+Let $X$ be a scheme of finite type over $\kk$.
+Recall that we have the absolute Frobenius morphism $F_X:X\to X$ which is the identity on the underlying topological space and the $p$-th power map on the structure sheaf.
+We will denote $F_X: X^1 \to X$ with $X^1 = X$.
+We have $F_X$ is finite due to the $F$-finiteness of $\kk$.
+
+Suppose that $X$ is Grenstein, i.e. $(f^! \kk)|_X = \omega_X[n]$ for some compactification $\overline{X}$ of $X$ and $f: \overline{X} \to \Spec \kk$.
+Let $F_X: X^1 \to X$ be the absolute Frobenius morphism.
+Then we have $K_{X^1/X} = (1-p)K_X$.
+More generally, for $F_X^e: X^e \to X^{e-1} \to \cdots \to X^1 \to X$, we have $K_{X^e/X} = (1-p^e)K_X$.
+
+Let $f: X \to Y$ be a morphism of schemes of finite type over $\kk$.
+Recall that we have the relative Frobenius morphism $F_{X/Y}^e: X \to X_{Y^e}$ by the diagram
+\[ \begin{tikzcd}
+		& & X^e \arrow[lld, "F_X^e"', bend right] \arrow[ld, "F_{X/Y}^e"'] \arrow[ddl, "f^e", bend left] \\
+		X \arrow[d, "f"] & X_{Y^e} \arrow[d] \arrow[l, "\pi_e"']& \\
+		Y & Y^e \arrow[l, "F_Y^e"'] &
+	\end{tikzcd} \]
+where $X_{Y^e} = X \times_Y Y^e$ is given by the fiber product in the diagram.
+Suppose that $X,Y$ are Gorenstein and $Y$ is regular.
+\Yang{}
+
+\subsection{Trace map}
+
+Suppose that $X$ is regular and let $F^e: X^e \to X$ be the absolute Frobenius morphism.
+Then we have the trace map
+\[ \Tr^e(D): \calO_{X^e}((1-p^e)K_X+p^eD^e) \to \calO_X(D). \]
+We have a factorization of the trace map
+\[ \Tr_{X^e/X}(D): \calO_{X^e}((1-p^e)K_X+p^eD^e)  \to \calO_{X^1}((1-p)K_X+pD^1) \xrightarrow{\Tr_{X^1/X}(D)} \calO_X(D). \]
+\Yang{}
+
+Let $\Delta$ be a $\bbQ$-divisor on $X$.
+Note that $\lfloor (1-p^e)(K_X+\Delta) \rfloor = (1-p^e)K_X - \lceil (p^e-1)\Delta \rceil \leq (1-p^e) K_X$.
+Then we have a homomorphism
+\[ \Tr_\Delta^e: F^e_* \calO_X((1-p^e)(K_X+\Delta)) \injmap F^e_* \calO_X((1-p^e)K_X) \xrightarrow{\Tr^e} \calO_X. \]
+We often assume that $p \nmid \upoperatorname{ind}(K_X+\Delta)$, i.e., there exists an integer $m$ such that $m(K_X+\Delta)$ is Cartier and $p \nmid m$.
+In this case, the above homomorphism becomes
+\[ \Tr_\Delta^{eg}: F^{eg}_* \calO_X((1-p^{eg})(K_X+\Delta)) \to \calO_X \]
+for some integer $g$ such that $m \mid (p^g-1)$.
+
+\begin{example}
+	Take $e=1$, the trace map $\Tr^1$ is $F_* \calO_X((1-p)K_X) \to \calO_X$.
+	Twisting by $\omega_X$, we get $\Tr: F_* \omega_X \to \omega_X$.
+	Let $X = \bbA^1_\kk$.
+	Then we have $\omega_X = \kk[t] \cdot dt$ and $F:X \to X$ is given by $t \mapsto t^p$.
+	We identify $F$ with the inclusion $\kk[t] \injmap \kk^{1/p}[t^{1/p}]$.
+	Then we have $F_* \omega_X = \kk[t]^{1/p} \cdot dt^{1/p}$.
+	The trace map $\Tr: F_* \omega_X \to \omega_X$ is given by
+	\[ \Tr: \]
+	\Yang{}
+\end{example}
+
+
+\subsection{F-singularities}
+
+Suppose that $X$ is a normal variety over $\kk$.
+Let $X^\circ$ be the regular locus of $X$ and $i: X^\circ \injmap X$ be the inclusion.
+We can define the trace map $\Tr_{(X,\Delta)}^e$ on $X^\circ$ and extend it to $X$ by taking the pushforward $i_* \Tr_{(X^\circ, \Delta|_{X^\circ})}^e$.
+
+\begin{definition}
+	Let $\Delta$ be an effective $\bbQ$-divisor on $X$ such that $K_X+\Delta$ is $\bbQ$-Cartier.
+	We say that $(X,\Delta)$ is \emph{$F$-regular} if for every effective Cartier divisor $D$, there exists an integer $e>0$ such that the trace map $\Tr_{\Delta+D}^e: F^e_* \calO_X((1-p^e)(K_X+\Delta)-D) \to \calO_X$ is surjective.
+	If moreover the Cartier index of $K_X+\Delta$ is not divisible by $p$, we say that $(X,\Delta)$ is \emph{strongly $F$-regular}.
+\end{definition}
+
+\begin{example}
+
+	\Yang{}
+\end{example}
+
+\begin{remark}
+	Let $(X,\Delta)$ be a snc pair, i.e., $X$ is smooth and $\Delta$ has simple normal crossing support.
+	Then $(X,\Delta)$ is $F$-regular if and only if $(X,\Delta)$ is klt.
+	\Yang{}
+\end{remark}
+
+\begin{example}
+	Let $X = \bbA^2_\kk$ and $\Delta = \frac{1}{2}D_1 + \frac{2}{3}D_2$.
+	Then $(X,\Delta)$ is $F$-regular.
+	\Yang{}
+\end{example}
+
+% \begin{definition}
+% 	Let $\Delta$ be an effective $\bbQ$-divisor on $X$ such that $K_X+\Delta$ is $\bbQ$-Cartier.
+% 	\begin{enumerate}
+% 		\item We say that $(X,\Delta)$ is \emph{globally $F$-split} if the trace map $\Tr_\Delta^e: F^e_* \calO_X((1-p^e)(K_X+\Delta)) \to \calO_X$ is surjective for some $e>0$.
+% 		\item We say that $(X,\Delta)$ is \emph{strongly $F$-regular} if for every effective Cartier divisor $D$, there exists an integer $e>0$ such that the trace map $\Tr_{\Delta+D}^e: F^e_* \calO_X((1-p^e)(K_X+\Delta+D)) \to \calO_X$ is surjective.
+% 	\end{enumerate}
+% \end{definition}
+
+
+\subsection{Frobenius stable sections}
+
+Suppose that $X$ is a normal variety over $\kk$ and $\Delta \geq 0$ is an effective Weil $\bbQ$-divisor on $X$ such that $K_X+\Delta$ is $\bbQ$-Cartier with Cartier index not divisible by $p$.
+Fix an integer $g>0$ such that $(p^g-1)(K_X+\Delta)$ is Cartier.
+
+Let $D$ be a Cartier divisor on $X$.
+Recall that we have the trace map
+\[ \Tr_\Delta^{eg}(D): F^{eg}_* \calO_X((1-p^{eg})(K_X+\Delta)+p^{eg}D) \to \calO_X(D) \]
+and $\Tr_\Delta^{eg}$ will factor through $\Tr_\Delta^{fg}$ for $f \leq e$.
+\begin{definition}[Frobenius ]
+	The \emph{Frobenius stable sections} of $D$ with respect to $\Delta$ is defined as
+	\[ S^0(X,\Delta;D) = \bigcap_{e \geq 0} \Image\left( H^0(X, F^{eg}_* \calO_X((1-p^{eg})(K_X+\Delta)+p^{eg}D)) \xrightarrow{H^0(\Tr_\Delta^{eg}(D))} H^0(X, \calO_X(D)) \right). \]
+\end{definition}
+
+\begin{proposition}
+	Let $D$ be a Cartier divisor on $X$.
+	Then the sequence of images
+	\[ \Image\left( H^0(X, F^{eg}_* \calO_X((1-p^{eg})(K_X+\Delta)+p^{eg}D)) \xrightarrow{H^0(\Tr_\Delta^{eg}(D))} H^0(X, \calO_X(D)) \right) \]
+	stabilizes for $e \gg 0$.
+\end{proposition}
+
+\begin{proposition}
+	Notation as above.
+	Assume that $(X,\Delta)$ is $F$-regular.
+	Let $H$ be an ample Cartier divisor on $X$.
+	% Then for every Cartier divisor $D$, 
+	There exists an integer $m_0>0$ such that for every $m \geq m_0$, we have
+	\[ S^0(X,\Delta;mH) = H^0(X, \calO_X(mH)). \]
+\end{proposition}
+
+
+\subsection{Relative Frobenius stable sections}
+
+Consider a projective morphism $f: X \to Y$ of normal varieties over $\kk$.\Yang{}
+Suppose that $Y$ is regular.
+Then we have the trace map
+\[ \Tr_{X/Y,\Delta}^{eg}(D): (f_e)_*(F_{X/Y})^e_*\calO_{X}((1-p^{eg})(K_{X/Y}+\Delta)+p^{eg}D) \to f_*^e\calO_{X_{Y^e}}(\pi_e^*D). \]
+That is,
+\[ \Tr_{X/Y,\Delta}^{eg}(D): f_* \calO_{X}((1-p^{eg})(K_{X/Y}+\Delta)+p^{eg}D) \to F_Y^{e*} f_* \calO_X(D). \]
+\Yang{}
+
+
+\section{Positivity in positive characteristic}
+
+Let $Y$ be a variety over $\kk$, $U \subset Y$ be a non-empty open subset, $H$ an ample $\bbQ$-divisor on $Y$, and $\calG$ a coherent sheaf on $Y$.
+\begin{definition}
+	We define
+	\begin{align*}
+		T_U(\calG,H)    & = \{t \in \bbQ \mid \exists e > 0 \text{ s.t. } F_Y^{e*} \calG(-\lceil p^e t H \rceil)|_U \text{ is globally generated}\}, \\
+		t_U(\calG,H)    & = \sup\ \{t \in T_U(\calG,H)\},                                                                                            \\
+		t_\eta(\calG,H) & = \dirlim_{U \subset Y \text{ open}} t_U(\calG,H) = \sup_U t_U(\calG,H).
+	\end{align*}
+\end{definition}
+
+\begin{example}
+	Suppose that $H$ is Cartier.
+	Then we have
+	\[ t_X(aH,H) = \sup\ \{t \in \bbQ \mid aH - tH \text{ is nef}\} = a \]
+	for every integer $a \geq 0$.
+	And
+	\[ t_X(\calO_Y(aH)\oplus \calO_Y(bH),H) = \min\ \{a,b\} \]
+\end{example}
+
+
+\begin{proposition}
+	We have the following properties of $t_U(\calG,H)$.
+	\begin{enumerate}
+		\item $\calF \to \calG \to 0 \implies t_U(\calF,H) \leq t_U(\calG,H)$.
+		\item $t_U(\calF \otimes \calG,H) \geq t_U(\calF,H) + t_U(\calG,H)$.
+		\item $t_U(F_Y^{e*}\calG,H) = p^e t_U(\calG,H)$.
+		\item $t_U(\calG,H) \geq 0 \implies \calG$ is weakly positive over $U$.\Yang{}
+		\item for $H_1,H_2$ ample $\bbQ$-divisors, we have $t_U(\calG,H_1) \geq 0 \iff t_U(\calG,H_2) \geq 0$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}\label{thm:t-invariant-and-weakly-positive}
+	Let $Y$ be a smooth projective variety over $\kk$, $H$ an ample divisor and $\calG$ a torsion-free coherent sheaf on $Y$.
+	If $t_Y(\calG,H) \geq 0$, then $\calG$ is weakly positive (in the sense of Viehweg).
+\end{theorem}
+\begin{proof}
+	By \cref{lem:weakly-positive-and-generically-globally-generated}, letting $D = mH$ for $m \gg 0$, we have that $\forall e, t_\eta(F_Y^{e*}\calG,H) \geq 0$ and $F_Y^{e*}\calG(mH)$ is generically globally generated.
+
+	Fix $m>0$, WTS $(\Sym^m \calG) \otimes H$ is generically globally generated after sufficiently many tensors.
+	Fix $l>0$ such that $lH - K_Y - (\dim Y + 1)A - H$ is ample.
+	% Then for $e \gg 0$, we have $t_Y(F_Y^{e*}\calG,H) \geq 0$ and $F_Y^{e*}\calG(lH)$ is generically globally generated.
+	Since $\calG^{\otimes lm} \calG \to \Sym^{lm} \calG$ is surjective, hence $t(\Sym^{lm} \calG,H) \geq t(\calG^{\otimes lm},H) \geq 0$.
+	Then $\Sym^{lm} \calG \otimes \calO_Y(lH)$ is generically globally generated.
+
+
+	\Yang{}
+\end{proof}
+
+\begin{lemma}\label{lem:weakly-positive-and-generically-globally-generated}
+	Notation as \cref{thm:t-invariant-and-weakly-positive}.
+	Let $A$ be an ample and base point free Cartier divisor on $Y$.
+	Suppose that $t_Y(\calG,H) \geq 0$.
+	Let $D$ be a Cartier divisor on $Y$ such that $D-K_Y-(\dim Y + 1)A - H$ is ample.
+	Then for any torsion-free coherent sheaf $\calF$ on $Y$ with $t_Y(\calF,H) \geq 0$, the sheaf $\calF(D)$ is generically globally generated.
+\end{lemma}
+\begin{proof}
+	\Yang{}
+\end{proof}
+
+
+\begin{theorem}[Mumford's regularity theorem]\label{thm:mumford-regularity}
+	Let $Y$ be a smooth projective variety over $\kk$ and $A$ an ample and base point free Cartier divisor on $Y$.
+	Let $\calF$ be a coherent sheaf on $Y$.
+	If $H^i(Y, \calF(-iA)) = 0$ for all $i>0$, then $\calF$ is globally generated.
+	\Yang{}
+\end{theorem}
+
+
+
+
+
+
+
+
