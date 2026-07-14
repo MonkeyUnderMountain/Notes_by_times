@@ -1,2 +1,281 @@
 % !TeX root = p-divisible-2.tex
-\section{p-divisible-2}
+\section[The p-divisible group: p-divisible groups]{The $p$-divisible group: $p$-divisible groups}
+
+\begin{definition}[$p$-divisible group]
+	A \emph{$p$-divisible group} (or \emph{Borsotti-Tate group}) over a field $\kk$ is a formal group scheme $\hat{G}$ satisfying the following properties:
+	\begin{enumerate}
+		\item $p: \hat{G} \to \hat{G}$ is an epimorphism;
+		\item $\hat{G} = \lim_{n \to \infty} \hat{G}[p^n]$, where $\hat{G}[p^n]$ is the kernel of $p^n: \hat{G} \to \hat{G}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	The constant group scheme $\bbQ_p/\bbZ_p$ is a $p$-divisible group.
+	Moreover, a constant $p$-divisible group must be of the form $(\bbQ_p/\bbZ_p)^r$ for some $r \in \bbZ_{\ge 0}$.
+\end{example}
+
+Let $\hat{G}$ be a $p$-divisible group.
+Set $G_n := \hat{G}[p^n]$.
+Then we have a sequence
+\[ G_1 \hookrightarrow G_2 \hookrightarrow G_3 \hookrightarrow \cdots G_n \hookrightarrow G_{n+1} \hookrightarrow \cdots \]
+And $G_i = G_{i+1}[p^i]$.
+The homomorphism $p: G_{n+1} \to G_n$ by multiplicating is surjective.
+Given the data $\{G_n\}$ with $G_n$ finite and $p^n$-torsion satisfying $G_i = G_{i+1}[p^i]$ and $p: G_{n+1} \to G_n$ is surjective.
+We can construct a $p$-divisible group $\hat{G} = \lim_{n \to \infty} G_n$.
+
+\begin{example}
+	Let $A$ be an abelian variety over $\kk$.
+	Then
+	\[ A[p^\infty] \coloneqq \lim_{n \to \infty} A[p^n] \]
+	is a $p$-divisible group.
+\end{example}
+
+The kernel of $p: G_{n+1} \to G_n$ is $G_1$.
+Hence $\dim_\kk \calO_{G_{n+1}} = \dim_\kk \calO_{G_1} \cdot \dim_\kk \calO_{G_n}$.
+
+Suppose that $\kk$ is perfect.
+Then $\hat{G} = \hat{G}_0 \times \pi_0(\hat{G})$.
+This decomposition is compatible with the $p$-divisible group structure, i.e.
+\[ \hat{G}[p^n] = \hat{G}_0[p^n] \times \pi_0(\hat{G})[p^n], \quad \hat{G}_0 = \dirlim_n \hat{G}_0[p^n], \quad \pi_0(\hat{G}) = \dirlim_n \pi_0(\hat{G})[p^n]. \]
+Hence $\hat{G}_0$ and $\pi_0(\hat{G})$ are $p$-divisible groups.
+
+If $\kk$ is algebraically closed, then $\pi_0(\hat{G})$ is a constant $p$-divisible group and hence is isomorphic to $(\bbQ_p/\bbZ_p)^r$ for some $r \in \bbZ_{\ge 0}$.
+
+Take the decomposition
+\[ G_n = G_{n;i,a} \times G_{n;i,m} \times G_{n;e,a} \times G_{n;e,m}. \]
+Since $G_n$ is $p$-torsion, we have $G_{n;e,m} = 0$.
+The data $\{G_{n;i,a}\}$, $\{G_{n;i,m}\}$, and $\{G_{n;e,a}\}$ give rise to $p$-divisible groups $\hat{G}_{i,a}$, $\hat{G}_{i,m}$, and $\hat{G}_{e,a}$.
+Hence we have the decomposition
+\[ \hat{G} = \hat{G}_{i,a} \times \hat{G}_{i,m} \times \hat{G}_{e,a}. \]
+Here $\hat{G}_{e,a} = \pi_0(\hat{G})$ is a constant $p$-divisible group and $\hat{G}_{i,a}$, $\hat{G}_{i,m}$ are connected $p$-divisible groups.
+
+\paragraph{Serre duality.} Let $\hat{G} = \{G_n\}$ be a $p$-divisible group.
+We construct a new $p$-divisible group $D(\hat{G})$ as follows.
+Consider the diagram
+% \[ \begin{tikzcd}
+% 		& G_1 \arrow[hook]{ld} & \\
+% 		G_{n+1} \arrow[rr, "p"] & & G_n \arrow[two heads]{lu} \arrow[hook]{ld} \\
+% 	\end{tikzcd} \]
+Here $D(G_n)$ is the Cartier dual of $G_n$.
+Set $H_n := D(G_n)$.
+We have the factorization $p:H_n \twoheadrightarrow H_{n-1} \hookleftarrow H_n$ of the multiplication by $p$ map $p:H_n \to H_n$.
+\Yang{}
+In summary, the data $\{H_n\}$ give rise to a $p$-divisible group $D(\hat{G}) = \{H_n\}$.
+This is called the \emph{Serre dual} of $\hat{G}$.
+
+Let $\hat{G} = \hat{G}_{i,a} \times \hat{G}_{i,m} \times \hat{G}_{e,a}$ be the decomposition of $\hat{G}$.
+Denote by $\hat{H} = D(\hat{G})$ the Serre dual of $\hat{G}$.
+Consider the decomposition
+\[ \hat{H} = \hat{H}_{i,a} \times \hat{H}_{i,m} \times \hat{H}_{e,a}. \]
+Then we have
+\begin{align*}
+	\hat{H}_{i,a} = D(\hat{G}_{i,a}),\quad \hat{H}_{i,m} = D(\hat{G}_{e,a}), \quad \hat{H}_{e,a} = D(\hat{G}_{i,m}).
+\end{align*}
+
+\begin{example}
+	The Serre dual of the constant $p$-divisible group $\bbQ_p/\bbZ_p$ is $\mu_{p^\infty} = \dirlim_n \mu_{p^n}$.
+\end{example}
+
+Then the essential part of the $p$-divisible group is $\hat{G}_{i,a}$.
+
+\begin{definition}[Rank and height of a $p$-divisible group]
+	Let $G$ be a finite $p$-group scheme over $\kk$ of characteristic $p$.
+	We define the \emph{rank} of $G$ to be $\log_p \dim \calO_G$.
+	For a $p$-divisible group $\hat{G} = \{G_n\}$, we have $\rank G_n = n \cdot \rank G_1$.
+	Then we define the \emph{height} of $\hat{G}$ to be $\rank G_1$ and the \emph{rank} of $\hat{G}$ to be $\rank \left( \hat{G}[F] := \ker(\Frob_{/\kk}: \hat{G} \to \hat{G}^{(p)}) \right)$.
+\end{definition}
+
+We have $\rank \hat{G} \leq \idealht \hat{G}$.
+
+\begin{example}
+	We have
+	\[ \rank(\bbQ_p/\bbZ_p) = 0, \quad \idealht(\bbQ_p/\bbZ_p) = 1, \quad \rank(\mu_{p^\infty}) = 1, \quad \idealht(\mu_{p^\infty}) = 1. \]
+\end{example}
+
+Recall that a (noetherian) formal group scheme $\hat{G}$ is smooth iff the Frobenius map $\Frob_{/\kk}: \hat{G} \to \hat{G}^{(p)}$ is surjective.
+Then $\hat{G}_{i,a}$ is smooth and hence it is a formal Lie group and of finite height.
+
+\begin{example}
+	Consider $\hat{G} = \hat{\bbG}_a$.
+	Then $\hat{G}$ is smooth and of infinite height since $G_1 = \hat{G}[p] = G$.
+\end{example}
+
+\begin{proposition}
+	Let $\hat{G} = \Spf \kk[[x_1, \ldots, x_n]]$ with a formal group law $\Phi$.
+	Then $\hat{G}$ is a $p$-divisible group iff $\hat{G}$ is of finite height.
+\end{proposition}
+
+\paragraph{Motiviation.}
+We want a ``$p$-adic cohomology'' theory for varieties over $\kk$ of characteristic $p$.
+Recall that for an abelian variety $A$ over $\kk$, we have the $l$-adic cohomology
+\[ H^1_{\et}(A, \bbZ_l(1)) = A^\vee[l^\infty](\overline{\kk}). \]
+It has finite rank as a $\bbZ_l$-module.
+But if we consider $A^\vee[p^\infty](\overline{\kk})$, it is has ``incorrect'' rank as a $\bbZ_p$-module.
+The $p$-divisible group want to fix this problem.
+
+
+
+\subsection{Witt ring}
+
+Recall that we have natural surjection $\bbZ_p \to \bbF_p$.
+Take a section $t: \bbF_p \to \bbZ_p$ by $t(a)= a \in \{0, 1, \ldots, p-1\} \subset \bbZ_p$.
+This is not natural in general, in particular, for addition and multiplication.
+Teichmüller has an observation that there is a unique section $\phi: \bbF_p \to \bbZ_p$ such that $\phi(ab) = \phi(a)\phi(b)$ for all $a, b \in \bbF_p$.
+
+Let $R$ be a complete unramified DVR of mixed characteristic $(0, p)$.
+Here ``unramified'' means that $(p) \subset R$ is the maximal ideal.
+Suppose that the residue field $\kk = R/(p)$ is perfect.
+Take any section $t: \kk \to R$ of the natural surjection $R \to \kk$.
+Then the sequence $t(a^{1/p^n})^{p^n}$ converges in $R$ and the limit is denoted by $\phi(a)$.
+Then $\phi: \kk \to R$ is a multiplicative section of the natural surjection $R \to \kk$.
+
+For any $\xi \in R$, we have the $p$-adic expansion
+\[ \xi = \phi(a_0) + \phi(a_1^{1/p})p + \phi(a_2^{1/p^2})p^2 + \cdots, \quad a_i \in \kk. \]
+There is a miracle that this representation has some algebraic properties.
+
+\begin{example}
+	Let $\xi = \sum \phi(a_i^{1/p^i})p^i$ and $\eta = \sum \phi(b_i^{1/p^i})p^i$.
+	Then we have
+	\begin{align*}
+		\xi + \eta & = \phi(a_0 + b_0) + \left( \frac{\phi(a_0) + \phi(b_0) - \phi(a_0 + b_0)}{p} + \phi(a_1^{1/p}) + \phi(b_1^{1/p}) \right)p + \cdots \\
+		           & = \phi(a_0 + b_0) + \phi(c_1^{1/p}) p + \phi(c_2^{1/p^2}) p^2 + \cdots
+	\end{align*}
+	We will try to find $c_1$ in terms of $a_0, a_1, b_0, b_1$.
+	It is determined by the equation
+	\[ \phi(c_1) = \left( \frac{\phi(a_0) + \phi(b_0) - \phi(a_0 + b_0)}{p} + \phi(a_1^{1/p}) + \phi(b_1^{1/p}) \right)^p \mod p. \]
+	Set $x^p = a_0, y^p = b_0$.
+	Then we have
+	\[ \phi(a_0+b_0) = \phi(x^p + y^p) = \phi((x+y)^p) = \phi(x+y)^p. \]
+	Note that $\phi(x) +\phi(y) = \phi(x + y) + p r$ for some $r \in R$.
+	Then
+	\[ p^2 \mid \phi(x+y)^p - (\phi(x) + \phi(y))^p = \phi(x+y)^p - \phi(x+y)^p - \sum_{i=1}^{p-1} \binom{p}{i} p^i r^i \phi(x+y)^{p-i}. \]
+	Hence we have
+	\begin{align*}
+		\frac{\phi(a_0) + \phi(b_0) - \phi(a_0 + b_0)}{p} & = \frac{\phi(x)^p + \phi(y)^p - \phi(x)+\phi(y)^p}{p}                       \\
+		                                                  & = \sum_{i=1}^{p-1} \frac{1}{p} \binom{p}{i} \phi(x)^i \phi(y)^{p-i} \mod p.
+	\end{align*}
+	Hence
+	\begin{align*}
+		\phi(c_1) & = \left( \sum_{i=1}^{p-1} \frac{1}{p} \binom{p}{i} \phi(a_0^{1/p})^i \phi(b_0^{1/p})^{p-i} \right)^p + \phi(a_1) + \phi(b_1) \mod p \\
+		          & = \phi\left( \sum_{i=1}^{p-1} \left( \frac{1}{p} \binom{p}{i}\right)^p a_0^i b_0^{p-i} + a_1 + b_1 \right) \mod p.
+	\end{align*}
+	That is, we have
+	\[ c_1 = \sum_{i=1}^{p-1} \left( \frac{1}{p} \binom{p}{i}\right)^p a_0^i b_0^{p-i} + a_1 + b_1. \]
+\end{example}
+
+In general, we have the following theorem.
+\begin{theorem}
+	There exists a sequence of polynomials $\Phi_n, \Psi_n \in \bbZ[x_0, \ldots, x_n, y_0, \ldots, y_n]$ such that for any $\xi = \sum \phi(a_i^{1/p^i})p^i$ and $\eta = \sum \phi(b_i^{1/p^i})p^i$, we have
+	\begin{align*}
+		\xi + \eta     & = \sum_{n=0}^\infty \phi(\Phi_n(a_0, \ldots, a_n, b_0, \ldots, b_n)^{1/p^n})p^n, \\
+		\xi \cdot \eta & = \sum_{n=0}^\infty \phi(\Psi_n(a_0, \ldots, a_n, b_0, \ldots, b_n)^{1/p^n})p^n.
+	\end{align*}
+\end{theorem}
+
+Hence, we can define the \emph{Witt ring} $W(\kk)$ of $\kk$ to be the set $\kk^{\bbZ_{\ge 0}}$ with the addition and multiplication defined by the polynomials $S_n$ and $P_n$.
+Moreover, we can define a ring scheme $W = \Spec \bbF_p[x_0, x_1, \ldots]$ over $\bbF_p$ or any field of characteristic $p$ and the addition and multiplication are defined by the polynomials $\Phi_n$ and $\Psi_n$.
+Note that $\Phi_n(X,Y) = X + Y + \text{higher order terms}$ and $\Psi_n(X,Y) = XY + \text{higher order terms}$.
+
+This is a surjectioin $W(\kk) \to W_n(\kk)$ with $W_n \coloneqq \Spec \kk[x_0, \ldots, x_{n}]$ of ring schemes over $\kk$.
+We have $W = \invlim_n W_n$.
+
+Consider the Frobenius map $\Frob: W \to W$.
+It is given by
+\[ \Frob(x_0, x_1, \ldots) = (x_0^p, x_1^p, \ldots). \]
+And the map by multiplication by $p$ is given by
+\[ p(x_0, x_1, \ldots) = (0, x_0^p, x_1^p, \ldots). \]
+Then the Verschiebung map $V: W \to W$ is given by
+\[ V(x_0, x_1, \ldots) = (0, x_0, x_1, \ldots). \]
+The ring scheme $W_n$ can be viewed as $W_n = \coker(V^n: W \to W)$.
+
+Except the surjectioin $W(\kk) \to W_n(\kk)$, we also have the data $V: W_n \hookrightarrow W_{n+1}$.
+Let $\underrightarrow{W} = \dirlim_n W_n$.
+It is called the \emph{ring of co-Witt vectors}.
+
+\begin{example}
+	We have $W(\bbF_p) = \bbZ_p$ and $\underrightarrow{W}(\bbF_p) = \bbQ_p/\bbZ_p$.
+\end{example}
+
+Now we introduce the notion of \emph{Dieudonné ring}.
+Let
+\[ \bbD_\kk \coloneqq W(\kk)[F,V] / (FV - p, VF - p, F a - a^{(p)} F, V a - a^{(1/ p)} V). \]
+Here $a^{(p)}$ is the image of $a \in W(\kk)$ under the Frobenius map $\Frob: W(\kk) \to W(\kk)$ and $a^{(1/p)}$ is the image of $a \in W(\kk)$ under the inverse of the Frobenius map $\Frob^{-1}: W(\kk) \to W(\kk)$.
+We have
+\[ \bbD_\kk = \bigoplus_{i>0} V^i W(\kk) \oplus W(\kk) \oplus \bigoplus_{j > 0} W(\kk) F^j. \]
+The Dieudonné ring $\bbD_\kk$ is a non-commutative ring.
+
+Dieudonné can act on $\underrightarrow{W}$ as follows.
+For a Witt vector $a \in W(\kk)$ and $\xi \in W_n(\kk)$, we set
+\[ a *_n \xi \coloneqq a^{1/p^n} \cdot \xi \in W_n(\kk). \]
+Then we have $a *_n V^m(\xi) = V^{m}(a *_{n-m} \xi)$.
+The $F$ acts as the usual Frobenius map $\Frob: W_n(\kk) \to W_n(\kk)$ and $V$ acts as
+\[ W_n(\kk) \to W_{n+1}(\kk), \quad (x_0, \ldots, x_{n}) \mapsto (0, x_0, \ldots, x_{n}). \]
+Directly check that the relations in $\bbD_\kk$ are satisfied.
+
+\paragraph{Dieudonné module of a $p$-divisible group.}
+Let $\kk$ be a perfect field of characteristic $p$.
+Consider the functor $M: \mathbf{ACU}_\kk \to \mathbf{Mod}_{\bbD_\kk}$ defined by $G \mapsto M(G) \coloneqq \Hom_{\mathbf{ACU}_\kk}(G, \underrightarrow{W})$.
+Here $\mathbf{ACU}_\kk$ is the category of commutative affine unipotent group schemes over $\kk$ and $\mathbf{Mod}_{\bbD_\kk}$ is the category of left $\bbD_\kk$-modules.
+The action of $\bbD_\kk$ on $M(G)$ is given by action on $\underrightarrow{W}$.
+
+\begin{remark}
+	We have $M(G^{(p)}) = M(G)^{(p)}$ and $M$ is commutative with the separable field extension.
+\end{remark}
+
+\begin{theorem}[Dieudonné]
+	The functor $M$ is an anti-equivalence of categories between the category of commutative affine unipotent group schemes over $\kk$ and the category of left $\bbD_\kk$-modules with $V$ unilpotent.
+\end{theorem}
+
+The scheme of finite type over $\kk$ corresponds to the finitely generated $W(\kk)$-module under the duality.
+
+\begin{example}
+	Consider $\bbG_a = W_1$.
+	Then $M(\bbG_a) = \Hom_{\mathbf{ACU}_\kk}(\bbG_a, \underrightarrow{W}) = \Hom_{\mathbf{ACU}_\kk}(\bbG_a, \bbG_a) = \kk[F] = \bbD_\kk / (V)$.
+
+	In general, we have $M(W_n) = \bbD_\kk / (V^n)$.
+	Indeed, $\Hom_{\mathbf{ACU}_\kk}(G, W_n) = \ker (V^n: M(G) \to M(G)) = \Hom_{\mathbf{Mod}_{\bbD_\kk}}(\bbD_\kk / (V^n), M(G))$ for any $G \in \mathbf{ACU}_\kk$.
+	By the theorem, we get $M(W_n) = \bbD_\kk / (V^n)$.
+\end{example}
+
+\paragraph{Goal for next section.}
+We will try to illustrate that there are one-to-one correspondence between $p$-divisible groups over $\kk$ and finitely generated free $\bbD_\kk$-modules.
+Here ``finitely generated free'' are as $W(\kk)$-modules.
+And the later is classified by the Dieudonné-Manin classification theorem, corresponding to the rational number in $[0,1]$ by taking the quotient of the rank and height of the $p$-divisible group.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
