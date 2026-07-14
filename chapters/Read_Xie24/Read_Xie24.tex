@@ -1,22 +1,22 @@
 \documentclass[sectionlevel=chapter]{noteformyself}
 \usepackage{draftwatermark} % 水印宏包
 
-\input{../../Accessories/notation.tex}
-\addbibresource{../../Accessories/ref.bib}
+\input{../../accessories/notation.tex}
+\addbibresource{../../accessories/ref.bib}
 \newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
 \newcommand{\alert}[1]{\textcolor{red!68!black}{#1}} 
-
-\allowdisplaybreaks
-
-
-\newtheoremstyle{mystyle}{}{}{}{}{\bfseries}{.}{ }{}
-\theoremstyle{mystyle}
-\newtheorem{mainthm}{Theorem}
-\renewcommand{\themainthm}{\Alph{mainthm}}
-\mybackgroundtcbsetup{mainthm}{red}{}
-\crefname{mainthm}{Theorem}{Theorems}
+%
+% \allowdisplaybreaks
+%
+%
+% \newtheoremstyle{mystyle}{}{}{}{}{\bfseries}{.}{ }{}
+% \theoremstyle{mystyle}
+% \newtheorem{mainthm}{Theorem}
+% \renewcommand{\themainthm}{\Alph{mainthm}}
+% \mybackgroundtcbsetup{mainthm}{red}{}
+% \crefname{mainthm}{Theorem}{Theorems}
 
 \newcommand{\mix}{\text{mix}}
 \newcommand{\Per}{\upoperatorname{Per}}
@@ -38,18 +38,18 @@
 
 \begin{document}
 
-    \maketitle
+\maketitle
 
-    \tableofcontents
+\tableofcontents
 
-    % \input{text.tex} % 这里是正文
-    \input{Introduction_and_setup/text.tex}
-    \input{Preliminaries/text.tex}
-    \input{Inequalities/text.tex}
-    \input{Semi-continuity/text.tex}
-    \input{Periodic_points/text.tex}
-    \input{Application_to_KSC/text.tex}
+% \input{text.tex} % 这里是正文
+\input{Introduction_and_setup/text.tex}
+\input{Preliminaries/text.tex}
+\input{Inequalities/text.tex}
+\input{Semi-continuity/text.tex}
+\input{Periodic_points/text.tex}
+\input{Application_to_KSC/text.tex}
 
-    \printbibliography[heading=bibintoc, title={References}]
-    
+\printbibliography[heading=bibintoc, title={References}]
+
 \end{document}
