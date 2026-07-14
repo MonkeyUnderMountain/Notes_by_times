@@ -1,0 +1,290 @@
+% !TeX root = p-divisible-1.tex
+\section[The p-divisible group 1: group schemes]{The $p$-divisible group 1: group schemes}
+
+\subsection{Group schemes}
+
+In the classical theory of algebraic groups, there are some strage phenomena that arise when we consider group schemes over a base scheme of characteristic $p$.
+
+\begin{example}
+	Let $E$ be an elliptic curve over an algebraically closed field $\kkk$ of characteristic $p>0$.
+	Then the relative Frobenius morphism $F: E \to E^{(p)}$ is a group scheme homomorphism of degree $p$.
+	However, its kernel on $\kkk$-points level is trivial, i.e. $\ker(F)(\kkk) = \{0\}$.
+\end{example}
+
+\begin{definition}[Group scheme]
+	Let $S$ be a scheme and $G$ be an $S$-scheme.
+	A \emph{group scheme structure} on $G$ is a functor $\widetilde{h_G}$ with a factorization of the functor
+	\[ h_G: \Sch_S \xrightarrow{\widetilde{h_G}} \Grp \xrightarrow{\text{forget}} \Set, \]
+	where $h_G = \Hom_S(-,G)$ and $\Grp$ is the category of groups and group homomorphisms.
+\end{definition}
+
+\begin{example}[Constant group scheme]
+	Let $G$ be an abstract group and $S$ be a scheme.
+	Then the \emph{constant group scheme} associated to $G$ is the $S$-scheme
+	\[ G_S := \coprod_{g \in G} S, \]
+	with the group scheme structure given by the functor
+	\[ \widetilde{h_{G_S}}: \Sch_S \to \Grp, \quad T \mapsto \Hom_S(T, G_S) = \coprod_{g \in G} \Hom_S(T, S) = \coprod_{g \in G} \Hom(T, S) \]
+	where the group structure is given by the group structure of $G$.
+\end{example}
+
+\begin{example}
+	The following are some classical examples of group schemes over $\Spec \bbZ$:
+	\begin{enumerate}
+		\item The additive group scheme $\bbG_a := \Spec \bbZ[x]$.
+		\item The multiplicative group scheme $\bbG_m := \Spec \bbZ[x, x^{-1}]$
+		\item The general linear group scheme $\GL_n := \Spec \bbZ[x_{ij}, \det(x_{ij})^{-1}]$.
+	\end{enumerate}
+	Note that the group scheme can be defined over any base scheme $S$ by base change, e.g. $\bbG_{a,S} := \bbG_a \times_{\Spec \bbZ} S$.
+	And we have $\bbG_{a}(T) = \calO_T$ and $\bbG_{m}(T) = \calO_T^*$ for any $S$-scheme $T$.
+\end{example}
+
+\begin{example}
+	Let $S$ be a scheme of characteristic $p>0$.
+	Then $\alpha_{p^n} \coloneqq \Spec \calO_S[x]/(x^{p^n})$ is a group scheme over $S$ with the group structure given by the addition on $\alpha_{p^n}(T) = \{ f \in \calO_T \mid f^{p^n} = 0 \}$ for any $S$-scheme $T$.
+\end{example}
+
+\begin{example}
+	Let $S$ be a scheme and $\Lambda \coloneqq \Spec \calO_S\left[\{x_i\}_{i \in \bbZ_{>0}}\right]$.
+	Then $\Lambda(T) = \{ (a_i)_{i \in \bbZ_{>0}} \mid a_i \in \calO_T\}$ for any $S$-scheme $T$.
+	The group structure on $\Lambda$ is given by the multiplication on $1 + t \calO_T[[t]]$ via the isomorphism $(a_i)_{i \in \bbZ_{>0}} \mapsto 1 + \sum_{i=1}^{\infty} a_i t^i$.
+\end{example}
+
+
+\subsection{Affine commutative group schemes}
+
+Let $S = \Spec \kk$ be the spectrum of a field $\kk$ and denote by $\mathbf{AC}_\kk$ the category of affine commutative group schemes over $\kk$.
+
+Let $G = \Spec \calO_G$ be an affine commutative group scheme over $\kk$.
+Then the group structure on $G$ induces a \emph{Hopf algebra structure} on $\calO_G$, which is given by the following data:
+\begin{enumerate}
+	\item a comultiplication $\Delta: \calO_G \to \calO_G \otimes_\kk \calO_G$;
+	\item a counit $\epsilon: \calO_G \to \kk$;
+\end{enumerate}
+satisfying the corresponding axioms of group structure on $G$.
+
+\begin{theorem}[Grothendieck]
+	The category $\mathbf{AC}_\kk$ of affine commutative group schemes over $\kk$ is an abelian category.
+\end{theorem}
+
+Explicitly, let $\psi: G \to H$ be a morphism of affine commutative group schemes.
+Then
+\begin{itemize}
+	\item $\ker \psi = \psi^{-1}(e_H)$;
+	\item $\coker \psi = H / \psi(G) = \Spec \calO_H^{G}$;
+	\item $\psi$ is a monomorphism if and only if $\calO_H \to \calO_G$ is surjective;
+	\item $\psi$ is an epimorphism if and only if $\calO_H \to \calO_G$ is injective.
+\end{itemize}
+Here an element $f \in \calO_H$ is $G$-invariant if for any $\kk$-scheme $T$, $f \otimes 1 \in \calO_{H \times T}$ is invariant under the action of $G(T)$ on $H(T)$.
+
+The functor $h: \mathbf{AC}_\kk \to \Sh(\Sch_\kk)_{\text{fppf}}$ is fully faithful.
+And the algebras of finite type in $\mathbf{AC}_\kk$ form a full abelian subcategory of $\mathbf{AC}_\kk$.
+
+
+\subsection{Cartier duality}
+
+Let $G$ be a finite commutative group scheme over $\kk$.
+Then $\calO_G$ is a finite dimensional Hopf algebra over $\kk$.
+Set $\calO_{G^\vee} \coloneqq \calO_G^\vee = \Hom_\kk(\calO_G, \kk)$.
+Then $\calO_{G^\vee}$ is also a finite dimensional Hopf algebra over $\kk$.
+The multiplication (resp. comultiplication) on $\calO_{G^\vee}$ is given by the comultiplication (resp. multiplication) on $\calO_G$.
+
+Hence, given a finite commutative group scheme $G$ over $\kk$, we can define its \emph{Cartier dual} $G^\vee$ to be the finite commutative group scheme over $\kk$ such that $\calO_{G^\vee} = \calO_G^\vee$.
+Then we get the following proposition.
+
+\begin{proposition}[Cartier duality, baby version]
+	The category of finite commutative group schemes over $\kk$ is anti-equivalent to itself via the functor $G \mapsto G^\vee$.
+\end{proposition}
+
+\begin{remark}
+	The condition that $G$ is finite guarantees that $\calO_G^{\vee\vee} \cong \calO_G$ and hence the duality is an anti-equivalence.
+\end{remark}
+
+
+\subsection{Formal group schemes}
+
+\begin{definition}[(Finite) formal scheme]
+	A \emph{formal scheme} over a field $\kk$ is a locally ringed space $(X, \calO_X)$ that can be written as a direct limit of schemes finite over $\kk$ with respect to a directed system.
+	That is, there exists a directed system of schemes $\{X_i\}_{i \in I}$ finite over $\kk$ such that
+	\[ X = \dirlim_{i \in I} X_i. \]
+\end{definition}
+
+\begin{example}
+	Let $\hat{G} = Spf \kk[[x_1, \ldots, x_n]] = \dirlim_{i} \kk[x_1,\ldots,x_n]/\frakm^n$ be the formal spectrum of the ring of formal power series in $n$ variables over $\kk$.
+	Then $\hat{G}$ is a formal scheme over $\kk$.
+\end{example}
+
+\begin{remark}
+	Let $\hat{A}$ be a complete noetherian local profinite $\kk$-algebra.
+	Then the topological structure on $\hat{A}$ is given by the $\mathfrak{m}$-adic topology, where $\mathfrak{m}$ is the maximal ideal of $\hat{A}$.
+\end{remark}
+
+We can also use (co)algebra to describe formal schemes.
+
+\begin{definition}
+	Let $C$ be a (co)commutative coalgebra over $\kk$.
+	We define a functor $\Sp^* C: \Sch_\kk \to \Set$ as
+	\[ \Sp^* C (T) = \left\{ f \in C \otimes_\kk \calO_T \mid \Delta(f) = f \otimes f, e(f) = 1 \right\}. \]
+\end{definition}
+
+When $C$ is finite dimensional, then $\Sp^* C$ is representable.
+Then a formal scheme $X$ can be defined by
+\[ X = \dirlim X_\alpha = \dirlim \Sp^* C_\alpha = \Sp^* \dirlim C_\alpha, \]
+where $\{C_\alpha\}$ is a directed system of finite dimensional coalgebras over $\kk$.
+
+\begin{theorem}
+	And coalgebra over $\kk$ is a direct limit of finite dimensional coalgebras over $\kk$.
+\end{theorem}
+
+Hence, for any coalgebra $C$ over $\kk$, we can define a formal scheme $\Sp^* C$ over $\kk$.
+
+\begin{remark}
+	Let $X = \Sp^* C$, $Y = \Sp^* D$ be two formal schemes.
+	Then $X \times Y \cong \Sp^* (C \ten D)$.
+	% \Yang{commutative of limit and product}
+\end{remark}
+
+
+\begin{definition}[Formal group scheme]
+	A \emph{formal group scheme} over a field $\kk$ is a formal scheme $\hat{G}$ over $\kk$ together with a functor $\widetilde{h_{\hat{G}}}: \Sch_\kk \to \Grp$ with the factorization of the functor $h_{\hat{G}}$.
+\end{definition}
+
+Let $G = \Sp^* C$ be a commutative formal group scheme over $\kk$.
+Then the group structure on $G$ induces a algebra structure on $C$.
+Together with the original coalgebra structure on $C$, we get a Hopf algebra structure on $C$.
+
+Given a bi-commutative Hopf algebra $C$ over $\kk$, we can define the following two data:
+\begin{itemize}
+	\item a formal group scheme $\Sp^* C$ over $\kk$;
+	\item an affine commutative group scheme $\Spec C$ over $\kk$.
+\end{itemize}
+
+\begin{theorem}[Cartier duality]
+	The functor $\mathbf{AC}_\kk \to \mathbf{Commutative Formal Group Schemes}_\kk$ given by $G \mapsto \calO_G \mapsto \Sp^* \calO_G$ is an anti-equivalence of categories.
+	We denote the resulting formal group scheme by $D(G)$.
+\end{theorem}
+
+\begin{example}
+	Let $G = \bbG_m$.
+	Then $\calO_G = \kk[x, x^{-1}]$ and $\Sp^* \calO_G$ is given the discrete group $\bbZ$.
+
+	For $G = \bbG_a$, then its Cartier dual is given by the formal completion of $\bbG_a$ at the identity element.
+\end{example}
+
+Let $G$ be commutative group scheme over $\kk$.
+Then the formal completion of $G$ at the identity element $e \in G(\kk)$ is a formal group scheme $\hat{G}_e$ over $\kk$.
+Then we can take the Cartier dual of $\hat{G}_e$ to get a commutative group scheme over $\kk$.
+Note that here we do not require $G$ to be affine.
+Hence one can apple the argument to the case of abelian varieties.
+
+\begin{theorem}
+	Let $\kk$ be field of characteristic $0$ and $G$ be a group scheme.
+	Then consider the formal completion $\hat{G}_e$ of $G$ at the identity element.
+	The hopf algebra on $\hat{G}_e$ is isomorphic to the universal enveloping algebra of the Lie algebra $\Lie(G)$.
+\end{theorem}
+
+\paragraph{Formal Lie group}
+Let $\hat{G} = Spf \kk[[x_1, \ldots, x_n]]$ and $X = (x_1, \ldots, x_n), Y = (y_1, \ldots, y_n)$.
+We say that $\hat{G}$ is a \emph{formal Lie group} if there is a formal power series $\Phi(X, Y) = (\Phi_1(X, Y), \ldots, \Phi_n(X, Y))$ with $\Phi_i(X, Y) \in \kk[[X, Y]]$ such that
+\begin{itemize}
+	\item $\Phi(\Phi(X, Y), Z) = \Phi(X, \Phi(Y, Z))$;
+	\item $\Phi(X, 0) = \Phi(0, X) = X$, $\Phi(0,Y) = \Phi(Y, 0) = Y$;
+	\item $\Phi(X, Y) = X + Y + \text{higher order terms}$.
+\end{itemize}
+The $\Phi$ should be viewed as the Taylor expansion of the group law on $G$ at the identity element $e \in G(\kk)$.
+
+
+Recall the \emph{Pontrgyagin duality} says that the category of locally compact abelian groups is anti-equivalent to itself via the functor $G \mapsto \Hom(G, S^1)$.
+
+\begin{theorem}
+	Let $G$ be an affine commutative group scheme.
+	Define $\hat{G} = \Hom_{gp}(G, \bbG_m)$ and the functor $h: T \mapsto \Hom_{T-gp}(G_T, \bbG_{m,T})$.
+	Then $T$ is representable by the formal group scheme $D(G)$.
+\end{theorem}
+
+Consider the bi-group homomorphism
+\[ \alpha_p \times \alpha_p \to \bbG_m, \quad (x, y) \mapsto \exp(xy) = 1 + xy + \frac{(xy)^2}{2!} + \cdots + \frac{(xy)^{p-1}}{(p-1)!}. \]
+Then the Cartier dual of $\alpha_p$ gives a homomorphism $\alpha_p \to D(\alpha_p)$.
+Indeed, it is an isomorphism.
+
+\paragraph{Frobenius and Verschiebung}
+Now turn to the characteristic $p$ case.
+We have the Frobenius morphism.
+Let $G$ be a group scheme over a field $\kk$ of characteristic $p>0$.
+Then the Frobenius twist $G^{(p)}$ is also a group scheme over $\kk$ and the relative Frobenius morphism $F_{G/\kk}: G \to G^{(p)}$ is a group scheme homomorphism.
+For the corresponding formal group scheme $D(G)$, we also have tha Frobenius morphism $F_{D(G)/\kk}: D(G) \to D(G)^{(p)}$.
+Take the Cartier dual of $F_{D(G)/\kk}$, we get a group scheme homomorphism $V_G: G^{(p)} \to G$, which is called the \emph{Verschiebung} of $G$.
+
+\begin{remark}
+	We have $F \circ V = [p]: G^{(p)} \to G^{(p)}$ and $V \circ F = [p]: G \to G$.
+\end{remark}
+
+\paragraph{Connected-\'etale sequence of formal group schemes}
+
+Let $\hat{G}$ be a formal group scheme over a field $\kk$ and $\hat{G}_0$ be the connected component of $\hat{G}$ at the identity element.
+Then we have the following exact sequence of formal group schemes
+\[ 0 \to \hat{G}_0 \to \hat{G} \to \pi_0(\hat{G}) \to 0. \]
+Here $\pi_0(\hat{G})$ is called the \'etale part of $\hat{G}$.
+When $\kk$ is perfect, we have $\pi_0(\hat{G}) = \hat{G}_{\text{red}}$ and $\hat{G} = \hat{G}_0 \times \hat{G}_{\text{red}}$.
+This is the so-called \emph{connected-\'etale sequence} of formal group schemes.
+
+Let $G \in \mathbf{AC}_\kk$ be an affine commutative group scheme.
+We say that $G$ is \emph{additive} or \emph{unipotent} (resp. \emph{multiplicative} or \emph{diagonalizable}) if $D(G)$ is connected (resp. \'etale).
+If $\kk$ is perfect, then we have a decomposition $G = G_0 \times G_{\text{red}}$ with $G_0$ additive and $G_{\text{red}}$ multiplicative.
+
+For a finite commutative group scheme $G$ over a perfect field $\kk$ of characteristic $p$, we have the following decomposition
+\[ G = G_{i,a} \times G_{i,m} \times G_{e,a} \times G_{e,m}, \]
+where $G_{i,a}$ is infinitesimal and additive, $G_{i,m}$ is infinitesimal and multiplicative, $G_{e,a}$ is \'etale and additive, and $G_{e,m}$ is \'etale and multiplicative.
+Suppose that $\kk$ is algebraically closed.
+Then $G_{e,m}$ is a constant finite group scheme with order not divided by $p$; $G_{e,a}$ is a constant finite $p$-group scheme; $G_{i,m} \cong \mu_{p^n}$ for some $n \ge 0$; and $G_{i,a}$ is complicated.
+
+On $G_{i,a}$, the Frobenius morphism and the Verschiebung morphism are nilpotent;
+on $G_{i,m}$, the Frobenius is nilpotent and the Verschiebung is an isomorphism;
+on $G_{e,a}$, the Frobenius is an isomorphism and the Verschiebung is nilpotent;
+on $G_{e,m}$, both the Frobenius and the Verschiebung are isomorphisms.
+
+
+\subsection{Smooth formal group schemes}
+
+Let $\hat{G} = Spf \hat{A}$ with $\hat{A}$ local be a connected formal group.
+We say that $\hat{G}$ is \emph{noetherian} if $\hat{A}$ is noetherian.
+The \emph{dimension} of $\hat{G}$ is defined to be the dimension of $\hat{A}$ as a local ring.
+Note that by Cohen's structure theorem, we have $\hat{A} \cong \kk[[x_1, \ldots, x_n]]$ if $\hat{G}$ is smooth.
+
+\begin{proposition}
+	Let $\hat{G}$ be a connected noetherian formal group scheme over a field $\kk$ of characteristic $p>0$.
+	Then $\hat{G}$ is smooth if and only if the Frobenius morphism $F_{\hat{G}/\kk}: \hat{G} \to \hat{G}^{(p)}$ is an epimorphism.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
