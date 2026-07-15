@@ -142,11 +142,36 @@ We say that $\calE$ is ample (resp. nef) if $\calO_{\bbP(\calE)}(1)$ is ample (r
 
 \subsection{Canonical divisor and duality}
 
-\begin{theorem}[{Grothendieck duality, \Yang{reference request}}]
-	Let $f:X\to Y$ be a proper morphism of noetherian schemes of pure relative dimension $n$.
-	Then there exists a functor $f^!:\sfD^+(Y)\to \sfD^+(X)$ such that for any $\calF\in \sfD^+(X)$ and $\calG\in \sfD^-(Y)$, we have
+\begin{theorem}[{Grothendieck duality, \cite[Tags \href{https://stacks.math.columbia.edu/tag/0A9Y}{0A9Y} and \href{https://stacks.math.columbia.edu/tag/0AU3}{0AU3}]{Stacks}}]
+	Let $f:X\to Y$ be a proper morphism of schemes of finite type over a noetherian base schemes.
+	Then there exists a functor $f^!:\sfD^+(Y)\to \sfD^+(X)$ such that for any $\calF\in \sfD^-(X)$ and $\calG\in \sfD^+(Y)$, we have
 	\[ \sfR f_*\sfR \calHom_X(\calF, f^!\calG) \cong \sfR \calHom_Y(\sfR f_*\calF, \calG). \]
 \end{theorem}
+
+\begin{remark}
+	Recall some fact about the derived category (\cite[Tag \href{https://stacks.math.columbia.edu/tag/05QI}{05QI}]{Stacks}).
+	For any abelian category $\bfA$, we can define the derived category $\sfD(\bfA)$ of $\bfA$.
+	The objects of $\sfD(\bfA)$ are the complexes of objects in $\bfA$ and the morphisms are extanded by localization by quasi-isomorphic, i.e., if a morphism $f: A^\bullet \to B^\bullet$ induces isomorphisms on cohomology, then $f$ is an isomorphism in $\sfD(\bfA)$.
+	In particular, if $\bfA$ has enough injectives (resp. projectives), then an object $A \in \Obj(\bfA) \subset \Obj(\sfD(\bfA))$ is isomorphic to an injective (resp. projective) resolution of it in $\sfD(\bfA)$.
+	There are some subcategories of $\sfD(\bfA)$, namely, $\sfD^+(\bfA)$, $\sfD^-(\bfA)$, and $\sfD^b(\bfA)$, which are the full subcategories of $\sfD(\bfA)$ consisting of complexes has bounded below, bounded above, and bounded cohomology, respectively.
+	Let $X$ be a scheme and $\bfA = \QCoh(X)$ be the category of quasi-coherent sheaves on $X$.
+	We denote by $\sfD(X) = \sfD(\QCoh(X))$ (and similarly for $\sfD^+(X)$, $\sfD^-(X)$, and $\sfD^b(X)$) here.
+
+	Let $\bfA$ and $\bfB$ be abelian categories and $F: \bfA \to \bfB$ an additive functor.
+	Suppose that $\bfA$ has enough injectives and $F$ is left exact.
+	Then we can define its \emph{right derived functor} $\sfR F: \sfD(\bfA) \to \sfD(\bfB)$ of $F$.
+	For an complex $I^\bullet = (\cdots \to I^n \to I^{n+1} \to \cdots)$ consisting of injective objects in $\bfA$, we have $\sfR F(I^\bullet) = (\cdots \to F(I^n) \to F(I^{n+1}) \to \cdots)$.
+	In particular, we can compute $\sfR F(A)$ for an object $A \in \Obj(\bfA)$ by taking an injective resolution.
+	For $\calF, \calG \in \sfD(X)$, the functor $\sfR \calHom_X(\calF, \calG)$ above can be defined as the right derived functor of the left exact functor $\calHom_X(\calF, -): \QCoh(X) \to \Mod_{\calO_X}$ (or $\calHom_X(-, \calG): \Coh(X) \to \QCoh(X)$).\Yang{ref required}
+\end{remark}
+
+\begin{example}
+	Suppose that $f: X \to Y$ is a smooth projective morphism of relative dimension $n$.
+	Then we have $f^!\calO_Y \cong \omega_{X/Y}[n]$ with $\omega_{X/Y} = \bigwedge^n \Omega_{X/Y}$ the relative canonical sheaf.
+	Here $A^\bullet[n]$ is the complex with $A^i$ in degree $i-n$ for a complex $A^\bullet$.
+	Hence $\omega_{X/Y}[n]$ is a complex with $\omega_{X/Y}$ in degree $-n$ and $0$ in other degrees.
+	\Yang{}
+\end{example}
 
 Many other duality theorems can be deduced from Grothendieck duality.
 Let us consider the Serre duality as an example.
@@ -155,6 +180,7 @@ Let us consider the Serre duality as an example.
 	Let $\calF$ be a locally free sheaf on a smooth projective variety $X$ of dimension $n$ over an algebraically closed field $\kkk$.
 	Take $\calG = \calO_Y = \kkk$.
 	Then the Grothendieck duality gives
+	\[ \sfR \Gamma(\sfR \calHom_X(\calF, f^!\calO_Y)) \cong \sfR \Hom_\kkk(\sfR \Gamma \calF, \kkk). \]
 	\[ \Hom_\kkk(\sfR \Gamma(\calF), \kkk) \cong \sfR \Gamma(\sfR \calHom_X(\calF, f^!\calO_Y)). \]
 	The sheaf $f^!\calO_Y$ is just the twisted cannonical sheaf $\omega_X[n]$ with $\omega_X = \bigwedge^n \Omega_X$ since $X$ is projective smooth.
 	The LHS is equal to $\Hom_\kkk(\sfR \Gamma(\calF), \kkk) = \Hom(H^i(X, \calF), \kkk)[-i]$.\Yang{}.
