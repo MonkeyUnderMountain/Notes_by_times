@@ -1,0 +1,225 @@
+% !TeX root = positivity3.tex
+\section[Positivity 3: results in characteristic p]{Positivity 3: results in characteristic $p$}
+
+\subsection[Positivity in positive characteristic and t-invariant]{Positivity in positive characteristic and $t$-invariant}
+
+Let $Y$ be a variety over $\kk$, $U \subset Y$ be a non-empty open subset, $H$ an ample $\bbQ$-divisor on $Y$, and $\calG$ a coherent sheaf on $Y$.
+\begin{definition}
+	We define
+	\begin{align*}
+		T_U(\calG,H)    & = \{t \in \bbQ \mid \exists e > 0 \text{ s.t. } F_Y^{e*} \calG(-\lceil p^e t H \rceil)|_U \text{ is globally generated}\}, \\
+		t_U(\calG,H)    & = \sup\ \{t \in T_U(\calG,H)\},                                                                                            \\
+		t_\eta(\calG,H) & = \dirlim_{U \subset Y \text{ open}} t_U(\calG,H) = \sup_U t_U(\calG,H).
+	\end{align*}
+\end{definition}
+
+\begin{example}
+	Suppose that $H$ is Cartier.
+	Then we have
+	\[ t_X(aH,H) = \sup\ \{t \in \bbQ \mid aH - tH \text{ is nef}\} = a \]
+	for every integer $a \geq 0$.
+	And
+	\[ t_X(\calO_Y(aH)\oplus \calO_Y(bH),H) = \min\ \{a,b\} \]
+\end{example}
+
+
+\begin{proposition}
+	We have the following properties of $t_U(\calG,H)$.
+	\begin{enumerate}
+		\item $\calF \to \calG \to 0 \implies t_U(\calF,H) \leq t_U(\calG,H)$.
+		\item $t_U(\calF \otimes \calG,H) \geq t_U(\calF,H) + t_U(\calG,H)$.
+		\item $t_U(F_Y^{e*}\calG,H) = p^e t_U(\calG,H)$.
+		\item $t_U(\calG,H) \geq 0 \implies \calG$ is weakly positive over $U$.\Yang{}
+		\item for $H_1,H_2$ ample $\bbQ$-divisors, we have $t_U(\calG,H_1) \geq 0 \iff t_U(\calG,H_2) \geq 0$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}\label{thm:t-invariant-and-weakly-positive}
+	Let $Y$ be a smooth projective variety over $\kk$, $H$ an ample divisor and $\calG$ a torsion-free coherent sheaf on $Y$.
+	If $t_Y(\calG,H) \geq 0$, then $\calG$ is weakly positive (in the sense of Viehweg).
+\end{theorem}
+\begin{proof}
+	By \cref{lem:weakly-positive-and-generically-globally-generated}, letting $D = mH$ for $m \gg 0$, we have that $\forall e, t_\eta(F_Y^{e*}\calG,H) \geq 0$ and $F_Y^{e*}\calG(mH)$ is generically globally generated.
+
+	Fix $m>0$, WTS $(\Sym^m \calG) \otimes H$ is generically globally generated after sufficiently many tensors.
+	Fix $l>0$ such that $lH - K_Y - (\dim Y + 1)A - H$ is ample.
+	% Then for $e \gg 0$, we have $t_Y(F_Y^{e*}\calG,H) \geq 0$ and $F_Y^{e*}\calG(lH)$ is generically globally generated.
+	Since $\calG^{\otimes lm} \calG \to \Sym^{lm} \calG$ is surjective, hence $t(\Sym^{lm} \calG,H) \geq t(\calG^{\otimes lm},H) \geq 0$.
+	Then $\Sym^{lm} \calG \otimes \calO_Y(lH)$ is generically globally generated.
+
+
+	\Yang{}
+\end{proof}
+
+\begin{lemma}\label{lem:weakly-positive-and-generically-globally-generated}
+	Notation as \cref{thm:t-invariant-and-weakly-positive}.
+	Let $A$ be an ample and base point free Cartier divisor on $Y$.
+	Suppose that $t_Y(\calG,H) \geq 0$.
+	Let $D$ be a Cartier divisor on $Y$ such that $D-K_Y-(\dim Y + 1)A - H$ is ample.
+	Then for any torsion-free coherent sheaf $\calF$ on $Y$ with $t_Y(\calF,H) \geq 0$, the sheaf $\calF(D)$ is generically globally generated.
+\end{lemma}
+\begin{proof}
+	\Yang{}
+\end{proof}
+
+
+\begin{theorem}[Mumford's regularity theorem]\label{thm:mumford-regularity}
+	Let $Y$ be a smooth projective variety over $\kk$ and $A$ an ample and base point free Cartier divisor on $Y$.
+	Let $\calF$ be a coherent sheaf on $Y$.
+	If $H^i(Y, \calF(-iA)) = 0$ for all $i>0$, then $\calF$ is globally generated.
+	\Yang{}
+\end{theorem}
+
+
+\subsection[Analogue of Viehweg's weak positivity theorem in characteristic p]{Analogue of Viehweg's weak positivity theorem in characteristic $p$}
+
+
+On characteristic $0$, a morphism $f: X \to Y$ of smooth projective varieties has smooth general fibers.
+However, in characteristic $p$, this is not true in general.
+For example, let $X$ be the hypersurface in $\bbA^4$ defined by $y^p = tx^p + s$, and let $f: X \to \bbA^2$ be the projection to the $(s,t)$-plane.
+Then every fiber of $f$ is even non-reduced, and hence not smooth.
+The results is that Viehweg's weak positivity theorem does not hold in characteristic $p$.
+Raynaud's surfaces is a counterexample for the weak positivity theorem in characteristic $p$.
+
+We have the following result in characteristic $p$.
+
+\begin{theorem}\label{thm:positivity3-Patakfalvi12}
+	Let $f: X \to Y$ be a projective surjective morphism with $X$ normal and $Y$ regular, and let $\Delta \geq 0$ be a $\bbQ$-Weil divisor on $X$.
+	Assume that
+	\begin{enumerate}
+		\item there exists an integer $a > 0$ such that $p \nmid a$ and $a(K_{X/Y} + \Delta)$ is an integral Weil divisor;
+		\item the geometric generic fiber $(X_{\overline{\eta}}, \Delta_{\overline{\eta}})$ is $F$-regular, $a(K_{X_{\overline{\eta}}} + \Delta_{\overline{\eta}})$ is Cartier and ample.
+	\end{enumerate}
+	Then there exists an integer $m_0 > 0$ such that for each $m \geq m_0$, we have
+	\[ t_\eta (f_* \calO_X(mg(K_{X/Y} + \Delta))) \geq 0. \]
+\end{theorem}
+
+The theorem is first proved by Patakfalvi in 2017.
+
+\begin{theorem}\label{thm:positivity3-Ejiri24}
+	Let $(X, \Delta \geq 0)$ be a normal projective pair and $Y$ a normal variety of dimension $d$.
+	Let $U \subset Y$ be an open subset and $H$ an ample divisor on $Y$.
+	Let $f:X \to Y$ be a surjective morphism.
+	Assume that
+	\begin{enumerate}
+		\item $H$ is base point free;
+		\item there exists an integer $a > 0$ such that $p \nmid a$ and $a(K_X + \Delta)$ is integral (as a Weil divisor);
+		\item $(X_U, \Delta_U)$ is $F$-regular, $a(K_{X_U} + \Delta_U)$ is Cartier and f-ample over $U$.
+	\end{enumerate}
+	Then there exists an integer $m_0 > 0$ such that for each $m \geq m_0$ and $l \geq ma(d + 1)$, we have
+	\[ f_* \calO_X(ma(K_{X} + \Delta) \otimes \calO_Y(lH)) \]
+	is globally generated over $U$.
+\end{theorem}
+
+This theorem is first proved by Ejiri in 2024.
+Assuming \cref{thm:positivity3-Ejiri24}, we give a proof of \cref{thm:positivity3-Patakfalvi12}.
+
+\begin{proof}[\cref{thm:positivity3-Ejiri24} $\implies$ \cref{thm:positivity3-Patakfalvi12}]
+	Let $f,X,Y,\Delta$ be as in \cref{thm:positivity3-Patakfalvi12}.
+	The condition (b) implies that $X_{Y^e}$ is integral for each $e \geq 0$.
+	$F_Y$ is flat implies that $K_{X_{Y^e}/Y^e} = \pi_e^* K_{X/Y}$.
+	Let $X_e$ be the normalization of $X_{Y^e}$, then $K_{X_e} = \nu^* K_{X_{Y^e}} - C$ for some effective divisor $C$.
+	Condition (b) implies that $C_{\overline{\eta^e}} = 0$.
+	In summmary, considering $X_e \to Y^e$, we have $(X_e)_{\overline{\eta^e}} = X_{\overline{\eta}}$, $K_{(X_e/Y^e)} = \pi_e^* K_{X/Y} - C$, and $\pi_e^* (K_{X/Y} + \Delta) = K_{X_e/Y^e} + \Delta_e$ for some effective $\bbQ$-divisor $\Delta_e$.
+
+	Fix an ample and base point free divisor $H$ on $Y$.
+	Choose an open subset $U \subset Y$ such that $(X_U, \Delta_U)$ is $F$-regular and $a(K_{X_U} + \Delta_U)$ is Cartier and ample over $U$.
+	Applying \cref{thm:positivity3-Ejiri24} to $(X_e, \Delta_e)/Y^e$, we see that there exists an integer $m_0 > 0$ such that for each $m \geq m_0$ and $l = ma(d + 1)$, we have
+	\[ f_{e*} \calO_{X_e}(ma(K_{X_e} + \Delta_e) \otimes \calO_{Y^e}(lH^e)) \]
+	is globally generated over $U^e$.
+
+	Comparing the sheaves $f_{e*} \calO_{X_e}(ma(K_{X_e} + \Delta_e)$ and $F_Y^{e*} f_* \calO_X(ma(K_{X/Y} + \Delta))$,
+	\begin{align*}
+		f_{e*} \calO_{X_e}(ma(K_{X_e} + \Delta_e) \otimes \calO_{Y^e}(lH) & \cong f_{e*} \calO_{X_e}(ma(K_{X_{Y^e}/Y^e} + \Delta_e) \otimes \calO_{Y^e}(maK_{Y^e} + lH) \\
+		                                                                  & \cong F_Y^{e*} f_* \calO_X(ma(K_{X/Y} + \Delta) \otimes \calO_Y(maK_Y + lH)).
+	\end{align*}
+	It is globally generated over $U^e$, and hence implies that $t_\eta (f_* \calO_X(ma(K_{X/Y} + \Delta)) \geq 0$.
+\end{proof}
+
+Now we turn to prove \cref{thm:positivity3-Ejiri24}.
+
+\begin{proof}[Proof of \cref{thm:positivity3-Ejiri24}]
+	Consider the following commutative diagram
+	\[
+		\begin{tikzcd}
+			X^{eg} \arrow[d, "f^{eg}"] \arrow[r, "F_X^{eg}"] & X \arrow[d, "f"] \\
+			Y^{eg} \arrow[r, "F_Y^{eg}"] & Y
+		\end{tikzcd}
+	\]
+	Here $g$ is the integer such that $a \mid (p^g - 1)$.
+	Denote $B = a(K_X + \Delta)$ and $r_e = (p^{eg} - 1)/a$.
+	Then the trace map becomes
+	\[ f_* \Tr_{\Delta}^{eg}(mB): f_* F_{X*}^{eg} \calO_X((1 - p^{eg})(K_X + \Delta) + p^{eg}mB) \to f_*\calO_X(mB). \]
+	Assuming that $r_e/m$ is an integer.
+	It can also be written as
+	\[ F_{Y*}^{eg} (f_* \calO_X((p^{eg}-r_e/m)mB) \to f_*\calO_X(mB). \]
+	Note that we have a map $F_{Y*}^{eg} (f_* \calO_X(mB))^{\otimes p^{eg}-r_e/m} \to F_{Y*}^{eg} (f_* \calO_X((p^{eg}-r_e/m)mB)$.
+	Hence we have a map
+	\[ F_{Y*}^{eg} (f_* \calO_X(mB))^{\otimes p^{eg}-r_e/m} \to f_*\calO(mB). \]
+	Since $(X_U, \Delta_U)$ is $F$-regular and $B$ is ample over $U$, the trace map $f_* \Tr_{\Delta}^{eg}(mB)$ is surjective over $U$ for $m \gg 0$.
+	Since $B$ is ample over $U$, for $m \gg 0$ and any $l \geq 0$, we have $(f_* \calO_X(mB))^{\otimes l} \to f_* \calO_X(lmB)$ is surjective over $U$.
+	Choose $m_0$ large enough, the map $F_{Y*}^{eg} (f_* \calO_X(mB))^{\otimes p^{eg}-r_e/m} \to f_*\calO(mB)$ is surjective over $U$ for each $m \geq m_0$ and every $e \geq 0$.
+
+	I claim that for a coherent sheaf $\calF$ satisfying that $F_{Y*}^{eg} \calF^{\otimes p^{eg}-r_e/m} \to \calF$ is surjective over $U$ for every $e$, then $\calF \otimes \calO_Y(lH)$ is globally generated over $U$ for $l \geq ma(d + 1)$.
+	Let $N$ be the least integer such that $\calF \otimes \calO_Y(NH)$ is globally generated over $U$.
+	We have
+	\[ \bigoplus_{i \in I} F_*^{eg} \calO_Y(r_e/m H) \to F_*^{eg} \left( \calF(NH)^{\otimes p^{eg}-r_e/m} \otimes \calO_Y(r_e/m H) \right) \to \calF(NH) \]
+	is surjective over $U$.
+	Take $\varepsilon > 0$.
+	By Mumford's regularity, if $r_eN/m - p^{eg}d > \varepsilon p^{eg}$, then $\bigoplus_{i \in I} F_*^{eg} \calO_Y(r_e/m H)$ is globally generated over $U$.
+	And if $r_e N/m - p^{eg}d > \varepsilon p^{eg} + p^{eg}$, the $\left(F_{Y*}^{eg} \calO_Y(r_e/m H)\right)\otimes \calO_Y(-H)$ is globally generated over $U$.
+	By the minimality of $N$, we have $r_e N/m - p^{eg}d \leq \varepsilon p^{eg} + p^{eg}$.
+	Note that $r_e/m \sim O(p^{eg})/ma$ as $e \to \infty$.
+	Hence $N \leq ma(d+1+\varepsilon)$.
+	% \Yang{}
+\end{proof}
+
+
+\begin{remark}
+	In \cref{thm:positivity3-Patakfalvi12}, the assumption that $(X_{\overline{\eta}}, \Delta_{\overline{\eta}})$ is $F$-regular is hard to check in practice.
+	We have the following fact.
+	\begin{itemize}
+		\item regular $\implies$ $F$-regular;
+		\item over an algebraically closed field, a snc pair $(X, \Delta)$ is $F$-regular if and only if the coefficients of $\Delta$ are less than $1$, i.e. $(X, \Delta)$ is klt;
+		\item if $p \geq 5$ and over an algebraically closed field, the canonical surface singularities are $F$-regular.
+	\end{itemize}
+\end{remark}
+
+\begin{remark}
+	The original version of \cref{thm:positivity3-Ejiri24} requires that $(X_{\eta}, \Delta_{\eta})$ is $F$-regular.
+	Note that this does not imply that $(X_{\overline{\eta}}, \Delta_{\overline{\eta}})$ is $F$-regular.
+\end{remark}
+
+\begin{remark}
+	\cref{thm:positivity3-Patakfalvi12} can be used to study the moduli space.
+	\cref{thm:positivity3-Ejiri24} or its method can be used to study some concrete geometric structures, like the Iitaka conjecture.
+\end{remark}
+
+\begin{remark}
+	Either \cref{thm:positivity3-Patakfalvi12} or \cref{thm:positivity3-Ejiri24} need the (relative) ampleness.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

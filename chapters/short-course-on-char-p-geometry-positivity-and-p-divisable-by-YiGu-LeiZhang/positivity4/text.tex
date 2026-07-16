@@ -1,0 +1,260 @@
+% !TeX root = positivity4.tex
+\section{Positivity 4: further discussion and applications}
+
+\subsection{Without ampleness}
+
+\begin{proposition}
+	Let $f: X \to C$ be fibration onto a normal curve.
+	Assume $X_{\overline{\eta}}$ is regular and $K_{X/C} \sim_{\bbQ, / C} 0$.
+	Then $K_{X/C}$ is nef.
+\end{proposition}
+\begin{proof}[Proof (idea)]
+	Take an ample divisor $H$ on $X$.
+	The pair $(X_{\overline{\eta}},tH_{\overline{\eta}})$ is $F$-regular for $t \ll 1$.
+	For $m$ sufficiently divisible, $t_\eta (f_* \calO_X(m(K_{X/C} + tH))) \geq 0$.
+	Hence $f_* \calO_X(m(K_{X/C} + tH))$ is nef.
+	And we have the surjection $f^* f_* \calO_X(m(K_{X/C} + tH)) \to \calO_X(m(K_{X/C} + tH))$.
+	Hence $K_{X/C} + tH$ is nef.
+	Take limit $t \to 0$, we see that $K_{X/C}$ is nef.
+\end{proof}
+
+\begin{theorem}[Ejiri 23]
+	Condition as above proposition.
+	If for every $m$ sufficiently divisible, $\deg f_* \calO_X(m(K_{X/C})) = 0$, then $f$ is isotrivial.
+\end{theorem}
+
+\begin{question}
+	Let $f: X \to C$ be a fibration onto a normal curve with $X$ smooth projective.
+	Assume
+	\begin{enumerate}
+		\item $X_{\overline{\eta}}$ is regular;
+		\item $K_{X/C}$ is $f$-semi-ample.
+	\end{enumerate}
+	For sufficiently divisible $m$, is $f_* \calO_X(mK_{X/C})$ nef?
+	Further assume $\deg f_* \calO_X(mK_{X/C}) = 0$, is $Var(f) = 0$?
+\end{question}
+
+\begin{remark}
+	When $\kk = \bbC$, the answer is affirmative (Kawamata'85).
+\end{remark}
+
+Consider the question above.
+One can try the case that $\dim X = 3$ with smooth fibers $F$ and $\kappa(F) = 1$.
+
+
+\subsection{Applications to moduli space}
+
+\begin{theorem}[Pat'12]
+	Let $F: \Sch_\kk \to \Set$ be the functor given by
+	\[ Y \mapsto \left\{ f: X \to Y \middle| \substack{ f \text{ flat projective, relatively } S_2, G_1, \text{ sharply $F$-pure} \\ \text{ with Cartier index not divisible by } p, K_{X/Y} \text{ ample }, \Aut(X_y) \text{ finite }} \right\}. \]
+	If $F$ admits a coarse moduli space $\pi: F \to V$ (proper algebraic space) and a morphism $\rho: Z \to F$ such that $\pi \circ \rho$ is finite, then $V$ is projective.
+\end{theorem}
+
+\begin{theorem}[Pat'17]
+	The moduli $\overline{M}_{2,V}$ is projective over $\bbZ[1/30]$.
+\end{theorem}
+
+
+\subsection{Subadditivity of Kodaira dimension}
+
+The statements in characteristic $0$ is the following.
+Let $f: X \to Y$ be a fibration between smooth projective varieties.
+Suppose that $\dim X = n$, $\dim Y = m$.
+Then $C_{n,m}$ says that $\kappa(X) \geq \kappa(Y) + \kappa(X_{\overline{\eta}})$.
+
+On characteristic $p$, the issue is that the generic fiber may not be smooth and hence we need to define $\kappa(X_{\overline{\eta}})$.
+The original definition is to take a smooth model $X'_{\overline{\eta}} \to (X_{\overline{\eta}})_{\red}$ and define $\kappa(X_{\overline{\eta}}) := \kappa(X'_{\overline{\eta}})$.
+This is not natural in general.
+For example, take $X = \Spec \kk[x,y,t]/(y^2 - x^p - t)$ and $Y = \Spec \kk[t]$.
+Then $\kappa(X_{\overline{\eta}}) \geq 0$ but $\kappa(\widetilde{X}_{\overline{\eta}}) = -\infty$ since $\widetilde{X}_{\overline{\eta}}$ is a smooth rational curve.
+
+A better definition is the statement $SC_{n,m}$: $\kappa(X) \geq \kappa(Y) + \kappa(X_\eta)$, where $X_\eta$ is the generic fiber.
+Note that $X_\eta$ is regular (even not smooth in general) and hence $\kappa(X_\eta)$ is well-defined.
+We have $\kappa(X_\eta) \geq \kappa(X_{\overline{\eta}})$ and hence $SC_{n,m}$ implies $C_{n,m}$.
+
+\begin{remark}
+	The strong statement $SC_{n,m}$ fails in general.
+	There is a counterexample for $SC_{4,3}$ in characteristic $2$ and $SC_{2p-1,2p-2}$ in characteristic $p$ for $p \geq 3$ (Cascini-Ejiri-Kollár-Zhang'22).
+\end{remark}
+
+\begin{remark}
+	To attack abundance of threefolds, one need to study the case $q > 0$ and the Abunese map $a_X: X \to Y \xrightarrow{a_Y} A$ and $Y$ has maximal Albanese dimension.
+\end{remark}
+
+We except $C_{n,m}$ to be right, and $SC_{n,m}$ to be right when $Y$ is not uniruled.
+
+\begin{theorem}[Zhang'20]
+	Suppose that $p \geq 5$ and $Y$ has maximal Albanese dimension.
+	Then $SC_{3,3}$ holds.
+	Moreover, abundance holds for threefolds of when $q > 0$.
+\end{theorem}
+
+\begin{theorem}\label{thm:positivity4-application}
+	Let $f: (X, \Delta) \to Y$ be a fibration.
+	Assume
+	\begin{enumerate}
+		\item $Y$ is regular, $K_Y$ is big;
+		\item $(X_{\overline{\eta}}, \Delta_{\overline{\eta}})$ is $F$-regular and $K_{X_{\overline{\eta}}} + \Delta_{\overline{\eta}}$ has Cartier index $a$ not divisible by $p$;
+		\item $K_{X_{\overline{\eta}}} + \Delta_{\overline{\eta}}$ is ample.
+	\end{enumerate}
+	Then $K_X + \Delta$ is big, i.e. $\kappa(K_X + \Delta) \geq \kappa(Y) + \kappa(K_{X_{\overline{\eta}}} + \Delta_{\overline{\eta}})$.
+\end{theorem}
+
+The positivity will be used is
+\[ t_\eta(f_* \calO_X(am(K_{X/Y} + \Delta))) \geq 0. \]
+
+\begin{lemma}[Covering lemma]
+	Let $\pi:Z \to W$ be a surjective proper morphism, $D$ is a Cartier divisor on $W$.
+	Then $\kappa(Z, \pi^*D) = \kappa(W, D)$.
+\end{lemma}
+
+\begin{lemma}
+	Let $f: X \to Y$ be a fibration, $D \geq 0$ on $X$ and $A$ big on $Y$.
+	Then
+	\[ \kappa(X, D + f^*A) = \dim Y + \kappa(X_\eta, D_\eta). \]
+\end{lemma}
+
+% \begin{proof}[Proof of \cref{thm:positivity4-application}]
+% 	Take an ample divisor $H$ on $Y$ with $H \leq 1/ 2 K_Y$.
+% 	Consider the diagram
+% 	\[ \begin{tikzcd}
+% 			&& X_e = (X_{Y^e})^\nu \arrow[dl] \arrow[ddl, bend left, "f_e"] \arrow[dll, bend right] \\
+% 			X \arrow[d, "\pi"] & X_{Y^e} \arrow[d, "\pi'"] \arrow[l, "\pi_e"] & \\
+% 			Y  & Y^e \arrow[l, "F_Y^e"] &
+% 		\end{tikzcd} \]
+% 	We have
+% 	\[ F_Y^{e*} f_* \calO_X(am(K_{X/Y} + \Delta)) \otimes \calO_{Y^e}(p^e H) \to f_{e*} \pi_e^* \calO_X(am(K_{X/Y} + \Delta)) \otimes \calO_{Y^e}(p^e H) \]
+% 	is surjective over $\eta^e$.
+% \end{proof}
+
+
+\subsection{Positivity with nefness}
+
+\begin{theorem}[Zhang'19]
+	Let $f: (X, \Delta\geq 0) \to Y$ be a separable surjective projective morphism and $D$ Cartier divisor on $X$.
+	Assume
+	\begin{enumerate}
+		\item the Cartier index $a$ of $K_{\eta} + \Delta_\eta$ is not divisible by $p$;
+		\item $D - K_{X/Y} - \Delta$ is nef and $f$-semi-ample.
+	\end{enumerate}
+	Then for sufficiently large $g$,
+	\[ t_\eta(S_\Delta^g f_* \calO_X(D)) \geq 0. \]
+\end{theorem}
+
+Here $S_\Delta^g f_* \calO_X(D)$ is the stable Frobenius pushforward of $\calO_X(D)$ with respect to $\Delta$.
+And $S_\Delta^g f_* \calO_X(D) \otimes \rkk(\overline{\eta})$ is the same as the stable Frobenius section.
+
+\begin{remark}
+	Let $(X, \Delta)$ be a minimal model threefold and $D = m(K_X + \Delta) + (K_{X/Y} + \Delta)$.
+	Then $D - K_{X/Y} - \Delta = m(K_X + \Delta)$ is nef.
+	Assume that $K_{X/Y} + \Delta$ is $f$-big.
+	Then for sufficiently large $m$, we have $S_\Delta^0(X_{\overline{\eta}}, D_{\overline{\eta}}) \neq 0$.
+	Then $F_Y^{g*} f_* \calO_X((m+1)(K_{X}+ \Delta)) \otimes \omega_Y^{-1}$ contains a non-zero subsheaf $\calF$ with $t_\eta(\calF) \geq 0$.
+\end{remark}
+
+\begin{corollary}
+	If
+	\begin{itemize}
+		\item $K_X + \Delta$ is $f$-semi-ample and $f$-big;
+		\item $K_Y$ is big;
+	\end{itemize}
+	Then $K_X + \Delta$ is big.
+\end{corollary}
+
+\begin{remark}
+	Let $X$ be a normal variety over $\kk$ of characteristic $p > 0$ such that $\kk$ is algebraically closed in $\fkk(X)$ and $\kk'/ \kk$ be a finite extension of degree $p$.
+	Then $X_{\kk'}$ is also reduced (by consider the reduced part of $X_{\kk'}$ to get a contradiction).
+	As a corollary, any fibration to a curve over algebraically closed field is separable.
+\end{remark}
+
+\begin{question}
+	Does the above theorem hold if we do not assume the separability of $f$?
+\end{question}
+
+\begin{exercise}
+	Let $X = \Spec \kk[t]/ t^2$ and $i: X_0 = \Spec \kk[t] / t \to X$.
+	Compute $\omega_X, \omega_{X_0}$ and the trace map $\Tr_{X_0/X}: i_* \omega_{X_0} \to \omega_X$.
+\end{exercise}
+
+
+\subsection{Variety of nef anti-canonical divisor}
+
+\begin{question}\label{q:positivity4-anti-canonical}
+	Let $X$ be a regular projective variety over $\kk$ with $-K_X$ nef.
+	Try to study the structure of the Albanese map $a_X: X \to A$.
+	\begin{enumerate}
+		\item Is $a_X$ surjective?
+		\item Is $a_X$ a fibration?
+		\item Is $a_X$ a fiber bundle?
+		\item Does $K_X \equiv 0$ imply that $K_X \sim_{\bbQ} 0$?
+	\end{enumerate}
+\end{question}
+
+When over $\bbC$, the answer is affirmative for all the questions above (Junyan Cao'16-19).
+
+\begin{theorem}[Meng Chen-Qi Zhang'JEMS]
+	Assume that $(X,\Delta)$ is a projective lc pair with $-K_X - \Delta$ nef over $\bbC$.
+	Let $f: X \to Y$ be a morphism.
+	Then $-K_Y$ is pseudo-effective.
+\end{theorem}
+\begin{proof}[Proof]
+	By Campana, $f_*\calO_X(m(K_{X/Y} + \Delta))$ is weakly positive for sufficiently divisible $m$.
+	Take ample divisor $H \geq 0$ on $X$.
+	Then for all $t \in \bbQ^+$, $-(K_X + \Delta) + tH$ is ample.
+	Choose $-(K_X + \Delta) + tH \sim_{\bbQ} B_t > 0$ with $(X, \Delta + B_t)$ lc.
+	There exist $m_t \gg 0$ such that $f_*\calO_X(m_t(K_{X/Y} + B_t))$ is weakly positive.
+	That is, $f_*\calO_X(m_t(-tH - f^*K_Y))$ is weakly positive.
+	Hence $tH-f^*K_Y$ is (linearly) effect.
+	Take limit $t \to 0$, we see that $-f^*K_Y$ is pseudo-effective.
+\end{proof}
+
+As a corollary, consider $X \to Y \to A$ with $A$ the Albanese variety of $X$.
+Then $-K_Y$ is pseudo-effective and $K_Y \geq 0$ since we can pull back a non-zero section of $\omega_A$ to $Y$.
+Then $K_Y = 0$ and then $Y = A$.
+
+Now turn to positive characteristic.
+
+\begin{theorem}[Pat-Zdano'19, Pat-Ejiri'23, Ejiri'23, Chen-Wang-Zhang'26]
+	Consider the \cref{q:positivity4-anti-canonical} in positive characteristic.
+	\begin{enumerate}
+		\item Affirmative.
+		\item Consider $X \xrightarrow{f} Y \xrightarrow{a_Y} A$ with $a_Y$ purely inseparable.
+		      If $f$ or $a_Y$ separable, then $a_X$ is a fibration.
+		      If $a_X$ is of relative dimension $1$, then $a_X$ is a fibration.
+		\item Suppose that $\overline{\kkk} = \kkk$.
+		      If $\dim A = 1$ or $X_{\overline{\eta}}$ is regular or relative dimension $1$, for any $y_1,y_2 \in A$, $X_{y_1} \cong X_{y_2}$.
+	\end{enumerate}
+\end{theorem}
+
+Now consider the last question in \cref{q:positivity4-anti-canonical}.
+
+\begin{question}
+	Does $K_X \equiv 0$ imply that $K_X \sim_{\bbQ} 0$?
+\end{question}
+
+Consider $\omega_X \in \Pic^\tau(X)$.
+Here $\Pic^\tau(X)$ is the subgroup of $\Pic(X)$ consisting of numerically trivial line bundles.
+Recall that $\Pic^\tau(X)$ is of finite type over $\kk$.
+If $q = 0$, $\Pic^\tau(X)$ is finite and hence $K_X \sim_{\bbQ} 0$.
+If $q > 0$, we need to consider the Albanese map $a_X: X \to A$.
+When over complex numbers, there exits a finite étale cover $A' \to A$ such that $X_{A'} \cong F \times A'$ (Kawamata'85).
+Then we can ask whether $K_{F'} \sim_{\bbQ} 0$.
+Over positive characteristic, even we assume the exits the covering, $F'$ may has very bad singularities.
+
+The approach is following.
+Assume $X/\kk$ with $\kk$ is $F$-finite and $\kk^{sep} = \kk$.
+First consider $X \to A$.
+And then the generic fiber $X_\eta$ is still regular.
+In particular, we need to consider the variety over non-closed field.
+
+
+
+
+
+
+
+
+
+
+
+
