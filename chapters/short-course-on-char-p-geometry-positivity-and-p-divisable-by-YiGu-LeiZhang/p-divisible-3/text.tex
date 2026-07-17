@@ -1,0 +1,360 @@
+% !TeX root = p-divisible-3.tex
+\section[The p-divisible group 3: Dieudonn\'e theory]{The $p$-divisible group 3: Dieudonn\'e theory}
+
+In this section, we always set fix a base field $\kk$ of characteristic $p>0$.
+
+Recall that we can define the affine ring scheme $W$ of Witt vectors over perfect fields $\kk$.
+It is the unique complete non-ramified discrete valuation ring with residue field $\kk$ and uniformizer $p$.
+Set $W_n = \Spec \kk[x_0, \ldots, x_n]$.
+Then $W = \invlim_n W_n$ via the injections $\kk[x_0, \ldots, x_n] \hookrightarrow \kk[x_0, \ldots, x_{n+1}]$.
+And we can define $\underrightarrow{W} = \dirlim_n W_n$ via the natural closed immersions $W_n \hookrightarrow W_{n+1}$.
+
+The Dieudonn\'e ring $\bbD_\kk$ is defined as the non-commutative ring $W[F,V]$ with relations $FV = VF = p$, $F a = a^p F$, $V a = a^{1/p} V$ for $a \in W$.
+
+\begin{proposition}
+	$\bbD_\kk$ is not a noetherian ring.
+	But $\bbD_\kk/V^n$ and $\bbD_\kk/F^n$ are noetherian rings for any $n \ge 1$.
+\end{proposition}
+
+
+
+\subsection{Dieudonn\'e modules of affine nilpotent group}
+
+Recall that we have the functor
+\[ M : \mathbf{ACU}_\kk \to \Mod_{\bbD_\kk}, \quad G \mapsto M(G) = \Hom_{\mathbf{ACU}_\kk}(G, \CW_\kk), \]
+where $\bbD_\kk$ acts on $M(G)$ by its (left) action on $\CW_\kk$.
+
+\begin{theorem}\label{thm:dieudonne-anti-equivalence}
+	The functor $M$ is an anti-equivalence of categories between the category $\mathbf{ACU}_\kk$ of affine commutative unipotent group schemes over $\kk$ and the category of $V$-nilpotent left $\bbD_\kk$-modules.
+\end{theorem}
+\begin{remark}
+	Under the anti-equivalence $M$, the affine commutative unipotent group scheme of finite type over $\kk$ corresponds to the finitely generated $\bbD_\kk$-module.
+\end{remark}
+
+\begin{example}
+	We have $M(\bbG_a) = \dirlim \Hom_{\kk -gp}(\bbG_a, W_n) = \Hom_{\kk -gp}(\bbG_a, \bbG_a) = \kk[F]$.
+	More explicitly, given $[i_0]: \bbG_a \to \bbG_a$, we have $\bbD_\kk \cdot [i_0] = \bbD_\kk / V \cdot [i_0] = \kk[F] \cdot [i_0]$.
+\end{example}
+
+\begin{proof}[Proof of \cref{thm:dieudonne-anti-equivalence} (finite type case)]
+	\hspace{1em}
+	\begin{step}\label{step:dieudonne-anti-equivalence-finite-type-case-1}
+		$M(W_n)$ is a free $\bbD_\kk$-module of rank $1$.\Yang{}
+	\end{step}
+	More generally, given $[i_n]: W_n \to W_n$, we have $\bbD_\kk \cdot [i_n] = \bbD_\kk / V^{n} \cdot [i_n]$ and $\bbD_\kk / V^{n} \to M(W_n), 1 \mapsto [i_n]$ is an isomorphism of $\bbD_\kk$-modules.
+	Indeed, injectivity follows from the fact that $V^n = \ker(\bbD_\kk \to M(W_n))$ and surjectivity follows from induction on $n$ and the exact sequence
+	\[ 0 \to W_{n-1} \to W_n \to \bbG_a \to 0. \]
+	Since $\Hom_{gp}(-, W_n)$ is left exact, we have an exact sequence
+	\[ 0 \to M(\bbG_a) \to M(W_n) \to M(W_{n-1}). \]
+	Under the exact sequence, $[i_0]$ maps to $V^{n-1} [i_n]$ and $[i_n]$ maps to $[i_{n-1}]$.
+	On the other hand, we have an exact sequence
+	\[ 0 \to \bbD_\kk / V [i_0] \to \bbD_\kk / V^n [i_n] \to \bbD_\kk / V^{n-1} [i_{n-1}] \to 0 \]
+	with the same maps.
+	Hence $\bbD_\kk / V^n [i_n] \to M(W_n)$ is an isomorphism of $\bbD_\kk$-modules.
+
+	\begin{step}
+		Exactness of $M$.
+	\end{step}
+	Now we show the exactness of the functor $M$.
+	We only need to show that $M$ is right exact.
+	Given an exact sequence of affine commutative unipotent group schemes
+	\[ 0 \to K \to G \to Q \to 0. \]
+	For $\xi: K \to W_n$ in $M(K)$, we have a commutative diagram
+	\Yang{}
+
+	We have that $\Ext^1_{\mathbf{ACU}_\kk}(Q, W_n) \to \Ext^1_{\mathbf{ACU}_\kk}(Q, W_{m})$ is zero for $m \gg 0$.
+	Induction on $Q$ and we can reduce to the case $\kk$ is algebraically closed and $Q$ is one of $\bbG_a, \alpha_p, \bbZ/p\bbZ$.
+
+
+	\begin{step}
+		Fully faithful and essential surjective. \Yang{}
+	\end{step}
+	First we need to show that $M$ is fully faithful.
+	Given $G, H \in \mathbf{ACU}_\kk$, we have need to show that $\Hom_{\mathbf{ACU}_\kk}(G, H) \to \Hom_{\bbD_\kk}(M(H), M(G))$ is an isomorphism.
+	It holds for $H = W_n$ by \cref{step:dieudonne-anti-equivalence-finite-type-case-1}.
+	In general, any $H$ of finite type can be embedded into $W_n^r$ for some $n, r \ge 1$.
+	Then we have an exact sequence
+	\[ 0 \to H \to W_n^r \to W_{n'}^{s'}. \]
+	By the left exactness of $\Hom_{\kk-gp}(G, -)$ and the exactness of $M$, we have $\Hom_{\mathbf{ACU}_\kk}(G, H) \to \Hom_{\bbD_\kk}(M(H), M(G))$ is an isomorphism.
+
+	\Yang{}
+\end{proof}
+
+
+\begin{remark}\label{rmk:define-Ext1}
+	We can define $\Ext^1_{\mathbf{ACU}_\kk}(G, H)$ as the set of equivalence classes of extensions of $G$ by $H$ in the category $\mathbf{ACU}_\kk$.
+	Then given an exact sequence of affine commutative unipotent group schemes
+	\[ 0 \to K \to G \to Q \to 0, \]
+	we have a long exact sequence up to $\Ext^1$:
+	\begin{align*}
+		0   & \to \Hom_{\mathbf{ACU}_\kk}(Q, H) \to \Hom_{\mathbf{ACU}_\kk}(G, H) \to \Hom_{\mathbf{ACU}_\kk}(K, H)    \\
+		\to & \Ext^1_{\mathbf{ACU}_\kk}(Q, H) \to \Ext^1_{\mathbf{ACU}_\kk}(G, H) \to \Ext^1_{\mathbf{ACU}_\kk}(K, H).
+	\end{align*}
+\end{remark}
+
+\begin{lemma}
+	The action of $\kk[F]$ on \Yang{}
+\end{lemma}
+
+
+
+\subsection{Dieudonn\'e modules of finite group schemes}
+
+Assume $\kk$ is a perfect field of characteristic $p>0$.
+
+Recall that we have a decomposition
+\[ G = G_{i,a} \times G_{i,m} \times G_{e,a} \]
+for a $p$-torsion finite group scheme $G$ over $\kk$.
+The part $G_{i,a}$ and $G_{e,a}$ are unipotent and hence we can apply the Dieudonn\'e theory to them.
+
+\paragraph{Matlis duality.}
+We want a duality between the category of $\kk$-finite $\bbD_\kk$-modules and itself.
+For a $\kk$-finite $\bbD_\kk$-module $M$, we define its Matlis dual as
+\[ M^* =  \Hom_\kk\left(M, \frac{B(\kk)}{W(\kk)}\right), \]
+where $B(\kk) = W(\kk)[1/p]$.
+The action of $F$ on $\Hom_\kk(M, B(\kk)/W(\kk))$ is given by $(F \cdot \varphi)(m) = \left( \varphi(Fm) \right)^{1/p}$ and the action of $V$ is given by $(V \cdot \varphi)(m) = \left( \varphi(Vm) \right)^p$.
+For a $W(\kk)$-free $\bbD_\kk$-module $M$, we define its Matlis dual as
+\[ M^* =  \Hom_{W(\kk)}\left(M, W(\kk)\right). \]
+
+These two definitions are compatible in the sense that if $M = \invlim_n M/p^n M$ is a $W(\kk)$-free $\bbD_\kk$-module, then we have
+\[ M^* = \invlim_n \Hom_\kk(M/p^n M, B(\kk)/W(\kk)) = \invlim_n (M/p^n M)^* \]
+
+\begin{theorem}
+	The Matlis duality is compatible with the Dieudonn\'e theory and Cartier duality in the sense that we have a commutative diagram
+	\[ \begin{tikzcd}
+			\text{finite $p$-group} \arrow[r, "Cartier duality"] \arrow[d, "M"] & \text{finite $p$-group} \arrow[d, "M"] \\
+			\text{$\kk$-finite $\bbD_\kk$-module} \arrow[r, "Matlis duality"] & \text{$\kk$-finite $\bbD_\kk$-module}
+		\end{tikzcd} \]
+\end{theorem}
+
+Then we can define the Dieudonn\'e module of a finite group scheme $G = G_{i,a} \times G_{i,m} \times G_{e,a}$ over $\kk$ via
+\[ M(G) = M(G_{i,a}) \oplus M(D(G_{i,m}))^* \oplus M(G_{e,a}). \]
+Under this duality, $G_{i,a}$ corresponds to a $F,V$-nilpotent $\bbD_\kk$-module, $G_{i,m}$ corresponds to a $F$-nilpotent and $V$-isomorphic $\bbD_\kk$-module, and $G_{e,a}$ corresponds to a $F$-isomorphic and $V$-nilpotent $\bbD_\kk$-module.
+
+\begin{theorem}
+	The functor $M: \text{finite $p$-group} \to \text{$\kk$-finite $\bbD_\kk$-module}$ is an anti-equivalence of categories.
+\end{theorem}
+
+\begin{example}
+	We have $M(\bbZ/p^n \bbZ) = W_n(\kkk) e$ with $Fe = e, Ve = pe$, $M(\mu_{p^n}) = W_n(\kkk) e$ with $Fe = pe, Ve = e$, and $M(\alpha_{p}^n) = W_n(\kkk) e$ with $F = V = 0$.
+\end{example}
+
+\begin{example}
+	Let $\kkk$ be an algebraically closed field of characteristic $p>0$, $M$ be a finite-dimensional $\kkk$-vector space, and $F: M \to M$ the Frobenius.
+	Then there is a basis $\{e_1, \ldots, e_n\}$ of $M$ such that $F(e_i) = e_{i}$.
+
+	Since $M$ is $\kkk$-finite $\bbD_\kk$-module (by setting $V = 0$), there exists a finite group scheme $G$ over $\kkk$ such that $M(G) \cong M$.
+	Then $G \cong (\bbZ/p\bbZ)^n$.
+	Since $M(\bbZ/p\bbZ) \cong \kkk e$ with $F(e) = e$ and $V(e) = 0$, we find that $M(G) \cong M(\bbZ/p\bbZ)^n$ and hence get the desired basis.
+\end{example}
+
+
+\subsection[Dieudonn\'e modules of p-divisible groups]{Dieudonn\'e modules of $p$-divisible groups}
+
+Let $\hat{G} = \dirlim_n G_n$ be a $p$-divisible group over $\kk$.
+We define its Dieudonn\'e module as
+\[ M(\hat{G}) = \invlim_n M(G_n). \]
+We have that $M(\hat{G})$ is a free $W(\kk)$-module of finite rank.
+And
+\[ \rank_{W(\kk)} M(\hat{G}) = \rank G_1 = \idealht \hat{G}. \]
+
+\begin{theorem}
+	Serre duality is compatible with the Matlis duality.
+\end{theorem}
+
+\begin{example}
+	$M(\bbQ_p/\bbZ_p) = W(\kk) e$ with $Fe = e, Ve = pe$.
+
+	$M(\mu_{p^\infty}) = W(\kk) e^*$ with $Fe^* = pe^*, Ve^* = e^*$.
+\end{example}
+
+% \begin{example}
+%   Let $E$ be the elliptic curve over $\kk$ defined by $y^2 = x^3 +1$.
+%   When $p \equiv 1 \mod 3$, $E$ is surpersingular.
+% \end{example}
+
+
+\subsection{Classification of Dieudonn\'e modules}
+
+Let $B(\kk) = W(\kk)[1/p]$ be the fraction field of $W(\kk)$.
+A \emph{$F$-space} or a \emph{$F$-isocrystal} is a finite-dimensional $B(\kk)$-vector space $E$ with $F: V \to V$ injective such that $F(\lambda v) = \lambda^p F(v)$ for $\lambda \in B(\kk)$ and $v \in V$.
+A \emph{$F$-lattice} is a free $W(\kk)$-module $M$ of finite rank with $F: M \to M$ injective such that $F(\lambda m) = \lambda^p F(m)$ for $\lambda \in W(\kk)$ and $m \in M$.
+If $pM \subset FM$, then we can define $V: M \to M$ by $V(m) = pF^{-1}(m)$.
+In this case, we say that $M$ is a \emph{Dieudonn\'e lattice}.
+
+\begin{example}
+	Let $E^n = B(\kk) e_n$ with $Fe_n = p^{-n} e_n$.
+	Then it is a $F$-space.
+
+	More generally, let $E^{\lambda} = B(\kk) [F] / (F^s - p^r)$ with $\lambda = r/s \in \bbQ$ and $\gcd(r,s) = 1$.
+	Then it is a $F$-space of dimension $s$ with $F^s = p^r$.
+\end{example}
+
+On $\Hom_{F}(E_1, E_2) = \Hom_{B(\kk)}(E_1, E_2)$, we have a natural $F$-action given by $(F \cdot f)(v) = F(f(F^{-1}(v)))$ for $f \in \Hom_{B(\kk)}(E_1, E_2)$ and $v \in E_1$.
+Also we can define the tensor product of $F$-spaces $E_1 \otimes E_2$ with $F(e_1 \otimes e_2) = F(e_1) \otimes F(e_2)$ for $e_i \in E_i$.
+
+\begin{example}
+	Given a $F$-space $E$.
+
+	We can define $E[n] = E \otimes E^n$.
+	As a $B(\kk)$-vector space, it is isomorphic to $E$ and the $F$-action is given by $F(e) = p^{-n} F(e)$ for $e \in E$.
+	And $E^\vee \coloneqq \Hom_{B(\kk)}(E, E^0)$ is a $F$-space.
+\end{example}
+
+Let $\hat{G}$ be a $p$-divisible group over $\kk$.
+Then $E(\hat{G}) = M(\hat{G}) \otimes_{W(\kk)} B(\kk)$ is a $F$-space.
+We have
+\[ E(D(\hat{G})) = E(\hat{G})^\vee[1]. \]
+
+Given a $F$-space $E$ and a basis $\{e_1, \ldots, e_n\}$ of $E$, $F$ can be represented by a matrix $M(F) \in \GL_n(B(\kk))$.
+And if we change the basis to $\{e_1', \ldots, e_n'\}$, then $M(F)$ changes to $M(F)' = Q^{-1} M(F) Q^{(p)}$ for some $Q \in \GL_n(B(\kk))$.
+We say that $M(F)$ and $M(F)'$ are \emph{$F$-conjugate} to each other.
+For $E^\lambda$ with $\lambda = r/s \in \bbQ$ and $\gcd(r,s) = 1$, we have
+\[ M(F) = \begin{pmatrix}
+		0      & 1      & 0      & \cdots & 0      \\
+		0      & 0      & 1      & \cdots & 0      \\
+		\vdots & \vdots & \vdots & \ddots & \vdots \\
+		0      & 0      & 0      & \cdots & 1      \\
+		p^r    & 0      & 0      & \cdots & 0
+	\end{pmatrix}. \]
+
+\begin{theorem}[Manin's classification of $F$-spaces]
+	Any $M(F) \in \GL_n(B(\kkk))$ is $F$-conjugate to a block diagonal matrix
+	$\diag(M(F_1), \ldots, M(F_r))$ with
+	\[M(F_i) = \begin{pmatrix}
+			0       & 1      & 0      & \cdots & 0      \\
+			0       & 0      & 1      & \cdots & 0      \\
+			\vdots  & \vdots & \vdots & \ddots & \vdots \\
+			0       & 0      & 0      & \cdots & 1      \\
+			p^{r_i} & 0      & 0      & \cdots & 0
+		\end{pmatrix} \]
+	for some $\lambda_i = r_i/s_i \in \bbQ$ with $\gcd(r_i, s_i) = 1$.
+	Hence any $F$-space $E$ is isomorphic to a direct sum of $E^{\lambda_i}$ for some $\lambda_i \in \bbQ$.
+	And $\Hom_{F}(E^{\lambda_1}, E^{\lambda_2}) = 0$ if $\lambda_1 \neq \lambda_2$.
+\end{theorem}
+
+\begin{proposition}
+	Let $\hat{G}, \hat{H}$ be two $p$-divisible groups over $\kk$.
+	Then $\hat{G}$ is isogenous to $\hat{H}$ if and only if $E(\hat{G}) \cong E(\hat{H})$ as $F$-spaces.
+\end{proposition}
+
+\begin{remark}
+	The Matlis duality for $\kk$-finite $\bbD_\kk$-modules and $W(\kk)$-free $\bbD_\kk$-modules can be defined uniformly as follows.
+	Let $M$ be a finitely generated $W(\kk)$-module.
+	Consider the complex $\Ext(M, W(\kk))$.
+	It only have two non-zero cohomology groups $\Ext^0(M, W(\kk))$ and $\Ext^1(M, W(\kk))$.
+	There is a universal extension
+	\[ 0 \to W(\kk) \to B(\kk) \to B(\kk)/W(\kk) \to 0. \]
+	Then $\Ext^1(M, W(\kk)) \cong \Hom(M, B(\kk)/W(\kk))$ and $\Ext^0(M, W(\kk)) = \Hom(M, W(\kk))$.
+	For $\kk$-finite $\bbD_\kk$-modules, we have $\Ext^0(M, W(\kk)) = 0$.
+	For $W(\kk)$-free $\bbD_\kk$-modules, we have $\Ext^1(M, W(\kk)) = 0$.
+	Hence we get the Matlis duality for both cases.
+
+	In particular, if we have an exact sequence of $\bbD_\kk$-modules
+	\[ 0 \to N \to M \to Q \to 0, \]
+	then the duality should be
+	\[ 0 \to M^* \to N^* \to Q^* \to 0. \]
+\end{remark}
+
+% \begin{remark}
+% 	Let $\hat{G} = (G_n)$ be a $p$-divisible group over $\kk$.
+%
+% \end{remark}
+
+\begin{proposition}
+	The $F$-space $E^\lambda$ contain a $F$-lattice if and only if $\lambda \ge 0$.
+\end{proposition}
+\begin{proof}[Proof]
+	For $\lambda \geq 0$, write $\lambda = r/s$ with $r, s \in \bbZ_{\geq 0}$ and $\gcd(r, s) = 1$.
+	Then $E^\lambda$ has a basis $\{e_0, \ldots, e_{s-1}\}$ with $F(e_i) = e_{i+1}$ for $0 \leq i < s-1$ and $F(e_{s-1}) = p^r e_0$.
+	Then the $W(\kk)$-submodule $M = W(\kk) e_0 + \cdots + W(\kk) e_{s-1}$ is a $F$-lattice in $E^\lambda$.
+
+	Conversely, if $E^\lambda$ has a $F$-lattice $M$, then there exists $\xi = \lambda_0 e_0 + \cdots + \lambda_{s-1} e_{s-1} \in M$ such that $v(\lambda_0)$ is minimal.
+	Then $F^s(\xi) = p^r \left( \lambda_0^{(p^s)} e_0 + \cdots + \lambda_{s-1}^{(p^s)} e_{s-1} \right) \in M$.
+	Then $v(p^r \lambda_0^{(p^s)}) \geq v(\lambda_0)$, which implies $r \geq 0$ and hence $\lambda = r/s \geq 0$.
+\end{proof}
+
+\begin{corollary}
+	Suppose that $E^\lambda$ has a Dieudonn\'e lattice $M$.
+	Then $\lambda \in [0, 1]$.
+\end{corollary}
+\begin{proof}[Proof]
+	We have $M \subset E^\lambda$ then $\lambda \geq 0$.
+	Consider $M[-1] \subset E^\lambda[-1] = E^{\lambda - 1}$.
+	Then $M[-1]$ is a $F^{-1}$-lattice in $E^{\lambda - 1}$.
+	Hence $\lambda - 1 \leq 0$ and $\lambda \leq 1$.
+\end{proof}
+
+For $\lambda = r/s \in [0, 1]$, we can construct a Dieudonn\'e lattice $M^\lambda$ in $E^\lambda$ as follows.
+Let $e_0, \ldots, e_{s-1}$ be the basis of $E^\lambda$ with $F(e_i) = e_{i+1}$ for $0 \leq i < s-1$ and $F(e_{s-1}) = p^r e_0$.
+Then we define $\tilde{e}_l = p^{-a_l}e_l$, where $a_l$ is the maximal integer such that $a_l \leq l \lambda$.
+One can directly check that the $W(\kk)$-submodule $M^\lambda = W(\kk) \tilde{e}_0 + \cdots + W(\kk) \tilde{e}_{s-1}$ is a stable under $F$ and $V$ and hence is a Dieudonn\'e lattice in $E^\lambda$.
+
+The corresponding $p$-divisible group of $M^\lambda$ is denoted by $G^\lambda$.
+We have $D(G^\lambda) = G^{1-\lambda}$.
+
+\begin{proposition}
+	Suppose that $\kkk$ is algebraically closed.
+	Then any $p$-divisible group is isogenous to $G^{\lambda_1} \times \cdots \times G^{\lambda_n}$ for $\lambda_i \in [0,1]$.
+\end{proposition}
+
+We say that $\hat{G}$ is $\lambda$-type, if $E(\hat{G}) \cong E^\lambda$, i.e. $\hat{G}$ is isogenous to $G^\lambda$.
+
+
+\begin{proposition}
+	For any $p$ divisible group $G$, there exists a decomposition $G = G_{\lambda_1} \times \cdots \times G_{\lambda_n}$ for $\lambda_i \in [0, 1]$ such that $G_{\lambda_i}$ is isogenous to $(G^{\lambda_i})^{r_i}$.
+\end{proposition}
+
+
+\begin{proposition}
+	Suppose that $\lambda = 1/h$, then there exists a unique $p$-divisible group $G^{1/h}$ of $\lambda$-type over $\kkk$ up to isomorphism.
+\end{proposition}
+
+\begin{corollary}
+	If $\lambda = (h-1)/h$, then there exists a unique $p$-divisible group $G^{(h-1)/h}$ of $\lambda$-type over $\kkk$ up to isomorphism.
+\end{corollary}
+
+
+\begin{corollary}
+	Formal Lie group of dimension $1$ which is $p$-divisible (or, equivalently, of finite height) is uniquely determined by its height.
+\end{corollary}
+
+Meanwhile, formal Lie group of dimension $1$ and infinite height is isomorphic to $\hat{\bbG}_a$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
