@@ -9,7 +9,12 @@
 \newcommand{\Yang}[1]{\textcolor{red}{Yang: #1}}
 
 
-\title{read-Xie24-semicontinuity-of-dynamical-degree}
+\newcommand{\alert}[1]{\textcolor{red!68!black}{#1}} 
+\newcommand{\mix}{\text{mix}}
+\newcommand{\Per}{\upoperatorname{Per}}
+
+
+\title{Notes on reading Xie's paper \textit{Algebraic Dynamics and Recursive Inequalities}}
 \author{Tianle Yang}
 \date{\today}
 \authorpage{\href{www.example.com}{My Homepage}}
@@ -17,8 +22,8 @@
 % Available with "\sectionlevel=chapter" or "\sectionlevel=book".
 % LXGW WenKai font; remove or replace this line if the font is unavailable.
 \setCJKfamilyfont{lxgwwenkai}{LXGW WenKai}
-\coversentence{\CJKfamily{lxgwwenkai} A slogan you like}
-\coverimage{} % Cover image
+\coversentence{\CJKfamily{lxgwwenkai}“拉姆已经足够可爱了，再可爱下去，世界就要有危险了。”}
+\coverimage{ram-re-zero.png} % Cover image
 \covertitlefont{Times New Roman} % Cover title font; remove or replace if unavailable.
 % \coverlinecolor{red} % Cover line color
 % \covertextcolor{green} % Cover text color
@@ -26,10 +31,49 @@
 
 \begin{document}
 
-    \maketitle
+\maketitle
 
-    \tableofcontents
+\tableofcontents
 
-    \printbibliography[heading=bibintoc, title={References}]
-    
+% -------------------------------------------------------------------------------------------
+\vspace{2em}
+
+We work over an arbitrary field $\kk$ without any restriction on the characteristic.
+A variety is always assumed to be geometrically integral.
+
+\begin{mainthm}[{= \cref{thm:big_inequality_by_mu_i}, ref. \cite[Theorem 3.7]{Xie24recursive_inequalities}}]\label{mainthm:recursive_inequality}
+	Let $X$ be a projective variety of dimension $d$ and $f: X \dashrightarrow X$ be a dominant rational map.
+	For $i = 0, 1, \ldots, d$ and $\varepsilon \in (0, 1)$, there exists $m_\varepsilon > 0$ such that for all $m \geq m_\varepsilon$,
+	\[  L_{2m} - \varepsilon^m \mu_i^m L_m + \mu_i^m \mu_{i+1}^m L \]
+	is big.
+\end{mainthm}
+
+\begin{mainthm}[{= \cref{thm:semi-continuity-of-dynamical-degrees}, ref. \cite[Theorem 1.8]{Xie24recursive_inequalities}}]\label{mainthm:semi-continuity}
+	Let $S$ be an integral noetherian scheme, and $\pi: X \to S$ be a flat projective morphism.
+	Let $f: X \dashrightarrow X$ be a dominant rational map over $S$.
+	Then for every $i$, the function $s \mapsto \lambda_i(f_s)$ is lower semi-continuous.
+\end{mainthm}
+
+\begin{mainthm}[{= \cref{thm:density_of_periodic_points_for_cohomologically_hyperbolic_maps}, ref. \cite[Theorem 1.12]{Xie24recursive_inequalities}}]\label{mainthm:periodic_points}
+	Let $X$ be a projective variety and $f: X \dashrightarrow X$ be a dominant rational map.
+	If $f$ is cohomologically hyperbolic, then the set of periodic points of $f$ is Zariski dense in $X$.
+\end{mainthm}
+
+\begin{mainthm}[{= \Yang{}, ref. \cite[Theorem 1.14]{Xie24recursive_inequalities}}]\label{mainthm:application_to_KSC}
+	Let $X$ be a projective surface over $\overline{\bbQ}$ and $f: X \dashrightarrow X$ be a dominant rational map.
+	Assume that $\mu_2(f) < 1$ or $\mu_1(f) = \mu_2(f)$.
+	Then the Kawaguchi-Silverman conjecture holds for $(X, f)$.
+\end{mainthm}
+
+%---------------------------------------------------------------------------------
+
+
+\input{preliminaries/text.tex}
+\input{inequalities/text.tex}
+\input{semi-continuity/text.tex}
+\input{periodic-points/text.tex}
+\input{application-to-KSC/text.tex}
+
+\printbibliography[heading=bibintoc, title={References}]
+
 \end{document}

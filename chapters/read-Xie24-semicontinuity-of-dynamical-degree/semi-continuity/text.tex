@@ -1,0 +1,154 @@
+% !TeX root = semi-continuity.tex
+\section{Semi-continuity}
+
+In this section, we fix an integral noetherian base scheme $S$, a flat projective morphism $X \to S$ with integral fibers, and $f: X \dashrightarrow X$ a family of dominant rational maps over $S$.
+For each $s \in S$, we denote by $X_s$ the fiber of $X$ over $s$, and by $f_s: X_s \dashrightarrow X_s$ the induced rational map on the fiber.
+
+% \subsection{Semi-continuous functions on noetherian schemes}
+
+%   Let $S$ be an integral noetherian scheme, and $\theta: S \to \bbR$ be a function.
+%   We say that $f$ is \emph{lower semi-continuous} if for every $r \in \bbR$, the set $\{ s \in S : f(s) > r \}$ is open in $S$.
+
+%   \begin{remark}
+%     The limit of a sequence of lower semi-continuous functions may not be lower semi-continuous. 
+%     \Yang{}
+%   \end{remark}
+
+%   \begin{lemma}
+%     A function $\theta: S \to \bbR$ is lower semi-continuous if and only if the following condition holds: 
+%     \begin{enumerate}
+%       \item for every $\eta \in S$ and every specialization $\xi \in \overline{\{\eta\}}$, we have $\theta(\xi) \leq \theta(\eta)$;
+%       \item for every $\eta \in S$ and $a < \theta(\eta)$, there is an open subset $U \subseteq \overline{\{\eta\}}$ such that $\theta(\xi) > a$ for every $\xi \in U$.
+%     \end{enumerate}
+%   \end{lemma}
+%   \begin{proof}
+%     \Yang{}
+%   \end{proof}
+
+
+%   \begin{lemma}
+%     Let $\theta: S \to \bbR$ be a lower semi-continuous function.
+%     Then 
+%     \begin{enumerate}
+%       \item $\theta$ is continuous with respect to the constructible topology on $S$;
+%       \item if $\theta$ is discrete, then its image is finite.
+%     \end{enumerate}
+%   \end{lemma}
+%   \begin{proof}
+%     \Yang{}
+%   \end{proof}
+
+
+\subsection{Semi-continuity of mixed degrees}
+
+\begin{proposition}\label{prop:semi-continuity-mixed-degrees}
+	% Let $f: X \dashrightarrow X$ be a family of dominant rational maps over $S$.
+	Fix a $\pi$-ample divisor $L$ on $X$ and integers $m_1, \ldots, m_d \in \bbZ_{\geq 0}$.
+	Then the function
+	\[ s \mapsto (f_s^{m_1})^*L_s \cdot \cdots \cdot (f_s^{m_d})^*L_s \]
+	is lower semi-continuous on $S$.
+\end{proposition}
+\begin{proof}
+	Let $\Gamma_{f,\bfm} \subset X \times_S \cdots \times_S X$ be the closure of the image of the rational map $(f^{m_1}, \ldots, f^{m_d}): X \dashrightarrow X \times_S \cdots \times_S X$.
+	By Gruson-Raynaud's flattening theorem (\cref{thm:Gruson-Raynaud_flattening}), there exists a blowup $S' \to S$ such that the strict transform $\Gamma'_{f,\bfm}$ of $\Gamma_{f,\bfm}$ is flat over $S'$.
+	Let $X', L', f'$ be the base change of $X, L, f$ along $S' \to S$ respectively.
+	For every $s' \in S'$ with image $s \in S$, the date $(X'_{s'}, L'_{s'}, f'_{s'})$ is the base change of $(X_s, L_s, f_s)$.
+	Hence the semi-continuity on $S$ follows from the semi-continuity on $S'$.
+	By replacing $S$ with $S'$, we may assume that $\Gamma_{f,\bfm}$ is flat over $S$.
+
+	For every $s \in S$, let $\Gamma_{f_s,\bfm}$ be the closure of the image of the rational map $(f_s^{m_1}, \ldots, f_s^{m_d}): X_s \dashrightarrow X_s \times \cdots \times X_s$.
+	Denote by $\pi_i: X \times_S \cdots \times_S X \to X$ the projection to the $i$-th factor.
+	Then we have
+	\[ (f_s^{m_1})^*L_s \cdot \cdots \cdot (f_s^{m_d})^*L_s = \pi_1^*L \cdot \cdots \cdot \pi_d^*L \cdot [\Gamma_{f_s,\bfm}]. \]
+
+	Over the generic point $\eta$ of $S$, we have $(\Gamma_{f,\bfm})_\eta = \Gamma_{f_\eta,\bfm}$.
+	Over a special point $s \in S$, $(\Gamma_{f,\bfm})_s$ may have several irreducible components, and $\Gamma_{f_s,\bfm}$ is one of the irreducible components of $(\Gamma_{f,\bfm})_s$.
+	Since $\Gamma_{f,\bfm}$ is flat over $S$ and intersection numbers are constant in flat families, we have
+	\begin{align*}
+		(f_s^{m_1})^*L_s \cdot \cdots \cdot (f_s^{m_d})^*L_s & = \pi_1^*L \cdot \cdots \cdot \pi_d^*L \cdot [\Gamma_{f_s,\bfm}]      \\
+		                                                     & \leq \pi_1^*L \cdot \cdots \cdot \pi_d^*L \cdot [(\Gamma_{f,\bfm})_s] \\
+		                                                     & = \pi_1^*L \cdot \cdots \cdot \pi_d^*L \cdot [(\Gamma_{f,\bfm})_\eta] \\
+		                                                     & = \pi_1^*L \cdot \cdots \cdot \pi_d^*L \cdot [\Gamma_{f_\eta,\bfm}]   \\
+		                                                     & = (f_\eta^{m_1})^*L_\eta \cdot \cdots \cdot (f_\eta^{m_d})^*L_\eta.
+	\end{align*}
+	And since the generic fiber is (geometrically) irreducible, there exists a non-empty open subset $U \subseteq S$ such that for every $s \in U$, we have $(\Gamma_{f,\bfm})_s$ is irreducible and hence equal to $\Gamma_{f_s,\bfm}$.
+	Then for every $s \in U$, the above inequalities are equalities.
+	By \cref{lem:properties_of_lower_semi-continuous_functions_on_noetherian_schemes}, we are done.
+	% \Yang{}
+\end{proof}
+
+\begin{example}\label{eg:non-continuity-of-mixed-degrees}
+	Let $S = \Spec \bbZ$, $X = \bbP^2_{\bbZ}$, $L = \calO(1)$, and $f: X \dashrightarrow X$ is defined by
+	\[ [x:y:z] \mapsto [xz:yz+2xy:z^2]. \]
+	Then the function $s \mapsto \deg_1(f_s) = L_s \cdot (f_s^*L_s)$ is not constant on $S$.
+	Indeed, we have $\deg_1(f_{(2)}) = 1$ and $\deg_1(f_{(p)}) = 2$ for every prime $p \neq 2$.
+
+	Let $\Gamma \subset X \times_S X = \bbP^2_{\bbZ} \times \bbP^2_{\bbZ}$ be the graph of $f$.
+	On $\bbP^2_{\bbZ} \times \bbP^2_{\bbZ}$, we use the coordinates $[x:y:z]$ and $[u:v:w]$ for the first and second factor respectively.
+	Set $V = V(u(yz+2xy) - vxz, w(yz+2xy) - vz^2, wx - uz)$.
+	Then $\Gamma$ is an irreducible component of $V$.
+	Consider the first projection $\pi_1: V \to X$.
+	Over the open subset $z \neq 0$ of $X$, $\pi_1$ is an isomorphism.
+	When $x,y \neq 0$ and $z = 0$, $\pi_1$ is also an isomorphism.
+	Over the point $[1:0:0]$, the fiber of $\pi_1$ is a line in the second factor defined by $w = 0$.
+	Over the point $[0:1:0]$, the fiber of $\pi_1$ is the full fiber $\{[0:1:0]\} \times \bbP^2$.
+	Hence $V = \Gamma \cup (\{[0:1:0]\} \times \bbP^2)$.
+	We need to find a function vanishing on $\Gamma$ but not vanishing on $\{[0:1:0]\} \times \bbP^2$.
+	Note that $(2u+w)y-vz$ satisfies this condition.
+	Hence $\Gamma$ is given by
+	\[ \Gamma = V(u(yz+2xy) - vxz, w(yz+2xy) - vz^2, wx - uz, (2u+w)y-vz). \]
+
+	Consider the first projection $\pi_1: \Gamma \to X$.
+	Over any point $s \in \Spec \bbZ$ different from $(2)$, $\pi_1$ is an isomorphism over $\bbP^2_s \setminus \{[1:0:0],[0:1:0]\}$, and over this two points, the fiber of $\pi_1$ is a line.
+	Hence $\pi_1$ is the blowup of $X_s$ at these two points.
+	Over the point $(2)$, $\Gamma_{(2)}$ is given by
+	\begin{align*}
+		\Gamma_{(2)} & =  V(uyz - vxz, wyz - vz^2, wx - uz, wy-vz) \\
+		             & = V((uy-vx)z, wx - uz, wy-vz)               \\
+		             & = V(uy-vx, wx - uz, wy-vz) \cup V(z, w)     \\
+		             & = \Delta \cup (\{z=0\} \times \{w=0\}).
+	\end{align*}
+	It has two irreducible components, one is the diagonal $\Delta$ and the other is $\{z=0\} \times \{w=0\}$.
+	Among them, $\Delta$ is the graph of $f_{(2)}$ and $\{z=0\} \times \{w=0\}$ is the ``extra'' component.
+	% \Yang{}
+\end{example}
+
+
+\subsection[Semi-continuity of dynamical degree]{Semi-continuity of $\lambda_i(f)$}
+
+\begin{theorem}\label{thm:semi-continuity-of-dynamical-degrees}
+	Let $S$ be an integral noetherian scheme, and $f: X \dashrightarrow X$ be a family of dominant rational maps over $S$.
+	Then for every $i$, the function $s \mapsto \lambda_i(f_s)$ is lower semi-continuous on $S$.
+\end{theorem}
+\begin{proof}
+	Fix a $\pi$-ample divisor $L$ on $X$.
+	It determines a class $L_s \in \upN^1(\frakX_s)$ for every $s \in S$.
+
+	Let $\eta$ be the generic point of $S$.
+	For any $s \in S$, we have $\deg_i(f_s^m) \leq \deg_i(f_\eta^m)$ for every $m$ by the previous proposition (\cref{prop:semi-continuity-mixed-degrees}), which implies $\lambda_i(f_s) \leq \lambda_i(f_\eta)$.
+	Hence we only need to show that for every $\varepsilon_0 \in (0,1)$, there is an open subset $U \subseteq S$ such that for every $s \in U$, we have $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$.
+
+	First assume that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+	By \cref{thm:lambda_i_satisfy_conditions_IJK}, there exists $\varepsilon \in (\varepsilon_0^{1/{2d}}, 1)$ and $\delta \in (0,1)$, $m \geq 0$ such that the conditions $I(\frakA_\eta, i, m)$, $J(\frakA_\eta, i, m)$ and $K(\frakA_\eta, i, m)$ hold, where $\frakA_\eta = (\mu_1(f_\eta), \ldots, \mu_d(f_\eta); \delta, \varepsilon)$.
+	Note that the conditions $I(\frakA, i, m)$, $J(\frakA, i, m)$ and $K(\frakA, i, m)$ for $(X_s, f_s, L_s)$ depend only on the intersection numbers of $(f_s^{2m})^*L_s, (f_s^{m})^*L_s, L_s$.
+	By \cref{prop:semi-continuity-mixed-degrees}, there exists a non-empty open subset $U \subseteq S$ such that for every $s \in U$, all intersection numbers of $(f_s^{2m})^*L_s, (f_s^{m})^*L_s, L_s$ are constant on $U$.
+	Hence for every $s \in U$, the conditions $I(\frakA_\eta, i, m)$, $J(\frakA_\eta, i, m)$ and $K(\frakA_\eta, i, m)$ hold for $(X_s, f_s, L_s)$.
+	By \cref{thm:conditions_IJK_implies_estimation_of_dynamical_degrees}, for every $s \in U$, we have
+	\[ \lambda_i(f_s) > \varepsilon^{2i} \lambda_i(f_\eta) > \varepsilon_0^{i/d} \lambda_i(f_\eta) \geq \varepsilon_0 \lambda_i(f_\eta). \]
+	This finishes the proof in the case $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+
+	Now we deal the general case.
+	Choose a non-empty open subset $U \subseteq S$ such that for every $s \in U$, we have $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$ for every $i$ such that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+	Let $a_s: [0,d] \to \bbR$ be the concave envelope of the points $(0,0), (1, \log \lambda_1(f_s)), \ldots, (d, \log \lambda_d(f_s))$.
+	Note that $a_\eta$ is a piecewise linear function with break points at exactly the integers $i$ such that $\mu_i(f_\eta) > \mu_{i+1}(f_\eta)$.
+	For two concave functions $a, b: [0,d] \to \bbR$ and $a$ is piecewise linear with break points at exactly $x_1, \ldots, x_k$, we have $a \leq b$ if and only if $a(x_i) \leq b(x_i)$ for every $i$.
+	Now applying this observation to $a_s$ and $a_\eta + \log \varepsilon_0$ with $s \in U$, we conclude that $a_s \geq a_\eta + \log \varepsilon_0$ and hence $\lambda_i(f_s) \geq \varepsilon_0 \lambda_i(f_\eta)$ for every $i$.
+\end{proof}
+
+\begin{example}
+	Let $S = \Spec \bbZ$, $X = \bbP^2_{\bbZ}$, and $f: X \dashrightarrow X$ is defined by
+	\[ [x:y:z] \mapsto [xy:xy-2z^2:yz+3z^2]. \]
+	Then we have $\lambda_1(f_{(0)}) = 2$ and $\lambda_1(f_{(p)}) < 2$ for every prime $p > 2$.
+
+	\Yang{to be continued}
+\end{example}
