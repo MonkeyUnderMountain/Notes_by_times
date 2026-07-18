@@ -1,10 +1,11 @@
 % !TeX root = preliminaries.tex
-\section{preliminaries}
+\section{Preliminaries}
 
 
 \subsection{Varieties and rational maps}
 
-Throughout this note, all schemes are of finite type and separated over a field or a noetherian integral scheme.
+\paragraph{Varieties}
+Throughout this note, all schemes are (essentially) of finite type and separated over a field or a noetherian integral scheme.
 A variety is a geometrically integral scheme of finite type and separated over a field.
 In other words, when base field is algebraically closed, a variety is an integral scheme of finite type and separated over the base field.
 And in general case, $X$ is a variety if and only if its base change to the algebraic closure of the base field is a variety.
@@ -31,10 +32,11 @@ Note that there may be at most $[\kappa(\xi):\kk]$ different points in $X(\kk')$
 	But on $X(\overline{\bbF_q})$, it has many interesting dynamical properties.
 \end{remark}
 
+\paragraph{Rational maps}
 Let $X,Y$ be a variety over $\kk$, and $f: X \dashrightarrow Y$ be a rational map.
 Recall that a rational map $f: X \dashrightarrow Y$ is a morphism defined on a dense open subset of $X$.
 The fundamental method to study a rational map is considering its graph.
-Let $\Gamma_f \subset X \times Y$ be the scheme-theoretic image of $(\id_U, f): U \to X \times Y$, where $U \subset X$ is the dense open subset where $f$ is defined.
+Let $\Gamma_f \subset X \times Y$ be the scheme-theoretic image (see \cite[Tag 01R5]{Stacks}) of $(\id_U, f): U \to X \times Y$, where $U \subset X$ is the dense open subset where $f$ is defined.
 This is equivalent to taking the closure of set-theoretic image of $(\id_U, f)$ in $X \times Y$.
 
 \begin{definition}
@@ -97,6 +99,7 @@ We will fix this issue by considering $\bfb$-cycles on birational models in \cre
 	% Then we have $\tilde{f}^* \tilde{L_x} = \tilde{L_x}$, $\tilde{f}^* E_x = E_x$, $\tilde{f}^* E_y = \tilde{L_y}$ and $\tilde{f}^* E_z = \tilde{L_z}$.
 \end{example}
 
+\paragraph{Families of dominant rational maps}
 We need to consider family of dominant rational maps.
 \begin{definition}
 	Let $S$ be a noetherian integral scheme.
@@ -188,6 +191,7 @@ The intersection number
 \[ \CH^i(\frakX) \otimes \CH^{d-i}(\frakX) \to \bbZ \]
 is also well-defined by the projection formula.
 
+\paragraph{Pullback by rational maps}
 Let $f: X \dashrightarrow Y$ be a dominant rational map between varieties of the same dimension.
 Then for every $\alpha \in \CH^i(\frakY)$, $f$ induces a rational map $X \ratmap Y'$ with $Y'$ a defining model of $\alpha$.
 We will denote this data by $f: \frakX \to \frakY$.
@@ -195,6 +199,15 @@ Then $f$ induces a morphism $X' \to Y'$ for some birational model $X' \in \frakX
 The pullback $f^* \alpha$ is a well-defined element in $\CH^i(X')$, and hence defines an element in $\CH^i(\frakX)$.
 Easily check that the pullback $f^* \alpha$ is independent of the choice of the defining model $Y'$ of $\alpha$ and the choice of the birational model $X'$ of $X$.
 In this way, if $f: X \dashrightarrow Y$ and $g: Y \dashrightarrow Z$ are two dominant rational maps between varieties of the same dimension, then we have $(g \circ f)^* = f^* \circ g^*$ as homomorphisms $\CH^i(\frakZ) \to \CH^i(\frakX)$.
+
+Let $f: \frakX \to \frakY$ be a dominant rational map between varieties of the same dimension.
+By choosing models making $f: \frakX \to \frakY$ well-defined, we see that $f^*$ is still a ring homomorphism and the projection formula for intersection numbers is still valid for pullback by rational maps.
+Explicitly, for $\alpha \in \CH^i(\frakY)$ and $\beta \in \CH^{j}(\frakX)$, we have
+\begin{itemize}
+	\item $f^*(\alpha \cdot \beta) = f^* \alpha \cdot f^* \beta \in \CH^{i+j}(\frakX)$;
+	\item if $i+j = d$, then $f^* \alpha \cdot f^* \beta = (\deg f) \cdot (\alpha \cdot \beta) \in \bbZ$.
+\end{itemize}
+Here $\deg f$ is the degree of the field extension $\fkk(X)/\fkk(Y)$ induced by $f$.
 
 Let us focus on the case of divisors, i.e. $i=1$.
 In this case, note that the notion of nef, effective, big and pseudo-effective divisors are preserved by pullback, so we can also define these notions for $\bfb$-divisors on $\frakX$.
@@ -210,6 +223,7 @@ Taking the Stein factorization of $f'$, we get a factorization $X' \xrightarrow{
 Then $f''^* L$ is an ample divisor on $X''$ since $f''$ is finite.
 This gives an ample defining model $X''$ of $f^* L$.
 
+\paragraph{Intersection with subvarieties}
 Let $Z \subset X$ be a closed subvariety of dimension $i$ and $\alpha \in \CH^i(\frakX)$.
 We can take a defining model $X'$ of $\alpha$ which is higher than $X$ by $\pi: X' \to X$.
 Suppose that $Z$ is not contained in the indeterminacy locus of $\pi^{-1}$, then we can define the intersection number
@@ -259,14 +273,28 @@ Note that this is a little weaker than the original version of Siu's inequality 
 
 By restricting the above inequality to hyperplane sections and taking limit to nef divisors, we can get the following version.
 
-\begin{corollary}
+\begin{corollary}\label{cor:generalized-Siu-inequality-restricted-to-hyperplane-sections}
 	Let $X$ be a projective variety of dimension $d$ and $\alpha \in \CH^k(X)$, $\beta \in \CH^l(X)$ and
 	$\eta \in \CH^{d-k-l}(X)$ be intersections of nef divisors on $X$ and $H$ be a nef divisor on $X$.
 	Then we have
 	\[ (\alpha \cdot \beta \cdot \eta) \cdot (H^{k+l} \cdot \eta) \leq \binom{k+l}{k} (\alpha \cdot H^{l} \cdot \eta) (\beta \cdot H^{k} \cdot \eta). \]
 \end{corollary}
 
+Since \cref{thm:generalized_Siu_inequality,cor:generalized-Siu-inequality-restricted-to-hyperplane-sections} only involve finite many cocycles,
+they can be generalized to $\bfb$-cocycles on birational models by taking a common defining model.
+
 Now we can show the existence of dynamical degrees and their log-concavity.
+
+\begin{definition}
+	Let $f: X \dashrightarrow X$ be a dominant rational self-map on a projective variety $X$ of dimension $d$ and $H$ be an ample divisor on $X$.
+	We define the \emph{$k$-th degree of $f$ with respect to $H$} as
+	\[ \deg_{k,H}(f) \coloneqq (f^* H^k \cdot H^{d-k}) \in \bbZ. \]
+	The \emph{$k$-th dynamical degree of $f$} is defined as
+	The \emph{$k$-th dynamical degree of $f$} is defined as
+	\[ \lambda_k(f) \coloneqq \lim_{n \to \infty} \left(\deg_{k,H}(f^n)\right)^{1/n}. \]
+\end{definition}
+
+Note by the projection formula, we have $\deg_{d,H}(f) = (\deg f) \cdot H^d$ and hence $\lambda_d(f) = \deg f$.
 
 \begin{proposition}
 	Let $f: X \dashrightarrow X$ be a rational map on a projective variety $X$ of dimension $d$.
@@ -275,9 +303,22 @@ Now we can show the existence of dynamical degrees and their log-concavity.
 	exists and is independent of the choice of the ample divisor $H$.
 \end{proposition}
 \begin{proof}
-	First
+	Set $H_i = (f^i)^*H$ as $\bfb$-divisor on $\frakX$.
+	Then we have
+	\[ (H_{n+m}^k \cdot H^{d-k}) \cdot H_n^d \leq \binom{d}{k} \cdot (H_{n+m}^k \cdot H_n^{d-k}) \cdot (H_n^k \cdot H^{d-k}). \]
+	That is,
+	\[ (\deg_{k,H} f^{n+m}) \cdot (\deg f^n) \cdot H^d \leq \binom{d}{k} \cdot (\deg f^n) \cdot (\deg_{k,H} f^m) \cdot (\deg_{k,H} f^n). \]
+	Set $a_i = \deg_{k,H} f^i$ and $C = C_d^k/H^d$.
+	Then we have $a_{n+m} \leq C a_n a_m$.
+	By mathematic analysis, the sequence $\{a_i^{1/i}\}$ converges to $\inf_i (Ca_i)^{1/i}$.
+	Denote the limit by $\lambda_{k,H}(f)$.
 
-	\Yang{}
+	Let $L$ be another ample divisor on $X$.
+	Then there exists a constant $a > 0$ and an ample divisor $D$ such that $L \sim aH + D$.
+	Then we have
+	\[ \deg_{k,L} f^n = (f^n)^* L^k \cdot L^{d-k} = (f^n)^* (aH + D)^k \cdot (aH + D)^{d-k} \geq a^d (f^n)^* H^k \cdot H^{d-k} = a^d \deg_{k,H} f^n. \]
+	Taking $n$-th root and limit, we get $\lambda_{k,L}(f) \geq \lambda_{k,H}(f)$.
+	By symmetry, we have $\lambda_{k,L}(f) = \lambda_{k,H}(f)$.
 \end{proof}
 
 \begin{proposition}
