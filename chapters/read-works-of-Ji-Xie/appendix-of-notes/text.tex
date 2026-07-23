@@ -107,9 +107,11 @@ The next problem is to determine the (semi)stable points.
 	More exactly, given an $1$-parameter subgroup $l: \bbG_m \to G$, we can define a morphism $\rho_{x, l}: \bbG_m \to X$ by $\rho_{x, l}(t) = l(t) \cdot x$.
 	And then by the valuative criterion of properness, we can uniquely extend $\rho_{x, l}$ to a morphism $\tilde{\rho}_{x, l}: \bbA^1 \to X$, and thus we can define the limit point $\lim_{t \to 0} l(t) \cdot x = \tilde{\rho}_{x, l}(0)$.
 	This limit point will be denoted by $l(0) \cdot x$.
+
 	For every $\alpha \in \bbG_m$, we can shift the $1$-parameter subgroup $l$ by $\alpha$ to get another $1$-parameter subgroup $l_\alpha: \bbG_m \to G$ defined by $l_\alpha(t) = l(\alpha t)$.
 	Note that $l_\alpha(0) \cdot x = l(0) \cdot x$ for all $\alpha \in \bbG_m$ since $\tilde{\rho}_{x, l_\alpha}(t) = \tilde{\rho}_{x, l}(\alpha t)$.
 	Hence $l(\alpha) \cdot (l(0) \cdot x) = l(0) \cdot x$ for all $\alpha \in \bbG_m$.
+
 	Note that since $\calL$ is $G$-linearized, we have an induced action of $G$ on the vector bundle $\bbV(\calL)$, and thus we have an action of $\bbG_m$ on the fiber $\calL_{l(0) \cdot x}$.
 	This gives a character $\chi: \bbG_m \to \bbG_m$ defined by $l(\alpha) \cdot v = \chi(\alpha) v$ for all $v \in \bbV(\calL)|_{l(0)\cdot x}$ and $\alpha \in \bbG_m$.
 	Identifying $\Hom(\bbG_m, \bbG_m) \cong \bbZ$, we can write $\chi(\alpha) = \alpha^r$ for some $r \in \bbZ$.
@@ -118,7 +120,7 @@ The next problem is to determine the (semi)stable points.
 
 \begin{remark}
 	Note that $\bbV(\calL) = \Spec \Sym^\bullet \calL$ is in the sense of Grothendieck, and the fiber $\bbV(\calL)|_x$ is dual to the fiber $\calL|_x$.
-	Hence our definition of $\mu^\calL(x, l)$ is the negative of the one in \cite[Definition 2.2]{mumford1994-git}.
+	Hence our definition of $\mu^\calL(x, l)$ coincides with the one in \cite[Definition 2.2]{mumford1994-git} although we have a sign difference.
 	\Yang{}
 \end{remark}
 
@@ -145,6 +147,34 @@ If $X = \bbP^n$ and $\calL = \calO_{\bbP^n}(1)$, then we can give a more explici
 \begin{example}
 	Let \Yang{}
 \end{example}
+
+
+\subsection{Tools in complex dynamics}
+
+On this subsection, we review some tools in complex dynamics quickly, in particular, the notion of bifurcation measure, bifurcation current, Green current, plurisubharmonic functions and so on.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
