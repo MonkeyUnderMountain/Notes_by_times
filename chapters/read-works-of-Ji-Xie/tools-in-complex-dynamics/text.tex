@@ -4,15 +4,16 @@
 
 \subsection{Differential forms and currents}
 
-The reference for this section is \Yang{}
+The reference for this section is, Demally, holomorphic dynamics, Dinh-Sibony notes. \Yang{}
+\cite{Dinh-Sibony-2005-introduction-to-currents}
 
 Let \(M\) be a complex manifold of complex dimension \(d\).
 Recall that we have the decomposition of the cotangent bundle:
 \[ \Omega_{\sm}^{1,\bbC} \cong \Omega_{\sm}^{1,0} \oplus \Omega_{\sm}^{0,1} \cong \Omega_{\sm}^1 \oplus \overline{\Omega_{\sm}^1}. \]
-Take exterior powers, we have\( \Omega_{\sm}^{k,\bbC} \cong \bigoplus_{p+q=k} \Omega_{\sm}^{p,q} \),
+Take exterior powers, we have \( \Omega_{\sm}^{k,\bbC} \cong \bigoplus_{p+q=k} \Omega_{\sm}^{p,q} \),
 where \(\Omega_{\sm}^{p,q} = \bigwedge^p \Omega_{\sm}^{1,0} \otimes \bigwedge^q \Omega_{\sm}^{0,1}\).
 We also use the notation
-\[ \calA^{p,q} := \Omega_{\sm}^{p,q}, \quad \calA^{k} := \Omega_{\sm}^{k,\bbC}. \]
+\[ \calA^{p,q} \coloneqq \Omega_{\sm}^{p,q}, \quad \calA^{k} \coloneqq \Omega_{\sm}^{k,\bbC}. \]
 
 A reason to induce this strange sheaf \(\calA^{k} = \Omega_{\sm}^{k,\bbC}\) is to make sense of integration of top-degree forms.
 For simplicity, assume that \(M\) is compact.
@@ -41,11 +42,11 @@ In a diagram, we have:
 \begin{center}
 	\begin{tikzpicture}
 		\matrix (m) [matrix of math nodes, column sep=2em, row sep=2em] {
-			\bullet & \bullet        & \bullet        & \bullet    & \bullet      \\
-			\bullet & \Omega^{p,q+1} & \bullet        & \bullet    & \bullet      \\
-			\bullet & \Omega^{p,q}   & \Omega^{p+1,q} & \bullet    & \bullet      \\
-			\bullet & \bullet        & \bullet        & \bullet    & \bullet      \\
-			        &                &                & \Omega^{k} & \Omega^{k+1} \\
+			\bullet & \bullet       & \bullet       & \bullet   & \bullet     \\
+			\bullet & \calA^{p,q+1} & \bullet       & \bullet   & \bullet     \\
+			\bullet & \calA^{p,q}   & \calA^{p+1,q} & \bullet   & \bullet     \\
+			\bullet & \bullet       & \bullet       & \bullet   & \bullet     \\
+			        &               &               & \calA^{k} & \calA^{k+1} \\
 		};
 		% Draw a horizontal line before the row containing \Omega^k (above row 5)
 		\draw (m-4-1.south) -- (m-4-5.south);
@@ -61,45 +62,84 @@ In a diagram, we have:
 	\end{tikzpicture}
 \end{center}
 
-\begin{proposition}\label{prop:partial_and_partial_bar_are_differential_operators}
-	The operators \(\partial\) and \(\overline{\partial}\) satisfy
-	\[ \partial^2 = 0, \quad \overline{\partial}^2 = 0, \quad \partial \overline{\partial} + \overline{\partial} \partial = 0. \]
-\end{proposition}
-\begin{proof}
-	\Yang{To be added.}
-\end{proof}
-
-\begin{proposition}\label{prop:holomorphic_pull_back_compatiable_with_A^pq}
-	Let \(f: M \to N\) be a holomorphic map between complex manifolds.
-	Then the pull-back of differential forms \(f^*: \calA^{k}_N \to \calA^{k}_M\) satisfies
-	\[ f^*(\calA^{p,q}_N) \subset \calA^{p,q}_M, \quad f^* \circ \partial_N = \partial_M \circ f^*, \quad f^* \circ \overline{\partial}_N = \overline{\partial}_M \circ f^*. \]
-\end{proposition}
-\begin{proof}
-	\Yang{To be added.}
-\end{proof}
-
-\Yang{The following need to checked.}
-\paragraph{Topological vector space of forms with compact support}
-Let \(M\) be a complex manifold of complex dimension \(d\).
-Given a differential form \(\omega \in \calA^{k}(M)\) with compact support, for any compact subset \(K \subset M\) and non-negative integer \(m\), we can define a seminorm
-\[ p_{K,m}(\omega) = \sup_{x \in K} \max_{|\alpha| \leq m} |D^{\alpha} \omega(x)|. \]
-Here, \(\alpha = (\alpha_1, \ldots, \alpha_{2d})\) is a multi-index, and \(D^{\alpha} = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \cdots \partial x_{2d}^{\alpha_{2d}}}\) in local real coordinates \((x_1, \ldots, x_{2d})\).
-The collection of these seminorms endows the space of compactly supported smooth \(k\)-forms on \(M\) with a locally convex topology.
-
 \begin{definition}\label{def:forms_with_compact_support}
 	A differential form \(\omega \in \calA^{k}(M)\) is said to have \emph{compact support} if there exists a compact subset \(K \subset M\) such that \(\omega|_{M \setminus K} = 0\).
-	The space of smooth complex-valued \(k\)-forms with compact support on \(M\) is denoted by \(\calA^{k}_c(M)\) or \(\calD^{k}(M)\).
-	On this vector space, we give it the weak topology induced by the family of seminorms
-	\[ p_{K,m}(\omega) = \sup_{x \in K} \max_{|\alpha| \leq m} |D^{\alpha} \omega(x)|, \]
-	where \(K\) runs over all compact subsets of \(M\) and \(m\) runs over all non-negative integers.
+	The space of smooth complex-valued \(k\)-forms with compact support on \(M\) is denoted by \(\calA^{k}_c(M)\).
 \end{definition}
 
-\begin{definition}\label{def:currents}
-	A \emph{current} of degree \(k\) on a complex manifold \(M\) is a continuous linear functional on the space of compactly supported smooth \((2d - k)\)-forms on \(M\):
-	\[ T: \calA^{2d - k}_c(M) \to \bbC. \]
-	The space of currents of degree \(k\) on \(M\) is denoted by \(\calD_k(M)\).
-	\Yang{To be revised.}
+\begin{definition}
+	Given a smooth local coordinate chart \((U, (x_1, \ldots, x_{2d}))\), a compact subset \(K \subset U\), and a non-negative integer \(m\), writing a form $\omega = \sum_I u^I \upd x_I$ under the coordinate, we can define a seminorm
+	\[ p_{U,K,m}(\omega) = \sup_{x \in K} \max_{I} \max_{|\alpha| \leq m} |D^{\alpha} u^I(x)|, \]
+	where \(\alpha = (\alpha_1, \ldots, \alpha_{2d})\) is a multi-index, and \(D^{\alpha} = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \cdots \partial x_{2d}^{\alpha_{2d}}}\) in local coordinates, and
+	where \(K\) runs over all compact subsets of \(M\) and \(m\) runs over all non-negative integers.
+	We equip the spaces $\calA^k(M)$ (resp. $\calA^k_c(M)$) the weak topology induced by the seminorms $\{p_{U,K,m}\}_{U,K,m}$, and denote the resulted space by $\scrE^k(M)$ (resp. $\scrD^k(M)$).
+	% $\scrE^{k}$ and $\scrD^{k}$ with the weak topology induced by these seminorms $\{p_{U,K,m}\}_{U,K,m}$.
 \end{definition}
+
+\begin{remark}
+	Recall that the weak topology on \Yang{}
+\end{remark}
+
+Note that above definition works for any smooth manifold, not just complex manifolds.
+The notions of currents was introduced by de Rham in the 1950s, and they provide a general framework for differential forms, cycles, measures, and distributions.
+
+\begin{definition}
+	The \emph{space of currents} of degree \(k\) or dimension $2d - k$ is defined as the topological dual of the space $\scrD^{2d-k}(M)$ of smooth \((2d-k)\)-forms with compact support:
+	\[ \scrD'^k(M) \coloneqq \scrD'_{2d-k}(M) \coloneqq \scrD^{2d-k}(M)^\vee. \]
+\end{definition}
+
+\begin{remark}
+	Recall that on a smooth manifold \(M\) of dimension \(n\), a \emph{distribution} is a continuous linear functional on the space of smooth functions with compact support, denoted by \(\scrD(M)\) or \(C_c^\infty(M)\).
+	\Yang{}
+\end{remark}
+
+\begin{example}
+	Any submanifold \(N \subset M\) of real dimension \(2d - k\) defines a current of degree \(k\) (or dimension $2d-k$) by integration:
+	\[ T_N: \scrD^{2d-k}(M) \to \bbC, \quad \omega \mapsto \int_N \omega|_N. \]
+	More generally, if \(N\) is a subvariety of complex dimension \(d - k\), then \(N\) defines a current of degree \(2k\) (or dimension $2d-2k$) by integration:
+	\[ T_N: \scrD^{2d-2k}(M) \to \bbC, \quad \omega \mapsto \int_{N_{reg}} \omega|_{N_{reg}}, \]
+	where \(N_{reg}\) is the regular part of \(N\).
+	Since \(N\) is a complex subvariety, the singular part \(N_{\sing} = N \setminus N_{reg}\) is a proper subvariety of \(N\) of complex dimension at most \(d - k - 1\), hence the integral makes sense.
+	Moreover, for any $k$-cycle \(Z = \sum_i n_i Z_i \in Z_k(M)\), where \(Z_i\) are irreducible subvarieties of complex dimension \(d - k\) and \(n_i \in \bbZ\), we can associate a current of degree \(2k\) to \(Z\) by linearity.
+\end{example}
+
+\begin{example}
+	Any smooth \(k\)-form \(\omega \in \scrD^k(M)\) defines a current of degree \(k\) via the pairing
+	\[ T_\omega: \scrD^{2d-k}(M) \to \bbC, \quad \eta \mapsto \int_M \omega \wedge \eta. \]
+\end{example}
+
+% \begin{proposition}\label{prop:partial_and_partial_bar_are_differential_operators}
+% 	The operators \(\partial\) and \(\overline{\partial}\) satisfy
+% 	\[ \partial^2 = 0, \quad \overline{\partial}^2 = 0, \quad \partial \overline{\partial} + \overline{\partial} \partial = 0. \]
+% \end{proposition}
+% \begin{proof}
+% 	\Yang{To be added.}
+% \end{proof}
+%
+% \begin{proposition}\label{prop:holomorphic_pull_back_compatiable_with_A^pq}
+% 	Let \(f: M \to N\) be a holomorphic map between complex manifolds.
+% 	Then the pull-back of differential forms \(f^*: \calA^{k}_N \to \calA^{k}_M\) satisfies
+% 	\[ f^*(\calA^{p,q}_N) \subset \calA^{p,q}_M, \quad f^* \circ \partial_N = \partial_M \circ f^*, \quad f^* \circ \overline{\partial}_N = \overline{\partial}_M \circ f^*. \]
+% \end{proposition}
+% \begin{proof}
+% 	\Yang{To be added.}
+% \end{proof}
+
+% \Yang{The following need to checked.}
+% \paragraph{Topological vector space of forms with compact support}
+% Let \(M\) be a complex manifold of complex dimension \(d\).
+% Given a differential form \(\omega \in \calA^{k}(M)\) with compact support, for any compact subset \(K \subset M\) and non-negative integer \(m\), we can define a seminorm
+% \[ p_{K,m}(\omega) = \sup_{x \in K} \max_{|\alpha| \leq m} |D^{\alpha} \omega(x)|. \]
+% Here, \(\alpha = (\alpha_1, \ldots, \alpha_{2d})\) is a multi-index, and \(D^{\alpha} = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \cdots \partial x_{2d}^{\alpha_{2d}}}\) in local real coordinates \((x_1, \ldots, x_{2d})\).
+% The collection of these seminorms endows the space of compactly supported smooth \(k\)-forms on \(M\) with a locally convex topology.
+%
+%
+% \begin{definition}\label{def:currents}
+% 	A \emph{current} of degree \(k\) on a complex manifold \(M\) is a continuous linear functional on the space of compactly supported smooth \((2d - k)\)-forms on \(M\):
+% 	\[ T: \calA^{2d - k}_c(M) \to \bbC. \]
+% 	The space of currents of degree \(k\) on \(M\) is denoted by \(\calD_k(M)\).
+% 	\Yang{To be revised.}
+% \end{definition}
 
 
 
